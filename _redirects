@@ -16,3 +16,12 @@ http://potenciarpymes.ar/* https://potenciarpymes.ar/:splat 301!
 
 /automatizaciones /automatizaciones.html 200
 /automatizaciones.html /automatizaciones 301
+
+/google-business /google-business.html 200
+/google-business.html /google-business 301
+
+/meta-ads /meta-ads.html 200
+/meta-ads.html /meta-ads 301
+
+/whatsapp-business /whatsapp-business.html 200
+/whatsapp-business.html /whatsapp-business 301
