@@ -4,3 +4,15 @@ http://potenciarpymes.ar/* https://potenciarpymes.ar/:splat 301!
 
 /diagnostico /diagnostico.html 200
 /diagnostico.html /diagnostico 301
+
+/tiendanube /tiendanube.html 200
+/tiendanube.html /tiendanube 301
+
+/mercado-libre /mercado-libre.html 200
+/mercado-libre.html /mercado-libre 301
+
+/seo-geo /seo-geo.html 200
+/seo-geo.html /seo-geo 301
+
+/automatizaciones /automatizaciones.html 200
+/automatizaciones.html /automatizaciones 301
