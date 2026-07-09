@@ -17,9 +17,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:title" content="Diagnóstico Digital Gratis para Pymes | Potenciar Pymes">
 <meta property="og:description" content="Detectá qué está frenando el crecimiento digital de tu pyme y qué conviene ordenar primero.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://potenciarpymes.ar/diagnostico">
-<meta property="og:image" content="https://potenciarpymes.ar/og-image.svg">
-<link rel="canonical" href="https://potenciarpymes.ar/diagnostico">
+<meta property="og:url" content="https://www.potenciarpymes.ar/diagnostico">
+<meta property="og:image" content="https://www.potenciarpymes.ar/og-image.svg">
+<link rel="canonical" href="https://www.potenciarpymes.ar/diagnostico">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -325,18 +325,18 @@ body::before{
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "Diagnóstico Digital Gratis para Pymes",
-  "url": "https://potenciarpymes.ar/diagnostico",
+  "url": "https://www.potenciarpymes.ar/diagnostico",
   "inLanguage": "es-AR",
   "description": "Diagnóstico gratuito para detectar qué está frenando el crecimiento digital de una pyme: canales de venta, publicidad, medición, automatización y sistema comercial.",
   "isPartOf": {
     "@type": "WebSite",
     "name": "Potenciar Pymes",
-    "url": "https://potenciarpymes.ar/"
+    "url": "https://www.potenciarpymes.ar/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Potenciar Pymes",
-    "url": "https://potenciarpymes.ar/"
+    "url": "https://www.potenciarpymes.ar/"
   }
 }
 </script>

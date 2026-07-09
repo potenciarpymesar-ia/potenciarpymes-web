@@ -17,13 +17,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:title" content="Potenciar Pymes | Ecommerce, IA y Automatización para Pymes">
 <meta property="og:description" content="Tu pyme necesita un sistema claro para vender mejor, medir mejor y automatizar tareas repetidas. Diagnóstico gratuito, sin compromiso.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://potenciarpymes.ar/">
-<meta property="og:image" content="https://potenciarpymes.ar/og-image.svg">
+<meta property="og:url" content="https://www.potenciarpymes.ar/">
+<meta property="og:image" content="https://www.potenciarpymes.ar/og-image.svg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Potenciar Pymes | Ecommerce, IA y Automatización para Pymes">
 <meta name="twitter:description" content="Tu pyme necesita un sistema claro para vender mejor, medir mejor y automatizar tareas repetidas. Diagnóstico gratuito, sin compromiso.">
-<meta name="twitter:image" content="https://potenciarpymes.ar/og-image.svg">
-<link rel="canonical" href="https://potenciarpymes.ar/">
+<meta name="twitter:image" content="https://www.potenciarpymes.ar/og-image.svg">
+<link rel="canonical" href="https://www.potenciarpymes.ar/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1075,9 +1075,9 @@ a { color: inherit; }
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://potenciarpymes.ar/#organization",
+      "@id": "https://www.potenciarpymes.ar/#organization",
       "name": "Potenciar Pymes",
-      "url": "https://potenciarpymes.ar/",
+      "url": "https://www.potenciarpymes.ar/",
       "description": "Potenciar Pymes ayuda a emprendedores, profesionales independientes y pymes argentinas a ordenar, mejorar y escalar su ecosistema digital con ecommerce, IA, automatizaciones, SEO, GEO, GA4, Google Business, Tiendanube, Mercado Libre, Meta Ads y WhatsApp Business.",
       "areaServed": {
         "@type": "Country",
@@ -1097,9 +1097,9 @@ a { color: inherit; }
     },
     {
       "@type": "ProfessionalService",
-      "@id": "https://potenciarpymes.ar/#professionalservice",
+      "@id": "https://www.potenciarpymes.ar/#professionalservice",
       "name": "Potenciar Pymes",
-      "url": "https://potenciarpymes.ar/",
+      "url": "https://www.potenciarpymes.ar/",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Buenos Aires",
@@ -1124,18 +1124,18 @@ a { color: inherit; }
     },
     {
       "@type": "WebSite",
-      "@id": "https://potenciarpymes.ar/#website",
+      "@id": "https://www.potenciarpymes.ar/#website",
       "name": "Potenciar Pymes",
-      "url": "https://potenciarpymes.ar/",
+      "url": "https://www.potenciarpymes.ar/",
       "inLanguage": "es-AR",
       "description": "Ecommerce, IA, automatización, SEO, GEO y medición para pymes argentinas.",
       "publisher": {
-        "@id": "https://potenciarpymes.ar/#organization"
+        "@id": "https://www.potenciarpymes.ar/#organization"
       }
     },
     {
       "@type": "FAQPage",
-      "@id": "https://potenciarpymes.ar/#faq",
+      "@id": "https://www.potenciarpymes.ar/#faq",
       "mainEntity": [
         {
           "@type": "Question",
