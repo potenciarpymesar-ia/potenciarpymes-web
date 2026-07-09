@@ -1,0 +1,9 @@
+# Dominio canónico
+https://potenciarpymes.ar/*  https://www.potenciarpymes.ar/:splat  301!
+http://potenciarpymes.ar/*   https://www.potenciarpymes.ar/:splat  301!
+http://www.potenciarpymes.ar/* https://www.potenciarpymes.ar/:splat 301!
+
+# URLs limpias
+/diagnostico.html  /diagnostico  301!
+/diagnostico       /diagnostico.html  200
+/index.html        /  301!
