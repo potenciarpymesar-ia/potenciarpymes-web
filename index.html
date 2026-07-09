@@ -502,6 +502,8 @@ body::before {
 
 /* ── SERVICIOS ───────────────────────────────────────── */
 .servicios-section { background: var(--paper-1); }
+.svc-list a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--accent, #10b981); }
+.svc-list a:hover { text-decoration-color: currentColor; }
 .buckets {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1374,7 +1376,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <ul class="svc-list" aria-label="Servicios de tráfico y ventas">
           <li>Meta Ads (Facebook + Instagram)</li>
-          <li>SEO + GEO: información clara para Google y herramientas de IA</li>
+          <li><a href="/seo-geo">SEO + GEO: información clara para Google y herramientas de IA</a></li>
           <li>Contenido con IA</li>
           <li>Google Shopping</li>
         </ul>
@@ -1384,8 +1386,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h3>Presencia digital</h3>
         <p>Tu negocio visible donde están tus clientes.</p>
         <ul class="svc-list svc-list--compact" aria-label="Servicios de presencia digital">
-          <li>Tiendanube</li>
-          <li>Mercado Libre</li>
+          <li><a href="/tiendanube">Tiendanube</a></li>
+          <li><a href="/mercado-libre">Mercado Libre</a></li>
           <li>WhatsApp Business</li>
           <li>Google Business · INPI</li>
         </ul>
@@ -1396,7 +1398,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p>Datos reales para decisiones reales.</p>
         <ul class="svc-list svc-list--compact" aria-label="Servicios de medición y crecimiento">
           <li>GA4 + Dashboard de negocio</li>
-          <li>Automatizaciones</li>
+          <li><a href="/automatizaciones">Automatizaciones</a></li>
           <li>Análisis mensual</li>
         </ul>
       </div>
@@ -1650,6 +1652,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="#packs">Planes</a>
       <a href="#faq">FAQ</a>
       <a href="#contacto">Contacto</a>
+    </nav>
+    <nav class="footer-links" aria-label="Páginas de servicios">
+      <a href="/tiendanube">Tiendanube</a>
+      <a href="/mercado-libre">Mercado Libre</a>
+      <a href="/seo-geo">SEO y GEO</a>
+      <a href="/automatizaciones">Automatizaciones</a>
     </nav>
     <p class="footer-copy">© 2025 Potenciar Pymes · Buenos Aires</p>
   </div>
