@@ -2157,6 +2157,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- POR QUÉ NOSOTROS -->
+<section class="section" style="background: var(--paper-0); padding: 5rem clamp(1rem, 5vw, 3rem);">
+  <div class="container">
+    <h2 style="font-family: var(--ff-display); font-size: clamp(1.75rem, 5vw, 3rem); font-weight: 800; margin-bottom: 0.5rem; color: var(--text-1); text-align: center;">Qué nos diferencia.</h2>
+    <p style="color: var(--text-2); font-size: 1rem; max-width: 65ch; margin: 0 auto 3rem; text-align: center; line-height: 1.6;">No somos una agencia más. Somos socios de tu crecimiento. Esto es lo que nos hace único.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem;">
+      <div class="reveal" style="padding: 2rem; border-left: 4px solid var(--accent); transition: transform .3s ease-out;" onmouseover="this.style.transform='translateX(8px)'" onmouseout="this.style.transform=''">
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-1);">📊 Basado en datos</h3>
+        <p style="color: var(--text-2); font-size: 0.95rem; line-height: 1.6;">Decisiones respaldadas por métricas reales. Nada de hunches ni intuiciones. Todo se mide, se analiza, se itera.</p>
+      </div>
+      <div class="reveal" style="padding: 2rem; border-left: 4px solid var(--accent); transition: transform .3s ease-out;" onmouseover="this.style.transform='translateX(8px)'" onmouseout="this.style.transform=''">
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-1);">🛠 Sin dependencias</h3>
+        <p style="color: var(--text-2); font-size: 0.95rem; line-height: 1.6;">Te enseñamos. Te documentamos. Te dejamos autónomo. No queremos clientes eternos, queremos clientes que no nos necesiten.</p>
+      </div>
+      <div class="reveal" style="padding: 2rem; border-left: 4px solid var(--accent); transition: transform .3s ease-out;" onmouseover="this.style.transform='translateX(8px)'" onmouseout="this.style.transform=''">
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-1);">⚡ Velocidad</h3>
+        <p style="color: var(--text-2); font-size: 0.95rem; line-height: 1.6;">Resultados en 30 días. No plazo abierto. Auditoría, implementación, capacitación. Todo acotado.</p>
+      </div>
+      <div class="reveal" style="padding: 2rem; border-left: 4px solid var(--accent); transition: transform .3s ease-out;" onmouseover="this.style.transform='translateX(8px)'" onmouseout="this.style.transform=''">
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-1);">🎯 Especializado en pymes</h3>
+        <p style="color: var(--text-2); font-size: 0.95rem; line-height: 1.6;">No somos consultores para corporaciones que cobran 10x. Entendemos tu escala, tus limitaciones, tu realidad.</p>
+      </div>
+      <div class="reveal" style="padding: 2rem; border-left: 4px solid var(--accent); transition: transform .3s ease-out;" onmouseover="this.style.transform='translateX(8px)'" onmouseout="this.style.transform=''">
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-1);">📈 Transparencia total</h3>
+        <p style="color: var(--text-2); font-size: 0.95rem; line-height: 1.6;">Presupuesto cerrado. Sin sorpresas. Sabés exactamente qué pagás, cuándo termina, qué recibís.</p>
+      </div>
+      <div class="reveal" style="padding: 2rem; border-left: 4px solid var(--accent); transition: transform .3s ease-out;" onmouseover="this.style.transform='translateX(8px)'" onmouseout="this.style.transform=''">
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-1);">🤝 Acompañamiento real</h3>
+        <p style="color: var(--text-2); font-size: 0.95rem; line-height: 1.6;">No desaparecemos después de firmar. Seguimiento continuo, ajustes, soporte. Somos tu partner.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- RECURSOS Y BLOG -->
 <section class="section" style="background: var(--paper-1); padding: 5rem clamp(1rem, 5vw, 3rem);">
   <div class="container">
@@ -2462,6 +2496,31 @@ window.addEventListener('scroll', function() {
 <div id="sticky-cta" class="sticky-cta">
   <a href="/diagnostico" class="sticky-cta-btn">Diagnóstico Gratis →</a>
 </div>
+
+<!-- SCROLL TO TOP BUTTON -->
+<button id="scroll-to-top" aria-label="Volver al inicio" style="position: fixed; bottom: 2rem; right: 2rem; width: 48px; height: 48px; background: var(--accent); color: var(--paper-0); border: none; border-radius: 50%; cursor: pointer; display: none; align-items: center; justify-content: center; font-size: 1.5rem; transition: all .3s ease-out; opacity: 0; z-index: 999; box-shadow: 0 4px 12px oklch(0% 0 0 / .15);">↑</button>
+
+<script>
+const scrollTopBtn = document.getElementById('scroll-to-top');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400) {
+    scrollTopBtn.style.display = 'flex';
+    scrollTopBtn.style.opacity = '1';
+  } else {
+    scrollTopBtn.style.opacity = '0';
+    if (window.scrollY <= 100) scrollTopBtn.style.display = 'none';
+  }
+});
+scrollTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+scrollTopBtn.addEventListener('mouseover', function() {
+  this.style.transform = 'scale(1.1)';
+});
+scrollTopBtn.addEventListener('mouseout', function() {
+  this.style.transform = 'scale(1)';
+});
+</script>
 
 </body>
 </html>
