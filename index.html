@@ -580,8 +580,8 @@ body::before {
 
 /* â”€â”€ SERVICIOS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .servicios-section { background: var(--paper-1); }
-.svc-list a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--accent, #10b981); }
-.svc-list a:hover { text-decoration-color: currentColor; }
+.svc-list a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--secondary, oklch(60% 0.20 280)); transition: text-decoration-color .2s; }
+.svc-list a:hover { text-decoration-color: currentColor; opacity: .9; }
 .buckets {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1316,6 +1316,14 @@ a { color: inherit; }
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  border: 1px solid oklch(100% 0 0 / .1);
+  border-radius: 16px;
+  transition: all .3s ease-out;
+}
+
+.svc-main:hover {
+  border-color: var(--secondary);
+  box-shadow: 0 8px 24px var(--secondary, oklch(60% 0.20 280 / 0.15));
 }
 .svc-main-top {
   display: flex;
@@ -1336,7 +1344,16 @@ a { color: inherit; }
   grid-column: 2;
   background: var(--paper-1);
   padding: 1.75rem 2rem;
+  border: 1px solid oklch(100% 0 0 / .1);
+  border-radius: 16px;
+  transition: all .3s ease-out;
 }
+
+.svc-side:hover {
+  border-color: var(--secondary);
+  box-shadow: 0 8px 24px var(--secondary, oklch(60% 0.20 280 / 0.15));
+}
+
 .svc-side--bottom { }
 .svc-side .svc-icon { font-size: 1.4rem; display: block; margin-bottom: .65rem; }
 .svc-side h3 {
