@@ -508,6 +508,11 @@ body::before {
 .proceso-step {
   padding: 2rem 1.75rem 2rem 0;
   position: relative;
+  transition: opacity .2s, transform .2s;
+}
+.proceso-step:hover {
+  opacity: .85;
+  transform: translateY(-2px);
 }
 .proceso-step + .proceso-step {
   padding-left: 1.75rem;
@@ -526,7 +531,7 @@ body::before {
   font-size: 3.5rem;
   font-weight: 800;
   line-height: 1;
-  color: oklch(83% 0.22 145 / .18);
+  color: var(--accent);
   margin-bottom: .5rem;
 }
 .proceso-step h3 {
@@ -657,6 +662,77 @@ body::before {
     padding: 0 1.25rem 1rem;
     font-size: .95rem;
   }
+}
+
+/* ── PRICING ──────────────────────────────────────────── */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.pricing-card {
+  border: 1px solid oklch(100% 0 0 / .06);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+  padding: 2rem;
+  position: relative;
+  transition: transform .2s, box-shadow .2s;
+}
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px oklch(83% 0.22 145 / .12);
+}
+.pricing-featured {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, var(--paper-2) 0%, oklch(12% 0.005 145) 100%);
+  transform: scale(1.02);
+}
+.pricing-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--accent);
+  color: var(--paper-0);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: .35em .75em;
+  border-radius: 4px;
+}
+.pricing-card h3 {
+  font-family: var(--ff-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: .5rem;
+  color: var(--text-1);
+}
+.pricing-range {
+  font-family: var(--ff-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: .5rem;
+}
+.pricing-desc {
+  color: var(--text-2);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+.pricing-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  color: var(--text-2);
+  font-size: .95rem;
+}
+.pricing-list li::before {
+  content: '✓ ';
+  color: var(--accent);
+  font-weight: 700;
+  margin-right: .5em;
 }
 
 /* ── PARA VOS ────────────────────────────────────────── */
@@ -1064,7 +1140,7 @@ a { color: inherit; }
   font-size: 3rem;
   font-weight: 800;
   line-height: 1;
-  color: oklch(83% 0.22 145 / .18);
+  color: var(--accent);
   user-select: none;
 }
 .pain-row-body h3 {
@@ -1290,6 +1366,54 @@ a { color: inherit; }
           }
         }
       ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta Potenciar Pymes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No hay precio fijo. Dependé de qué necesitás: desde diagnósticos puntuales hasta sistemas completos de 90 días. Hablamos primero, armamos el plan, acordamos inversión. Sin sorpresas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿En cuánto tiempo veo resultados?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende del punto de partida. Ordenes en estructura: 2-3 semanas. Primeras ventas por nuevos canales: 4-6 semanas. Escalabilidad real: 90 días mínimo. Somos honestos: no hay magic."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa si no me gusta el resultado?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Te devolvemos lo que te enseñamos: acceso a cuentas, contraseñas, estructura. Todo está documentado. Podés seguir vos o contratar otro. No hay cliente rehén."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Trabajan solo con pymes grandes o también pequeñas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pymes de 10k a 500k USD anuales. Más chico: costos no escalan, no vale la pena. Más grande: necesitás equipo dedicado, no somos opción. Nos interesan pymes que quieren crecer pero no quieren armarse un equipo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo es el proceso de diagnóstico?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "15 min por teléfono contigo. Vemos: qué canales tenés, cuáles funcionan, dónde se pierden clientes, cuál es tu inversión actual. Al final: un reporte claro con pasos, timeline y costo."
+      }
     }
   ]
 }
@@ -1581,6 +1705,54 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p>15 min por teléfono contigo. Vemos: qué canales tenés, cuáles funcionan, dónde se pierden clientes, cuál es tu inversión actual. Al final: un reporte claro con pasos, timeline y costo.</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVERSIÓN -->
+<section class="section" id="inversion" aria-labelledby="inversion-h2">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-h2" id="inversion-h2">Rangos de inversión.</h2>
+      <p class="section-lead">Depende de qué necesitás. Aquí una guía honesta.</p>
+    </div>
+    <div class="pricing-grid reveal">
+      <div class="pricing-card">
+        <h3>Diagnóstico</h3>
+        <p class="pricing-range">$500 - $1.500</p>
+        <p class="pricing-desc">15 minutos de audio, reporte escrito con situación actual, próximos pasos y presupuesto.</p>
+        <ul class="pricing-list">
+          <li>Mapa de tu sistema actual</li>
+          <li>Identificar qué funciona</li>
+          <li>Plan de acción priorizado</li>
+        </ul>
+      </div>
+      <div class="pricing-card pricing-featured">
+        <div class="pricing-badge">Más elegido</div>
+        <h3>Estructura (30 días)</h3>
+        <p class="pricing-range">$3.500 - $8.000</p>
+        <p class="pricing-desc">Armamos la base: canales, medición, integraciones. Primeras acciones ejecutadas.</p>
+        <ul class="pricing-list">
+          <li>Setup de canales principales</li>
+          <li>Estructura de medición (GA4)</li>
+          <li>Primeras campañas lanzadas</li>
+          <li>2 llamadas de seguimiento</li>
+        </ul>
+      </div>
+      <div class="pricing-card">
+        <h3>Sistema Completo (90 días)</h3>
+        <p class="pricing-range">$10.000 - $25.000+</p>
+        <p class="pricing-desc">Diagnóstico + estructura + optimización. Escalabilidad real con resultados medibles.</p>
+        <ul class="pricing-list">
+          <li>Todas las fases de 30 días</li>
+          <li>Optimización data-driven</li>
+          <li>Automatizaciones n8n</li>
+          <li>Soporte semanal incluido</li>
+        </ul>
+      </div>
+    </div>
+    <div class="reveal" style="text-align: center; margin-top: 3rem;">
+      <p style="color: var(--text-2); font-size: 1.05rem;">¿Seguro sobre los números? <a href="/diagnostico" style="color: var(--accent); text-decoration: none; font-weight: 600;">Hablemos primero.</a></p>
     </div>
   </div>
 </section>
