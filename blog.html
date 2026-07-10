@@ -19,6 +19,7 @@
       --paper-1: oklch(12% 0 0);
       --paper-2: oklch(15% 0 0);
       --accent: oklch(72% 0.22 145);
+      --secondary: oklch(60% 0.20 280);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -73,7 +74,7 @@
     }
 
     .post-card:hover {
-      border-color: var(--accent);
+      border-color: var(--secondary);
       transform: translateY(-8px);
       box-shadow: 0 12px 32px oklch(0% 0 0 / .2);
     }
@@ -108,7 +109,7 @@
       background: oklch(100% 0 0 / .08);
       padding: 0.3rem 0.8rem;
       border-radius: 4px;
-      color: var(--accent);
+      color: var(--secondary);
       font-weight: 600;
     }
 
@@ -138,10 +139,15 @@
     }
 
     .read-more {
-      color: var(--accent);
+      color: var(--secondary);
       font-weight: 600;
       text-decoration: none;
-      transition: gap .2s;
+      transition: all .3s;
+    }
+
+    .read-more:hover {
+      opacity: .8;
+      transform: translateX(3px);
     }
 
     footer {
@@ -293,7 +299,7 @@
     <p style="color: var(--text-2); font-size: 1.05rem; max-width: 50ch; margin: 0 auto 2rem; line-height: 1.6;">Casos reales, guías step-by-step y análisis de estrategias que funcionan. Totalmente gratis.</p>
     <form style="display: flex; gap: 1rem; max-width: 500px; margin: 0 auto;" onsubmit="event.preventDefault(); alert('Gracias. Revisa tu inbox en 1 min.');">
       <input type="email" placeholder="Tu email" required style="flex: 1; padding: 0.9rem 1.2rem; border: none; border-radius: 6px; background: var(--paper-1); color: var(--text-1); font-family: var(--ff-body);">
-      <button type="submit" style="background: var(--accent); color: var(--paper-0); border: none; padding: 0.9rem 2rem; border-radius: 6px; font-weight: 700; cursor: pointer; font-family: var(--ff-display);">Suscribir</button>
+      <button type="submit" style="background: var(--secondary); color: var(--paper-0); border: none; padding: 0.9rem 2rem; border-radius: 6px; font-weight: 700; cursor: pointer; font-family: var(--ff-display); transition: opacity .2s, box-shadow .3s, transform .2s; box-shadow: 0 0 20px var(--secondary, oklch(60% 0.20 280 / 0.2));">Suscribir</button>
     </form>
   </div>
 </section>
