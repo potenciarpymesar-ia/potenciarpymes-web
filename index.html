@@ -824,6 +824,47 @@ body::before {
   color: var(--accent);
 }
 
+/* ── STICKY CTA ──────────────────────────────────────── */
+.sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: linear-gradient(180deg, transparent 0%, var(--paper-0) 50%);
+  z-index: 50;
+  display: none;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+@media (max-width: 768px) {
+  .sticky-cta {
+    display: flex;
+    justify-content: center;
+  }
+}
+.sticky-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5em;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dim) 100%);
+  color: var(--paper-0);
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 10px 30px var(--accent-glow);
+  transition: all .3s ease;
+}
+.sticky-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px var(--accent-glow);
+}
+
 /* ── PARA VOS ────────────────────────────────────────── */
 .qualifier-wrap {
   margin-top: 3rem;
@@ -2281,6 +2322,28 @@ document.querySelectorAll('.faq-trigger').forEach(trigger => {
     }
   });
 });
+
+// Sticky CTA - Show after 3 scrolls or 5 seconds
+let sticky_shown = false;
+setTimeout(() => {
+  if (!sticky_shown) {
+    document.getElementById('sticky-cta').style.opacity = '1';
+    sticky_cta_shown = true;
+  }
+}, 5000);
+
+window.addEventListener('scroll', function() {
+  if (!sticky_shown && window.scrollY > 1500) {
+    document.getElementById('sticky-cta').style.opacity = '1';
+    sticky_shown = true;
+  }
+});
 </script>
+
+<!-- STICKY CTA (Mobile) -->
+<div id="sticky-cta" class="sticky-cta">
+  <a href="/diagnostico" class="sticky-cta-btn">Diagnóstico Gratis →</a>
+</div>
+
 </body>
 </html>
