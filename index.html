@@ -174,6 +174,15 @@ body::before {
 .hero {
   padding-block: clamp(4.5rem, 10vw, 8rem) clamp(3rem, 7vw, 5.5rem);
   text-align: center;
+  position: relative;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 100% 60% at 50% -20%, oklch(83% 0.22 145 / .06) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: -1;
 }
 .hero-tag {
   display: inline-block;
@@ -381,10 +390,28 @@ body::before {
   margin-top: 3rem;
 }
 .cliente-card {
-  background: var(--paper-2);
+  background: linear-gradient(135deg, var(--paper-2) 0%, oklch(10% 0 0) 100%);
   border: 1px solid oklch(100% 0 0 / .08);
   border-radius: var(--radius);
   padding: 1.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: all .3s ease;
+}
+.cliente-card::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 120px;
+  height: 120px;
+  background: var(--accent-glow);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.cliente-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
 }
 .cliente-name {
   font-family: var(--ff-display);
@@ -733,6 +760,68 @@ body::before {
   color: var(--accent);
   font-weight: 700;
   margin-right: .5em;
+}
+
+/* ── ÚLTIMAS CONSULTAS ────────────────────────────────── */
+.consultas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+.consulta-card {
+  border: 1px solid oklch(100% 0 0 / .08);
+  border-radius: var(--radius);
+  background: oklch(8% 0 0 / .5);
+  padding: 1.75rem;
+  transition: all .3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.consulta-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-dim));
+}
+.consulta-card:hover {
+  border-color: var(--accent);
+  background: oklch(10% 0 0);
+  transform: translateY(-2px);
+}
+.consulta-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: .85rem;
+  flex-wrap: wrap;
+}
+.consulta-tipo {
+  background: var(--accent-glow);
+  color: var(--accent);
+  padding: .35em .75em;
+  border-radius: 4px;
+  font-weight: 600;
+}
+.consulta-tiempo {
+  color: var(--text-3);
+  align-self: center;
+}
+.consulta-reto {
+  color: var(--text-2);
+  margin-bottom: .75rem;
+  line-height: 1.6;
+  font-size: .95rem;
+}
+.consulta-accion {
+  color: var(--accent-dim);
+  font-size: .95rem;
+  line-height: 1.6;
+}
+.consulta-accion strong {
+  color: var(--accent);
 }
 
 /* ── PARA VOS ────────────────────────────────────────── */
@@ -1782,6 +1871,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li>Buscás el más barato del mercado</li>
           <li>Necesitás una gran agencia con muchas capas</li>
         </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÚLTIMAS CONSULTAS -->
+<section class="section" id="ultimas-consultas" style="background: oklch(6% 0 0); border-top: 1px solid oklch(100% 0 0 / .06);">
+  <div class="container">
+    <div class="reveal" style="text-align: center; margin-bottom: 3rem;">
+      <h2 class="section-h2">Últimas consultas resueltas.</h2>
+      <p class="section-lead">Lo que trabajamos la semana pasada.</p>
+    </div>
+    <div class="consultas-grid reveal">
+      <div class="consulta-card">
+        <div class="consulta-meta">
+          <span class="consulta-tipo">E-commerce</span>
+          <span class="consulta-tiempo">Esta semana</span>
+        </div>
+        <p class="consulta-reto"><strong>Reto:</strong> Tiendanube con 200 productos pero ventas plateadas hace 4 meses.</p>
+        <p class="consulta-accion"><strong>Acción:</strong> Reordenamos categorías, meta ads dirigida a clientes anteriores, Google Shopping. Primeras ventas al día 5.</p>
+      </div>
+      <div class="consulta-card">
+        <div class="consulta-meta">
+          <span class="consulta-tipo">B2C Servicios</span>
+          <span class="consulta-tiempo">Esta semana</span>
+        </div>
+        <p class="consulta-reto"><strong>Reto:</strong> 15 años de boca en boca, cero sistema. Presupuesto de ads quemado en Google.</p>
+        <p class="consulta-accion"><strong>Acción:</strong> Diagnóstico + blueprint de 90 días. Empieza con Google Shopping + Local Services Ads en 2 semanas.</p>
+      </div>
+      <div class="consulta-card">
+        <div class="consulta-meta">
+          <span class="consulta-tipo">SaaS Local</span>
+          <span class="consulta-tiempo">Hace 2 semanas</span>
+        </div>
+        <p class="consulta-reto"><strong>Reto:</strong> Equipo sin experiencia en marketing digital. Competencia con presupuesto 5x mayor.</p>
+        <p class="consulta-accion"><strong>Acción:</strong> GA4 + dashboard + content calendario. +40% tráfico orgánico en 30 días con zero ad spend.</p>
       </div>
     </div>
   </div>
