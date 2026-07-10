@@ -592,6 +592,73 @@ body::before {
   flex-shrink: 0;
 }
 
+/* ── FAQ ──────────────────────────────────────────────── */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+.faq-item {
+  border: 1px solid oklch(100% 0 0 / .06);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+  overflow: hidden;
+}
+.faq-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: transparent;
+  border: none;
+  color: var(--text-1);
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+  cursor: pointer;
+  transition: color .2s;
+}
+.faq-trigger:hover {
+  color: var(--accent);
+}
+.faq-trigger svg {
+  flex-shrink: 0;
+  transition: transform .3s ease;
+}
+.faq-trigger[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+.faq-answer {
+  padding: 0 1.5rem 1.25rem;
+  color: var(--text-2);
+  line-height: 1.7;
+  animation: reveal-faq .3s ease forwards;
+}
+@keyframes reveal-faq {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+  }
+}
+@media (max-width: 768px) {
+  .faq-trigger {
+    font-size: 1rem;
+    padding: 1rem 1.25rem;
+  }
+  .faq-answer {
+    padding: 0 1.25rem 1rem;
+    font-size: .95rem;
+  }
+}
+
 /* ── PARA VOS ────────────────────────────────────────── */
 .qualifier-wrap {
   margin-top: 3rem;
@@ -1452,6 +1519,72 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="section" id="faq" aria-labelledby="faq-h2">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-h2" id="faq-h2">Preguntas frecuentes.</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false" aria-controls="faq-1">
+          <span>¿Cuánto cuesta Potenciar Pymes?</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 10 13 14 9"></polyline>
+          </svg>
+        </button>
+        <div class="faq-answer" id="faq-1" hidden>
+          <p>No hay precio fijo. Dependé de qué necesitás: desde diagnósticos puntuales hasta sistemas completos de 90 días. Hablamos primero, armamos el plan, acordamos inversión. Sin sorpresas.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false" aria-controls="faq-2">
+          <span>¿En cuánto tiempo veo resultados?</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 10 13 14 9"></polyline>
+          </svg>
+        </button>
+        <div class="faq-answer" id="faq-2" hidden>
+          <p>Depende del punto de partida. Ordenes en estructura: 2-3 semanas. Primeras ventas por nuevos canales: 4-6 semanas. Escalabilidad real: 90 días mínimo. Somos honestos: no hay magic.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false" aria-controls="faq-3">
+          <span>¿Qué pasa si no me gusta el resultado?</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 10 13 14 9"></polyline>
+          </svg>
+        </button>
+        <div class="faq-answer" id="faq-3" hidden>
+          <p>Te devolvemos lo que te enseñamos: acceso a cuentas, contraseñas, estructura. Todo está documentado. Podés seguir vos o contratar otro. No hay cliente rehén.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false" aria-controls="faq-4">
+          <span>¿Trabajan solo con pymes grandes o también pequeñas?</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 10 13 14 9"></polyline>
+          </svg>
+        </button>
+        <div class="faq-answer" id="faq-4" hidden>
+          <p>Pymes de 10k a 500k USD anuales. Más chico: costos no escalan, no vale la pena. Más grande: necesitás equipo dedicado, no somos opción. Nos interesan pymes que quieren crecer pero no quieren armarse un equipo.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false" aria-controls="faq-5">
+          <span>¿Cómo es el proceso de diagnóstico?</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 10 13 14 9"></polyline>
+          </svg>
+        </button>
+        <div class="faq-answer" id="faq-5" hidden>
+          <p>15 min por teléfono contigo. Vemos: qué canales tenés, cuáles funcionan, dónde se pierden clientes, cuál es tu inversión actual. Al final: un reporte claro con pasos, timeline y costo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PARA VOS -->
 <section class="section" id="para-vos" aria-labelledby="paravos-h2">
   <div class="container">
@@ -1834,6 +1967,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   }, { passive: true });
 })();
+</script>
+<script>
+// FAQ Accordion
+document.querySelectorAll('.faq-trigger').forEach(trigger => {
+  trigger.addEventListener('click', function() {
+    const expanded = this.getAttribute('aria-expanded') === 'true';
+    const answer = document.getElementById(this.getAttribute('aria-controls'));
+
+    if (expanded) {
+      this.setAttribute('aria-expanded', 'false');
+      answer.hidden = true;
+    } else {
+      this.setAttribute('aria-expanded', 'true');
+      answer.hidden = false;
+    }
+  });
+});
 </script>
 </body>
 </html>
