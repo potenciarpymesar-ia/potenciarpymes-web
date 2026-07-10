@@ -236,15 +236,17 @@ body::before {
   letter-spacing: .03em;
   text-transform: uppercase;
   padding: .85rem 2rem;
-  border-radius: 8px;
+  border-radius: 14px;
   text-decoration: none;
-  transition: opacity .2s, box-shadow .2s, outline .2s;
-  box-shadow: 0 0 32px oklch(83% 0.22 145 / .25);
+  transition: opacity .2s, box-shadow .3s, transform .2s, outline .2s;
+  box-shadow: 0 0 40px oklch(83% 0.22 145 / 0.35);
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
 .btn-primary:hover {
-  opacity: .9;
+  opacity: .95;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 50px oklch(83% 0.22 145 / 0.45);
   box-shadow: 0 0 48px oklch(83% 0.22 145 / .40);
 }
 .btn-primary:focus-visible {
