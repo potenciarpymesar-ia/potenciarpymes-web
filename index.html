@@ -1123,11 +1123,14 @@ body::before {
   font-size: .95rem;
   padding: .7rem 1rem;
   outline: none;
-  transition: border-color .2s;
+  transition: border-color .2s, box-shadow .2s;
 }
 .form-group input::placeholder { color: var(--text-3); }
 .form-group input:focus,
-.form-group select:focus { border-color: oklch(83% 0.22 145 / .5); }
+.form-group select:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 12px var(--secondary, oklch(60% 0.20 280 / 0.2));
+}
 .form-group select { appearance: none; cursor: pointer; }
 .form-group select option { background: var(--paper-1); }
 .form-submit {
