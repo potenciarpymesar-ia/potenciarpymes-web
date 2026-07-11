@@ -195,11 +195,14 @@ body::before {
   font-weight: 700;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: var(--accent);
-  border: 1px solid oklch(83% 0.22 145 / .3);
+  color: var(--secondary);
+  border: 1px solid var(--secondary);
   padding: .3em .9em;
   border-radius: 99px;
   margin-bottom: 1.75rem;
+  transition: all .3s ease-out;
+  background: oklch(60% 0.20 280 / 0.08);
+  box-shadow: 0 0 12px var(--secondary, oklch(60% 0.20 280 / 0.15));
 }
 .hero h1 {
   font-family: var(--ff-display);
@@ -212,7 +215,7 @@ body::before {
 }
 .hero h1 em {
   font-style: normal;
-  color: var(--accent);
+  color: var(--secondary);
 }
 .hero-sub {
   font-size: clamp(1rem, 2vw, 1.2rem);
