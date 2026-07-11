@@ -104,6 +104,18 @@ body::before {
   }
 }
 
+@keyframes subtle-shine {
+  0% {
+    box-shadow: 0 0 0 var(--secondary, oklch(60% 0.20 280 / 0));
+  }
+  50% {
+    box-shadow: 0 0 12px var(--secondary, oklch(60% 0.20 280 / 0.2));
+  }
+  100% {
+    box-shadow: 0 0 0 var(--secondary, oklch(60% 0.20 280 / 0));
+  }
+}
+
 /* â”€â”€ MOBILE NARROW VIEWPORT (< 320px) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (max-width: 319px) {
   .nav-inner { height: 90px; }
@@ -136,7 +148,8 @@ body::before {
   background: linear-gradient(180deg, transparent 0%, oklch(60% 0.20 280 / 0.02) 50%, transparent 100%);
 }
 .section + .section {
-  border-top: 1px solid oklch(100% 0 0 / .06);
+  border-top: 1px solid;
+  border-image: linear-gradient(90deg, transparent, oklch(100% 0 0 / .15), transparent) 0 0 1 0;
 }
 
 /* â”€â”€ NAV â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -1335,6 +1348,23 @@ body::before {
 a {
   color: inherit;
   transition: color .2s ease, text-shadow .2s ease;
+  position: relative;
+  text-decoration: none;
+}
+
+a[href]::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width .3s ease;
+}
+
+a[href]:hover::after {
+  width: 100%;
 }
 
 /* â”€â”€ PAIN ROWS (replaces pain-grid) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -1466,6 +1496,22 @@ a {
 .svc-side:hover {
   border-color: var(--secondary);
   box-shadow: 0 8px 24px var(--secondary, oklch(60% 0.20 280 / 0.15));
+}
+
+.svc-side::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+  opacity: 0;
+  transition: opacity .3s ease-out;
+}
+
+.svc-side:hover::before {
+  opacity: 0.5;
 }
 
 .svc-side--bottom { }
