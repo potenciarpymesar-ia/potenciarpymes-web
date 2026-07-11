@@ -1270,9 +1270,19 @@ a { color: inherit; }
   display: grid;
   grid-template-columns: 64px 1fr;
   gap: 1.75rem;
-  padding: 2rem 0;
+  padding: 2rem;
   border-bottom: 1px solid oklch(100% 0 0 / .08);
   align-items: start;
+  margin: 0 -2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-radius: 12px;
+  transition: all .3s ease-out;
+}
+
+.pain-row:hover {
+  background: oklch(12% 0 0 / 0.5);
+  border-color: var(--secondary);
 }
 .pain-row:first-child { border-top: 1px solid oklch(100% 0 0 / .08); }
 .pain-row-num {
@@ -1280,8 +1290,14 @@ a { color: inherit; }
   font-size: 3rem;
   font-weight: 800;
   line-height: 1;
-  color: var(--accent);
+  color: var(--secondary);
   user-select: none;
+  transition: all .3s ease-out;
+}
+
+.pain-row:hover .pain-row-num {
+  transform: scale(1.1);
+  text-shadow: 0 0 20px var(--secondary, oklch(60% 0.20 280 / 0.4));
 }
 .pain-row-body h3 {
   font-family: var(--ff-display);
