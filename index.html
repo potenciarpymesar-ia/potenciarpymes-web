@@ -639,6 +639,12 @@ body::before {
   border-radius: var(--radius);
   background: var(--paper-2);
   overflow: hidden;
+  transition: all .3s ease-out;
+}
+
+.faq-item:hover {
+  border-color: var(--secondary);
+  box-shadow: 0 4px 16px var(--secondary, oklch(60% 0.20 280 / 0.1));
 }
 .faq-trigger {
   width: 100%;
@@ -658,7 +664,7 @@ body::before {
   transition: color .2s;
 }
 .faq-trigger:hover {
-  color: var(--accent);
+  color: var(--secondary);
 }
 .faq-trigger svg {
   flex-shrink: 0;
