@@ -1125,7 +1125,14 @@ body::before {
   outline: none;
   transition: border-color .2s, box-shadow .2s;
 }
-.form-group input::placeholder { color: var(--text-3); }
+.form-group input::placeholder {
+  color: var(--text-3);
+  transition: color .2s ease;
+}
+
+.form-group input:focus::placeholder {
+  color: var(--secondary, oklch(60% 0.20 280 / 0.5));
+}
 .form-group input:focus,
 .form-group select:focus {
   border-color: var(--secondary);
