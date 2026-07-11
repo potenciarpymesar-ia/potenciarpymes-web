@@ -1254,9 +1254,19 @@ body::before {
 .sticky-close:hover { color: var(--text-1); }
 
 /* â”€â”€ REVEAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-.reveal { opacity: 1; transform: translateY(0); transition: opacity .6s ease, transform .6s ease; }
-.js .reveal.pre-reveal { opacity: 0; transform: translateY(28px); }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .6s ease-out, transform .6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.js .reveal.pre-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* â”€â”€ BIO CHIPS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .bio-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.25rem; }
