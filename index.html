@@ -207,7 +207,9 @@ body::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 100% 60% at 50% -20%, oklch(83% 0.22 145 / .06) 0%, transparent 60%);
+  background:
+    radial-gradient(ellipse 100% 60% at 50% -20%, oklch(83% 0.22 145 / .08) 0%, transparent 60%),
+    radial-gradient(ellipse 100% 80% at 50% 120%, oklch(60% 0.20 280 / .05) 0%, transparent 70%);
   pointer-events: none;
   z-index: -1;
 }
@@ -431,6 +433,11 @@ body::before {
   position: relative;
   overflow: hidden;
   transition: all .3s ease;
+  background-clip: padding-box;
+  background-image:
+    linear-gradient(135deg, var(--paper-2) 0%, oklch(10% 0 0) 100%),
+    linear-gradient(135deg, var(--secondary) 0%, oklch(72% 0.22 145) 100%);
+  background-origin: padding-box, border-box;
 }
 .cliente-card::before {
   content: '';
