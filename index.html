@@ -97,26 +97,6 @@ body::before {
   }
 }
 
-@keyframes pulse-glow {
-  0%, 100% {
-    opacity: 0.8;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes subtle-shine {
-  0% {
-    box-shadow: 0 0 0 var(--secondary, oklch(60% 0.20 280 / 0));
-  }
-  50% {
-    box-shadow: 0 0 12px var(--secondary, oklch(60% 0.20 280 / 0.2));
-  }
-  100% {
-    box-shadow: 0 0 0 var(--secondary, oklch(60% 0.20 280 / 0));
-  }
-}
 
 /* ── MOBILE NARROW VIEWPORT (< 320px) ────────────────── */
 @media (max-width: 319px) {
@@ -195,14 +175,12 @@ body::before {
   padding: .5rem 1.1rem;
   border-radius: 6px;
   text-decoration: none;
-  transition: opacity .2s, outline .2s, box-shadow .3s;
+  transition: opacity .2s, outline .2s;
   outline: 2px solid transparent;
   outline-offset: 2px;
-  box-shadow: 0 0 16px var(--secondary, oklch(60% 0.20 280 / 0.2));
 }
 .nav-cta:hover {
-  opacity: .95;
-  box-shadow: 0 4px 24px var(--secondary, oklch(60% 0.20 280 / 0.35));
+  opacity: .85;
 }
 .nav-cta:focus-visible {
   outline: 2px solid var(--accent);
@@ -242,7 +220,6 @@ body::before {
   margin-bottom: 1.75rem;
   transition: all .3s ease-out;
   background: oklch(60% 0.20 280 / 0.08);
-  box-shadow: 0 0 12px var(--secondary, oklch(60% 0.20 280 / 0.15));
 }
 .hero h1 {
   font-family: var(--ff-display);
@@ -340,7 +317,6 @@ body::before {
 .btn-secondary:hover {
   color: var(--secondary);
   border-color: var(--secondary);
-  box-shadow: 0 0 24px var(--secondary, oklch(60% 0.20 280 / 0.2));
 }
 .btn-secondary:focus-visible {
   outline: 2px solid var(--secondary);
@@ -1212,7 +1188,7 @@ body::before {
 .form-group input:focus,
 .form-group select:focus {
   border-color: var(--secondary);
-  box-shadow: 0 0 12px var(--secondary, oklch(60% 0.20 280 / 0.2));
+  box-shadow: 0 0 0 2px var(--secondary, oklch(60% 0.20 280 / 0.4));
 }
 .form-group select { appearance: none; cursor: pointer; }
 .form-group select option { background: var(--paper-1); }
@@ -1343,7 +1319,7 @@ body::before {
 .reveal {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity .6s ease-out, transform .6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: opacity .5s cubic-bezier(0.16, 1, 0.3, 1), transform .5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .js .reveal.pre-reveal {
   opacity: 0;
@@ -1490,7 +1466,8 @@ a[href]:hover::after {
   gap: 1rem;
   align-items: flex-start;
 }
-.svc-main-top .svc-icon { font-size: 2rem; flex-shrink: 0; }
+.svc-main-top .svc-icon { flex-shrink: 0; color: var(--secondary); }
+.svc-main-top .svc-icon svg { width: 2rem; height: 2rem; }
 .svc-main-top h3 {
   font-family: var(--ff-display);
   font-size: clamp(1.4rem, 2.5vw, 1.85rem);
@@ -1531,7 +1508,8 @@ a[href]:hover::after {
 }
 
 .svc-side--bottom { }
-.svc-side .svc-icon { font-size: 1.4rem; display: block; margin-bottom: .65rem; }
+.svc-side .svc-icon { display: block; margin-bottom: .65rem; color: var(--secondary); }
+.svc-side .svc-icon svg { width: 1.4rem; height: 1.4rem; }
 .svc-side h3 {
   font-family: var(--ff-display);
   font-size: 1.15rem;
@@ -1873,21 +1851,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="section-lead">No es mala suerte. Muchas veces el problema no es el producto: es que los canales trabajan separados.</p>
     </div>
     <div class="pain-rows">
-      <div class="pain-row reveal">
+      <div class="pain-row">
         <span class="pain-row-num" aria-hidden="true">01</span>
         <div class="pain-row-body">
           <h3>Vendés, pero no escala</h3>
           <p>Tus ventas dependen de vos. Ningún canal trabaja solo.</p>
         </div>
       </div>
-      <div class="pain-row reveal">
+      <div class="pain-row">
         <span class="pain-row-num" aria-hidden="true">02</span>
         <div class="pain-row-body">
           <h3>Plata en ads, cero retorno</h3>
           <p>Pagás sin datos. Sin control, sin resultados.</p>
         </div>
       </div>
-      <div class="pain-row reveal">
+      <div class="pain-row">
         <span class="pain-row-num" aria-hidden="true">03</span>
         <div class="pain-row-body">
           <h3>Fragmentado, no conectado</h3>
@@ -1905,17 +1883,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2 class="section-h2" id="clientes-h2">Experiencia real, no teoría de agencia.</h2>
     </div>
     <div class="clientes-grid">
-      <div class="cliente-card reveal">
+      <div class="cliente-card">
         <p class="cliente-name">NutrePHARMA</p>
         <p class="cliente-sector">Suplementos · Buenos Aires</p>
         <p class="cliente-result">Armamos una base digital más ordenada: Tiendanube, Mercado Libre, estructura comercial y medición para tomar mejores decisiones.</p>
       </div>
-      <div class="cliente-card reveal">
+      <div class="cliente-card">
         <p class="cliente-name">Pixellab.ar</p>
         <p class="cliente-sector">Iluminación decorativa · AMBA</p>
         <p class="cliente-result">Trabajamos SEO, GEO, ecommerce, contenido y estructura para que la marca sea más clara para clientes, Google y herramientas de IA.</p>
       </div>
-      <div class="cliente-card reveal">
+      <div class="cliente-card">
         <p class="cliente-name">Wheels BA</p>
         <p class="cliente-sector">Accesorios · Capital Federal</p>
         <p class="cliente-result">Diseñamos un flujo comercial más simple entre anuncios, WhatsApp y seguimiento para que las consultas no queden perdidas.</p>
@@ -1987,7 +1965,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="svc-bento">
       <div class="svc-main reveal">
         <div class="svc-main-top">
-          <span class="svc-icon" aria-hidden="true">📣</span>
+          <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a2 2 0 0 0 2 2h1l3 5v-9"/><path d="M9 6 20 3v18l-11-3"/><path d="M9 6v10"/></svg></span>
           <div>
             <h3>Tráfico y ventas</h3>
             <p>Clientes nuevos todos los días, no cuando te acordás de postear.</p>
@@ -2001,7 +1979,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </ul>
       </div>
       <div class="svc-side reveal">
-        <span class="svc-icon" aria-hidden="true">🏪</span>
+        <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v11h16V9"/><path d="M2 9l2-6h16l2 6"/><path d="M2 9a2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0"/><path d="M10 20v-6h4v6"/></svg></span>
         <h3>Presencia digital</h3>
         <p>Tu negocio visible donde están tus clientes.</p>
         <ul class="svc-list svc-list--compact" aria-label="Servicios de presencia digital">
@@ -2012,7 +1990,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </ul>
       </div>
       <div class="svc-side svc-side--bottom reveal">
-        <span class="svc-icon" aria-hidden="true">📈</span>
+        <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18.5 8 13 13.5 9.5 10 6 13.5"/><path d="M13.5 8h5v5"/></svg></span>
         <h3>Medición y crecimiento</h3>
         <p>Datos reales para decisiones reales.</p>
         <ul class="svc-list svc-list--compact" aria-label="Servicios de medición y crecimiento">
@@ -2251,21 +2229,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="section-lead">Antes de venderte algo, miramos tu situación. El objetivo es que entiendas qué está pasando y cuál sería el próximo paso lógico.</p>
     </div>
     <div class="pain-rows">
-      <div class="pain-row reveal">
+      <div class="pain-row">
         <span class="pain-row-num" aria-hidden="true">01</span>
         <div class="pain-row-body">
           <h3>Un mapa simple de tu sistema actual</h3>
           <p>Vemos qué canales tenés, cuáles están funcionando aislados y dónde se pierden oportunidades: web, Tiendanube, Mercado Libre, WhatsApp, anuncios y medición.</p>
         </div>
       </div>
-      <div class="pain-row reveal">
+      <div class="pain-row">
         <span class="pain-row-num" aria-hidden="true">02</span>
         <div class="pain-row-body">
           <h3>Prioridades claras</h3>
           <p>No todo se arregla al mismo tiempo. Te marcamos qué conviene ordenar primero para evitar gastar tiempo o plata en cosas secundarias.</p>
         </div>
       </div>
-      <div class="pain-row reveal">
+      <div class="pain-row">
         <span class="pain-row-num" aria-hidden="true">03</span>
         <div class="pain-row-body">
           <h3>Una recomendación honesta</h3>
@@ -2284,7 +2262,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="section-lead">Todos empiezan con diagnóstico gratuito. La inversión final depende del alcance real, no de un paquete genérico.</p>
     </div>
     <div class="packs-grid">
-      <div class="pack-card reveal">
+      <div class="pack-card">
         <p class="pack-name">Arranque</p>
         <p class="pack-tagline">Para pymes que necesitan base sólida antes de escalar.</p>
         <ul class="pack-features">
@@ -2299,7 +2277,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           Consultar →
         </a>
       </div>
-      <div class="pack-card featured reveal">
+      <div class="pack-card featured">
         <span class="pack-badge">Más elegido</span>
         <p class="pack-name">Crecimiento</p>
         <p class="pack-tagline">El sistema completo para pymes que quieren resultados consistentes.</p>
@@ -2316,7 +2294,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           ⚡ Quiero este plan
         </a>
       </div>
-      <div class="pack-card reveal">
+      <div class="pack-card">
         <p class="pack-name">Ecosistema</p>
         <p class="pack-tagline">Para pymes que ya crecen y necesitan escalar sin perder el control.</p>
         <ul class="pack-features">
@@ -2477,28 +2455,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2 style="font-family: var(--ff-display); font-size: clamp(1.75rem, 5vw, 3rem); font-weight: 800; margin-bottom: 0.5rem; color: var(--text-1); text-align: center;">Qué nos diferencia.</h2>
     <p style="color: var(--text-2); font-size: 1rem; max-width: 65ch; margin: 0 auto 3rem; text-align: center; line-height: 1.6;">No somos una agencia más. Somos socios de tu crecimiento. Esto es lo que nos hace único.</p>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem;">
-      <div class="reveal" style="padding: 2rem; border-left: 4px solid var(--accent); transition: transform .3s ease-out;" onmouseover="this.style.transform='translateX(8px)'" onmouseout="this.style.transform=''">
-        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-1);">📊 Basado en datos</h3>
+      <div class="reveal" style="padding: 1.75rem 0; border-top: 1px solid oklch(100% 0 0 / .1); transition: border-color .3s ease-out;" onmouseover="this.style.borderTopColor='var(--secondary)'" onmouseout="this.style.borderTopColor='oklch(100% 0 0 / .1)'">
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-1);">Basado en datos</h3>
         <p style="color: var(--text-2); font-size: 0.95rem; line-height: 1.6;">Decisiones respaldadas por métricas reales. Nada de hunches ni intuiciones. Todo se mide, se analiza, se itera.</p>
       </div>
-      <div class="reveal" style="padding: 2rem; border-left: 4px solid var(--accent); transition: transform .3s ease-out;" onmouseover="this.style.transform='translateX(8px)'" onmouseout="this.style.transform=''">
-        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-1);">🛠 Sin dependencias</h3>
+      <div class="reveal" style="padding: 1.75rem 0; border-top: 1px solid oklch(100% 0 0 / .1); transition: border-color .3s ease-out;" onmouseover="this.style.borderTopColor='var(--secondary)'" onmouseout="this.style.borderTopColor='oklch(100% 0 0 / .1)'">
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-1);">Sin dependencias</h3>
         <p style="color: var(--text-2); font-size: 0.95rem; line-height: 1.6;">Te enseñamos. Te documentamos. Te dejamos autónomo. No queremos clientes eternos, queremos clientes que no nos necesiten.</p>
       </div>
-      <div class="reveal" style="padding: 2rem; border-left: 4px solid var(--accent); transition: transform .3s ease-out;" onmouseover="this.style.transform='translateX(8px)'" onmouseout="this.style.transform=''">
-        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-1);">⚡ Velocidad</h3>
+      <div class="reveal" style="padding: 1.75rem 0; border-top: 1px solid oklch(100% 0 0 / .1); transition: border-color .3s ease-out;" onmouseover="this.style.borderTopColor='var(--secondary)'" onmouseout="this.style.borderTopColor='oklch(100% 0 0 / .1)'">
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-1);">Velocidad</h3>
         <p style="color: var(--text-2); font-size: 0.95rem; line-height: 1.6;">Resultados en 30 días. No plazo abierto. Auditoría, implementación, capacitación. Todo acotado.</p>
       </div>
-      <div class="reveal" style="padding: 2rem; border-left: 4px solid var(--accent); transition: transform .3s ease-out;" onmouseover="this.style.transform='translateX(8px)'" onmouseout="this.style.transform=''">
-        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-1);">🎯 Especializado en pymes</h3>
+      <div class="reveal" style="padding: 1.75rem 0; border-top: 1px solid oklch(100% 0 0 / .1); transition: border-color .3s ease-out;" onmouseover="this.style.borderTopColor='var(--secondary)'" onmouseout="this.style.borderTopColor='oklch(100% 0 0 / .1)'">
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-1);">Especializado en pymes</h3>
         <p style="color: var(--text-2); font-size: 0.95rem; line-height: 1.6;">No somos consultores para corporaciones que cobran 10x. Entendemos tu escala, tus limitaciones, tu realidad.</p>
       </div>
-      <div class="reveal" style="padding: 2rem; border-left: 4px solid var(--accent); transition: transform .3s ease-out;" onmouseover="this.style.transform='translateX(8px)'" onmouseout="this.style.transform=''">
-        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-1);">📈 Transparencia total</h3>
+      <div class="reveal" style="padding: 1.75rem 0; border-top: 1px solid oklch(100% 0 0 / .1); transition: border-color .3s ease-out;" onmouseover="this.style.borderTopColor='var(--secondary)'" onmouseout="this.style.borderTopColor='oklch(100% 0 0 / .1)'">
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-1);">Transparencia total</h3>
         <p style="color: var(--text-2); font-size: 0.95rem; line-height: 1.6;">Presupuesto cerrado. Sin sorpresas. Sabés exactamente qué pagás, cuándo termina, qué recibís.</p>
       </div>
-      <div class="reveal" style="padding: 2rem; border-left: 4px solid var(--accent); transition: transform .3s ease-out;" onmouseover="this.style.transform='translateX(8px)'" onmouseout="this.style.transform=''">
-        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-1);">🤝 Acompañamiento real</h3>
+      <div class="reveal" style="padding: 1.75rem 0; border-top: 1px solid oklch(100% 0 0 / .1); transition: border-color .3s ease-out;" onmouseover="this.style.borderTopColor='var(--secondary)'" onmouseout="this.style.borderTopColor='oklch(100% 0 0 / .1)'">
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-1);">Acompañamiento real</h3>
         <p style="color: var(--text-2); font-size: 0.95rem; line-height: 1.6;">No desaparecemos después de firmar. Seguimiento continuo, ajustes, soporte. Somos tu partner.</p>
       </div>
     </div>
@@ -2577,7 +2555,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </p>
       <form class="newsletter-form" onsubmit="event.preventDefault(); fetch('https://hooks.slack.com/services/YOUR_WEBHOOK', {method:'POST',body:JSON.stringify({text:'Newsletter signup: '+this.email.value})}).catch(()=>{}); alert('Gracias. Revisa tu inbox en 1 min.');">
         <input type="email" name="email" placeholder="Tu email" required style="flex: 1; padding: 0.9rem 1.2rem; border: none; border-radius: 6px; background: var(--paper-2); color: var(--text-1); font-size: 1rem; font-family: var(--ff-body);">
-        <button type="submit" style="background: var(--secondary); color: var(--paper-0); border: none; padding: 0.9rem 2rem; border-radius: 6px; font-weight: 700; cursor: pointer; transition: opacity .2s, box-shadow .3s; box-shadow: 0 0 20px var(--secondary, oklch(60% 0.20 280 / 0.2)); font-family: var(--ff-display);">Suscribir</button>
+        <button type="submit" style="background: var(--secondary); color: var(--paper-0); border: none; padding: 0.9rem 2rem; border-radius: 6px; font-weight: 700; cursor: pointer; transition: opacity .2s; font-family: var(--ff-display);">Suscribir</button>
       </form>
       <p style="color: var(--text-3); font-size: .85rem; margin-top: 1rem;">Sin spam. Casos reales cada viernes.</p>
     </div>
