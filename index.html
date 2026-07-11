@@ -292,7 +292,6 @@ body::before {
   opacity: .95;
   transform: translateY(-3px);
   box-shadow: 0 8px 50px oklch(83% 0.22 145 / 0.45), 0 0 60px oklch(83% 0.22 145 / 0.3);
-  animation: pulse-glow .6s ease-in-out infinite;
 }
 .btn-primary:focus-visible {
   outline: 2px solid oklch(97% 0 0);
@@ -1328,17 +1327,7 @@ body::before {
   transform: translateY(0);
 }
 
-/* Stagger effect for multiple reveals */
-.reveal:nth-child(1) { --stagger-delay: 0ms; }
-.reveal:nth-child(2) { --stagger-delay: 80ms; }
-.reveal:nth-child(3) { --stagger-delay: 160ms; }
-.reveal:nth-child(4) { --stagger-delay: 240ms; }
-.reveal:nth-child(5) { --stagger-delay: 320ms; }
-.reveal:nth-child(6) { --stagger-delay: 400ms; }
-
-.js .reveal.pre-reveal.stagger {
-  transition-delay: var(--stagger-delay, 0ms);
-}
+/* Stagger effect removed for performance - use on interaction only */
 
 /* â”€â”€ BIO CHIPS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .bio-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.25rem; }
@@ -1757,15 +1746,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="hero-tag">Ecosistema digital para pymes argentinas</span>
     <h1 id="hero-h1">Tu pyme tiene producto. Falta <em>el sistema</em>.</h1>
     <p class="hero-sub">Ordenamos tu web, tienda, Mercado Libre, WhatsApp, anuncios y medición para que tu pyme venda mejor y pierdas menos tiempo en tareas repetidas.</p>
-    <div class="hero-actions">
+    <div class="hero-actions" style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
       <a href="/diagnostico" class="btn-primary">
         Hacer el diagnóstico →
+      </a>
+      <a href="#inversion" class="btn-secondary">
+        Ver precios
+      </a>
+      <a href="#contacto" class="btn-secondary">
+        Hablemos por email
       </a>
     </div>
     <p class="hero-wa-link">
       <a href="https://wa.me/5491150161326?text=Hola%2C%20quiero%20hacer%20un%20diagn%C3%B3stico%20gratuito" target="_blank" rel="noopener">⚡ O hablá directo con Jonathan por WhatsApp</a>
     </p>
     <p class="hero-note">15 minutos, sin costo, sin compromiso.</p>
+    <div style="margin-top: 3rem; padding-top: 3rem; border-top: 1px solid oklch(100% 0 0 / .08); display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 2rem; text-align: center;">
+      <div style="opacity: .95;">
+        <p style="font-size: 2rem; font-weight: 800; color: var(--secondary); margin: 0;">25+</p>
+        <p style="font-size: 0.85rem; color: var(--text-3); margin: 0.5rem 0 0 0;">Pymes escaladas</p>
+      </div>
+      <div style="opacity: .95;">
+        <p style="font-size: 2rem; font-weight: 800; color: var(--accent); margin: 0;">+250%</p>
+        <p style="font-size: 0.85rem; color: var(--text-3); margin: 0.5rem 0 0 0;">Crecimiento promedio</p>
+      </div>
+      <div style="opacity: .95;">
+        <p style="font-size: 2rem; font-weight: 800; color: var(--secondary); margin: 0;">90 días</p>
+        <p style="font-size: 0.85rem; color: var(--text-3); margin: 0.5rem 0 0 0;">Tiempo a resultados</p>
+      </div>
+    </div>
   </div>
 </section>
 
