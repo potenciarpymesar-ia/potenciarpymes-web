@@ -57,6 +57,10 @@ body {
   font-size: 1.0625rem;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(circle at 20% 50%, oklch(60% 0.20 280 / 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, oklch(72% 0.22 145 / 0.02) 0%, transparent 50%);
+  background-attachment: fixed;
 }
 
 /* â”€â”€ AURORA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -80,6 +84,24 @@ body::before {
 @media (prefers-reduced-motion: reduce) {
   body::before { animation: none; }
   .reveal { transition: none; }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 /* â”€â”€ MOBILE NARROW VIEWPORT (< 320px) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -111,6 +133,7 @@ body::before {
 }
 .section {
   padding-block: clamp(4.5rem, 10vw, 8.5rem);
+  background: linear-gradient(180deg, transparent 0%, oklch(60% 0.20 280 / 0.02) 50%, transparent 100%);
 }
 .section + .section {
   border-top: 1px solid oklch(100% 0 0 / .06);
@@ -253,8 +276,8 @@ body::before {
 .btn-primary:hover {
   opacity: .95;
   transform: translateY(-3px);
-  box-shadow: 0 8px 50px oklch(83% 0.22 145 / 0.45);
-  box-shadow: 0 0 48px oklch(83% 0.22 145 / .40);
+  box-shadow: 0 8px 50px oklch(83% 0.22 145 / 0.45), 0 0 60px oklch(83% 0.22 145 / 0.3);
+  animation: pulse-glow .6s ease-in-out infinite;
 }
 .btn-primary:focus-visible {
   outline: 2px solid oklch(97% 0 0);
@@ -1285,6 +1308,18 @@ body::before {
   transform: translateY(0);
 }
 
+/* Stagger effect for multiple reveals */
+.reveal:nth-child(1) { --stagger-delay: 0ms; }
+.reveal:nth-child(2) { --stagger-delay: 80ms; }
+.reveal:nth-child(3) { --stagger-delay: 160ms; }
+.reveal:nth-child(4) { --stagger-delay: 240ms; }
+.reveal:nth-child(5) { --stagger-delay: 320ms; }
+.reveal:nth-child(6) { --stagger-delay: 400ms; }
+
+.js .reveal.pre-reveal.stagger {
+  transition-delay: var(--stagger-delay, 0ms);
+}
+
 /* â”€â”€ BIO CHIPS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .bio-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.25rem; }
 .bio-chip { font-family: var(--ff-display); font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-dim); border: 1px solid oklch(83% 0.22 145 / .2); padding: .3em .85em; border-radius: 99px; }
@@ -1373,11 +1408,29 @@ a {
   border: 1px solid oklch(100% 0 0 / .1);
   border-radius: 16px;
   transition: all .3s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.svc-main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+  opacity: 0;
+  transition: opacity .3s ease-out;
 }
 
 .svc-main:hover {
   border-color: var(--secondary);
   box-shadow: 0 8px 24px var(--secondary, oklch(60% 0.20 280 / 0.15));
+}
+
+.svc-main:hover::before {
+  opacity: 1;
 }
 .svc-main-top {
   display: flex;
