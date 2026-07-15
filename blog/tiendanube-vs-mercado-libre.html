@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiendanube vs Mercado Libre: ¿cuál elegir? | Potenciar Pymes</title>
+  <meta name="description" content="Comparativa real de comisiones, margen y tráfico entre Tiendanube y Mercado Libre. La respuesta casi siempre es usar los dos, integrados.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://potenciarpymes.ar/blog/tiendanube-vs-mercado-libre">
+
+  <style>
+    :root {
+      --ff-display: 'Barlow Condensed', sans-serif;
+      --ff-body: 'Barlow', sans-serif;
+      --text-1: oklch(92% 0.02 240);
+      --text-2: oklch(75% 0.04 240);
+      --text-3: oklch(60% 0.04 240);
+      --paper-0: oklch(10% 0 0);
+      --paper-1: oklch(12% 0 0);
+      --paper-2: oklch(15% 0 0);
+      --accent: oklch(72% 0.22 145);
+      --secondary: oklch(60% 0.20 280);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--ff-body); background: var(--paper-0); color: var(--text-1); line-height: 1.7; }
+    .container { max-width: 740px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 3rem); }
+
+    header {
+      background: linear-gradient(135deg, oklch(8% 0 0) 0%, oklch(6% 0 0) 100%);
+      padding: 3rem clamp(1rem, 5vw, 3rem);
+      border-bottom: 1px solid oklch(100% 0 0 / .06);
+      margin-bottom: 3rem;
+    }
+    .kicker {
+      display: inline-block; color: var(--secondary); font-family: var(--ff-display);
+      font-weight: 700; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .75rem;
+    }
+    h1 { font-family: var(--ff-display); font-size: clamp(1.9rem, 5.5vw, 3rem); font-weight: 800; margin-bottom: 1rem; line-height: 1.1; }
+    .subtitle { color: var(--text-2); font-size: 1.05rem; max-width: 65ch; line-height: 1.6; }
+    .meta-row { display: flex; gap: 1rem; color: var(--text-3); font-size: .85rem; margin-top: 1.25rem; }
+
+    main { padding-bottom: 4rem; }
+
+    .tldr {
+      background: var(--paper-1);
+      border-left: 3px solid var(--secondary);
+      border-radius: 0 12px 12px 0;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 2.5rem;
+    }
+    .tldr .label { font-family: var(--ff-display); font-weight: 700; color: var(--secondary); font-size: .85rem; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .5rem; display: block; }
+    .tldr p { color: var(--text-1); font-size: .98rem; }
+
+    h2 { font-family: var(--ff-display); font-size: 1.55rem; font-weight: 800; margin: 2.5rem 0 1rem; }
+    h3 { font-family: var(--ff-display); font-size: 1.15rem; font-weight: 700; margin: 1.5rem 0 .6rem; }
+    p.body-text { color: var(--text-2); font-size: .98rem; margin-bottom: 1rem; max-width: 68ch; }
+    p.body-text strong { color: var(--text-1); }
+    p.body-text a { color: var(--secondary); }
+
+    table.compare {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0 2.5rem;
+      font-size: .9rem;
+      background: var(--paper-1);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    table.compare th {
+      background: var(--paper-2);
+      font-family: var(--ff-display);
+      font-weight: 700;
+      text-align: left;
+      padding: .9rem 1rem;
+      color: var(--secondary);
+    }
+    table.compare td {
+      padding: .9rem 1rem;
+      border-top: 1px solid oklch(100% 0 0 / .06);
+      color: var(--text-2);
+    }
+    table.compare td:first-child { color: var(--text-1); font-weight: 600; }
+
+    .verdict {
+      background: var(--paper-1);
+      border: 1px solid var(--secondary);
+      border-radius: 12px;
+      padding: 1.5rem 1.75rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+    .verdict h3 { margin-top: 0; color: var(--secondary); }
+    .verdict p { color: var(--text-2); font-size: .95rem; }
+
+    .faq-item { border-top: 1px solid oklch(100% 0 0 / .08); padding: 1.25rem 0; }
+    .faq-item:last-of-type { border-bottom: 1px solid oklch(100% 0 0 / .08); }
+    .faq-item h3 { margin: 0 0 .5rem; }
+    .faq-item p { color: var(--text-2); font-size: .95rem; }
+
+    .cta-box {
+      margin-top: 3rem; background: var(--paper-1); border: 1px solid var(--secondary);
+      border-radius: 14px; padding: 2rem; text-align: center;
+    }
+    .cta-box h2 { margin: 0 0 .5rem; font-size: 1.4rem; }
+    .cta-box p { color: var(--text-2); margin-bottom: 1.25rem; }
+    .cta-box a {
+      display: inline-flex; align-items: center; gap: .5em; background: var(--accent); color: var(--paper-0);
+      font-family: var(--ff-display); font-weight: 700; text-decoration: none; padding: .85rem 2rem;
+      border-radius: 10px; text-transform: uppercase; letter-spacing: .03em; font-size: .95rem;
+    }
+
+    footer {
+      background: oklch(6% 0 0); border-top: 1px solid oklch(100% 0 0 / .06);
+      padding: 3rem clamp(1rem, 5vw, 3rem); text-align: center; color: var(--text-3); font-size: 0.9rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      table.compare { font-size: .8rem; }
+      table.compare th, table.compare td { padding: .6rem .5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="kicker">Comparativa</span>
+    <h1>Tiendanube vs Mercado Libre: ¿cuál elegir?</h1>
+    <p class="subtitle">No es una decisión de "una u otra". Es entender qué hace bien cada canal y cuándo te conviene usarlos juntos.</p>
+    <div class="meta-row">
+      <span>Potenciar Pymes</span>
+      <span>·</span>
+      <span>Actualizado 2026</span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="tldr">
+    <span class="label">Resumen rápido</span>
+    <p>Mercado Libre te da tráfico ya existente pero cobra comisión por venta (11,8%-17,14% según categoría y tipo de publicación, más IVA). Tiendanube no cobra comisión pero el tráfico lo tenés que generar vos (redes, ads, SEO). La mayoría de las pymes que escalan terminan usando los dos canales integrados, no uno solo.</p>
+  </div>
+
+  <h2>La diferencia central: tráfico vs. margen</h2>
+  <p class="body-text">Mercado Libre es un buscador de compradores: la gente ya está ahí buscando qué comprar. A cambio de ese tráfico, cobra comisión. Tiendanube es una tienda propia: no tenés tráfico automático, pero cada venta te deja más margen porque no hay comisión de por medio.</p>
+
+  <h2>Comparativa lado a lado</h2>
+  <table class="compare">
+    <tr>
+      <th>Factor</th>
+      <th>Tiendanube</th>
+      <th>Mercado Libre</th>
+    </tr>
+    <tr>
+      <td>Comisión por venta</td>
+      <td>0%</td>
+      <td>11,8% – 17,14% + IVA según categoría/tipo</td>
+    </tr>
+    <tr>
+      <td>Tráfico inicial</td>
+      <td>Ninguno — lo generás vos</td>
+      <td>Alto — la gente ya busca ahí</td>
+    </tr>
+    <tr>
+      <td>Costo mensual</td>
+      <td>Plan gratis disponible; planes pagos desde uno "Esencial"</td>
+      <td>Sin costo fijo mensual</td>
+    </tr>
+    <tr>
+      <td>Datos de tus clientes</td>
+      <td>Son tuyos (email, historial)</td>
+      <td>Limitados, quedan en la plataforma</td>
+    </tr>
+    <tr>
+      <td>Control de marca/diseño</td>
+      <td>Total</td>
+      <td>Ninguno — todas las publicaciones se ven parecidas</td>
+    </tr>
+    <tr>
+      <td>Confianza del comprador nuevo</td>
+      <td>Menor si la marca es desconocida</td>
+      <td>Alta — ya confían en la plataforma</td>
+    </tr>
+  </table>
+
+  <h2>Cómo se calcula realmente la comisión de Mercado Libre</h2>
+  <p class="body-text">No es un número fijo. Depende de tres cosas:</p>
+  <ul style="color: var(--text-2); font-size: .96rem; margin: 0 0 1.25rem 1.25rem;">
+    <li style="margin-bottom: .5rem;"><strong style="color: var(--text-1);">Categoría del producto:</strong> desde ~11,8% (por ejemplo supermercado) hasta ~15% (electrónica/computación) en publicación Clásica.</li>
+    <li style="margin-bottom: .5rem;"><strong style="color: var(--text-1);">Tipo de publicación:</strong> Clásica cobra menos comisión pero tiene menos visibilidad; Premium cobra 3-5 puntos más pero mejora posicionamiento y permite cuotas sin interés.</li>
+    <li style="margin-bottom: .5rem;"><strong style="color: var(--text-1);">Cuotas sin interés:</strong> si las ofrecés, se suma un cargo aparte (aproximadamente 5,75% para 3 cuotas, 10,75% para 6).</li>
+  </ul>
+  <p class="body-text">A todo esto se le suma el 21% de IVA sobre los cargos. Los porcentajes exactos cambian y varían según tu cuenta — conviene revisarlos directamente en tu panel de vendedor de Mercado Libre antes de fijar precios.</p>
+
+  <div class="verdict">
+    <h3>Nuestra recomendación</h3>
+    <p>Si recién estás empezando y no tenés presupuesto para generar tráfico propio, Mercado Libre te da ventas más rápido aunque con menos margen. Una vez que tenés flujo de caja, conviene ir armando tu Tiendanube en paralelo — ahí construís marca y margen a largo plazo, mientras Mercado Libre sigue trayendo compradores nuevos que no te conocían. Sincronizar el stock entre ambos (para no vender algo que ya no tenés) es el punto donde más pymes se traban — <a href="/conectar-tus-canales">acá explicamos cómo hacerlo</a>.</p>
+  </div>
+
+  <h2>Preguntas frecuentes</h2>
+
+  <div class="faq-item">
+    <h3>¿Tiendanube cobra comisión como Mercado Libre?</h3>
+    <p>No. Ningún plan de Tiendanube cobra comisión por venta. Mercado Libre sí, con un porcentaje que varía entre 11,8% y 17,14% más IVA según la categoría del producto y el tipo de publicación.</p>
+  </div>
+  <div class="faq-item">
+    <h3>¿Puedo vender en los dos al mismo tiempo?</h3>
+    <p>Sí, y es lo más habitual entre pymes que ya vienen creciendo. El punto clave es mantener el stock sincronizado entre ambos canales para evitar vender productos agotados.</p>
+  </div>
+  <div class="faq-item">
+    <h3>¿Cuál conviene si recién estoy empezando?</h3>
+    <p>Si no tenés presupuesto para generar tráfico propio (ads, contenido, SEO), Mercado Libre suele dar resultados más rápidos porque el comprador ya está buscando ahí. Tiendanube conviene sumarlo cuando ya tenés un flujo de ventas y querés mejorar margen y construir marca propia.</p>
+  </div>
+
+  <div class="cta-box">
+    <h2>¿No sabés cuál te conviene a vos?</h2>
+    <p>En el diagnóstico gratuito revisamos tu caso puntual y armamos la estrategia de canales.</p>
+    <a href="https://wa.me/5491150161326?text=Hola%2C%20le%C3%AD%20la%20comparativa%20Tiendanube%20vs%20ML%20y%20quiero%20el%20diagn%C3%B3stico%20gratuito" target="_blank" rel="noopener">Hacer el diagnóstico →</a>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Potenciar Pymes · <a href="/">Volver al inicio</a> · <a href="/blog">Ver más posts</a></p>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Tiendanube vs Mercado Libre: ¿cuál elegir?",
+  "description": "Comparativa real de comisiones, margen y tráfico entre Tiendanube y Mercado Libre.",
+  "author": { "@type": "Person", "name": "Jonathan Frenquel" },
+  "publisher": { "@type": "Organization", "name": "Potenciar Pymes" },
+  "url": "https://potenciarpymes.ar/blog/tiendanube-vs-mercado-libre"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Tiendanube cobra comisión como Mercado Libre?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Ningún plan de Tiendanube cobra comisión por venta. Mercado Libre sí, entre 11,8% y 17,14% más IVA según categoría y tipo de publicación." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo vender en Tiendanube y Mercado Libre al mismo tiempo?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sí, es lo más habitual entre pymes que crecen. Hay que mantener el stock sincronizado entre ambos canales." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuál conviene si recién estoy empezando?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Mercado Libre suele dar resultados más rápidos al inicio por el tráfico ya existente. Tiendanube conviene sumarlo cuando ya hay flujo de ventas, para mejorar margen y construir marca propia." }
+    }
+  ]
+}
+</script>
+
+</body>
+</html>

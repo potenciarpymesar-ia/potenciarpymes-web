@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GA4 para ecommerce: las métricas que importan | Potenciar Pymes</title>
+  <meta name="description" content="Qué mirar en Google Analytics 4 si vendés online, con los eventos oficiales de ecommerce, y qué métricas son solo ruido.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://potenciarpymes.ar/blog/ga4-ecommerce-pymes">
+
+  <style>
+    :root {
+      --ff-display: 'Barlow Condensed', sans-serif;
+      --ff-body: 'Barlow', sans-serif;
+      --text-1: oklch(92% 0.02 240);
+      --text-2: oklch(75% 0.04 240);
+      --text-3: oklch(60% 0.04 240);
+      --paper-0: oklch(10% 0 0);
+      --paper-1: oklch(12% 0 0);
+      --paper-2: oklch(15% 0 0);
+      --accent: oklch(72% 0.22 145);
+      --secondary: oklch(60% 0.20 280);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--ff-body); background: var(--paper-0); color: var(--text-1); line-height: 1.7; }
+    .container { max-width: 740px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 3rem); }
+
+    header {
+      background: linear-gradient(135deg, oklch(8% 0 0) 0%, oklch(6% 0 0) 100%);
+      padding: 3rem clamp(1rem, 5vw, 3rem);
+      border-bottom: 1px solid oklch(100% 0 0 / .06);
+      margin-bottom: 3rem;
+    }
+    .kicker {
+      display: inline-block; color: var(--secondary); font-family: var(--ff-display);
+      font-weight: 700; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .75rem;
+    }
+    h1 { font-family: var(--ff-display); font-size: clamp(1.9rem, 5.5vw, 3rem); font-weight: 800; margin-bottom: 1rem; line-height: 1.1; }
+    .subtitle { color: var(--text-2); font-size: 1.05rem; max-width: 65ch; line-height: 1.6; }
+    .meta-row { display: flex; gap: 1rem; color: var(--text-3); font-size: .85rem; margin-top: 1.25rem; }
+
+    main { padding-bottom: 4rem; }
+
+    .tldr {
+      background: var(--paper-1);
+      border-left: 3px solid var(--secondary);
+      border-radius: 0 12px 12px 0;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 2.5rem;
+    }
+    .tldr .label { font-family: var(--ff-display); font-weight: 700; color: var(--secondary); font-size: .85rem; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .5rem; display: block; }
+    .tldr p { color: var(--text-1); font-size: .98rem; }
+
+    h2 { font-family: var(--ff-display); font-size: 1.55rem; font-weight: 800; margin: 2.5rem 0 1rem; }
+    p.body-text { color: var(--text-2); font-size: .98rem; margin-bottom: 1rem; max-width: 68ch; }
+    p.body-text strong { color: var(--text-1); }
+    p.body-text a { color: var(--secondary); }
+    p.body-text code { background: var(--paper-2); padding: .1em .4em; border-radius: 4px; color: var(--accent); font-family: 'Courier New', monospace; font-size: .9em; }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 1rem;
+      padding: 1.1rem 0;
+      border-top: 1px solid oklch(100% 0 0 / .08);
+    }
+    .metric-row:last-of-type { border-bottom: 1px solid oklch(100% 0 0 / .08); }
+    .metric-row .num { font-family: var(--ff-display); font-size: 1.2rem; font-weight: 800; color: var(--accent); }
+    .metric-row h3 { font-family: var(--ff-display); font-size: 1.05rem; font-weight: 700; margin-bottom: .25rem; }
+    .metric-row p { color: var(--text-2); font-size: .9rem; }
+
+    .ignore-row {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-top: 1px solid oklch(100% 0 0 / .06);
+    }
+    .ignore-row:last-of-type { border-bottom: 1px solid oklch(100% 0 0 / .06); }
+    .ignore-row .x { color: var(--text-3); font-size: 1.1rem; }
+    .ignore-row h3 { font-family: var(--ff-display); font-size: 1rem; font-weight: 700; color: var(--text-2); margin-bottom: .2rem; }
+    .ignore-row p { color: var(--text-3); font-size: .87rem; }
+
+    .faq-item { border-top: 1px solid oklch(100% 0 0 / .08); padding: 1.25rem 0; }
+    .faq-item:last-of-type { border-bottom: 1px solid oklch(100% 0 0 / .08); }
+    .faq-item h3 { font-family: var(--ff-display); font-size: 1.1rem; margin: 0 0 .5rem; }
+    .faq-item p { color: var(--text-2); font-size: .95rem; }
+
+    .cta-box {
+      margin-top: 3rem; background: var(--paper-1); border: 1px solid var(--secondary);
+      border-radius: 14px; padding: 2rem; text-align: center;
+    }
+    .cta-box h2 { margin: 0 0 .5rem; font-size: 1.4rem; }
+    .cta-box p { color: var(--text-2); margin-bottom: 1.25rem; }
+    .cta-box a {
+      display: inline-flex; align-items: center; gap: .5em; background: var(--accent); color: var(--paper-0);
+      font-family: var(--ff-display); font-weight: 700; text-decoration: none; padding: .85rem 2rem;
+      border-radius: 10px; text-transform: uppercase; letter-spacing: .03em; font-size: .95rem;
+    }
+
+    footer {
+      background: oklch(6% 0 0); border-top: 1px solid oklch(100% 0 0 / .06);
+      padding: 3rem clamp(1rem, 5vw, 3rem); text-align: center; color: var(--text-3); font-size: 0.9rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="kicker">Métricas · GA4</span>
+    <h1>GA4 para ecommerce: las métricas que importan (y las que ignorar)</h1>
+    <p class="subtitle">Google Analytics 4 tiene decenas de reportes. Si vendés online, hay 10 números que realmente mueven decisiones — el resto es ruido que solo te distrae.</p>
+    <div class="meta-row">
+      <span>Potenciar Pymes</span>
+      <span>·</span>
+      <span>Actualizado 2026</span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="tldr">
+    <span class="label">Resumen rápido</span>
+    <p>Para ecommerce, GA4 recomienda trackear como mínimo 4 eventos: <code>view_item</code>, <code>add_to_cart</code>, <code>begin_checkout</code> y <code>purchase</code>. A partir de esos eventos se calculan las métricas que realmente importan: tasa de conversión, valor promedio de compra, y en qué paso del embudo se cae la gente.</p>
+  </div>
+
+  <h2>Los 4 eventos base (sin esto, no hay nada que medir)</h2>
+  <p class="body-text">Antes de mirar cualquier métrica, confirmá que estos 4 eventos de la <a href="https://developers.google.com/analytics/devguides/collection/ga4/ecommerce?hl=es-419" target="_blank" rel="noopener">documentación oficial de GA4 para ecommerce</a> están disparando bien:</p>
+  <ul style="color: var(--text-2); font-size: .96rem; margin: 0 0 1.5rem 1.25rem;">
+    <li style="margin-bottom: .5rem;"><code style="background: var(--paper-2); padding: .1em .4em; border-radius: 4px; color: var(--accent); font-family: monospace;">view_item</code> — alguien vio la página de un producto</li>
+    <li style="margin-bottom: .5rem;"><code style="background: var(--paper-2); padding: .1em .4em; border-radius: 4px; color: var(--accent); font-family: monospace;">add_to_cart</code> — agregó algo al carrito</li>
+    <li style="margin-bottom: .5rem;"><code style="background: var(--paper-2); padding: .1em .4em; border-radius: 4px; color: var(--accent); font-family: monospace;">begin_checkout</code> — empezó el proceso de pago</li>
+    <li style="margin-bottom: .5rem;"><code style="background: var(--paper-2); padding: .1em .4em; border-radius: 4px; color: var(--accent); font-family: monospace;">purchase</code> — completó la compra</li>
+  </ul>
+  <p class="body-text">Si vendés en Tiendanube, estos eventos ya vienen preconfigurados al conectar GA4 desde el panel — no hace falta que un desarrollador los programe a mano.</p>
+
+  <h2>Las 10 métricas que importan</h2>
+
+  <div class="metric-row">
+    <span class="num">01</span>
+    <div><h3>Tasa de conversión por compra</h3><p>De cada 100 visitas, cuántas terminan en <code style="background:var(--paper-2);padding:.1em .3em;border-radius:4px;color:var(--accent);">purchase</code>. Es la métrica más importante de todo el reporte.</p></div>
+  </div>
+  <div class="metric-row">
+    <span class="num">02</span>
+    <div><h3>Caída entre pasos del embudo</h3><p>Comparar view_item → add_to_cart → begin_checkout → purchase te dice exactamente en qué paso perdés más gente.</p></div>
+  </div>
+  <div class="metric-row">
+    <span class="num">03</span>
+    <div><h3>Ingresos por compra (purchase revenue)</h3><p>Cuánto factura tu tienda en el período — la métrica que conecta GA4 con el negocio real.</p></div>
+  </div>
+  <div class="metric-row">
+    <span class="num">04</span>
+    <div><h3>Valor promedio de compra</h3><p>Ingresos totales dividido cantidad de compras. Subir este número (combos, envío gratis desde X monto) suele ser más fácil que conseguir tráfico nuevo.</p></div>
+  </div>
+  <div class="metric-row">
+    <span class="num">05</span>
+    <div><h3>Fuente de tráfico que convierte</h3><p>No todas las fuentes valen lo mismo. GA4 te muestra qué canal (orgánico, ads, redes, directo) realmente termina en compra, no solo en visitas.</p></div>
+  </div>
+  <div class="metric-row">
+    <span class="num">06</span>
+    <div><h3>Productos más vistos vs. más comprados</h3><p>Si un producto tiene muchas vistas pero pocas compras, hay un problema de precio, fotos o descripción específico de ese producto.</p></div>
+  </div>
+  <div class="metric-row">
+    <span class="num">07</span>
+    <div><h3>Usuarios nuevos vs. recurrentes</h3><p>Te dice si estás creciendo con gente nueva, con gente que vuelve, o con ninguna de las dos.</p></div>
+  </div>
+  <div class="metric-row">
+    <span class="num">08</span>
+    <div><h3>Dispositivo (mobile vs desktop)</h3><p>Si la mayoría compra desde celular y tu checkout es lento o difícil en mobile, ahí estás perdiendo ventas todos los días.</p></div>
+  </div>
+  <div class="metric-row">
+    <span class="num">09</span>
+    <div><h3>Tiempo hasta la primera compra</h3><p>Cuánto tarda un usuario nuevo en convertir. Si es muy largo, tu proceso de decisión tiene fricción.</p></div>
+  </div>
+  <div class="metric-row">
+    <span class="num">10</span>
+    <div><h3>Tasa de abandono de checkout</h3><p>Cuántos llegan a <code style="background:var(--paper-2);padding:.1em .3em;border-radius:4px;color:var(--accent);">begin_checkout</code> pero no completan la compra — tu oportunidad más directa de recuperar ventas.</p></div>
+  </div>
+
+  <h2>Lo que podés ignorar (o mirar solo de vez en cuando)</h2>
+
+  <div class="ignore-row">
+    <span class="x">—</span>
+    <div><h3>Vistas de página totales</h3><p>Suena importante pero no te dice nada sobre si esas visitas compran o no. Es vanity metric clásica.</p></div>
+  </div>
+  <div class="ignore-row">
+    <span class="x">—</span>
+    <div><h3>Tiempo promedio en el sitio (como métrica aislada)</h3><p>Alguien puede estar 5 minutos porque le encanta tu tienda, o porque no encuentra lo que busca. Sin contexto, no significa nada.</p></div>
+  </div>
+  <div class="ignore-row">
+    <span class="x">—</span>
+    <div><h3>Tasa de rebote genérica</h3><p>Para muchas tiendas es normal y no correlaciona directo con ventas — mirala solo si además cae tu conversión.</p></div>
+  </div>
+
+  <h2>Preguntas frecuentes</h2>
+
+  <div class="faq-item">
+    <h3>¿Cuáles son los eventos mínimos de ecommerce en GA4?</h3>
+    <p>Según la documentación oficial de Google, el mínimo recomendado para analítica básica de ecommerce es: view_item, add_to_cart, begin_checkout y purchase.</p>
+  </div>
+  <div class="faq-item">
+    <h3>¿GA4 se integra automático con Tiendanube?</h3>
+    <p>Sí, Tiendanube tiene integración nativa con GA4 — se conecta desde el panel de administración sin necesitar código adicional para los eventos básicos de ecommerce.</p>
+  </div>
+  <div class="faq-item">
+    <h3>¿Cuál es la métrica más importante si solo puedo mirar una?</h3>
+    <p>La tasa de conversión por compra: de cada 100 visitas, cuántas terminan comprando. Es la que conecta directamente tráfico con resultado de negocio.</p>
+  </div>
+
+  <div class="cta-box">
+    <h2>¿Tenés GA4 instalado pero no sabés qué mirar?</h2>
+    <p>En el diagnóstico gratuito revisamos tu configuración y armamos un dashboard simple con lo que realmente importa.</p>
+    <a href="https://wa.me/5491150161326?text=Hola%2C%20le%C3%AD%20el%20post%20de%20GA4%20y%20quiero%20el%20diagn%C3%B3stico%20gratuito" target="_blank" rel="noopener">Hacer el diagnóstico →</a>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Potenciar Pymes · <a href="/">Volver al inicio</a> · <a href="/blog">Ver más posts</a></p>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "GA4 para ecommerce: las métricas que importan (y las que ignorar)",
+  "description": "Qué mirar en Google Analytics 4 si vendés online, con los eventos oficiales de ecommerce, y qué métricas son solo ruido.",
+  "author": { "@type": "Person", "name": "Jonathan Frenquel" },
+  "publisher": { "@type": "Organization", "name": "Potenciar Pymes" },
+  "url": "https://potenciarpymes.ar/blog/ga4-ecommerce-pymes"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuáles son los eventos mínimos de ecommerce en GA4?",
+      "acceptedAnswer": { "@type": "Answer", "text": "El mínimo recomendado por Google es: view_item, add_to_cart, begin_checkout y purchase." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿GA4 se integra automático con Tiendanube?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sí, Tiendanube tiene integración nativa con GA4 desde el panel de administración." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuál es la métrica más importante en GA4 para ecommerce?",
+      "acceptedAnswer": { "@type": "Answer", "text": "La tasa de conversión por compra: de cada 100 visitas, cuántas terminan comprando." }
+    }
+  ]
+}
+</script>
+
+</body>
+</html>

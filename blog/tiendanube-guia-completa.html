@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiendanube: guía paso a paso para pymes (2026) | Potenciar Pymes</title>
+  <meta name="description" content="Setup de Tiendanube, dominio propio, métodos de pago y envíos explicados paso a paso, con checklist para no olvidarte de nada.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://potenciarpymes.ar/blog/tiendanube-guia-completa">
+
+  <style>
+    :root {
+      --ff-display: 'Barlow Condensed', sans-serif;
+      --ff-body: 'Barlow', sans-serif;
+      --text-1: oklch(92% 0.02 240);
+      --text-2: oklch(75% 0.04 240);
+      --text-3: oklch(60% 0.04 240);
+      --paper-0: oklch(10% 0 0);
+      --paper-1: oklch(12% 0 0);
+      --paper-2: oklch(15% 0 0);
+      --accent: oklch(72% 0.22 145);
+      --secondary: oklch(60% 0.20 280);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--ff-body); background: var(--paper-0); color: var(--text-1); line-height: 1.7; }
+    .container { max-width: 740px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 3rem); }
+
+    header {
+      background: linear-gradient(135deg, oklch(8% 0 0) 0%, oklch(6% 0 0) 100%);
+      padding: 3rem clamp(1rem, 5vw, 3rem);
+      border-bottom: 1px solid oklch(100% 0 0 / .06);
+      margin-bottom: 3rem;
+    }
+    .kicker {
+      display: inline-block; color: var(--secondary); font-family: var(--ff-display);
+      font-weight: 700; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .75rem;
+    }
+    h1 { font-family: var(--ff-display); font-size: clamp(1.9rem, 5.5vw, 3rem); font-weight: 800; margin-bottom: 1rem; line-height: 1.1; }
+    .subtitle { color: var(--text-2); font-size: 1.05rem; max-width: 65ch; line-height: 1.6; }
+    .meta-row { display: flex; gap: 1rem; color: var(--text-3); font-size: .85rem; margin-top: 1.25rem; }
+
+    main { padding-bottom: 4rem; }
+
+    .tldr {
+      background: var(--paper-1);
+      border-left: 3px solid var(--secondary);
+      border-radius: 0 12px 12px 0;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 2.5rem;
+    }
+    .tldr .label { font-family: var(--ff-display); font-weight: 700; color: var(--secondary); font-size: .85rem; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .5rem; display: block; }
+    .tldr p { color: var(--text-1); font-size: .98rem; }
+
+    h2 { font-family: var(--ff-display); font-size: 1.55rem; font-weight: 800; margin: 2.5rem 0 1rem; }
+    h3 { font-family: var(--ff-display); font-size: 1.15rem; font-weight: 700; margin: 1.5rem 0 .6rem; }
+    p.body-text { color: var(--text-2); font-size: .98rem; margin-bottom: 1rem; max-width: 68ch; }
+    p.body-text strong { color: var(--text-1); }
+    p.body-text a { color: var(--secondary); }
+    ul.body-list { color: var(--text-2); font-size: .96rem; margin: 0 0 1.25rem 1.25rem; }
+    ul.body-list li { margin-bottom: .5rem; }
+    ul.body-list strong { color: var(--text-1); }
+
+    .checklist {
+      background: var(--paper-1);
+      border: 1px solid oklch(100% 0 0 / .08);
+      border-radius: 12px;
+      padding: 1.5rem 1.75rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+    .checklist-item { display: flex; gap: .75rem; padding: .6rem 0; border-top: 1px solid oklch(100% 0 0 / .06); align-items: flex-start; }
+    .checklist-item:first-child { border-top: none; }
+    .checklist-item .box { flex-shrink: 0; width: 18px; height: 18px; border: 1.5px solid var(--secondary); border-radius: 5px; margin-top: .15rem; }
+    .checklist-item p { color: var(--text-2); font-size: .92rem; }
+    .checklist-item strong { color: var(--text-1); }
+
+    .faq-item { border-top: 1px solid oklch(100% 0 0 / .08); padding: 1.25rem 0; }
+    .faq-item:last-of-type { border-bottom: 1px solid oklch(100% 0 0 / .08); }
+    .faq-item h3 { margin: 0 0 .5rem; }
+    .faq-item p { color: var(--text-2); font-size: .95rem; }
+
+    .cta-box {
+      margin-top: 3rem; background: var(--paper-1); border: 1px solid var(--secondary);
+      border-radius: 14px; padding: 2rem; text-align: center;
+    }
+    .cta-box h2 { margin: 0 0 .5rem; font-size: 1.4rem; }
+    .cta-box p { color: var(--text-2); margin-bottom: 1.25rem; }
+    .cta-box a {
+      display: inline-flex; align-items: center; gap: .5em; background: var(--accent); color: var(--paper-0);
+      font-family: var(--ff-display); font-weight: 700; text-decoration: none; padding: .85rem 2rem;
+      border-radius: 10px; text-transform: uppercase; letter-spacing: .03em; font-size: .95rem;
+    }
+
+    footer {
+      background: oklch(6% 0 0); border-top: 1px solid oklch(100% 0 0 / .06);
+      padding: 3rem clamp(1rem, 5vw, 3rem); text-align: center; color: var(--text-3); font-size: 0.9rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="kicker">Guía · Tiendanube</span>
+    <h1>Guía completa de Tiendanube: cómo armar tu tienda en 7 pasos</h1>
+    <p class="subtitle">Todo lo que necesitás saber antes y durante el setup: qué plan elegir, cómo poner tu dominio propio, qué medios de pago activar y qué no te podés olvidar.</p>
+    <div class="meta-row">
+      <span>Potenciar Pymes</span>
+      <span>·</span>
+      <span>Actualizado 2026</span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="tldr">
+    <span class="label">Resumen rápido</span>
+    <p>Tiendanube es una plataforma de ecommerce con plan gratuito real (sin costo mensual ni límite de productos) y planes pagos desde un plan "Esencial". Ningún plan cobra comisión por venta. El setup básico (nombre, productos, dominio) se hace en menos de una hora; lo que lleva más tiempo es cargar bien el catálogo y configurar pagos/envíos.</p>
+  </div>
+
+  <h2>Qué es Tiendanube y por qué la elegimos</h2>
+  <p class="body-text">Tiendanube (Nuvemshop en Brasil) es la plataforma de ecommerce más usada por pymes en Argentina, junto con Mercado Shops. A diferencia de vender solo en Mercado Libre, tener tu propia tienda te da control total sobre diseño, datos de tus clientes y no pagás comisión por cada venta.</p>
+  <p class="body-text">Todos los planes —incluido el gratuito— tienen en común: <strong>sin comisión por venta</strong>, <strong>sin límite de productos, visitas ni ventas</strong>. La diferencia entre planes pasa por integraciones disponibles, medios de pago habilitados y funciones de marketing. Los precios se ajustan trimestralmente (enero, abril, julio, octubre), así que para el número exacto del mes conviene mirar <a href="https://www.tiendanube.com/planes-y-precios" target="_blank" rel="noopener">la página oficial de planes</a> en vez de confiar en un valor fijo que puede estar desactualizado.</p>
+
+  <h2>Paso 1-2: Setup inicial</h2>
+  <p class="body-text">Creás la cuenta con tu email, elegís el nombre de la tienda (podés cambiarlo después) y seleccionás el rubro. Tiendanube te arma una estructura base con categorías sugeridas según el rubro que elegiste — no hace falta empezar de cero.</p>
+
+  <h3>Cargar tus primeros productos</h3>
+  <p class="body-text">Por cada producto necesitás como mínimo: nombre, precio, stock, y al menos una foto. Para que realmente convierta, apuntá a <strong>6-8 fotos por producto</strong> con distintos ángulos — es la referencia que se usa en la industria del ecommerce.</p>
+
+  <h2>Paso 3: Configurar tu dominio propio</h2>
+  <p class="body-text">Por defecto tu tienda vive en <code>tunombre.mitiendanube.com</code>. Podés (y conviene) conectar un dominio propio tipo <code>tunombre.com.ar</code> — mejora la percepción de marca y es mejor para SEO a largo plazo. Se hace desde Configuración → Dominios, agregando los registros DNS que te indica Tiendanube en el panel de tu proveedor de dominio.</p>
+
+  <h2>Paso 4: Métodos de pago</h2>
+  <p class="body-text">El plan gratuito viene con Pago Nube preconfigurado. A medida que subís de plan podés sumar Mercado Pago, tarjetas directas, transferencia bancaria y, según el plan, cuotas sin interés. Activá al menos 2 métodos distintos — no todos tus clientes confían o pueden pagar de la misma forma.</p>
+
+  <h2>Paso 5: Envíos y logística</h2>
+  <p class="body-text">El plan gratuito incluye Andreani como opción de envío preconfigurada. En planes pagos podés sumar más correos e integrar tu propio contrato de envíos si ya tenés uno. Definí también si vas a ofrecer retiro en local — es un dato que muchos compradores buscan antes de decidir.</p>
+
+  <h2>Paso 6: SEO básico de tu tienda</h2>
+  <ul class="body-list">
+    <li><strong>Título y descripción</strong> de cada producto, no dejar el genérico</li>
+    <li><strong>URLs limpias</strong> — Tiendanube las genera automático a partir del nombre del producto</li>
+    <li><strong>Texto alternativo</strong> (alt) en las imágenes principales</li>
+    <li><strong>Categorías bien armadas</strong> — ayuda tanto a SEO como a navegación</li>
+  </ul>
+
+  <h2>Paso 7: Medición desde el día uno</h2>
+  <p class="body-text">Conectá Google Analytics 4 antes de tu primera venta, no después. Si lo instalás recién cuando "ya tenés tráfico", perdiste toda esa data histórica para comparar.</p>
+
+  <h2>Checklist antes de lanzar</h2>
+  <div class="checklist">
+    <div class="checklist-item"><div class="box"></div><p><strong>Cuenta creada</strong> y rubro seleccionado</p></div>
+    <div class="checklist-item"><div class="box"></div><p><strong>Al menos 5 productos</strong> cargados con 6+ fotos cada uno</p></div>
+    <div class="checklist-item"><div class="box"></div><p><strong>Dominio propio</strong> conectado (o en proceso de propagación DNS)</p></div>
+    <div class="checklist-item"><div class="box"></div><p><strong>2+ métodos de pago</strong> activos</p></div>
+    <div class="checklist-item"><div class="box"></div><p><strong>Costos de envío</strong> configurados por zona</p></div>
+    <div class="checklist-item"><div class="box"></div><p><strong>Políticas de cambio/devolución</strong> escritas y visibles</p></div>
+    <div class="checklist-item"><div class="box"></div><p><strong>WhatsApp Business</strong> visible en la tienda</p></div>
+    <div class="checklist-item"><div class="box"></div><p><strong>Google Analytics 4</strong> conectado</p></div>
+    <div class="checklist-item"><div class="box"></div><p><strong>Redes sociales</strong> vinculadas (Instagram, Facebook)</p></div>
+    <div class="checklist-item"><div class="box"></div><p><strong>Ficha de Google Business</strong> creada (si tenés local físico)</p></div>
+    <div class="checklist-item"><div class="box"></div><p><strong>Página "Sobre nosotros"</strong> con info de contacto real</p></div>
+    <div class="checklist-item"><div class="box"></div><p><strong>Prueba de compra completa</strong> vos mismo, de punta a punta</p></div>
+  </div>
+
+  <h2>Preguntas frecuentes</h2>
+
+  <div class="faq-item">
+    <h3>¿Tiendanube cobra comisión por venta?</h3>
+    <p>No, ningún plan de Tiendanube cobra comisión por venta. Sí puede haber costos del medio de pago que elijas (por ejemplo, la comisión estándar de Mercado Pago), que son ajenos a Tiendanube.</p>
+  </div>
+  <div class="faq-item">
+    <h3>¿El plan gratuito tiene límite de productos o ventas?</h3>
+    <p>No. Todos los planes, incluido el gratuito, permiten productos, visitas y ventas ilimitadas. La diferencia entre planes está en integraciones y medios de pago disponibles, no en límites de uso.</p>
+  </div>
+  <div class="faq-item">
+    <h3>¿Cuánto tarda en estar lista una tienda en Tiendanube?</h3>
+    <p>El setup técnico (cuenta, productos básicos, dominio) se puede tener andando en menos de una hora. Lo que suele llevar más tiempo es cargar bien el catálogo completo con fotos de calidad.</p>
+  </div>
+  <div class="faq-item">
+    <h3>¿Puedo integrar Tiendanube con Mercado Libre?</h3>
+    <p>Sí, hay integraciones (propias y de terceros) para sincronizar stock entre Tiendanube y Mercado Libre. Ver nuestra <a href="/blog/tiendanube-vs-mercado-libre">comparativa de Tiendanube vs Mercado Libre</a> para más detalle sobre cuándo conviene usar los dos canales.</p>
+  </div>
+
+  <div class="cta-box">
+    <h2>¿Querés que te ayudemos con el setup completo?</h2>
+    <p>En el diagnóstico gratuito revisamos tu situación y armamos el plan para tu tienda.</p>
+    <a href="https://wa.me/5491150161326?text=Hola%2C%20le%C3%AD%20la%20gu%C3%ADa%20de%20Tiendanube%20y%20quiero%20el%20diagn%C3%B3stico%20gratuito" target="_blank" rel="noopener">Hacer el diagnóstico →</a>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Potenciar Pymes · <a href="/">Volver al inicio</a> · <a href="/blog">Ver más posts</a></p>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Guía completa de Tiendanube: cómo armar tu tienda en 7 pasos",
+  "description": "Setup de Tiendanube, dominio propio, métodos de pago y envíos explicados paso a paso, con checklist para no olvidarte de nada.",
+  "author": { "@type": "Person", "name": "Jonathan Frenquel" },
+  "publisher": { "@type": "Organization", "name": "Potenciar Pymes" },
+  "url": "https://potenciarpymes.ar/blog/tiendanube-guia-completa"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Tiendanube cobra comisión por venta?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No, ningún plan de Tiendanube cobra comisión por venta. Sí puede haber costos del medio de pago que elijas, que son ajenos a Tiendanube." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿El plan gratuito tiene límite de productos o ventas?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Todos los planes, incluido el gratuito, permiten productos, visitas y ventas ilimitadas." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tarda en estar lista una tienda en Tiendanube?",
+      "acceptedAnswer": { "@type": "Answer", "text": "El setup técnico básico se puede tener andando en menos de una hora. Cargar bien el catálogo completo lleva más tiempo." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo integrar Tiendanube con Mercado Libre?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sí, hay integraciones para sincronizar stock entre Tiendanube y Mercado Libre." }
+    }
+  ]
+}
+</script>
+
+</body>
+</html>
