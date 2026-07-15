@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Las 5 métricas que importan para tu pyme | Potenciar Pymes</title>
+  <meta name="description" content="5 números que definen si tu pyme está creciendo o no. Cómo calcularlos con lo que ya tenés, sin herramientas nuevas.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://potenciarpymes.ar/metricas-que-importan">
+
+  <style>
+    :root {
+      --ff-display: 'Barlow Condensed', sans-serif;
+      --ff-body: 'Barlow', sans-serif;
+      --text-1: oklch(92% 0.02 240);
+      --text-2: oklch(75% 0.04 240);
+      --text-3: oklch(60% 0.04 240);
+      --paper-0: oklch(10% 0 0);
+      --paper-1: oklch(12% 0 0);
+      --paper-2: oklch(15% 0 0);
+      --accent: oklch(72% 0.22 145);
+      --secondary: oklch(60% 0.20 280);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--ff-body);
+      background: var(--paper-0);
+      color: var(--text-1);
+      line-height: 1.65;
+    }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 3rem); }
+
+    header {
+      background: linear-gradient(135deg, oklch(8% 0 0) 0%, oklch(6% 0 0) 100%);
+      padding: 3rem clamp(1rem, 5vw, 3rem);
+      border-bottom: 1px solid oklch(100% 0 0 / .06);
+      margin-bottom: 3rem;
+    }
+    .kicker {
+      display: inline-block;
+      color: var(--secondary);
+      font-family: var(--ff-display);
+      font-weight: 700;
+      font-size: .8rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    h1 {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 6vw, 3.25rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.05;
+    }
+    .subtitle { color: var(--text-2); font-size: 1.05rem; max-width: 60ch; line-height: 1.6; }
+
+    main { padding-bottom: 4rem; }
+    .intro { color: var(--text-2); margin-bottom: 2.5rem; font-size: 1rem; }
+
+    .metric {
+      background: var(--paper-1);
+      border: 1px solid oklch(100% 0 0 / .08);
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .metric-head {
+      display: flex;
+      align-items: baseline;
+      gap: .75rem;
+      margin-bottom: .6rem;
+      flex-wrap: wrap;
+    }
+    .metric-num {
+      font-family: var(--ff-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--secondary);
+    }
+    .metric h3 {
+      font-family: var(--ff-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+    .metric p { color: var(--text-2); font-size: .95rem; margin-bottom: .75rem; }
+    .formula {
+      background: var(--paper-2);
+      border-radius: 8px;
+      padding: .75rem 1rem;
+      font-family: 'Courier New', monospace;
+      font-size: .85rem;
+      color: var(--accent);
+      display: inline-block;
+    }
+    .benchmark {
+      margin-top: .75rem;
+      padding-top: .75rem;
+      border-top: 1px solid oklch(100% 0 0 / .06);
+      color: var(--text-3);
+      font-size: .85rem;
+    }
+    .benchmark strong { color: var(--text-2); }
+
+    .cta-box {
+      margin-top: 3rem;
+      background: var(--paper-1);
+      border: 1px solid var(--secondary);
+      border-radius: 14px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .cta-box h2 {
+      font-family: var(--ff-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: .5rem;
+    }
+    .cta-box p { color: var(--text-2); margin-bottom: 1.25rem; }
+    .cta-box a {
+      display: inline-flex;
+      align-items: center;
+      gap: .5em;
+      background: var(--accent);
+      color: var(--paper-0);
+      font-family: var(--ff-display);
+      font-weight: 700;
+      text-decoration: none;
+      padding: .85rem 2rem;
+      border-radius: 10px;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      font-size: .95rem;
+    }
+
+    footer {
+      background: oklch(6% 0 0);
+      border-top: 1px solid oklch(100% 0 0 / .06);
+      padding: 3rem clamp(1rem, 5vw, 3rem);
+      text-align: center;
+      color: var(--text-3);
+      font-size: 0.9rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="kicker">Recurso gratuito</span>
+    <h1>Las 5 métricas que importan</h1>
+    <p class="subtitle">No necesitás un dashboard carísimo. Con estos 5 números, calculados a mano una vez por semana, ya sabés si tu pyme está creciendo o estancada.</p>
+  </div>
+</header>
+
+<main class="container">
+  <p class="intro">Podés armar esto en una planilla simple (Google Sheets, Excel, lo que uses). Lo importante no es la herramienta — es mirarlos cada semana, no solo cuando algo anda mal.</p>
+
+  <div class="metric">
+    <div class="metric-head">
+      <span class="metric-num">01</span>
+      <h3>Tasa de conversión</h3>
+    </div>
+    <p>Cuántas de las personas que visitan tu tienda terminan comprando.</p>
+    <div class="formula">(Ventas ÷ Visitas) × 100</div>
+    <p class="benchmark"><strong>Referencia:</strong> en e-commerce de Argentina, 1-2% ya es razonable. Menos de 0.5% suele indicar un problema de fricción (precio, fotos, checkout).</p>
+  </div>
+
+  <div class="metric">
+    <div class="metric-head">
+      <span class="metric-num">02</span>
+      <h3>Ticket promedio</h3>
+    </div>
+    <p>Cuánto gasta en promedio cada persona que te compra.</p>
+    <div class="formula">Ventas totales ÷ Cantidad de pedidos</div>
+    <p class="benchmark"><strong>Por qué importa:</strong> subir este número (con combos, envío gratis desde cierto monto) suele ser más fácil que conseguir más clientes nuevos.</p>
+  </div>
+
+  <div class="metric">
+    <div class="metric-head">
+      <span class="metric-num">03</span>
+      <h3>Costo de adquisición (CAC)</h3>
+    </div>
+    <p>Cuánto te cuesta conseguir un cliente nuevo, contando toda la inversión en captarlo.</p>
+    <div class="formula">Gasto en ads del mes ÷ Clientes nuevos del mes</div>
+    <p class="benchmark"><strong>Ojo:</strong> si tu CAC es más alto que tu ticket promedio, estás perdiendo plata en cada venta nueva — necesitás que te vuelvan a comprar para que cierre la cuenta.</p>
+  </div>
+
+  <div class="metric">
+    <div class="metric-head">
+      <span class="metric-num">04</span>
+      <h3>Tasa de recompra</h3>
+    </div>
+    <p>Qué porcentaje de tus clientes te vuelve a comprar en los siguientes 3-6 meses.</p>
+    <div class="formula">(Clientes que repiten ÷ Clientes totales) × 100</div>
+    <p class="benchmark"><strong>Por qué importa:</strong> retener un cliente cuesta mucho menos que conseguir uno nuevo. Si nadie repite, tu negocio siempre depende de captar de cero.</p>
+  </div>
+
+  <div class="metric">
+    <div class="metric-head">
+      <span class="metric-num">05</span>
+      <h3>Tiempo de respuesta en WhatsApp</h3>
+    </div>
+    <p>Cuánto tardás en contestar el primer mensaje de una consulta.</p>
+    <div class="formula">Se mide en minutos, no en horas</div>
+    <p class="benchmark"><strong>Referencia:</strong> pasado los 15-20 minutos, la mayoría de las consultas se enfrían y la persona le compra a otro. Es el número más fácil de mejorar y el que más rápido se nota.</p>
+  </div>
+
+  <div class="cta-box">
+    <h2>¿Nunca calculaste alguno de estos 5?</h2>
+    <p>En el diagnóstico gratuito revisamos tu situación real y armamos el mapa para empezar a medir esto sin vueltas.</p>
+    <a href="https://wa.me/5491150161326?text=Hola%2C%20le%C3%AD%20lo%20de%20las%205%20m%C3%A9tricas%20y%20quiero%20el%20diagn%C3%B3stico%20gratuito" target="_blank" rel="noopener">Hacer el diagnóstico →</a>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Potenciar Pymes · <a href="/">Volver al inicio</a> · <a href="/blog">Ver más recursos</a></p>
+</footer>
+
+</body>
+</html>
