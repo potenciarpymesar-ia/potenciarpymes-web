@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cómo conectar Tiendanube, Mercado Libre e Instagram | Potenciar Pymes</title>
+  <meta name="description" content="Guía práctica para unificar tus canales de venta sin actualizar todo a mano. Arquitectura simple y un ejemplo real de automatización.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://potenciarpymes.ar/conectar-tus-canales">
+
+  <style>
+    :root {
+      --ff-display: 'Barlow Condensed', sans-serif;
+      --ff-body: 'Barlow', sans-serif;
+      --text-1: oklch(92% 0.02 240);
+      --text-2: oklch(75% 0.04 240);
+      --text-3: oklch(60% 0.04 240);
+      --paper-0: oklch(10% 0 0);
+      --paper-1: oklch(12% 0 0);
+      --paper-2: oklch(15% 0 0);
+      --accent: oklch(72% 0.22 145);
+      --secondary: oklch(60% 0.20 280);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--ff-body);
+      background: var(--paper-0);
+      color: var(--text-1);
+      line-height: 1.65;
+    }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 3rem); }
+
+    header {
+      background: linear-gradient(135deg, oklch(8% 0 0) 0%, oklch(6% 0 0) 100%);
+      padding: 3rem clamp(1rem, 5vw, 3rem);
+      border-bottom: 1px solid oklch(100% 0 0 / .06);
+      margin-bottom: 3rem;
+    }
+    .kicker {
+      display: inline-block;
+      color: var(--secondary);
+      font-family: var(--ff-display);
+      font-weight: 700;
+      font-size: .8rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    h1 {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 6vw, 3.25rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.05;
+    }
+    .subtitle { color: var(--text-2); font-size: 1.05rem; max-width: 60ch; line-height: 1.6; }
+
+    main { padding-bottom: 4rem; }
+    .intro { color: var(--text-2); margin-bottom: 2.5rem; font-size: 1rem; }
+    .intro strong { color: var(--text-1); }
+
+    h2 {
+      font-family: var(--ff-display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin: 2.5rem 0 1rem;
+    }
+    p.body-text { color: var(--text-2); font-size: .98rem; margin-bottom: 1rem; }
+    p.body-text strong { color: var(--text-1); }
+
+    .step {
+      background: var(--paper-1);
+      border: 1px solid oklch(100% 0 0 / .08);
+      border-radius: 12px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 1rem;
+    }
+    .step h3 {
+      font-family: var(--ff-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: .4rem;
+      color: var(--secondary);
+    }
+    .step p { color: var(--text-2); font-size: .93rem; }
+
+    .code-block {
+      background: var(--paper-2);
+      border: 1px solid oklch(100% 0 0 / .08);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      overflow-x: auto;
+    }
+    .code-block pre {
+      font-family: 'Courier New', monospace;
+      font-size: .82rem;
+      color: var(--accent);
+      white-space: pre;
+    }
+    .code-label {
+      font-size: .75rem;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: .5rem;
+      display: block;
+    }
+
+    .warning {
+      background: oklch(60% 0.20 280 / 0.08);
+      border: 1px solid var(--secondary);
+      border-radius: 10px;
+      padding: 1.1rem 1.4rem;
+      margin: 1.5rem 0;
+      font-size: .92rem;
+      color: var(--text-2);
+    }
+    .warning strong { color: var(--text-1); }
+
+    .cta-box {
+      margin-top: 3rem;
+      background: var(--paper-1);
+      border: 1px solid var(--secondary);
+      border-radius: 14px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .cta-box h2 { margin: 0 0 .5rem; font-size: 1.5rem; }
+    .cta-box p { color: var(--text-2); margin-bottom: 1.25rem; }
+    .cta-box a {
+      display: inline-flex;
+      align-items: center;
+      gap: .5em;
+      background: var(--accent);
+      color: var(--paper-0);
+      font-family: var(--ff-display);
+      font-weight: 700;
+      text-decoration: none;
+      padding: .85rem 2rem;
+      border-radius: 10px;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      font-size: .95rem;
+    }
+
+    footer {
+      background: oklch(6% 0 0);
+      border-top: 1px solid oklch(100% 0 0 / .06);
+      padding: 3rem clamp(1rem, 5vw, 3rem);
+      text-align: center;
+      color: var(--text-3);
+      font-size: 0.9rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="kicker">Recurso gratuito</span>
+    <h1>Conectar Tiendanube, Mercado Libre e Instagram</h1>
+    <p class="subtitle">Cómo dejar de actualizar stock y precios a mano en 3 lugares distintos, sin contratar un desarrollo a medida.</p>
+  </div>
+</header>
+
+<main class="container">
+  <p class="intro">Esto no es un plugin que instalás y ya — es la <strong>arquitectura</strong> que tenés que entender antes de conectar nada. Una vez que la tenés clara, el resto es configuración.</p>
+
+  <h2>El problema real</h2>
+  <p class="body-text">Vender en Tiendanube, Mercado Libre e Instagram al mismo tiempo significa que <strong>el mismo dato vive en 3 lugares</strong>: stock, precio, y a veces hasta la descripción del producto. Si actualizás uno a mano y te olvidás de los otros dos, vendés algo que no tenés, o dejás plata en la mesa con un precio viejo.</p>
+
+  <h2>La arquitectura simple</h2>
+  <p class="body-text">La idea central: elegí <strong>una fuente de verdad</strong> (normalmente Tiendanube, porque tiene el catálogo más completo) y todo lo demás se actualiza automáticamente a partir de ahí. No al revés, y no los tres editándose entre sí — eso es lo que genera los quilombos.</p>
+
+  <div class="step">
+    <h3>1. Tiendanube manda</h3>
+    <p>Ahí cargás producto, precio, stock y fotos una sola vez. Es tu catálogo maestro.</p>
+  </div>
+  <div class="step">
+    <h3>2. Un webhook avisa cuando algo cambia</h3>
+    <p>Tiendanube tiene webhooks nativos (Configuración → Notificaciones) que avisan cuando se actualiza stock, se crea un pedido, o cambia un producto.</p>
+  </div>
+  <div class="step">
+    <h3>3. n8n recibe el aviso y replica el cambio</h3>
+    <p>Un workflow simple escucha ese webhook, y usa la API de Mercado Libre para actualizar el mismo producto allá. Instagram Shopping generalmente se sincroniza solo si usás el catálogo de Meta conectado a Tiendanube — ahí no hace falta este paso extra.</p>
+  </div>
+
+  <h2>Ejemplo real de automatización</h2>
+  <p class="body-text">Así se ve el esqueleto de un workflow de n8n para esto — no hace falta copiarlo tal cual, pero te muestra la lógica:</p>
+
+  <div class="code-block">
+    <span class="code-label">Flujo en n8n (conceptual)</span>
+    <pre>Webhook (Tiendanube: stock actualizado)
+  → Code: extraer product_id y nuevo stock
+  → HTTP Request (API Mercado Libre: PUT /items/{id})
+      body: { "available_quantity": {{ $json.stock }} }
+  → IF (respuesta OK)
+      → Log en Google Sheets (auditoría de cambios)
+      → ELSE: Notificación por email/Slack (falló la sincronización)</pre>
+  </div>
+
+  <div class="warning">
+    <strong>Ojo con esto:</strong> necesitás las credenciales de API de Mercado Libre (App ID + Client Secret, se generan gratis en su portal de desarrolladores) y el ID de cada producto mapeado entre las dos plataformas. Ese mapeo inicial es manual una sola vez — después queda automático.
+  </div>
+
+  <h2>Qué NO conviene automatizar todavía</h2>
+  <p class="body-text">Si recién estás empezando con esto, no automatices precio (los ajustás poco) ni descripciones (cambian menos). Empezá solo por <strong>stock</strong> — es lo que más rápido te genera problemas si se desincroniza, y es la automatización con el ROI más claro.</p>
+
+  <div class="cta-box">
+    <h2>¿Querés que te lo armemos nosotros?</h2>
+    <p>En el diagnóstico gratuito vemos si tu caso puntual se puede automatizar y con qué prioridad.</p>
+    <a href="https://wa.me/5491150161326?text=Hola%2C%20le%C3%AD%20lo%20de%20conectar%20canales%20y%20quiero%20el%20diagn%C3%B3stico%20gratuito" target="_blank" rel="noopener">Hacer el diagnóstico →</a>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Potenciar Pymes · <a href="/">Volver al inicio</a> · <a href="/blog">Ver más recursos</a></p>
+</footer>
+
+</body>
+</html>
