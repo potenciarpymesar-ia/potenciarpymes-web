@@ -68,6 +68,9 @@
       font-size: .82rem; color: var(--text-3); border-top: 1px solid oklch(100% 0 0 / .06); padding-top: .6rem;
     }
     .flow .time-saved strong { color: var(--text-2); }
+    .flow .ref-link { display: block; margin-top: .5rem; font-size: .82rem; }
+    .flow .ref-link a { color: var(--secondary); text-decoration: none; }
+    .flow .ref-link a:hover { text-decoration: underline; }
 
     h2.section-h { font-family: var(--ff-display); font-size: 1.6rem; font-weight: 800; margin: 2.5rem 0 1rem; }
     p.body-text { color: var(--text-2); font-size: .98rem; margin-bottom: 1rem; }
@@ -103,7 +106,7 @@
 </header>
 
 <main class="container">
-  <p class="intro"><strong>n8n</strong> es una herramienta de automatización visual — conectás bloques ("nodos") en vez de programar. Es gratis si la instalás vos mismo. Estos 5 patrones son los que más rápido dan resultado para una pyme chica.</p>
+  <p class="intro"><strong>n8n</strong> es una herramienta de automatización visual — conectás bloques ("nodos") en vez de programar. Es gratis si la instalás vos mismo. Estos 5 patrones son los que más rápido dan resultado para una pyme chica. Cada uno tiene un <strong>template real y público de la comunidad de n8n</strong> como referencia — están armados para Shopify o Google Sheets genéricos, así que hay que adaptar los nodos de "traer datos" a la API de Tiendanube o Mercado Libre, pero la lógica (cuándo se dispara, qué se compara, a quién se avisa) es la misma.</p>
 
   <div class="flow">
     <div class="flow-head">
@@ -116,6 +119,7 @@
   → IF stock &lt; mínimo
       → Enviar WhatsApp / Email con el listado</div>
     <p class="time-saved"><strong>Ahorra:</strong> revisar stock a mano todos los días, y las ventas perdidas por productos agotados sin que te des cuenta.</p>
+    <p class="ref-link">Template real de referencia (adaptable): <a href="https://n8n.io/workflows/7177" target="_blank" rel="noopener">n8n.io/workflows/7177</a></p>
   </div>
 
   <div class="flow">
@@ -128,6 +132,7 @@
   → Wait 3 días
   → Enviar WhatsApp con mensaje de seguimiento</div>
     <p class="time-saved"><strong>Ahorra:</strong> el tiempo de acordarte y escribir a cada cliente, y mejora la tasa de recompra.</p>
+    <p class="ref-link">Template real de referencia (adaptable): <a href="https://n8n.io/workflows/6362" target="_blank" rel="noopener">n8n.io/workflows/6362</a></p>
   </div>
 
   <div class="flow">
@@ -153,6 +158,7 @@
   → IF hay reseña nueva
       → Notificación por WhatsApp/Email con el texto</div>
     <p class="time-saved"><strong>Ahorra:</strong> revisar manualmente, y responder rápido mejora tu reputación (y tu posicionamiento local).</p>
+    <p class="ref-link">Template real de referencia (adaptable): <a href="https://n8n.io/workflows/6112" target="_blank" rel="noopener">n8n.io/workflows/6112</a></p>
   </div>
 
   <div class="flow">
@@ -166,6 +172,7 @@
   → IF no se completó la compra
       → Enviar WhatsApp o email con el link del carrito</div>
     <p class="time-saved"><strong>Ahorra:</strong> ventas que ya estaban casi cerradas y se pierden solo por falta de un empujón.</p>
+    <p class="ref-link">Template real de referencia (adaptable): <a href="https://n8n.io/workflows/6111" target="_blank" rel="noopener">n8n.io/workflows/6111</a></p>
   </div>
 
   <h2 class="section-h">Por dónde empezar</h2>

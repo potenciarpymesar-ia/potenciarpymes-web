@@ -181,21 +181,39 @@
   </div>
   <div class="step">
     <h3>2. Un webhook avisa cuando algo cambia</h3>
-    <p>Tiendanube tiene webhooks nativos (Configuración → Notificaciones) que avisan cuando se actualiza stock, se crea un pedido, o cambia un producto.</p>
+    <p>Tiendanube tiene una API de webhooks real (no hace falta que un desarrollador te la programe desde cero): te suscribís al evento <code style="background: var(--paper-2); padding: .1em .4em; border-radius: 4px; color: var(--accent);">product/updated</code>, que se dispara cada vez que cambia un producto — incluido el stock — y también hay eventos para pedidos (<code style="background: var(--paper-2); padding: .1em .4em; border-radius: 4px; color: var(--accent);">order/created</code>, <code style="background: var(--paper-2); padding: .1em .4em; border-radius: 4px; color: var(--accent);">order/paid</code>).</p>
   </div>
   <div class="step">
     <h3>3. n8n recibe el aviso y replica el cambio</h3>
     <p>Un workflow simple escucha ese webhook, y usa la API de Mercado Libre para actualizar el mismo producto allá. Instagram Shopping generalmente se sincroniza solo si usás el catálogo de Meta conectado a Tiendanube — ahí no hace falta este paso extra.</p>
   </div>
 
-  <h2>Ejemplo real de automatización</h2>
-  <p class="body-text">Así se ve el esqueleto de un workflow de n8n para esto — no hace falta copiarlo tal cual, pero te muestra la lógica:</p>
+  <h2>El registro del webhook (esto es real, no pseudocódigo)</h2>
+  <p class="body-text">Así se suscribe tu app al evento de Tiendanube — esto es lo que hay que llamar una sola vez para que empiece a avisarte:</p>
 
   <div class="code-block">
-    <span class="code-label">Flujo en n8n (conceptual)</span>
-    <pre>Webhook (Tiendanube: stock actualizado)
+    <span class="code-label">POST https://api.tiendanube.com/v1/{store_id}/webhooks</span>
+    <pre>{
+  "event": "product/updated",
+  "url": "https://tu-n8n.com/webhook/producto-actualizado"
+}</pre>
+  </div>
+
+  <p class="body-text">Y así se ve la llamada real a Mercado Libre para actualizar el stock de ese mismo producto:</p>
+
+  <div class="code-block">
+    <span class="code-label">PUT https://api.mercadolibre.com/items/{item_id}</span>
+    <pre>{
+  "available_quantity": 6
+}</pre>
+  </div>
+
+  <h2>El workflow completo en n8n</h2>
+  <div class="code-block">
+    <span class="code-label">Flujo en n8n (esqueleto)</span>
+    <pre>Webhook (recibe el evento product/updated)
   → Code: extraer product_id y nuevo stock
-  → HTTP Request (API Mercado Libre: PUT /items/{id})
+  → HTTP Request (PUT api.mercadolibre.com/items/{id})
       body: { "available_quantity": {{ $json.stock }} }
   → IF (respuesta OK)
       → Log en Google Sheets (auditoría de cambios)
@@ -203,11 +221,15 @@
   </div>
 
   <div class="warning">
-    <strong>Ojo con esto:</strong> necesitás las credenciales de API de Mercado Libre (App ID + Client Secret, se generan gratis en su portal de desarrolladores) y el ID de cada producto mapeado entre las dos plataformas. Ese mapeo inicial es manual una sola vez — después queda automático.
+    <strong>Ojo con esto:</strong> necesitás las credenciales de API de Mercado Libre (App ID + Client Secret, se generan gratis en su portal de desarrolladores) y el ID de cada producto mapeado entre las dos plataformas. Ese mapeo inicial es manual una sola vez — después queda automático. Si tu cuenta de Mercado Libre usa <strong>stock multiorigen</strong> (varios depósitos), no se actualiza así — se maneja con los endpoints de <em>User Products</em>, que son distintos.
   </div>
 
   <h2>Qué NO conviene automatizar todavía</h2>
   <p class="body-text">Si recién estás empezando con esto, no automatices precio (los ajustás poco) ni descripciones (cambian menos). Empezá solo por <strong>stock</strong> — es lo que más rápido te genera problemas si se desincroniza, y es la automatización con el ROI más claro.</p>
+
+  <p style="font-size: .8rem; color: var(--text-3); margin: 2rem 0 1rem; padding-top: 1.5rem; border-top: 1px solid oklch(100% 0 0 / .06);">
+    Fuentes técnicas verificadas: <a href="https://tiendanube.github.io/api-documentation/resources/webhook" target="_blank" rel="noopener" style="color: var(--text-2);">documentación oficial de Webhooks de Tiendanube</a> y <a href="https://developers.mercadolibre.com.ar/es_ar/stock-distribuido" target="_blank" rel="noopener" style="color: var(--text-2);">documentación oficial de stock en la API de Mercado Libre</a>.
+  </p>
 
   <div class="cta-box">
     <h2>¿Querés que te lo armemos nosotros?</h2>
