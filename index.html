@@ -2520,25 +2520,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- NEWSLETTER -->
-<section class="section newsletter-section" style="background: linear-gradient(135deg, oklch(8% 0 0) 0%, oklch(6% 0 0) 100%); border-top: 1px solid oklch(100% 0 0 / .06);">
-  <div class="container">
-    <div class="newsletter-wrap reveal">
-      <h2 style="font-family: var(--ff-display); font-size: clamp(1.75rem, 5vw, 3rem); font-weight: 800; margin-bottom: 1rem; color: var(--text-1);">
-        Historias de pymes que escalaron.
-      </h2>
-      <p style="color: var(--text-2); font-size: 1.05rem; max-width: 50ch; margin-bottom: 2rem; line-height: 1.6;">
-        Cada semana publicamos casos reales de pymes que crecieron con sistema. Resultados, procesos, errores que evitar.
-      </p>
-      <form class="newsletter-form" onsubmit="event.preventDefault(); fetch('https://hooks.slack.com/services/YOUR_WEBHOOK', {method:'POST',body:JSON.stringify({text:'Newsletter signup: '+this.email.value})}).catch(()=>{}); alert('Gracias. Revisa tu inbox en 1 min.');">
-        <input type="email" name="email" placeholder="Tu email" required style="flex: 1; padding: 0.9rem 1.2rem; border: none; border-radius: 6px; background: var(--paper-2); color: var(--text-1); font-size: 1rem; font-family: var(--ff-body);">
-        <button type="submit" style="background: var(--secondary); color: var(--paper-0); border: none; padding: 0.9rem 2rem; border-radius: 6px; font-weight: 700; cursor: pointer; transition: opacity .2s; font-family: var(--ff-display);">Suscribir</button>
-      </form>
-      <p style="color: var(--text-3); font-size: .85rem; margin-top: 1rem;">Sin spam. Casos reales cada viernes.</p>
-    </div>
-  </div>
-</section>
-
 </main>
 
 <!-- FOOTER -->
