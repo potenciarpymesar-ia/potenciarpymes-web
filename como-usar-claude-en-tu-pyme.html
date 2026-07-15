@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cómo usar Claude (IA) en tu pyme | Potenciar Pymes</title>
+  <meta name="description" content="Guía práctica para sacarle provecho real a Claude en tu pyme: cómo escribir mejores prompts, qué conectar, y un plan de 10 pasos para dejar de usarlo como un chat más.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://potenciarpymes.ar/como-usar-claude-en-tu-pyme">
+
+  <style>
+    :root {
+      --ff-display: 'Barlow Condensed', sans-serif;
+      --ff-body: 'Barlow', sans-serif;
+      --text-1: oklch(92% 0.02 240);
+      --text-2: oklch(75% 0.04 240);
+      --text-3: oklch(60% 0.04 240);
+      --paper-0: oklch(10% 0 0);
+      --paper-1: oklch(12% 0 0);
+      --paper-2: oklch(15% 0 0);
+      --accent: oklch(72% 0.22 145);
+      --secondary: oklch(60% 0.20 280);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--ff-body); background: var(--paper-0); color: var(--text-1); line-height: 1.65; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 3rem); }
+
+    header {
+      background: linear-gradient(135deg, oklch(8% 0 0) 0%, oklch(6% 0 0) 100%);
+      padding: 3rem clamp(1rem, 5vw, 3rem);
+      border-bottom: 1px solid oklch(100% 0 0 / .06);
+      margin-bottom: 3rem;
+    }
+    .kicker {
+      display: inline-block; color: var(--secondary); font-family: var(--ff-display);
+      font-weight: 700; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .75rem;
+    }
+    h1 { font-family: var(--ff-display); font-size: clamp(2rem, 6vw, 3.25rem); font-weight: 800; margin-bottom: 1rem; line-height: 1.05; }
+    .subtitle { color: var(--text-2); font-size: 1.05rem; max-width: 60ch; line-height: 1.6; }
+
+    main { padding-bottom: 4rem; }
+    .intro { color: var(--text-2); margin-bottom: 2.5rem; font-size: 1rem; }
+    .intro strong { color: var(--text-1); }
+
+    h2 { font-family: var(--ff-display); font-size: 1.6rem; font-weight: 800; margin: 2.5rem 0 1rem; }
+    p.body-text { color: var(--text-2); font-size: .98rem; margin-bottom: 1rem; }
+    p.body-text strong { color: var(--text-1); }
+
+    .tip {
+      background: var(--paper-1);
+      border: 1px solid oklch(100% 0 0 / .08);
+      border-radius: 12px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 1rem;
+    }
+    .tip-head { display: flex; align-items: baseline; gap: .75rem; margin-bottom: .5rem; }
+    .tip-num { font-family: var(--ff-display); font-size: 1.1rem; font-weight: 800; color: var(--secondary); }
+    .tip h3 { font-family: var(--ff-display); font-size: 1.15rem; font-weight: 700; }
+    .tip p { color: var(--text-2); font-size: .93rem; margin-bottom: .6rem; }
+    .tip .example {
+      background: var(--paper-2);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: .75rem 1rem;
+      font-size: .88rem;
+      font-style: italic;
+      color: var(--text-1);
+    }
+    .tip .example .ex-label {
+      display: block; font-style: normal; font-size: .7rem; text-transform: uppercase;
+      letter-spacing: .05em; color: var(--accent); margin-bottom: .3rem; font-weight: 700;
+    }
+
+    .connectors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .connector {
+      background: var(--paper-1);
+      border: 1px solid oklch(100% 0 0 / .08);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+    .connector h3 { font-family: var(--ff-display); font-size: 1.05rem; font-weight: 700; margin-bottom: .5rem; color: var(--secondary); }
+    .connector p { color: var(--text-2); font-size: .87rem; }
+
+    .step-row {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 1rem;
+      padding: 1.1rem 0;
+      border-top: 1px solid oklch(100% 0 0 / .08);
+    }
+    .step-row:last-of-type { border-bottom: 1px solid oklch(100% 0 0 / .08); }
+    .step-row .num { font-family: var(--ff-display); font-size: 1.3rem; font-weight: 800; color: var(--accent); }
+    .step-row h3 { font-family: var(--ff-display); font-size: 1.05rem; font-weight: 700; margin-bottom: .25rem; }
+    .step-row p { color: var(--text-2); font-size: .9rem; }
+
+    .cta-box {
+      margin-top: 3rem; background: var(--paper-1); border: 1px solid var(--secondary);
+      border-radius: 14px; padding: 2rem; text-align: center;
+    }
+    .cta-box h2 { margin: 0 0 .5rem; font-size: 1.5rem; }
+    .cta-box p { color: var(--text-2); margin-bottom: 1.25rem; }
+    .cta-box a {
+      display: inline-flex; align-items: center; gap: .5em; background: var(--accent); color: var(--paper-0);
+      font-family: var(--ff-display); font-weight: 700; text-decoration: none; padding: .85rem 2rem;
+      border-radius: 10px; text-transform: uppercase; letter-spacing: .03em; font-size: .95rem;
+    }
+
+    footer {
+      background: oklch(6% 0 0); border-top: 1px solid oklch(100% 0 0 / .06);
+      padding: 3rem clamp(1rem, 5vw, 3rem); text-align: center; color: var(--text-3); font-size: 0.9rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="kicker">Recurso gratuito</span>
+    <h1>Cómo usar Claude en tu pyme</h1>
+    <p class="subtitle">La mayoría lo usa como un chat más y siente que "no hace gran cosa". La diferencia aparece cuando dejás de hacer preguntas sueltas y empezás a usarlo como una herramienta de trabajo.</p>
+  </div>
+</header>
+
+<main class="container">
+  <p class="intro">No es magia, es método. Esto no es exclusivo de Claude — aplica más o menos igual a cualquier asistente de IA que uses para tu negocio.</p>
+
+  <h2>5 formas de obtener mejores respuestas</h2>
+
+  <div class="tip">
+    <div class="tip-head">
+      <span class="tip-num">01</span>
+      <h3>Dá contexto real</h3>
+    </div>
+    <p>Cuanto más contexto le das, mejor entiende tu situación específica — no la genérica.</p>
+    <div class="example">
+      <span class="ex-label">Ejemplo</span>
+      "Tengo una tienda de indumentaria en Tiendanube, vendo sobre todo por Instagram y necesito entender por qué bajaron las ventas este mes."
+    </div>
+  </div>
+
+  <div class="tip">
+    <div class="tip-head">
+      <span class="tip-num">02</span>
+      <h3>Definí el resultado que buscás</h3>
+    </div>
+    <p>Decile qué querés lograr, no solo qué mirar. Así enfoca la respuesta en lo que te sirve de verdad.</p>
+    <div class="example">
+      <span class="ex-label">Ejemplo</span>
+      "Quiero 3 causas posibles de la baja y una recomendación concreta para cada una, no solo un diagnóstico."
+    </div>
+  </div>
+
+  <div class="tip">
+    <div class="tip-head">
+      <span class="tip-num">03</span>
+      <h3>Usá datos reales, no hipotéticos</h3>
+    </div>
+    <p>Subí tus propios archivos (ventas, planillas, capturas) en vez de describir la situación de memoria. Las respuestas mejoran mucho.</p>
+    <div class="example">
+      <span class="ex-label">Ejemplo</span>
+      "Acá está mi planilla de ventas del último trimestre. Analizá las tendencias más importantes."
+    </div>
+  </div>
+
+  <div class="tip">
+    <div class="tip-head">
+      <span class="tip-num">04</span>
+      <h3>Refiná, no aceptes la primera respuesta</h3>
+    </div>
+    <p>Pedí que profundice, aclare o dé ejemplos concretos de cómo aplicar lo que te dijo.</p>
+    <div class="example">
+      <span class="ex-label">Ejemplo</span>
+      "¿Podés darme ejemplos prácticos de cómo implementaría la recomendación 2 esta semana?"
+    </div>
+  </div>
+
+  <div class="tip">
+    <div class="tip-head">
+      <span class="tip-num">05</span>
+      <h3>Mantené la conversación, no la reinicies</h3>
+    </div>
+    <p>Dentro de un mismo chat, Claude recuerda el contexto. Seguí la conversación en vez de empezar una nueva cada vez.</p>
+    <div class="example">
+      <span class="ex-label">Ejemplo</span>
+      "Ahora, ¿cómo aplico esto en mi equipo y cómo mido si funcionó?"
+    </div>
+  </div>
+
+  <h2>Qué conectar (para que no tengas que copiar y pegar)</h2>
+  <p class="body-text">Claude se puede conectar a las herramientas que ya usás, así trabaja con tu información real en vez de que se la tengas que pegar a mano cada vez.</p>
+
+  <div class="connectors-grid">
+    <div class="connector">
+      <h3>Gmail</h3>
+      <p>Resume hilos largos, redacta respuestas con tu estilo, vacía la bandeja más rápido.</p>
+    </div>
+    <div class="connector">
+      <h3>Google Drive / Docs</h3>
+      <p>Resume documentos largos, busca información sin tener que abrir 10 archivos.</p>
+    </div>
+    <div class="connector">
+      <h3>Google Calendar</h3>
+      <p>Encuentra huecos libres, convierte ideas en reuniones, detecta reuniones que no aportan.</p>
+    </div>
+    <div class="connector">
+      <h3>Notion</h3>
+      <p>Preguntale sobre tus propios documentos, convierte notas en tareas o planes.</p>
+    </div>
+  </div>
+
+  <h2>Plan de 10 pasos para pasar de "chat" a herramienta de trabajo</h2>
+
+  <div class="step-row">
+    <span class="num">1</span>
+    <div>
+      <h3>Descargá la aplicación de escritorio</h3>
+      <p>La versión web alcanza para preguntas rápidas, pero te perdés funciones si no usás la app.</p>
+    </div>
+  </div>
+  <div class="step-row">
+    <span class="num">2</span>
+    <div>
+      <h3>Elegí el modo correcto según la tarea</h3>
+      <p>Chat para preguntas rápidas, proyectos para trabajo en equipo, conversaciones largas para trabajo profundo en un tema.</p>
+    </div>
+  </div>
+  <div class="step-row">
+    <span class="num">3</span>
+    <div>
+      <h3>Organizá un espacio por cliente o proyecto</h3>
+      <p>Separar por tema hace que Claude entienda mejor el contexto de cada cosa, en vez de mezclar todo en una sola conversación.</p>
+    </div>
+  </div>
+  <div class="step-row">
+    <span class="num">4</span>
+    <div>
+      <h3>Armá tus "archivos base"</h3>
+      <p>Un documento corto con quién sos, qué hace tu negocio, y cómo preferís que te respondan — te ahorra repetir lo mismo en cada conversación.</p>
+    </div>
+  </div>
+  <div class="step-row">
+    <span class="num">5</span>
+    <div>
+      <h3>Reutilizá tus mejores prompts</h3>
+      <p>Cuando encontrás una forma de pedir algo que funciona bien, guardala. No reinventes el prompt todos los días.</p>
+    </div>
+  </div>
+  <div class="step-row">
+    <span class="num">6</span>
+    <div>
+      <h3>Pedile que piense con vos, no solo que responda</h3>
+      <p>En vez de pedir una respuesta cerrada, pedí opciones, comparaciones, o un plan de acción para decidir vos.</p>
+    </div>
+  </div>
+  <div class="step-row">
+    <span class="num">7</span>
+    <div>
+      <h3>Sumá conectores</h3>
+      <p>Gmail, Drive, Calendar, Notion — conectá lo que ya usás para que Claude trabaje con información real.</p>
+    </div>
+  </div>
+  <div class="step-row">
+    <span class="num">8</span>
+    <div>
+      <h3>Integrá esto en tu flujo real de trabajo</h3>
+      <p>No lo uses solo cuando te acordás — hacelo parte de cómo respondés mails, armás propuestas, o analizás números.</p>
+    </div>
+  </div>
+  <div class="step-row">
+    <span class="num">9</span>
+    <div>
+      <h3>Un espacio por objetivo</h3>
+      <p>Marketing, ventas, contenido, administración — cuanto mejor organizado esté, mejores resultados vas a obtener.</p>
+    </div>
+  </div>
+  <div class="step-row">
+    <span class="num">10</span>
+    <div>
+      <h3>Automatizá lo repetitivo</h3>
+      <p>Empezá por las tareas más simples y repetidas. Cada una que sacás de tu lista es tiempo que recuperás para lo que realmente importa.</p>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <h2>¿Querés aplicar esto a tu negocio en serio?</h2>
+    <p>En Potenciar Pymes usamos IA aplicada a operaciones reales, no como truco de marketing. En el diagnóstico vemos dónde te conviene empezar.</p>
+    <a href="https://wa.me/5491150161326?text=Hola%2C%20le%C3%AD%20la%20gu%C3%ADa%20de%20Claude%20y%20quiero%20el%20diagn%C3%B3stico%20gratuito" target="_blank" rel="noopener">Hacer el diagnóstico →</a>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Potenciar Pymes · <a href="/">Volver al inicio</a> · <a href="/blog">Ver más recursos</a></p>
+</footer>
+
+</body>
+</html>
