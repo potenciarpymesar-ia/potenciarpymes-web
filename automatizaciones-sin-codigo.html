@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5 automatizaciones sin código para tu pyme | Potenciar Pymes</title>
+  <meta name="description" content="5 workflows reales de n8n que ahorran horas por semana en tareas repetitivas. Sin programar, sin depender de un desarrollador.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://potenciarpymes.ar/automatizaciones-sin-codigo">
+
+  <style>
+    :root {
+      --ff-display: 'Barlow Condensed', sans-serif;
+      --ff-body: 'Barlow', sans-serif;
+      --text-1: oklch(92% 0.02 240);
+      --text-2: oklch(75% 0.04 240);
+      --text-3: oklch(60% 0.04 240);
+      --paper-0: oklch(10% 0 0);
+      --paper-1: oklch(12% 0 0);
+      --paper-2: oklch(15% 0 0);
+      --accent: oklch(72% 0.22 145);
+      --secondary: oklch(60% 0.20 280);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--ff-body); background: var(--paper-0); color: var(--text-1); line-height: 1.65; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 3rem); }
+
+    header {
+      background: linear-gradient(135deg, oklch(8% 0 0) 0%, oklch(6% 0 0) 100%);
+      padding: 3rem clamp(1rem, 5vw, 3rem);
+      border-bottom: 1px solid oklch(100% 0 0 / .06);
+      margin-bottom: 3rem;
+    }
+    .kicker {
+      display: inline-block; color: var(--secondary); font-family: var(--ff-display);
+      font-weight: 700; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .75rem;
+    }
+    h1 { font-family: var(--ff-display); font-size: clamp(2rem, 6vw, 3.25rem); font-weight: 800; margin-bottom: 1rem; line-height: 1.05; }
+    .subtitle { color: var(--text-2); font-size: 1.05rem; max-width: 60ch; line-height: 1.6; }
+
+    main { padding-bottom: 4rem; }
+    .intro { color: var(--text-2); margin-bottom: 2.5rem; font-size: 1rem; }
+    .intro strong { color: var(--text-1); }
+
+    .flow {
+      background: var(--paper-1);
+      border: 1px solid oklch(100% 0 0 / .08);
+      border-radius: 14px;
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .flow-head { display: flex; align-items: baseline; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap; }
+    .flow-num { font-family: var(--ff-display); font-size: 1.1rem; font-weight: 800; color: var(--secondary); }
+    .flow h3 { font-family: var(--ff-display); font-size: 1.3rem; font-weight: 700; }
+    .flow p.desc { color: var(--text-2); font-size: .95rem; margin-bottom: .9rem; }
+    .flow-steps {
+      background: var(--paper-2);
+      border-radius: 8px;
+      padding: .9rem 1.1rem;
+      font-family: 'Courier New', monospace;
+      font-size: .8rem;
+      color: var(--accent);
+      white-space: pre-line;
+      margin-bottom: .75rem;
+    }
+    .flow .time-saved {
+      font-size: .82rem; color: var(--text-3); border-top: 1px solid oklch(100% 0 0 / .06); padding-top: .6rem;
+    }
+    .flow .time-saved strong { color: var(--text-2); }
+
+    h2.section-h { font-family: var(--ff-display); font-size: 1.6rem; font-weight: 800; margin: 2.5rem 0 1rem; }
+    p.body-text { color: var(--text-2); font-size: .98rem; margin-bottom: 1rem; }
+    p.body-text strong { color: var(--text-1); }
+
+    .cta-box {
+      margin-top: 3rem; background: var(--paper-1); border: 1px solid var(--secondary);
+      border-radius: 14px; padding: 2rem; text-align: center;
+    }
+    .cta-box h2 { margin: 0 0 .5rem; font-size: 1.5rem; font-family: var(--ff-display); font-weight: 800; }
+    .cta-box p { color: var(--text-2); margin-bottom: 1.25rem; }
+    .cta-box a {
+      display: inline-flex; align-items: center; gap: .5em; background: var(--accent); color: var(--paper-0);
+      font-family: var(--ff-display); font-weight: 700; text-decoration: none; padding: .85rem 2rem;
+      border-radius: 10px; text-transform: uppercase; letter-spacing: .03em; font-size: .95rem;
+    }
+
+    footer {
+      background: oklch(6% 0 0); border-top: 1px solid oklch(100% 0 0 / .06);
+      padding: 3rem clamp(1rem, 5vw, 3rem); text-align: center; color: var(--text-3); font-size: 0.9rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="kicker">Recurso gratuito</span>
+    <h1>5 automatizaciones sin código</h1>
+    <p class="subtitle">Workflows reales hechos con n8n (herramienta gratuita y open source) que sacan tareas repetitivas de tu día sin escribir una línea de código.</p>
+  </div>
+</header>
+
+<main class="container">
+  <p class="intro"><strong>n8n</strong> es una herramienta de automatización visual — conectás bloques ("nodos") en vez de programar. Es gratis si la instalás vos mismo. Estos 5 patrones son los que más rápido dan resultado para una pyme chica.</p>
+
+  <div class="flow">
+    <div class="flow-head">
+      <span class="flow-num">01</span>
+      <h3>Alerta de stock bajo</h3>
+    </div>
+    <p class="desc">Te avisa por WhatsApp o email apenas un producto baja de X unidades, para que repongas antes de quedarte sin stock.</p>
+    <div class="flow-steps">Cron (revisa cada 6 horas)
+  → Consultar stock (API Tiendanube / Mercado Libre)
+  → IF stock &lt; mínimo
+      → Enviar WhatsApp / Email con el listado</div>
+    <p class="time-saved"><strong>Ahorra:</strong> revisar stock a mano todos los días, y las ventas perdidas por productos agotados sin que te des cuenta.</p>
+  </div>
+
+  <div class="flow">
+    <div class="flow-head">
+      <span class="flow-num">02</span>
+      <h3>Seguimiento automático post-venta</h3>
+    </div>
+    <p class="desc">Manda un mensaje de WhatsApp 3 días después de la compra preguntando si todo llegó bien — sin que vos te tengas que acordar.</p>
+    <div class="flow-steps">Webhook (nuevo pedido en Tiendanube)
+  → Wait 3 días
+  → Enviar WhatsApp con mensaje de seguimiento</div>
+    <p class="time-saved"><strong>Ahorra:</strong> el tiempo de acordarte y escribir a cada cliente, y mejora la tasa de recompra.</p>
+  </div>
+
+  <div class="flow">
+    <div class="flow-head">
+      <span class="flow-num">03</span>
+      <h3>Backup diario de pedidos</h3>
+    </div>
+    <p class="desc">Copia automáticamente todos los pedidos del día a una planilla de Google Sheets, para tener tu propio registro sin depender de la plataforma.</p>
+    <div class="flow-steps">Cron (todos los días a las 23:00)
+  → Traer pedidos del día (API Tiendanube)
+  → Agregar filas a Google Sheets</div>
+    <p class="time-saved"><strong>Ahorra:</strong> exportar manualmente, y te da un historial propio para analizar cuando quieras.</p>
+  </div>
+
+  <div class="flow">
+    <div class="flow-head">
+      <span class="flow-num">04</span>
+      <h3>Alerta de reseña nueva</h3>
+    </div>
+    <p class="desc">Te avisa apenas alguien deja una reseña en Google Business o Mercado Libre, para que puedas responder rápido (sobre todo las malas).</p>
+    <div class="flow-steps">Cron (revisa cada hora)
+  → Consultar reseñas nuevas (API)
+  → IF hay reseña nueva
+      → Notificación por WhatsApp/Email con el texto</div>
+    <p class="time-saved"><strong>Ahorra:</strong> revisar manualmente, y responder rápido mejora tu reputación (y tu posicionamiento local).</p>
+  </div>
+
+  <div class="flow">
+    <div class="flow-head">
+      <span class="flow-num">05</span>
+      <h3>Recordatorio de carrito abandonado</h3>
+    </div>
+    <p class="desc">Le manda un mensaje a quien agregó productos al carrito pero no completó la compra, 1 hora después.</p>
+    <div class="flow-steps">Webhook (carrito abandonado)
+  → Wait 1 hora
+  → IF no se completó la compra
+      → Enviar WhatsApp o email con el link del carrito</div>
+    <p class="time-saved"><strong>Ahorra:</strong> ventas que ya estaban casi cerradas y se pierden solo por falta de un empujón.</p>
+  </div>
+
+  <h2 class="section-h">Por dónde empezar</h2>
+  <p class="body-text">Si tenés que elegir solo una: empezá por la <strong>alerta de stock bajo</strong>. Es la más simple de armar y la que evita el problema más caro (vender algo que no tenés, o perder ventas por no tener algo que sí tenés en otro lado).</p>
+
+  <div class="cta-box">
+    <h2>¿Querés que las armemos por vos?</h2>
+    <p>En el diagnóstico gratuito vemos cuáles de estas 5 aplican a tu negocio y en qué orden conviene implementarlas.</p>
+    <a href="https://wa.me/5491150161326?text=Hola%2C%20le%C3%AD%20lo%20de%20las%205%20automatizaciones%20y%20quiero%20el%20diagn%C3%B3stico%20gratuito" target="_blank" rel="noopener">Hacer el diagnóstico →</a>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Potenciar Pymes · <a href="/">Volver al inicio</a> · <a href="/blog">Ver más recursos</a></p>
+</footer>
+
+</body>
+</html>
