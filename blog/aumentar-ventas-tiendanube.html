@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aumentar ventas en Tiendanube: 7 tácticas reales | Potenciar Pymes</title>
+  <meta name="description" content="7 tácticas verificadas contra el centro de ayuda oficial de Tiendanube para vender más: tráfico, checkout acelerado, cross-selling y más.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://potenciarpymes.ar/blog/aumentar-ventas-tiendanube">
+
+  <style>
+    :root {
+      --ff-display: 'Barlow Condensed', sans-serif;
+      --ff-body: 'Barlow', sans-serif;
+      --text-1: oklch(92% 0.02 240);
+      --text-2: oklch(75% 0.04 240);
+      --text-3: oklch(60% 0.04 240);
+      --paper-0: oklch(10% 0 0);
+      --paper-1: oklch(12% 0 0);
+      --paper-2: oklch(15% 0 0);
+      --accent: oklch(72% 0.22 145);
+      --secondary: oklch(60% 0.20 280);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--ff-body); background: var(--paper-0); color: var(--text-1); line-height: 1.7; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 3rem); }
+    .wide { max-width: 900px; }
+
+    header {
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, oklch(60% 0.20 280 / .12) 0%, transparent 60%),
+        linear-gradient(135deg, oklch(8% 0 0) 0%, oklch(6% 0 0) 100%);
+      padding: 3.5rem clamp(1rem, 5vw, 3rem);
+      border-bottom: 1px solid oklch(100% 0 0 / .06);
+      margin-bottom: 3rem;
+    }
+    .kicker {
+      display: inline-block; color: var(--secondary); font-family: var(--ff-display);
+      font-weight: 700; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .75rem;
+    }
+    h1 { font-family: var(--ff-display); font-size: clamp(1.9rem, 5.5vw, 3.1rem); font-weight: 800; margin-bottom: 1rem; line-height: 1.08; }
+    .subtitle { color: var(--text-2); font-size: 1.05rem; max-width: 65ch; line-height: 1.6; }
+    .meta-row { display: flex; gap: 1rem; color: var(--text-3); font-size: .85rem; margin-top: 1.25rem; }
+
+    main { padding-bottom: 4rem; }
+
+    /* Hero stat banner */
+    .stat-banner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      background: var(--paper-1);
+      border: 1px solid oklch(100% 0 0 / .08);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+    .stat-banner .stat .num {
+      font-family: var(--ff-display); font-weight: 800;
+      font-size: clamp(1.8rem, 4vw, 2.5rem); color: var(--accent); line-height: 1;
+    }
+    .stat-banner .stat .num.purple { color: var(--secondary); }
+    .stat-banner .stat .lbl { color: var(--text-3); font-size: .8rem; margin-top: .4rem; }
+
+    h2 { font-family: var(--ff-display); font-size: 1.6rem; font-weight: 800; margin: 2.5rem 0 1rem; }
+    p.body-text { color: var(--text-2); font-size: .98rem; margin-bottom: 1rem; max-width: 68ch; }
+    p.body-text strong { color: var(--text-1); }
+    p.body-text a { color: var(--secondary); }
+
+    .tactic {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 1.25rem;
+      background: var(--paper-1);
+      border: 1px solid oklch(100% 0 0 / .08);
+      border-radius: 14px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 1.25rem;
+      transition: border-color .3s;
+    }
+    .tactic:hover { border-color: var(--secondary); }
+    .tactic .num {
+      font-family: var(--ff-display); font-weight: 800; font-size: 1.7rem;
+      color: var(--secondary); line-height: 1;
+    }
+    .tactic h3 { font-family: var(--ff-display); font-size: 1.15rem; font-weight: 700; margin-bottom: .4rem; }
+    .tactic p { color: var(--text-2); font-size: .93rem; margin-bottom: .5rem; }
+    .tactic .stat-badge {
+      display: inline-block;
+      background: oklch(72% 0.22 145 / 0.12);
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 700;
+      padding: .25em .7em;
+      border-radius: 99px;
+      margin-top: .3rem;
+    }
+
+    .spotlight {
+      background: linear-gradient(135deg, oklch(60% 0.20 280 / 0.1) 0%, transparent 100%);
+      border: 1px solid var(--secondary);
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 2.5rem 0;
+    }
+    .spotlight h2 { margin-top: 0; }
+    .spotlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .spotlight-grid .item .num { font-family: var(--ff-display); font-weight: 800; font-size: 1.6rem; color: var(--secondary); }
+    .spotlight-grid .item .lbl { color: var(--text-3); font-size: .78rem; margin-top: .3rem; }
+
+    .faq-item { border-top: 1px solid oklch(100% 0 0 / .08); padding: 1.25rem 0; }
+    .faq-item:last-of-type { border-bottom: 1px solid oklch(100% 0 0 / .08); }
+    .faq-item h3 { font-family: var(--ff-display); font-size: 1.1rem; margin: 0 0 .5rem; }
+    .faq-item p { color: var(--text-2); font-size: .95rem; }
+
+    .sources {
+      font-size: .8rem; color: var(--text-3); margin: 2.5rem 0 1rem;
+      padding-top: 1.5rem; border-top: 1px solid oklch(100% 0 0 / .06);
+    }
+    .sources a { color: var(--text-2); }
+
+    .cta-box {
+      margin-top: 2rem; background: var(--paper-1); border: 1px solid var(--secondary);
+      border-radius: 14px; padding: 2rem; text-align: center;
+    }
+    .cta-box h2 { margin: 0 0 .5rem; font-size: 1.4rem; }
+    .cta-box p { color: var(--text-2); margin-bottom: 1.25rem; }
+    .cta-box a.wa {
+      display: inline-flex; align-items: center; gap: .5em; background: var(--accent); color: var(--paper-0);
+      font-family: var(--ff-display); font-weight: 700; text-decoration: none; padding: .85rem 2rem;
+      border-radius: 10px; text-transform: uppercase; letter-spacing: .03em; font-size: .95rem;
+    }
+
+    footer {
+      background: oklch(6% 0 0); border-top: 1px solid oklch(100% 0 0 / .06);
+      padding: 3rem clamp(1rem, 5vw, 3rem); text-align: center; color: var(--text-3); font-size: 0.9rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="kicker">Guía · Tiendanube</span>
+    <h1>Aumentar ventas en Tiendanube: 7 tácticas reales</h1>
+    <p class="subtitle">Nada inventado. Cada táctica y cada número de esta guía sale directo del centro de ayuda oficial de Tiendanube — abajo están las fuentes.</p>
+    <div class="meta-row">
+      <span>Potenciar Pymes</span>
+      <span>·</span>
+      <span>Actualizado 2026</span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="stat-banner">
+    <div class="stat"><div class="num">~500</div><div class="lbl">visitas promedio antes de la primera venta</div></div>
+    <div class="stat"><div class="num purple">20%</div><div class="lbl">de las ventas online vienen de buscadores</div></div>
+    <div class="stat"><div class="num">70%+</div><div class="lbl">de ventas por redes vienen de Instagram</div></div>
+    <div class="stat"><div class="num purple">4%</div><div class="lbl">más ventas con Checkout Acelerado</div></div>
+  </div>
+
+  <p class="body-text">Estos números no son de un caso particular — son promedios que Tiendanube publica en su propio centro de ayuda, medidos sobre su base completa de tiendas. Te sirven como referencia real de dónde parar y a qué apuntar.</p>
+
+  <h2>1. Andá por SEO — es una quinta parte de tus ventas potenciales</h2>
+  <div class="tactic">
+    <span class="num">01</span>
+    <div>
+      <p>Casi 1 de cada 5 ventas de una tienda online promedio llega desde un buscador (Google, principalmente). Si tu tienda no está optimizada para SEO, estás ignorando ese 20% por completo.</p>
+      <p>Activá todas las opciones de SEO que ya te da Tiendanube: título y descripción por producto, URLs limpias, texto alternativo en imágenes.</p>
+      <span class="stat-badge">Fuente: ayuda.tiendanube.com</span>
+    </div>
+  </div>
+
+  <h2>2. Instagram no es opcional</h2>
+  <div class="tactic">
+    <span class="num">02</span>
+    <div>
+      <p>Más del 70% de las ventas que llegan desde redes sociales vienen específicamente de Instagram — no de Facebook, no de TikTok. Si tenés que elegir una red para invertir tiempo, es esa.</p>
+      <p>Etiquetá productos en posts e historias (Instagram Shopping) y poné el link directo de tu tienda en la bio.</p>
+    </div>
+  </div>
+
+  <h2>3. Usá el "teclado" de Tiendanube para compartir rápido</h2>
+  <div class="tactic">
+    <span class="num">03</span>
+    <div>
+      <p>Tiendanube tiene una función de teclado que te deja compartir cualquier producto por WhatsApp o Instagram en un toque, sin tener que armar el link a mano cada vez que alguien te pregunta "¿tenés esto?".</p>
+    </div>
+  </div>
+
+  <h2>4. Contenido con storytelling, no solo fotos de producto</h2>
+  <div class="tactic">
+    <span class="num">04</span>
+    <div>
+      <p>El contenido que mejor funciona no es solo "mostrar el producto" — es contar una historia alrededor de él. Quién lo usa, por qué, en qué contexto. Es lo que recomienda Tiendanube en su propia guía de marketing.</p>
+    </div>
+  </div>
+
+  <div class="spotlight">
+    <h2>5. Activá el Checkout Acelerado</h2>
+    <p class="body-text" style="margin-bottom: 0;">Es la táctica con el dato más concreto de toda esta lista. El Checkout Acelerado reconoce automáticamente a compradores ya registrados (por huella, rostro o un código de 4 dígitos) y completa sus datos solos — la persona solo confirma el pago.</p>
+    <div class="spotlight-grid">
+      <div class="item"><div class="num">+4%</div><div class="lbl">ventas</div></div>
+      <div class="item"><div class="num">3x</div><div class="lbl">más rápido</div></div>
+      <div class="item"><div class="num">6M+</div><div class="lbl">usuarios registrados en Arg.</div></div>
+      <div class="item"><div class="num">~70%</div><div class="lbl">compras desde mobile</div></div>
+    </div>
+    <p class="body-text" style="margin-top: 1.25rem; margin-bottom: 0;">Se activa gratis desde <strong>Configuración → Opciones del checkout</strong>, siempre que tengas Pago Nube activo como medio de pago. Con el volumen de compras que ya se hace desde el celular, achicar los pasos del checkout no es un detalle — es directamente donde más se pierden ventas.</p>
+  </div>
+
+  <h2>6. Cross-selling: el pop-up después del carrito</h2>
+  <div class="tactic">
+    <span class="num">06</span>
+    <div>
+      <p>Cuando alguien agrega un producto al carrito, mostrale un pop-up con productos complementarios (no genéricos — específicos a lo que ya eligió). Es la forma más simple de subir el ticket promedio sin bajar precios.</p>
+    </div>
+  </div>
+
+  <h2>7. Medí antes de gastar más en ads</h2>
+  <div class="tactic">
+    <span class="num">07</span>
+    <div>
+      <p>Conectá Google Analytics desde el día uno y configurá los códigos de conversión de tus campañas. Sin esto, no podés saber si una campaña te trajo ventas o solo visitas — vas a estar gastando a ciegas.</p>
+      <p style="margin-bottom: 0;">Más detalle en nuestro post de <a href="/blog/ga4-ecommerce-pymes">GA4 para ecommerce</a>.</p>
+    </div>
+  </div>
+
+  <h2>Preguntas frecuentes</h2>
+
+  <div class="faq-item">
+    <h3>¿Cuántas visitas necesito para mi primera venta en Tiendanube?</h3>
+    <p>Según datos del propio centro de ayuda de Tiendanube, una tienda promedio hace su primera venta después de aproximadamente 500 visitas. Es un promedio, no una garantía — depende mucho del rubro y el precio.</p>
+  </div>
+  <div class="faq-item">
+    <h3>¿El Checkout Acelerado tiene costo extra?</h3>
+    <p>No, se activa sin costo adicional una vez que tu cuenta es aprobada por el sistema antifraude, siempre que tengas Pago Nube activo.</p>
+  </div>
+  <div class="faq-item">
+    <h3>¿Qué red social conviene priorizar para vender más?</h3>
+    <p>Instagram. Más del 70% de las ventas que se originan en redes sociales para tiendas Tiendanube vienen de esa plataforma específicamente.</p>
+  </div>
+
+  <p class="sources">
+    Fuentes: <a href="https://ayuda.tiendanube.com/es_MX/como-aumentar-las-visitas-de-mi-tienda-y-generar-mas-ventas" target="_blank" rel="noopener">Cómo aumentar visitas y ventas</a> y <a href="https://ayuda.tiendanube.com/es_AR/nube/conoce-el-checkout-acelerado" target="_blank" rel="noopener">Checkout Acelerado de Tiendanube</a> — ambos del centro de ayuda oficial de Tiendanube.
+  </p>
+
+  <div class="cta-box">
+    <h2>¿Querés implementar estas 7 tácticas en tu tienda?</h2>
+    <p>En el diagnóstico gratuito vemos cuáles aplican a tu caso y en qué orden conviene hacerlas.</p>
+    <a class="wa" href="https://wa.me/5491150161326?text=Hola%2C%20le%C3%AD%20las%207%20t%C3%A1cticas%20de%20Tiendanube%20y%20quiero%20el%20diagn%C3%B3stico%20gratuito" target="_blank" rel="noopener">Hacer el diagnóstico →</a>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Potenciar Pymes · <a href="/">Volver al inicio</a> · <a href="/blog">Ver más posts</a></p>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Aumentar ventas en Tiendanube: 7 tácticas reales",
+  "description": "7 tácticas verificadas contra el centro de ayuda oficial de Tiendanube para vender más.",
+  "author": { "@type": "Person", "name": "Jonathan Frenquel" },
+  "publisher": { "@type": "Organization", "name": "Potenciar Pymes" },
+  "url": "https://potenciarpymes.ar/blog/aumentar-ventas-tiendanube"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuántas visitas necesito para mi primera venta en Tiendanube?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Según Tiendanube, una tienda promedio hace su primera venta después de aproximadamente 500 visitas." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿El Checkout Acelerado de Tiendanube tiene costo extra?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No, se activa sin costo adicional una vez aprobada la cuenta por el sistema antifraude, con Pago Nube activo." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué red social genera más ventas para tiendas online?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Instagram concentra más del 70% de las ventas que se originan en redes sociales para tiendas Tiendanube." }
+    }
+  ]
+}
+</script>
+
+</body>
+</html>
