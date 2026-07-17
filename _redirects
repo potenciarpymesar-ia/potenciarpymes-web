@@ -25,3 +25,12 @@ http://potenciarpymes.ar/* https://potenciarpymes.ar/:splat 301!
 
 /whatsapp-business /whatsapp-business.html 200
 /whatsapp-business.html /whatsapp-business 301
+
+/identidad-visual /identidad-visual.html 200
+/identidad-visual.html /identidad-visual 301
+
+/inpi /inpi.html 200
+/inpi.html /inpi 301
+
+/power-bi /power-bi.html 200
+/power-bi.html /power-bi 301
