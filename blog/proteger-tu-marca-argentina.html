@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Por qué registrar tu marca en Argentina (y cómo cuidarla) | Potenciar Pymes</title>
+  <meta name="description" content="Datos oficiales de INPI, NIC Argentina y la Ley de Marcas: por qué el dominio no alcanza para proteger tu marca, y cómo cuidarla una vez registrada.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://potenciarpymes.ar/blog/proteger-tu-marca-argentina">
+
+  <style>
+    :root {
+      --ff-display: 'Barlow Condensed', sans-serif;
+      --ff-body: 'Barlow', sans-serif;
+      --text-1: oklch(92% 0.02 240);
+      --text-2: oklch(75% 0.04 240);
+      --text-3: oklch(60% 0.04 240);
+      --paper-0: oklch(10% 0 0);
+      --paper-1: oklch(12% 0 0);
+      --paper-2: oklch(15% 0 0);
+      --accent: oklch(72% 0.22 145);
+      --secondary: oklch(60% 0.20 280);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--ff-body); background: var(--paper-0); color: var(--text-1); line-height: 1.7; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 3rem); }
+
+    header {
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, oklch(60% 0.20 280 / .12) 0%, transparent 60%),
+        linear-gradient(135deg, oklch(8% 0 0) 0%, oklch(6% 0 0) 100%);
+      padding: 3.5rem clamp(1rem, 5vw, 3rem);
+      border-bottom: 1px solid oklch(100% 0 0 / .06);
+      margin-bottom: 3rem;
+    }
+    .kicker {
+      display: inline-block; color: var(--secondary); font-family: var(--ff-display);
+      font-weight: 700; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .75rem;
+    }
+    h1 { font-family: var(--ff-display); font-size: clamp(1.9rem, 5.5vw, 3.1rem); font-weight: 800; margin-bottom: 1rem; line-height: 1.08; }
+    .subtitle { color: var(--text-2); font-size: 1.05rem; max-width: 65ch; line-height: 1.6; }
+    .meta-row { display: flex; gap: 1rem; color: var(--text-3); font-size: .85rem; margin-top: 1.25rem; }
+
+    main { padding-bottom: 4rem; }
+
+    .stat-banner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      background: var(--paper-1);
+      border: 1px solid oklch(100% 0 0 / .08);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+    .stat-banner .stat .num {
+      font-family: var(--ff-display); font-weight: 800;
+      font-size: clamp(1.6rem, 4vw, 2.3rem); color: var(--accent); line-height: 1;
+    }
+    .stat-banner .stat .num.purple { color: var(--secondary); }
+    .stat-banner .stat .lbl { color: var(--text-3); font-size: .78rem; margin-top: .4rem; }
+
+    h2 { font-family: var(--ff-display); font-size: 1.6rem; font-weight: 800; margin: 2.5rem 0 1rem; }
+    p.body-text { color: var(--text-2); font-size: .98rem; margin-bottom: 1rem; max-width: 68ch; }
+    p.body-text strong { color: var(--text-1); }
+    p.body-text a { color: var(--secondary); }
+
+    .tactic {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 1.25rem;
+      background: var(--paper-1);
+      border: 1px solid oklch(100% 0 0 / .08);
+      border-radius: 14px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 1.25rem;
+      transition: border-color .3s;
+    }
+    .tactic:hover { border-color: var(--secondary); }
+    .tactic .num {
+      font-family: var(--ff-display); font-weight: 800; font-size: 1.7rem;
+      color: var(--secondary); line-height: 1;
+    }
+    .tactic h3 { font-family: var(--ff-display); font-size: 1.15rem; font-weight: 700; margin-bottom: .4rem; }
+    .tactic p { color: var(--text-2); font-size: .93rem; margin-bottom: .5rem; }
+    .tactic .stat-badge {
+      display: inline-block;
+      background: oklch(72% 0.22 145 / 0.12);
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 700;
+      padding: .25em .7em;
+      border-radius: 99px;
+      margin-top: .3rem;
+    }
+
+    .spotlight {
+      background: linear-gradient(135deg, oklch(60% 0.20 280 / 0.1) 0%, transparent 100%);
+      border: 1px solid var(--secondary);
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 2.5rem 0;
+    }
+    .spotlight h2 { margin-top: 0; }
+
+    .faq-item { border-top: 1px solid oklch(100% 0 0 / .08); padding: 1.25rem 0; }
+    .faq-item:last-of-type { border-bottom: 1px solid oklch(100% 0 0 / .08); }
+    .faq-item h3 { font-family: var(--ff-display); font-size: 1.1rem; margin: 0 0 .5rem; }
+    .faq-item p { color: var(--text-2); font-size: .95rem; }
+
+    .sources {
+      font-size: .8rem; color: var(--text-3); margin: 2.5rem 0 1rem;
+      padding-top: 1.5rem; border-top: 1px solid oklch(100% 0 0 / .06);
+    }
+    .sources a { color: var(--text-2); }
+
+    .cta-box {
+      margin-top: 2rem; background: var(--paper-1); border: 1px solid var(--secondary);
+      border-radius: 14px; padding: 2rem; text-align: center;
+    }
+    .cta-box h2 { margin: 0 0 .5rem; font-size: 1.4rem; }
+    .cta-box p { color: var(--text-2); margin-bottom: 1.25rem; }
+    .cta-box a.wa {
+      display: inline-flex; align-items: center; gap: .5em; background: var(--accent); color: var(--paper-0);
+      font-family: var(--ff-display); font-weight: 700; text-decoration: none; padding: .85rem 2rem;
+      border-radius: 10px; text-transform: uppercase; letter-spacing: .03em; font-size: .95rem;
+    }
+
+    footer {
+      background: oklch(6% 0 0); border-top: 1px solid oklch(100% 0 0 / .06);
+      padding: 3rem clamp(1rem, 5vw, 3rem); text-align: center; color: var(--text-3); font-size: 0.9rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="kicker">Informe · Registro de marca</span>
+    <h1>Tu dominio no protege tu marca. Así se hace bien.</h1>
+    <p class="subtitle">Datos verificados contra INPI, NIC Argentina y la Ley de Marcas 22.362 — no un genérico de internet. Las fuentes están al final.</p>
+    <div class="meta-row">
+      <span>Potenciar Pymes</span>
+      <span>·</span>
+      <span>Actualizado 2026</span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="stat-banner">
+    <div class="stat"><div class="num">589.188</div><div class="lbl">dominios .com.ar activos hoy en el país</div></div>
+    <div class="stat"><div class="num purple">605.000</div><div class="lbl">empresas activas en Argentina, 99% pymes</div></div>
+    <div class="stat"><div class="num">10 años</div><div class="lbl">dura una marca registrada, renovable</div></div>
+    <div class="stat"><div class="num purple">5 años</div><div class="lbl">sin uso y la marca puede caducar</div></div>
+  </div>
+
+  <p class="body-text">Casi 600 mil negocios en el país ya tienen su dominio .com.ar activo — pero tener el dominio y tener la marca protegida legalmente son dos cosas completamente distintas. Muchas pymes arrancan pensando que una cubre a la otra. No es así, y el error puede salir caro.</p>
+
+  <h2>Dominio y marca no son lo mismo</h2>
+  <div class="tactic">
+    <span class="num">01</span>
+    <div>
+      <p>NIC Argentina, el organismo que administra los dominios .ar, es claro al respecto: registrar un dominio te da derecho sobre esa dirección web, nada más. No te da ningún derecho de propiedad industrial sobre el nombre.</p>
+      <p>Según el propio INPI, las marcas en Argentina se protegen <strong>únicamente mediante el registro ante el INPI</strong>. Ni el dominio, ni una cuenta de Instagram, ni una ficha de Google Business te dan ese derecho.</p>
+      <span class="stat-badge">Fuente: argentina.gob.ar/inpi</span>
+    </div>
+  </div>
+
+  <h2>El riesgo de vender con una marca sin registrar</h2>
+  <div class="tactic">
+    <span class="num">02</span>
+    <div>
+      <p>Usar un nombre "de hecho" (sin registrarlo) deja a cualquier pyme expuesta: otra persona puede registrar ese mismo nombre primero y, en principio, tener mejor derecho sobre él. Recuperarlo después implica probar un uso anterior, algo difícil de demostrar en la práctica.</p>
+      <p>Además, quien tenga la marca registrada puede iniciar acciones civiles por los daños si considera que estás usando un signo parecido sin autorización — y en algunos casos hasta lograr el secuestro de la mercadería en cuestión.</p>
+    </div>
+  </div>
+
+  <div class="spotlight">
+    <h2>Argentina está registrando más marcas que nunca</h2>
+    <p class="body-text" style="margin-bottom: 0;">Según el último informe de indicadores mundiales de la Organización Mundial de la Propiedad Intelectual (OMPI), Argentina lideró -junto con Brasil e Indonesia- el crecimiento en solicitudes de marcas registrables entre los 20 principales países de origen analizados. Cada vez más negocios se están poniendo al día con esto.</p>
+  </div>
+
+  <h2>Los 3 pasos reales para registrarla</h2>
+  <div class="tactic">
+    <span class="num">03</span>
+    <div>
+      <p><strong>Averiguación de antecedentes marcarios:</strong> verificar en la base del INPI que el nombre esté disponible, antes de arrancar cualquier otra cosa.</p>
+      <p><strong>Registro ante el INPI:</strong> presentar la solicitud con la clase de Niza correcta y pagar el arancel oficial.</p>
+      <p><strong>Seguimiento de proceso:</strong> según el propio INPI, el trámite lleva entre 12 meses (con estudio simplificado) y 24 meses (sin él), y se extiende si hay oposiciones. Hay que hacer seguimiento del expediente hasta la resolución.</p>
+      <p style="margin-bottom: 0;">Más detalle en nuestra página de <a href="/inpi" style="color: var(--secondary);">registro de marca ante INPI</a>.</p>
+    </div>
+  </div>
+
+  <h2>Cómo cuidarla una vez que ya es tuya</h2>
+  <div class="tactic">
+    <span class="num">04</span>
+    <div>
+      <p><strong>Renovala cada 10 años.</strong> La marca no se renueva sola: si se vence y no la renovás a tiempo, perdés la protección.</p>
+      <p><strong>Presentá la declaración jurada de uso.</strong> La Ley de Marcas 22.362 exige presentarla entre el 5º y el 6º año del registro, declarando cómo se usó la marca hasta ese momento.</p>
+      <p><strong>Usala, no la dejes guardada.</strong> Según el artículo 26 de esa misma ley, el INPI puede declarar la caducidad -total o parcial- de una marca que no se usó en el país durante 5 años consecutivos.</p>
+      <p><strong>Vigilá el Boletín de Marcas.</strong> Ahí se publican las solicitudes nuevas; tenés 30 días para oponerte si aparece algo parecido a la tuya.</p>
+      <p style="margin-bottom: 0;">Y una vez protegida, aplicala siempre igual en todos tus canales — tienda, redes, WhatsApp. Eso ya es <a href="/identidad-visual" style="color: var(--secondary);">identidad visual</a>, no trámite legal, pero es lo que hace que la marca registrada se note.</p>
+    </div>
+  </div>
+
+  <h2>Preguntas frecuentes</h2>
+
+  <div class="faq-item">
+    <h3>¿Si ya tengo el dominio .com.ar, mi marca está protegida?</h3>
+    <p>No. El dominio lo administra NIC Argentina y solo te da derecho sobre esa dirección web. La protección legal del nombre de tu negocio se logra únicamente registrándolo ante el INPI.</p>
+  </div>
+  <div class="faq-item">
+    <h3>¿Qué pasa si no uso mi marca registrada?</h3>
+    <p>Según el artículo 26 de la Ley de Marcas 22.362, si no se usa durante 5 años consecutivos puede caducar, total o parcialmente. También hay que presentar una declaración jurada de uso entre el año 5 y el 6 del registro.</p>
+  </div>
+  <div class="faq-item">
+    <h3>¿Cada cuánto hay que renovar la marca?</h3>
+    <p>Cada 10 años, de forma indefinida, mientras se siga usando y renovando a tiempo.</p>
+  </div>
+
+  <p class="sources">
+    Fuentes: <a href="https://www.argentina.gob.ar/inpi/marcas/registrar-una-marca" target="_blank" rel="noopener">Registrar una marca — INPI</a>, <a href="https://leyes-ar.com/ley_de_marcas/26.htm" target="_blank" rel="noopener">Ley de Marcas 22.362, art. 26</a>, <a href="https://nic.ar/es/dominios/estadisticas" target="_blank" rel="noopener">Estadísticas de dominios — NIC Argentina</a> y <a href="https://lhh.com.ar/en-argentina-hay-605-000-empresas-activas-99-pymes-y-06-grandes/" target="_blank" rel="noopener">LHH Argentina</a>.
+  </p>
+
+  <div class="cta-box">
+    <h2>¿Todavía no registraste tu marca?</h2>
+    <p>En el diagnóstico gratuito revisamos si tu nombre está disponible y qué tan urgente es registrarlo.</p>
+    <a class="wa" href="https://wa.me/5491150161326?text=Hola%2C%20le%C3%AD%20el%20informe%20de%20registro%20de%20marca%20y%20quiero%20el%20diagn%C3%B3stico%20gratuito" target="_blank" rel="noopener">Hacer el diagnóstico →</a>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Potenciar Pymes · <a href="/">Volver al inicio</a> · <a href="/blog">Ver más posts</a></p>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Por qué registrar tu marca en Argentina (y cómo cuidarla)",
+  "description": "Datos oficiales de INPI, NIC Argentina y la Ley de Marcas sobre por qué el dominio no alcanza para proteger tu marca, y cómo cuidarla una vez registrada.",
+  "author": { "@type": "Person", "name": "Marliese Muro Cash" },
+  "publisher": { "@type": "Organization", "name": "Potenciar Pymes" },
+  "url": "https://potenciarpymes.ar/blog/proteger-tu-marca-argentina"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Si ya tengo el dominio .com.ar, mi marca está protegida?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. El dominio lo administra NIC Argentina y solo da derecho sobre esa dirección web. La protección legal del nombre de un negocio se logra únicamente registrándolo ante el INPI." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa si no se usa una marca registrada?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Según el artículo 26 de la Ley de Marcas 22.362, si no se usa durante 5 años consecutivos puede caducar, total o parcialmente. También hay que presentar una declaración jurada de uso entre el año 5 y el 6 del registro." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cada cuánto hay que renovar una marca en Argentina?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Cada 10 años, de forma indefinida, mientras se siga usando y renovando a tiempo." }
+    }
+  ]
+}
+</script>
+
+</body>
+</html>
