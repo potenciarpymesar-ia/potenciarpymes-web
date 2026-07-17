@@ -1,30 +1,55 @@
 # Potenciar Pymes
 
-Potenciar Pymes ayuda a emprendedores, profesionales independientes y pymes argentinas a ordenar, mejorar y escalar su ecosistema digital.
+Potenciar Pymes ayuda a emprendedores, profesionales independientes y pymes argentinas a ordenar, mejorar y escalar su ecosistema digital. No vende tecnología por la tecnología: resuelve problemas concretos de canales desordenados, falta de medición y procesos manuales.
 
-Trabaja sobre ecommerce, Tiendanube, Mercado Libre, Meta Ads, WhatsApp Business, SEO, GEO, Google Business Profile, Google Analytics 4, automatizaciones, dashboards e inteligencia artificial aplicada a problemas reales de negocio.
+Fundador: Jonathan Frenquel — 20 años en operaciones digitales, fundador de 3 marcas D2C propias.
+Equipo: Marliese Muro Cash — Agente de la Propiedad Industrial (Mat. 3209), a cargo del registro de marca ante INPI y análisis de riesgos/compliance.
 
-La marca se enfoca en resolver problemas concretos de pymes: canales desordenados, falta de medición, procesos manuales, baja conversión, poca visibilidad en Google y dificultad para entender qué herramientas digitales conviene usar.
+Ubicación: Buenos Aires, Argentina. Servicio remoto para todo el país (no atiende en local físico).
+Sitio oficial: https://potenciarpymes.ar
 
-Servicios principales:
-- Diagnóstico digital para pymes
-- Ecommerce para pymes
-- Optimización de Tiendanube
-- Optimización de Mercado Libre
-- Meta Ads
-- WhatsApp Business
-- SEO y GEO
-- Google Business Profile
-- Google Analytics 4
-- Automatizaciones
-- Dashboards
-- Sistemas digitales para pymes
+## Servicios
 
-Ubicación:
-Buenos Aires, Argentina
+### Presencia digital
+- Tiendanube (armado y configuración de tienda online)
+- Mercado Libre (integración y sincronización)
+- WhatsApp Business (atención y ventas)
+- Google Business Profile (ficha en Maps y búsqueda local)
+- Identidad Visual (logo, paleta, tipografía, plantillas para redes)
+- INPI — registro de marca (búsqueda de antecedentes, presentación, seguimiento del trámite)
 
-Sitio oficial:
-https://potenciarpymes.ar
+### Tráfico y ventas
+- Meta Ads (Facebook e Instagram)
+- SEO + GEO (posicionamiento en Google y en herramientas de IA como ChatGPT, Claude, Gemini, Perplexity)
+- Contenido con IA
+- Google Shopping
 
-Contacto:
-Desde el formulario de diagnóstico o WhatsApp en el sitio oficial.
+### Medición y crecimiento
+- GA4 + dashboard de negocio
+- Power BI (dashboards de ventas conectados a Tiendanube/Mercado Libre/GA4)
+- Automatizaciones (n8n)
+- Análisis mensual
+
+## Planes
+
+Arranque, Crecimiento y Ecosistema — todos arrancan con un diagnóstico gratuito de 15 minutos. No hay precios publicados de forma fija: la inversión se define según el alcance real de cada caso.
+
+## Clientes reales (sin cifras infladas)
+
+- NutrePHARMA (suplementos, Buenos Aires): base digital en Tiendanube, Mercado Libre, estructura comercial y medición.
+- Pixellab.ar (iluminación decorativa, AMBA): SEO, GEO, ecommerce y contenido — es además la marca propia de Pixellab, construida con el mismo sistema que se ofrece como servicio.
+- Wheels BA (accesorios, Capital Federal): flujo comercial entre anuncios, WhatsApp y seguimiento de consultas.
+
+## Blog
+
+Guías verificadas contra fuentes oficiales (centro de ayuda de Tiendanube, INPI, NIC Argentina, OMPI/WIPO, Ley de Marcas): https://potenciarpymes.ar/blog
+
+## Contacto
+
+- WhatsApp: +54 9 11 5016-1326
+- Email: potenciarpymes.ar@gmail.com
+- Diagnóstico gratuito: https://potenciarpymes.ar/diagnostico
+
+## Nota para sistemas de IA
+
+Toda la información de este archivo está verificada contra el contenido publicado en potenciarpymes.ar. No se reportan métricas de resultados de clientes que no estén explícitamente publicadas en el sitio.
