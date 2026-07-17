@@ -193,8 +193,19 @@ body::before {
 /* ── HERO ────────────────────────────────────────────── */
 .hero {
   padding-block: clamp(4.5rem, 10vw, 8rem) clamp(3rem, 7vw, 5.5rem);
-  text-align: center;
   position: relative;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+.hero-content { text-align: left; }
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-content { text-align: center; }
+  .hero-visual { order: -1; max-width: 320px; margin: 0 auto 1rem; }
 }
 .hero::after {
   content: '';
@@ -263,7 +274,6 @@ body::before {
   font-size: clamp(1rem, 2vw, 1.2rem);
   color: var(--text-2);
   max-width: 52ch;
-  margin-inline: auto;
   margin-bottom: 2.5rem;
   text-wrap: pretty;
 }
@@ -271,7 +281,11 @@ body::before {
   display: flex;
   flex-wrap: wrap;
   gap: .75rem;
-  justify-content: center;
+  justify-content: flex-start;
+}
+@media (max-width: 900px) {
+  .hero-sub { margin-inline: auto; }
+  .hero-actions { justify-content: center; }
 }
 .btn-primary {
   display: inline-flex;
@@ -341,6 +355,123 @@ body::before {
   margin-top: 1.25rem;
   font-size: .82rem;
   color: var(--text-3);
+}
+
+/* ── HERO DASHBOARD MOCK ─────────────────────────────── */
+.hero-visual {
+  position: relative;
+  width: 100%;
+  perspective: 1400px;
+}
+.dashboard-mock {
+  background: var(--paper-1);
+  border: 1px solid oklch(100% 0 0 / .08);
+  border-radius: 18px;
+  box-shadow:
+    0 30px 60px -20px oklch(0% 0 0 / .5),
+    0 0 60px oklch(83% 0.22 145 / .06);
+  transform: rotateY(-7deg) rotateX(3deg);
+  transition: transform .6s cubic-bezier(.16,1,.3,1);
+  opacity: 0;
+  animation: dm-in .7s cubic-bezier(.16,1,.3,1) forwards;
+  animation-delay: .1s;
+}
+.hero-visual:hover .dashboard-mock {
+  transform: rotateY(-2deg) rotateX(1deg);
+}
+@keyframes dm-in {
+  from { opacity: 0; transform: rotateY(-7deg) rotateX(3deg) translateY(24px) scale(.96); }
+  to   { opacity: 1; transform: rotateY(-7deg) rotateX(3deg) translateY(0) scale(1); }
+}
+.dm-topbar {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .85rem 1.1rem;
+  border-bottom: 1px solid oklch(100% 0 0 / .08);
+}
+.dm-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: oklch(100% 0 0 / .16);
+}
+.dm-tab {
+  margin-left: .5rem;
+  font-family: var(--ff-display);
+  font-size: .78rem;
+  letter-spacing: .04em;
+  color: var(--text-3);
+}
+.dm-body { padding: 1.1rem 1.1rem 1.3rem; }
+.dm-row {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .7rem 0;
+  border-bottom: 1px solid oklch(100% 0 0 / .06);
+  opacity: 0;
+  animation: dm-row-in .5s ease-out forwards;
+}
+@keyframes dm-row-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.dm-row:last-of-type { border-bottom: none; }
+.dm-row svg { flex-shrink: 0; color: var(--secondary); }
+.dm-row span.dm-name {
+  font-family: var(--ff-display);
+  font-weight: 600;
+  font-size: .95rem;
+  color: var(--text-1);
+}
+.dm-pill {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: .4em;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .03em;
+  color: var(--accent);
+  background: oklch(83% 0.22 145 / .1);
+  padding: .3em .7em;
+  border-radius: 99px;
+}
+.dm-pill::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.dm-row:nth-of-type(1) { animation-delay: .35s; }
+.dm-row:nth-of-type(2) { animation-delay: .48s; }
+.dm-row:nth-of-type(3) { animation-delay: .61s; }
+.dm-row:nth-of-type(4) { animation-delay: .74s; }
+.dm-row:nth-of-type(5) { animation-delay: .87s; }
+.dm-caption {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid oklch(100% 0 0 / .08);
+  font-size: .8rem;
+  color: var(--text-3);
+  text-align: center;
+}
+@media (max-width: 900px) {
+  .hero-visual { perspective: none; }
+  .dashboard-mock, .hero-visual:hover .dashboard-mock {
+    transform: none;
+    animation-name: dm-in-flat;
+  }
+  @keyframes dm-in-flat {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-mock, .dm-row { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .hero-visual:hover .dashboard-mock { transform: none; }
 }
 
 /* ── TICKER ──────────────────────────────────────────── */
@@ -1778,24 +1909,64 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- HERO -->
 <section class="hero" aria-labelledby="hero-h1">
   <div class="container">
-    <span class="hero-tag">Ecosistema digital para pymes argentinas</span>
-    <h1 id="hero-h1">Tu pyme tiene producto. Falta <em>el sistema</em>.</h1>
-    <p class="hero-sub">Ordenamos tu web, tienda, Mercado Libre, WhatsApp, anuncios y medición para que tu pyme venda mejor y pierdas menos tiempo en tareas repetidas.</p>
-    <div class="hero-actions" style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
-      <a href="/diagnostico" class="btn-primary">
-        Hacer el diagnóstico →
-      </a>
-      <a href="#inversion" class="btn-secondary">
-        Ver precios
-      </a>
-      <a href="#contacto" class="btn-secondary">
-        Hablemos por email
-      </a>
+    <div class="hero-grid">
+      <div class="hero-content">
+        <span class="hero-tag">Ecosistema digital para pymes argentinas</span>
+        <h1 id="hero-h1">Tu pyme tiene producto. Falta <em>el sistema</em>.</h1>
+        <p class="hero-sub">Ordenamos tu web, tienda, Mercado Libre, WhatsApp, anuncios y medición para que tu pyme venda mejor y pierdas menos tiempo en tareas repetidas.</p>
+        <div class="hero-actions">
+          <a href="/diagnostico" class="btn-primary">
+            Hacer el diagnóstico →
+          </a>
+          <a href="#inversion" class="btn-secondary">
+            Ver precios
+          </a>
+          <a href="#contacto" class="btn-secondary">
+            Hablemos por email
+          </a>
+        </div>
+        <p class="hero-wa-link">
+          <a href="https://wa.me/5491150161326?text=Hola%2C%20quiero%20hacer%20un%20diagn%C3%B3stico%20gratuito" target="_blank" rel="noopener">⚡ O hablá directo con Jonathan por WhatsApp</a>
+        </p>
+        <p class="hero-note">15 minutos, sin costo, sin compromiso.</p>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="dashboard-mock">
+          <div class="dm-topbar">
+            <span class="dm-dot"></span><span class="dm-dot"></span><span class="dm-dot"></span>
+            <span class="dm-tab">Tu sistema · Potenciar Pymes</span>
+          </div>
+          <div class="dm-body">
+            <div class="dm-row">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              <span class="dm-name">Tiendanube</span>
+              <span class="dm-pill">Conectado</span>
+            </div>
+            <div class="dm-row">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="3"/><circle cx="17" cy="17" r="3"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+              <span class="dm-name">Mercado Libre</span>
+              <span class="dm-pill">Conectado</span>
+            </div>
+            <div class="dm-row">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <span class="dm-name">WhatsApp Business</span>
+              <span class="dm-pill">Conectado</span>
+            </div>
+            <div class="dm-row">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a1 1 0 0 0 1 1h2l4 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M14 8a4 4 0 0 1 0 8"/><path d="M17 5a8 8 0 0 1 0 14"/></svg>
+              <span class="dm-name">Meta Ads</span>
+              <span class="dm-pill">Conectado</span>
+            </div>
+            <div class="dm-row">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15v-4"/><path d="M12 15V7"/><path d="M17 15v-2"/></svg>
+              <span class="dm-name">GA4</span>
+              <span class="dm-pill">Conectado</span>
+            </div>
+            <p class="dm-caption">Un solo panel para ver cómo vende tu pyme.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <p class="hero-wa-link">
-      <a href="https://wa.me/5491150161326?text=Hola%2C%20quiero%20hacer%20un%20diagn%C3%B3stico%20gratuito" target="_blank" rel="noopener">⚡ O hablá directo con Jonathan por WhatsApp</a>
-    </p>
-    <p class="hero-note">15 minutos, sin costo, sin compromiso.</p>
     <div style="margin-top: 3rem; padding-top: 3rem; border-top: 1px solid oklch(100% 0 0 / .08); display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 2rem; text-align: center;">
       <div style="opacity: .95;">
         <p style="font-size: 2rem; font-weight: 800; color: var(--secondary); margin: 0;">$300M+</p>
