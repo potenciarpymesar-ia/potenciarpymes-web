@@ -34,3 +34,6 @@ http://potenciarpymes.ar/* https://potenciarpymes.ar/:splat 301!
 
 /power-bi /power-bi.html 200
 /power-bi.html /power-bi 301
+
+/privacidad /privacidad.html 200
+/privacidad.html /privacidad 301
