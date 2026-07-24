@@ -25,18 +25,20 @@ async function dispatch(webhookPayload, subject, html) {
     return;
   }
 
+  const htmlDoc = `<!doctype html><html><head><meta charset="utf-8"></head><body>${html}</body></html>`;
+
   try {
     await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         authorization: `Bearer ${resendKey}`,
-        'content-type': 'application/json',
+        'content-type': 'application/json; charset=utf-8',
       },
       body: JSON.stringify({
         from: process.env.LEAD_NOTIFY_FROM || 'Potenciar Pymes <leads@potenciarpymes.ar>',
         to: notifyTo,
         subject,
-        html,
+        html: htmlDoc,
       }),
     });
   } catch (err) {
