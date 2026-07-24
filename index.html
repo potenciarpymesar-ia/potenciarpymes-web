@@ -267,43 +267,15 @@ body::before {
   pointer-events: none;
   z-index: -1;
 }
-.hero-paths {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-  color: var(--text-2);
-}
-.hero-paths path {
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-dasharray: 10 14;
-  animation: hero-path-flow linear infinite;
-}
-@keyframes hero-path-flow {
-  to { stroke-dashoffset: -1200; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-paths path { animation: none; }
-}
-
 .hero-tag {
-  display: inline-block;
+  display: block;
   font-family: var(--ff-display);
-  font-size: .75rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--secondary);
-  border: 1px solid var(--secondary);
-  padding: .3em .9em;
-  border-radius: 99px;
-  margin-bottom: 1.75rem;
-  transition: all .3s ease-out;
-  background: oklch(60% 0.20 280 / 0.08);
+  font-size: .9rem;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
 }
 .hero h1 {
   font-family: var(--ff-display);
@@ -427,33 +399,25 @@ body::before {
   display: inline-flex;
   align-items: center;
   gap: .5em;
-  background: oklch(60% 0.20 280 / .12);
+  background: transparent;
   color: var(--text-1);
   font-family: var(--ff-display, inherit);
   font-weight: 600;
   font-size: .95rem;
   padding: .75rem 1.5rem;
-  border-radius: 99px;
-  border: 1px solid oklch(60% 0.20 280 / .45);
+  border-radius: 8px;
+  border: 1px solid oklch(83% 0.22 145 / .35);
   text-decoration: none;
   transition: background .2s, border-color .2s, transform .2s;
-  animation: audit-promo-pulse 2.6s ease-in-out infinite;
 }
 .btn-audit-promo:hover {
-  background: oklch(60% 0.20 280 / .2);
-  border-color: var(--secondary);
+  background: oklch(83% 0.22 145 / .08);
+  border-color: var(--accent);
   transform: translateY(-2px);
 }
 .btn-audit-promo:focus-visible {
-  outline: 2px solid var(--secondary);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
-}
-@keyframes audit-promo-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 oklch(60% 0.20 280 / .35); }
-  50% { box-shadow: 0 0 0 8px oklch(60% 0.20 280 / 0); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .btn-audit-promo { animation: none; }
 }
 .hero-wa-link {
   margin-top: .6rem;
@@ -1556,6 +1520,11 @@ body::before {
   padding: .25rem;
   line-height: 1;
   transition: color .2s;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .sticky-close:hover { color: var(--text-1); }
 
@@ -2021,34 +1990,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main id="main">
 <!-- HERO -->
 <section class="hero" aria-labelledby="hero-h1">
-    <svg class="hero-paths" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
-      <path d="M-150 -120 C115 -87 155 -27 428 -25 C698 11 738 71 937 77 C1220 140 1260 200 1449 188 C1678 253 1718 313 1968 277 " opacity="0.2" stroke-width="1.47" style="animation-duration:25.2s;animation-delay:-7.7s"/>
-      <path d="M-150 -108 C86 -146 126 -86 359 -121 C598 -129 638 -69 821 -67 C1085 2 1125 62 1357 80 C1627 126 1667 186 1892 171 " opacity="0.2" stroke-width="1.5" style="animation-duration:27.8s;animation-delay:-5.8s"/>
-      <path d="M-150 -96 C102 -106 142 -46 350 -80 C647 -68 687 -8 952 -13 C1268 57 1308 117 1488 96 C1799 117 1839 177 2117 173 " opacity="0.06" stroke-width="1.17" style="animation-duration:26.9s;animation-delay:-14.6s"/>
-      <path d="M-150 -84 C79 -81 119 -21 395 7 C627 -1 667 59 857 25 C1157 8 1197 68 1433 68 C1672 123 1712 183 1905 201 " opacity="0.07" stroke-width="0.98" style="animation-duration:19.0s;animation-delay:-14.6s"/>
-      <path d="M-150 -72 C167 -8 207 52 418 92 C659 103 699 163 964 181 C1194 270 1234 330 1435 313 C1733 316 1773 376 1982 342 " opacity="0.06" stroke-width="1.12" style="animation-duration:19.4s;animation-delay:-8.0s"/>
-      <path d="M-150 -60 C107 -41 147 19 423 22 C701 95 741 155 939 129 C1250 195 1290 255 1495 232 C1789 315 1829 375 2028 420 " opacity="0.18" stroke-width="1.14" style="animation-duration:21.9s;animation-delay:-17.9s"/>
-      <path d="M-150 -48 C74 37 114 97 318 121 C563 188 603 248 843 234 C1081 288 1121 348 1307 328 C1583 399 1623 459 1865 444 " opacity="0.19" stroke-width="0.78" style="animation-duration:16.2s;animation-delay:-14.6s"/>
-      <path d="M-150 -36 C115 -68 155 -8 352 -15 C629 -38 669 22 886 62 C1204 108 1244 168 1493 180 C1727 145 1767 205 1949 247 " opacity="0.16" stroke-width="1.47" style="animation-duration:16.3s;animation-delay:-7.3s"/>
-      <path d="M-150 -24 C118 31 158 91 370 141 C598 172 638 232 891 273 C1185 324 1225 384 1484 427 C1740 476 1780 536 2050 574 " opacity="0.11" stroke-width="1.31" style="animation-duration:28.1s;animation-delay:-8.5s"/>
-      <path d="M-150 -12 C132 -2 172 58 411 73 C639 116 679 176 958 215 C1251 225 1291 285 1544 298 C1808 367 1848 427 2037 454 " opacity="0.05" stroke-width="1.14" style="animation-duration:22.7s;animation-delay:-15.4s"/>
-      <path d="M-150 0 C140 25 180 85 421 127 C667 89 707 149 917 170 C1157 152 1197 212 1468 231 C1732 307 1772 367 1985 387 " opacity="0.08" stroke-width="0.99" style="animation-duration:27.3s;animation-delay:-1.7s"/>
-      <path d="M-150 12 C158 22 198 82 436 70 C670 95 710 155 974 191 C1265 275 1305 335 1512 310 C1778 306 1818 366 2019 363 " opacity="0.14" stroke-width="1.04" style="animation-duration:20.4s;animation-delay:-3.2s"/>
-      <path d="M-150 24 C168 43 208 103 396 66 C703 31 743 91 994 102 C1245 165 1285 225 1467 198 C1732 161 1772 221 2035 202 " opacity="0.07" stroke-width="0.64" style="animation-duration:24.8s;animation-delay:-11.1s"/>
-      <path d="M-150 36 C133 81 173 141 434 187 C722 173 762 233 990 209 C1211 231 1251 291 1502 267 C1749 272 1789 332 2039 339 " opacity="0.14" stroke-width="1.28" style="animation-duration:21.5s;animation-delay:-4.2s"/>
-      <path d="M-150 48 C161 19 201 79 474 104 C707 123 747 183 989 225 C1247 259 1287 319 1555 351 C1869 371 1909 431 2155 410 " opacity="0.16" stroke-width="1.34" style="animation-duration:25.0s;animation-delay:-5.6s"/>
-      <path d="M-150 60 C91 137 131 197 409 245 C683 308 723 368 935 410 C1241 415 1281 475 1469 475 C1744 535 1784 595 2013 557 " opacity="0.17" stroke-width="0.66" style="animation-duration:27.2s;animation-delay:-16.5s"/>
-      <path d="M-150 72 C104 134 144 194 338 168 C609 222 649 282 913 304 C1228 328 1268 388 1543 356 C1785 384 1825 444 2034 470 " opacity="0.15" stroke-width="1.07" style="animation-duration:27.8s;animation-delay:-8.8s"/>
-      <path d="M-150 84 C101 94 141 154 406 195 C647 265 687 325 963 332 C1241 319 1281 379 1514 384 C1795 347 1835 407 2112 414 " opacity="0.11" stroke-width="1.32" style="animation-duration:23.9s;animation-delay:-10.2s"/>
-      <path d="M-150 96 C139 65 179 125 413 122 C729 202 769 262 976 264 C1208 281 1248 341 1510 382 C1777 383 1817 443 2017 459 " opacity="0.19" stroke-width="0.72" style="animation-duration:26.9s;animation-delay:-19.5s"/>
-      <path d="M-150 108 C89 98 129 158 378 147 C634 187 674 247 864 273 C1096 299 1136 359 1341 337 C1615 354 1655 414 1872 411 " opacity="0.13" stroke-width="0.74" style="animation-duration:18.9s;animation-delay:-7.4s"/>
-      <path d="M-150 120 C134 149 174 209 439 224 C745 214 785 274 1039 307 C1349 308 1389 368 1600 411 C1842 501 1882 561 2151 533 " opacity="0.09" stroke-width="1.25" style="animation-duration:19.6s;animation-delay:-18.1s"/>
-      <path d="M-150 132 C153 147 193 207 452 178 C712 227 752 287 934 265 C1223 344 1263 404 1539 374 C1810 433 1850 493 2080 514 " opacity="0.08" stroke-width="0.66" style="animation-duration:17.5s;animation-delay:-19.3s"/>
-      <path d="M-150 144 C125 171 165 231 402 204 C640 191 680 251 945 300 C1257 272 1297 332 1483 378 C1750 437 1790 497 2002 499 " opacity="0.13" stroke-width="0.99" style="animation-duration:24.4s;animation-delay:-19.7s"/>
-      <path d="M-150 156 C140 226 180 286 378 287 C672 299 712 359 912 334 C1183 296 1223 356 1492 388 C1783 460 1823 520 2066 517 " opacity="0.14" stroke-width="1.05" style="animation-duration:29.8s;animation-delay:-3.9s"/>
-      <path d="M-150 168 C96 246 136 306 390 336 C692 349 732 409 1001 448 C1291 508 1331 568 1587 565 C1880 534 1920 594 2134 596 " opacity="0.05" stroke-width="0.92" style="animation-duration:24.9s;animation-delay:-7.5s"/>
-      <path d="M-150 180 C93 263 133 323 380 313 C666 347 706 407 939 402 C1259 446 1299 506 1549 534 C1867 497 1907 557 2149 584 " opacity="0.09" stroke-width="0.96" style="animation-duration:16.7s;animation-delay:-16.1s"/>
-    </svg>
   <div class="container">
     <div class="hero-grid">
       <div class="hero-content">
