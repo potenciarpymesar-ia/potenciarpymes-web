@@ -177,6 +177,7 @@ body::before{
   user-select:none;
 }
 .option:hover{border-color:oklch(83% 0.22 145 / .3)}
+.option:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .option.selected{
   border-color:var(--accent);
   background:oklch(83% 0.22 145 / .07);
@@ -428,11 +429,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="step-label">Canal de ventas</p>
       <h2 class="question-h">¿Dónde vendés hoy?</h2>
       <p class="question-sub">Seleccioná todos los que apliquen.</p>
-      <div class="options options-grid" id="opts1">
-        <div class="option option-multi" data-val="whatsapp"><div class="option-check"></div><span class="option-text">Solo WhatsApp o local físico</span></div>
-        <div class="option option-multi" data-val="ml"><div class="option-check"></div><span class="option-text">Mercado Libre</span></div>
-        <div class="option option-multi" data-val="tiendanube"><div class="option-check"></div><span class="option-text">Tiendanube / e-commerce propio</span></div>
-        <div class="option option-multi" data-val="redes"><div class="option-check"></div><span class="option-text">Redes sociales (venta directa)</span></div>
+      <div class="options options-grid" id="opts1" role="group" aria-label="Canales de venta actuales">
+        <div class="option option-multi" data-val="whatsapp" role="checkbox" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">Solo WhatsApp o local físico</span></div>
+        <div class="option option-multi" data-val="ml" role="checkbox" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">Mercado Libre</span></div>
+        <div class="option option-multi" data-val="tiendanube" role="checkbox" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">Tiendanube / e-commerce propio</span></div>
+        <div class="option option-multi" data-val="redes" role="checkbox" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">Redes sociales (venta directa)</span></div>
       </div>
       <div class="actions">
         <button class="btn-next" id="next1" onclick="goTo(2)" disabled>Siguiente →</button>
@@ -444,12 +445,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="step-label">Atracción de clientes</p>
       <h2 class="question-h">¿Cómo atraés clientes nuevos?</h2>
       <p class="question-sub">Seleccioná todos los que apliquen.</p>
-      <div class="options options-grid" id="opts2">
-        <div class="option option-multi" data-val="boca"><div class="option-check"></div><span class="option-text">Boca en boca / referidos</span></div>
-        <div class="option option-multi" data-val="ads"><div class="option-check"></div><span class="option-text">Meta Ads (Facebook/Instagram)</span></div>
-        <div class="option option-multi" data-val="mlads"><div class="option-check"></div><span class="option-text">Publicidad en Mercado Libre</span></div>
-        <div class="option option-multi" data-val="seo"><div class="option-check"></div><span class="option-text">SEO / búsquedas de Google</span></div>
-        <div class="option option-multi" data-val="nada"><div class="option-check"></div><span class="option-text">No atraigo actualmente</span></div>
+      <div class="options options-grid" id="opts2" role="group" aria-label="Formas de atraer clientes">
+        <div class="option option-multi" data-val="boca" role="checkbox" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">Boca en boca / referidos</span></div>
+        <div class="option option-multi" data-val="ads" role="checkbox" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">Meta Ads (Facebook/Instagram)</span></div>
+        <div class="option option-multi" data-val="mlads" role="checkbox" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">Publicidad en Mercado Libre</span></div>
+        <div class="option option-multi" data-val="seo" role="checkbox" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">SEO / búsquedas de Google</span></div>
+        <div class="option option-multi" data-val="nada" role="checkbox" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">No atraigo actualmente</span></div>
       </div>
       <div class="actions">
         <button class="btn-back" onclick="goTo(1)">← Anterior</button>
@@ -462,10 +463,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="step-label">Medición</p>
       <h2 class="question-h">¿Medís tus resultados digitales?</h2>
       <p class="question-sub">Elegí la opción que mejor te describe.</p>
-      <div class="options" id="opts3">
-        <div class="option" data-val="mide_bien"><div class="option-check"></div><span class="option-text">Sí — tengo datos claros y los reviso seguido</span></div>
-        <div class="option" data-val="mide_algo"><div class="option-check"></div><span class="option-text">Más o menos — veo estadísticas pero no las entiendo del todo</span></div>
-        <div class="option" data-val="no_mide"><div class="option-check"></div><span class="option-text">No — no mido nada</span></div>
+      <div class="options" id="opts3" role="radiogroup" aria-label="Medición de resultados">
+        <div class="option" data-val="mide_bien" role="radio" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">Sí — tengo datos claros y los reviso seguido</span></div>
+        <div class="option" data-val="mide_algo" role="radio" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">Más o menos — veo estadísticas pero no las entiendo del todo</span></div>
+        <div class="option" data-val="no_mide" role="radio" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">No — no mido nada</span></div>
       </div>
       <div class="actions">
         <button class="btn-back" onclick="goTo(2)">← Anterior</button>
@@ -478,11 +479,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="step-label">Facturación online</p>
       <h2 class="question-h">¿Cuánto facturás online por mes?</h2>
       <p class="question-sub">Aproximado está bien.</p>
-      <div class="options" id="opts4">
-        <div class="option" data-val="f1"><div class="option-check"></div><span class="option-text">Menos de $500.000 ARS</span></div>
-        <div class="option" data-val="f2"><div class="option-check"></div><span class="option-text">$500.000 – $2.000.000 ARS</span></div>
-        <div class="option" data-val="f3"><div class="option-check"></div><span class="option-text">$2.000.000 – $5.000.000 ARS</span></div>
-        <div class="option" data-val="f4"><div class="option-check"></div><span class="option-text">Más de $5.000.000 ARS</span></div>
+      <div class="options" id="opts4" role="radiogroup" aria-label="Facturación anual">
+        <div class="option" data-val="f1" role="radio" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">Menos de $500.000 ARS</span></div>
+        <div class="option" data-val="f2" role="radio" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">$500.000 – $2.000.000 ARS</span></div>
+        <div class="option" data-val="f3" role="radio" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">$2.000.000 – $5.000.000 ARS</span></div>
+        <div class="option" data-val="f4" role="radio" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">Más de $5.000.000 ARS</span></div>
       </div>
       <div class="actions">
         <button class="btn-back" onclick="goTo(3)">← Anterior</button>
@@ -495,12 +496,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="step-label">Dolor principal</p>
       <h2 class="question-h">¿Cuál es tu mayor problema ahora mismo?</h2>
       <p class="question-sub">El que más te quita el sueño.</p>
-      <div class="options" id="opts5">
-        <div class="option" data-val="sin_clientes"><div class="option-check"></div><span class="option-text">No tengo suficientes clientes nuevos</span></div>
-        <div class="option" data-val="ads_sin_retorno"><div class="option-check"></div><span class="option-text">Gasto en ads pero no veo retorno claro</span></div>
-        <div class="option" data-val="desconectado"><div class="option-check"></div><span class="option-text">Mis canales están desconectados entre sí</span></div>
-        <div class="option" data-val="sin_tiempo"><div class="option-check"></div><span class="option-text">No tengo tiempo para manejar todo</span></div>
-        <div class="option" data-val="sin_datos"><div class="option-check"></div><span class="option-text">No sé qué está funcionando y qué no</span></div>
+      <div class="options" id="opts5" role="radiogroup" aria-label="Principal problema">
+        <div class="option" data-val="sin_clientes" role="radio" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">No tengo suficientes clientes nuevos</span></div>
+        <div class="option" data-val="ads_sin_retorno" role="radio" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">Gasto en ads pero no veo retorno claro</span></div>
+        <div class="option" data-val="desconectado" role="radio" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">Mis canales están desconectados entre sí</span></div>
+        <div class="option" data-val="sin_tiempo" role="radio" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">No tengo tiempo para manejar todo</span></div>
+        <div class="option" data-val="sin_datos" role="radio" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">No sé qué está funcionando y qué no</span></div>
       </div>
       <div class="actions">
         <button class="btn-back" onclick="goTo(4)">← Anterior</button>
@@ -583,6 +584,7 @@ var currentStep = 1;
 document.querySelectorAll('#opts1 .option, #opts2 .option').forEach(function(opt) {
   opt.addEventListener('click', function() {
     opt.classList.toggle('selected');
+    opt.setAttribute('aria-checked', opt.classList.contains('selected'));
     var group = opt.closest('.options').id;
     var qKey = group === 'opts1' ? 'q1' : 'q2';
     var val = opt.dataset.val;
@@ -590,6 +592,9 @@ document.querySelectorAll('#opts1 .option, #opts2 .option').forEach(function(opt
     var idx = arr.indexOf(val);
     if (idx > -1) { arr.splice(idx,1); } else { arr.push(val); }
     document.getElementById(qKey === 'q1' ? 'next1' : 'next2').disabled = arr.length === 0;
+  });
+  opt.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); opt.click(); }
   });
 });
 
@@ -599,10 +604,14 @@ document.querySelectorAll('#opts1 .option, #opts2 .option').forEach(function(opt
   var nextId = 'next' + (i+3);
   document.querySelectorAll('#' + gid + ' .option').forEach(function(opt) {
     opt.addEventListener('click', function() {
-      document.querySelectorAll('#' + gid + ' .option').forEach(function(o){ o.classList.remove('selected'); });
+      document.querySelectorAll('#' + gid + ' .option').forEach(function(o){ o.classList.remove('selected'); o.setAttribute('aria-checked', 'false'); });
       opt.classList.add('selected');
+      opt.setAttribute('aria-checked', 'true');
       answers[qKey] = opt.dataset.val;
       document.getElementById(nextId).disabled = false;
+    });
+    opt.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); opt.click(); }
     });
   });
 });
