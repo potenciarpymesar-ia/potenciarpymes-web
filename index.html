@@ -1726,6 +1726,27 @@ a[href]:hover::after {
   left: 0;
   color: var(--accent-dim);
 }
+.svc-extra {
+  grid-column: 1 / -1;
+  margin-top: 1px;
+  padding: 1.5rem 2.25rem;
+  background: var(--paper-1);
+  border-top: 1px solid oklch(100% 0 0 / .1);
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.svc-extra .svc-icon { flex-shrink: 0; color: var(--accent-dim); margin-top: .1rem; }
+.svc-extra .svc-icon svg { width: 1.5rem; height: 1.5rem; }
+.svc-extra h3 {
+  font-family: var(--ff-display);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-1);
+  letter-spacing: -.005em;
+  margin-bottom: .3rem;
+}
+.svc-extra p { font-size: .85rem; color: var(--text-3); line-height: 1.6; max-width: 62ch; }
 @media (max-width: 640px) {
   .svc-bento {
     grid-template-columns: 1fr;
@@ -2213,6 +2234,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><a href="/analisis-mensual">Análisis mensual</a></li>
         </ul>
       </div>
+      <div class="svc-extra reveal">
+        <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+        <div>
+          <h3>Sistemas digitales a medida</h3>
+          <p>Cuando el negocio necesita algo más que una tienda, una campaña o una planilla, podemos diseñar y construir sistemas simples para ordenar procesos, consultas, catálogos, contenidos, medición o seguimiento comercial. Primero revisamos el caso y definimos alcance, prioridad y viabilidad.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2524,6 +2552,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li>INPI (registro de marca)</li>
           <li>Branding y fotografía de producto con IA</li>
           <li>Dashboard ejecutivo y seguimiento trimestral</li>
+          <li>Sistemas internos y automatizaciones simples según el caso</li>
         </ul>
         <a href="https://wa.me/5491150161326?text=Hola%2C%20quiero%20consultar%20el%20plan%20Ecosistema" class="pack-cta secondary" target="_blank" rel="noopener">
           Consultar →
