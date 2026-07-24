@@ -1,5 +1,6 @@
 const crypto = require('node:crypto');
 const { notifyLead } = require('../_lib/notifyLead');
+const { isRateLimited, getClientIp } = require('../_lib/rateLimit');
 
 const MAX_TOKEN_AGE_MS = 30 * 60 * 1000; // 30 min
 
@@ -36,6 +37,11 @@ function buildRecommendation(score, severityCounts) {
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
     res.status(405).json({ error: 'method_not_allowed' });
+    return;
+  }
+
+  if (isRateLimited(getClientIp(req), { max: 5, windowMs: 10 * 60 * 1000 })) {
+    res.status(429).json({ error: 'rate_limited' });
     return;
   }
 

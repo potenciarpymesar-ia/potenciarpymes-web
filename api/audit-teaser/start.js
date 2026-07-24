@@ -1,5 +1,6 @@
 const crypto = require('node:crypto');
 const { runWebChecks, normalizeUrl } = require('../_lib/webChecks');
+const { isRateLimited, getClientIp } = require('../_lib/rateLimit');
 
 // Protección básica anti-SSRF: no dejar auditar IPs/hosts internos.
 // No es exhaustiva (no resuelve DNS), pero bloquea el abuso obvio de un form público.
@@ -25,6 +26,11 @@ function signPayload(payload, secret) {
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
     res.status(405).json({ error: 'method_not_allowed' });
+    return;
+  }
+
+  if (isRateLimited(getClientIp(req), { max: 5, windowMs: 10 * 60 * 1000 })) {
+    res.status(429).json({ error: 'rate_limited' });
     return;
   }
 
