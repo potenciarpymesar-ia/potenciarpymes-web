@@ -1182,6 +1182,8 @@ a { color: inherit; }
 .audit-submit:hover { opacity: .88; }
 .audit-submit:disabled { opacity: .5; cursor: not-allowed; }
 .audit-note { font-size: .82rem; color: var(--text-3); margin-top: .75rem; }
+.audit-note a { color: var(--text-3); text-decoration: underline; text-underline-offset: 2px; }
+.audit-note a:hover { color: var(--accent); }
 .audit-error {
   font-size: .88rem;
   color: oklch(70% 0.18 30);
@@ -1365,6 +1367,7 @@ a { color: inherit; }
           <div class="audit-recommendation" id="auditRecommendation"></div>
           <p class="audit-disclaimer">Este chequeo cubre solo lo verificable sin login (SEO técnico, datos estructurados y medición). Instagram, Mercado Libre, Google Business y WhatsApp Business se revisan en la Auditoría Full, con evidencia y las soluciones incluidas.</p>
           <a class="audit-wa-btn" id="auditWaBtn" href="#" target="_blank" rel="noopener">&#9889; Consultar por WhatsApp</a>
+          <p class="audit-note"><a href="/diagnostico">¿Preferís algo más simple? Probá el diagnóstico inicial de 5 preguntas →</a></p>
         </div>
       </div>
     </section>
