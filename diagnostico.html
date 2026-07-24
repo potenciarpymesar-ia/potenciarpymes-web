@@ -699,16 +699,16 @@ function buildWAMsg(nombre, score, gaps) {
 
 
 function saveDiagnosticLead(nombre, whatsapp, score, gaps, nivel) {
-  var data = new URLSearchParams();
-  data.append('form-name', 'diagnostico');
-  data.append('nombre', nombre);
-  data.append('whatsapp', whatsapp);
-  data.append('score', score);
-  data.append('nivel', nivel.label);
-  data.append('canales', answers.q1.join(', '));
-  data.append('brechas', gaps.map(function(g){ return g.title; }).join(' / '));
+  var payload = {
+    nombre: nombre,
+    whatsapp: whatsapp,
+    score: score,
+    nivel: nivel.label,
+    canales: answers.q1.join(', '),
+    brechas: gaps.map(function(g){ return g.title; }).join(' / ')
+  };
   if (window.fetch) {
-    fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data.toString() }).catch(function(){});
+    fetch('/api/diagnostic-lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }).catch(function(){});
   }
 }
 
