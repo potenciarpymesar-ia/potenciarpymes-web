@@ -545,22 +545,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="gaps">
-        <p class="gaps-title">Brechas identificadas en tu pyme</p>
+        <p class="gaps-title">Áreas con más para mejorar</p>
         <div class="gap-list" id="res-gaps"></div>
       </div>
 
       <div class="plan-rec" id="res-plan">
-        <p class="plan-rec-label">Plan recomendado</p>
-        <p class="plan-rec-name" id="res-plan-name"></p>
-        <p class="plan-rec-price" id="res-plan-price"></p>
-        <p class="plan-rec-desc" id="res-plan-desc"></p>
+        <p class="plan-rec-label">Recomendación</p>
+        <p class="plan-rec-name">Auditoría Full</p>
+        <p class="plan-rec-desc">Este diagnóstico te da la foto general. La Auditoría Full revisa ~40 puntos reales de tu web, redes, WhatsApp Business y Mercado Libre, con evidencia concreta de tu propio negocio — ahí te decimos exactamente qué está fallando y nos encargamos de arreglarlo.</p>
       </div>
 
       <a href="#" class="wa-btn" id="res-wa" target="_blank" rel="noopener">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Hablar con Jonathan ahora
+        Quiero la Auditoría Full
       </a>
-      <p class="result-note">Diagnóstico extendido de 15 min, sin costo.</p>
+      <p class="result-note">Este diagnóstico es gratis. La Auditoría Full se cotiza según tu caso.</p>
     </div>
 
   </div><!-- /card -->
@@ -677,24 +676,6 @@ function getGaps() {
   return gaps.slice(0,3);
 }
 
-function getPlan(score) {
-  if (score <= 2) return {
-    name: 'Plan Arranque',
-    price: 'USD 350/mes + setup único USD 250',
-    desc: 'Ideal para empezar a construir la base digital: Tiendanube o ML configurado, WhatsApp Business activo y Google Business optimizado. Primeras mejoras operativas en 30 días.'
-  };
-  if (score <= 3.5) return {
-    name: 'Plan Crecimiento',
-    price: 'USD 650/mes + setup único USD 450',
-    desc: 'El ecosistema completo: ML + Tiendanube integrados, Meta Ads gestionado, SEO/GEO, GA4 y contenido mensual. El más elegido por pymes que quieren escalar.'
-  };
-  return {
-    name: 'Plan Ecosistema',
-    price: 'USD 950/mes + setup único USD 700',
-    desc: 'Para pymes que ya venden y necesitan automatizar y escalar: dashboard ejecutivo, automatizaciones avanzadas, estrategia trimestral y soporte prioritario.'
-  };
-}
-
 function getNivel(score) {
   if (score <= 1.5) return { label: 'Digital en cero', sub: 'Hay mucho por construir — y eso es una oportunidad.' };
   if (score <= 2.5) return { label: 'Base incompleta', sub: 'Tenés algo, pero los canales no se conectan.' };
@@ -703,7 +684,7 @@ function getNivel(score) {
   return { label: 'Sistema maduro', sub: 'Muy bien posicionado. Optimizamos lo que ya funciona.' };
 }
 
-function buildWAMsg(nombre, score, gaps, plan) {
+function buildWAMsg(nombre, score, gaps) {
   var canalesStr = answers.q1.join(', ') || 'ninguno';
   var nivel = getNivel(score);
   var gapTitles = gaps.map(function(g){ return g.title; }).join(' / ');
@@ -711,14 +692,13 @@ function buildWAMsg(nombre, score, gaps, plan) {
     + '\n\nNombre: ' + nombre
     + '\nNivel digital: ' + nivel.label + ' (' + score + '/5)'
     + '\nCanales actuales: ' + canalesStr
-    + '\nBrechas detectadas: ' + gapTitles
-    + '\nPlan recomendado: ' + plan.name
-    + '\n\nQuiero saber más.';
+    + '\nÁreas con más para mejorar: ' + gapTitles
+    + '\n\nQuiero la Auditoría Full.';
   return 'https://wa.me/5491150161326?text=' + encodeURIComponent(msg);
 }
 
 
-function saveDiagnosticLead(nombre, whatsapp, score, gaps, plan, nivel) {
+function saveDiagnosticLead(nombre, whatsapp, score, gaps, nivel) {
   var data = new URLSearchParams();
   data.append('form-name', 'diagnostico');
   data.append('nombre', nombre);
@@ -727,7 +707,6 @@ function saveDiagnosticLead(nombre, whatsapp, score, gaps, plan, nivel) {
   data.append('nivel', nivel.label);
   data.append('canales', answers.q1.join(', '));
   data.append('brechas', gaps.map(function(g){ return g.title; }).join(' / '));
-  data.append('plan', plan.name);
   if (window.fetch) {
     fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data.toString() }).catch(function(){});
   }
@@ -738,7 +717,6 @@ function showResult() {
   var whatsapp = document.getElementById('inp-wa').value.trim();
   var score = calcScore();
   var gaps = getGaps();
-  var plan = getPlan(score);
   var nivel = getNivel(score);
 
   // Hide all steps, progress
@@ -761,22 +739,17 @@ function showResult() {
   var scoreRound = Math.round(score);
   document.getElementById('res-titulo').textContent = titulos[scoreRound] || titulos[3];
 
-  // Gaps
+  // Gaps — solo nombres de área, sin detalle específico (eso es lo que vende la Auditoría Full)
   var gapHtml = '';
   gaps.forEach(function(g) {
-    gapHtml += '<div class="gap-item"><span class="gap-icon">' + g.icon + '</span><div class="gap-body"><p class="gap-title">' + g.title + '</p><p class="gap-desc">' + g.desc + '</p></div></div>';
+    gapHtml += '<div class="gap-item"><span class="gap-icon">' + g.icon + '</span><div class="gap-body"><p class="gap-title">' + g.title + '</p></div></div>';
   });
   document.getElementById('res-gaps').innerHTML = gapHtml;
 
-  // Plan
-  document.getElementById('res-plan-name').textContent = plan.name;
-  document.getElementById('res-plan-price').textContent = plan.price;
-  document.getElementById('res-plan-desc').textContent = plan.desc;
-
   // WA
-  document.getElementById('res-wa').href = buildWAMsg(nombre, score, gaps, plan);
-  saveDiagnosticLead(nombre, whatsapp, score, gaps, plan, nivel);
-  ppTrack('diagnosis_completed', { score: score, nivel: nivel.label, plan_name: plan.name });
+  document.getElementById('res-wa').href = buildWAMsg(nombre, score, gaps);
+  saveDiagnosticLead(nombre, whatsapp, score, gaps, nivel);
+  ppTrack('diagnosis_completed', { score: score, nivel: nivel.label });
   ppTrack('generate_lead', { form_name: 'diagnostico', location: 'diagnostico_result' });
 
   // Show result
