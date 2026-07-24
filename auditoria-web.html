@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Política de Privacidad | Potenciar Pymes</title>
-<meta name="description" content="Cómo Potenciar Pymes recolecta, usa y protege los datos personales que enviás a través del sitio, conforme a la Ley 25.326 de Protección de Datos Personales.">
-<meta property="og:title" content="Política de Privacidad | Potenciar Pymes">
-<meta property="og:description" content="Cómo tratamos tus datos personales en potenciarpymes.ar.">
+<title>Auditoría Web Automática Gratis | Potenciar Pymes</title>
+<meta name="description" content="Ingresá la URL de tu negocio y recibí en segundos un puntaje real de tu web: SEO técnico, medición y analítica. Gratis, sin login.">
+<meta property="og:title" content="Auditoría Web Automática Gratis | Potenciar Pymes">
+<meta property="og:description" content="Chequeo técnico real de tu web en segundos: SEO, schema y medición. Sin login, sin costo.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://potenciarpymes.ar/privacidad">
+<meta property="og:url" content="https://potenciarpymes.ar/auditoria-web">
 <meta property="og:image" content="https://potenciarpymes.ar/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://potenciarpymes.ar/privacidad">
+<link rel="canonical" href="https://potenciarpymes.ar/auditoria-web">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9889;</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1122,9 +1122,172 @@ a { color: inherit; }
 .svc-related-card .arw { color:var(--accent); transition:transform .25s; }
 .svc-related-card:hover { border-color:oklch(83% 0.22 145 / .4); transform:translateY(-3px); box-shadow:0 0 30px var(--accent-glow); }
 .svc-related-card:hover .arw { transform:translateX(4px); }
+
+/* ── AUDITORÍA WEB AUTOMÁTICA ────────────────────────── */
+.audit-tool {
+  background: var(--paper-1);
+  border: 1px solid oklch(100% 0 0 / .08);
+  border-radius: var(--radius);
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  margin-top: 2.5rem;
+}
+.audit-step { display: none; }
+.audit-step.active { display: block; }
+.audit-row {
+  display: flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+}
+.audit-input,
+.audit-select {
+  flex: 1 1 260px;
+  background: var(--paper-0);
+  border: 1px solid oklch(100% 0 0 / .15);
+  border-radius: 8px;
+  padding: .85rem 1rem;
+  color: var(--text-1);
+  font-family: var(--ff-body);
+  font-size: 1rem;
+}
+.audit-input:focus,
+.audit-select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.audit-field { margin-bottom: 1rem; }
+.audit-field label {
+  display: block;
+  font-size: .85rem;
+  color: var(--text-2);
+  margin-bottom: .4rem;
+}
+.audit-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: .5em;
+  background: var(--accent);
+  color: var(--paper-0);
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  padding: .85rem 1.75rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: opacity .2s;
+  margin-top: .5rem;
+}
+.audit-submit:hover { opacity: .88; }
+.audit-submit:disabled { opacity: .5; cursor: not-allowed; }
+.audit-note { font-size: .82rem; color: var(--text-3); margin-top: .75rem; }
+.audit-error {
+  font-size: .88rem;
+  color: oklch(70% 0.18 30);
+  margin-top: .75rem;
+  display: none;
+}
+.audit-error.visible { display: block; }
+.audit-loading {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  color: var(--text-2);
+  font-size: .95rem;
+}
+.audit-spinner {
+  width: 20px; height: 20px;
+  border: 2px solid oklch(100% 0 0 / .15);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: audit-spin .8s linear infinite;
+}
+@keyframes audit-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .audit-spinner { animation: none; }
+}
+.audit-score-row {
+  display: flex;
+  align-items: baseline;
+  gap: .75rem;
+  margin-bottom: 1.5rem;
+}
+.audit-score-num {
+  font-family: var(--ff-display);
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: 800;
+  color: var(--accent);
+}
+.audit-score-label { color: var(--text-2); font-size: .95rem; }
+.audit-severity-row {
+  display: flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.audit-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .4em;
+  padding: .4rem .9rem;
+  border-radius: 99px;
+  font-size: .85rem;
+  font-weight: 600;
+  border: 1px solid oklch(100% 0 0 / .12);
+}
+.audit-chip.alto { color: oklch(72% 0.18 30); border-color: oklch(72% 0.18 30 / .35); }
+.audit-chip.medio { color: oklch(78% 0.15 80); border-color: oklch(78% 0.15 80 / .35); }
+.audit-chip.bajo { color: var(--text-3); }
+.audit-area-row {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.audit-area-chip {
+  background: var(--paper-2);
+  border: 1px solid oklch(100% 0 0 / .08);
+  border-radius: 6px;
+  padding: .4rem .8rem;
+  font-size: .82rem;
+  color: var(--text-2);
+}
+.audit-recommendation {
+  background: var(--paper-2);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 1.1rem 1.35rem;
+  color: var(--text-1);
+  font-size: .95rem;
+  margin-bottom: 1.75rem;
+}
+.audit-disclaimer {
+  font-size: .8rem;
+  color: var(--text-3);
+  margin-bottom: 1.75rem;
+  max-width: 60ch;
+}
+.audit-wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5em;
+  background: var(--accent);
+  color: var(--paper-0);
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  padding: .85rem 1.75rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: opacity .2s;
+}
+.audit-wa-btn:hover { opacity: .88; }
 </style>
 </head>
-<body data-service="privacidad">
+<body data-service="auditoria-web">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WW77R29R" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1351362610300825&ev=PageView&noscript=1" /></noscript>
 <a href="#main" class="skip-link">Saltar al contenido</a>
@@ -1141,63 +1304,129 @@ a { color: inherit; }
 </nav>
 <main id="main">
   <section class="section svc-hero container reveal">
-    <nav class="svc-breadcrumb" aria-label="Migas de pan"><a href="/">Inicio</a> &#8250; Política de Privacidad</nav>
-    <h1>Política de <em>Privacidad</em></h1>
-    <p class="lead">Cómo recolectamos, usamos y protegemos los datos personales que nos dejás en potenciarpymes.ar. Última actualización: julio de 2026.</p>
+    <nav class="svc-breadcrumb" aria-label="Migas de pan"><a href="/">Inicio</a> &#8250; Auditoría Web Automática</nav>
+    <span class="svc-tag">Gratis · Sin login</span>
+    <h1>Auditoría web automática: <em>tu puntaje técnico en segundos</em></h1>
+    <p class="lead">Ingresá la URL de tu negocio. Revisamos en el momento lo que es públicamente verificable: SEO técnico, datos estructurados y si tenés medición instalada.</p>
+    <p class="lead">No es la Auditoría Full — esa cubre además redes, Mercado Libre y WhatsApp Business, con evidencia y las soluciones incluidas. Esto es un primer chequeo automático y gratuito.</p>
   </section>
 
-  <section class="section container">
-    <div class="svc-section reveal">
-      <h2>Quién trata tus datos</h2>
-      <p>Potenciar Pymes (Jonathan Frenquel, CUIT 20-27768640-7), con domicilio en Buenos Aires, Argentina, es responsable del tratamiento de los datos personales que nos proporcionás a través de este sitio.</p>
-    </div>
+  <div class="section svc-body container">
+    <section class="svc-section reveal">
+      <div class="audit-tool" id="auditTool">
+        <div class="audit-step active" id="auditStepUrl">
+          <h2>Paso 1 — Tu web</h2>
+          <div class="audit-field">
+            <label for="auditUrl">URL de tu negocio</label>
+            <div class="audit-row">
+              <input class="audit-input" type="text" id="auditUrl" placeholder="ejemplo: mitienda.com.ar" autocomplete="url">
+            </div>
+          </div>
+          <button class="audit-submit" id="auditStartBtn" type="button">Revisar mi web</button>
+          <p class="audit-error" id="auditStartError">No pudimos revisar esa URL. Confirmá que esté bien escrita e intentá de nuevo.</p>
+          <p class="audit-note">Gratis. No accedemos a ninguna cuenta tuya — solo miramos lo público de tu sitio.</p>
+        </div>
 
-    <div class="svc-section reveal">
-      <h2>Qué datos recolectamos</h2>
-      <p>Cuando completás el diagnóstico gratuito, un formulario de contacto o nos escribís por WhatsApp, podemos recibir:</p>
+        <div class="audit-step" id="auditStepLoading">
+          <div class="audit-loading"><span class="audit-spinner" aria-hidden="true"></span> Revisando tu web…</div>
+        </div>
+
+        <div class="audit-step" id="auditStepContact">
+          <h2>Paso 2 — ¿A quién le mostramos el resultado?</h2>
+          <p class="lead" style="margin-bottom:1.25rem;">Ya corrimos el chequeo. Dejanos estos datos y te mostramos el resultado.</p>
+          <div class="audit-field">
+            <label for="auditNombre">Nombre</label>
+            <input class="audit-input" type="text" id="auditNombre" autocomplete="name">
+          </div>
+          <div class="audit-field">
+            <label for="auditWhatsapp">WhatsApp</label>
+            <input class="audit-input" type="tel" id="auditWhatsapp" autocomplete="tel" placeholder="11 1234 5678">
+          </div>
+          <div class="audit-field">
+            <label for="auditTipoNegocio">Tipo de negocio</label>
+            <input class="audit-input" type="text" id="auditTipoNegocio" placeholder="ej. indumentaria, gastronomía, servicios">
+          </div>
+          <div class="audit-field">
+            <label for="auditProblema">¿Qué te gustaría mejorar?</label>
+            <input class="audit-input" type="text" id="auditProblema" placeholder="ej. no me encuentran en Google">
+          </div>
+          <button class="audit-submit" id="auditRevealBtn" type="button">Ver mi resultado</button>
+          <p class="audit-error" id="auditRevealError">Completá nombre y WhatsApp para ver el resultado.</p>
+        </div>
+
+        <div class="audit-step" id="auditStepResult">
+          <h2>Tu resultado</h2>
+          <div class="audit-score-row">
+            <span class="audit-score-num" id="auditScoreNum">–</span>
+            <span class="audit-score-label" id="auditScoreLabel">puntos aprobados</span>
+          </div>
+          <div class="audit-severity-row" id="auditSeverityRow"></div>
+          <div class="audit-area-row" id="auditAreaRow"></div>
+          <div class="audit-recommendation" id="auditRecommendation"></div>
+          <p class="audit-disclaimer">Este chequeo cubre solo lo verificable sin login (SEO técnico, datos estructurados y medición). Instagram, Mercado Libre, Google Business y WhatsApp Business se revisan en la Auditoría Full, con evidencia y las soluciones incluidas.</p>
+          <a class="audit-wa-btn" id="auditWaBtn" href="#" target="_blank" rel="noopener">&#9889; Consultar por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="svc-section reveal">
+      <h2>Qué mira este chequeo</h2>
       <ul>
-        <li>Nombre</li>
-        <li>Número de WhatsApp o teléfono</li>
-        <li>Respuestas del diagnóstico (canales que usás, nivel de digitalización, brechas detectadas)</li>
-        <li>Si usás la auditoría web automática: la URL de tu sitio, tipo de negocio y qué te gustaría mejorar</li>
-        <li>Cualquier información que nos compartas voluntariamente por email o WhatsApp</li>
+        <li>SEO técnico: título, meta description, robots.txt, sitemap, HTTPS</li>
+        <li>Datos estructurados (schema) para Google y buscadores de IA</li>
+        <li>Si tenés medición instalada: GA4, GTM, Meta Pixel, Google Ads</li>
+        <li>Señales básicas de conversión: formularios y WhatsApp accesibles</li>
       </ul>
-      <p>No recolectamos datos sensibles (salud, ideología, datos biométricos) ni información de pago a través de este sitio.</p>
-    </div>
+    </section>
 
-    <div class="svc-section reveal">
-      <h2>Para qué usamos tus datos</h2>
-      <ul>
-        <li>Responder tu consulta o diagnóstico y armar una propuesta a medida</li>
-        <li>Contactarte por WhatsApp o email sobre nuestros servicios</li>
-        <li>Medir el uso del sitio de forma agregada (Google Analytics, Meta Pixel, Microsoft Clarity) para mejorar la experiencia</li>
-      </ul>
-      <p>No vendemos ni cedemos tus datos personales a terceros con fines comerciales.</p>
-    </div>
+    <section class="svc-section reveal">
+      <h2>Qué NO mira (y por qué)</h2>
+      <p>Instagram, Facebook, Mercado Libre, Google Business y la configuración de WhatsApp Business no se pueden revisar de forma automática y anónima — requieren acceso o capturas del propio negocio. Eso queda para la Auditoría Full, donde se audita con evidencia real de cada canal.</p>
+    </section>
 
-    <div class="svc-section reveal">
-      <h2>Dónde se almacenan</h2>
-      <p>Los datos del formulario de diagnóstico se procesan mediante Netlify Forms y n8n (automatización propia) para generar tu propuesta. Los datos de la auditoría web automática se procesan mediante una función propia alojada en Vercel, que nos notifica el resultado por email para poder contactarte; no accedemos a ninguna cuenta tuya, solo a lo público de la URL que ingresás. Las métricas de navegación se procesan mediante Google Analytics 4, Meta Pixel y Microsoft Clarity, conforme a las políticas de privacidad de cada proveedor.</p>
-    </div>
+    <section class="svc-section reveal">
+      <h2>Preguntas frecuentes</h2>
+      <div class="faq-list reveal" role="list">
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
+            &iquest;Esto reemplaza la Auditoría Full?
+            <span class="faq-arrow" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" aria-hidden="true">
+            <div class="faq-a-inner">No. Este chequeo automático solo mira lo técnico y público de tu web. La Auditoría Full suma redes, Mercado Libre, WhatsApp Business y Google Business con evidencia y las soluciones ya incluidas.</div>
+          </div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
+            &iquest;Necesito darles acceso a algo?
+            <span class="faq-arrow" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" aria-hidden="true">
+            <div class="faq-a-inner">No. Solo miramos lo que cualquiera puede ver visitando tu web públicamente — nada de logins ni contraseñas.</div>
+          </div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
+            &iquest;Por qué piden nombre y WhatsApp antes de mostrar el resultado?
+            <span class="faq-arrow" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" aria-hidden="true">
+            <div class="faq-a-inner">Para poder conversar el resultado con vos si te sirve, y porque el detalle completo de qué falla y cómo arreglarlo es justamente lo que incluye la Auditoría Full.</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="svc-section reveal">
-      <h2>Tus derechos</h2>
-      <p>Conforme a la Ley 25.326 de Protección de Datos Personales, tenés derecho a acceder, rectificar, actualizar o suprimir tus datos personales en cualquier momento. Para ejercerlo, escribinos a <a href="mailto:potenciarpymes.ar@gmail.com">potenciarpymes.ar@gmail.com</a>.</p>
-      <p>La Agencia de Acceso a la Información Pública (AAIP), órgano de control de la Ley 25.326, tiene la atribución de atender denuncias y reclamos que interpongan quienes resulten afectados en sus derechos.</p>
-    </div>
-
-    <div class="svc-section reveal">
-      <h2>Cookies</h2>
-      <p>Usamos cookies propias y de terceros (Google Analytics, Meta Pixel, Microsoft Clarity) para entender cómo se usa el sitio y mejorar nuestros servicios. Podés bloquear las cookies desde la configuración de tu navegador; el sitio seguirá funcionando, aunque no podremos medir tu visita.</p>
-    </div>
-
-    <div class="svc-section reveal">
-      <h2>Contacto</h2>
-      <p>Cualquier consulta sobre esta política o sobre tus datos personales: <a href="mailto:potenciarpymes.ar@gmail.com">potenciarpymes.ar@gmail.com</a>.</p>
-    </div>
-  </section>
+    <section class="svc-related reveal">
+      <h2>Servicios relacionados</h2>
+      <div class="svc-related-grid">
+        <a class="svc-related-card" href="/diagnostico"><span>Diagnóstico inicial del negocio<span style="display:block;font-family:var(--ff-body);font-weight:400;font-size:.82rem;color:var(--text-3);margin-top:.25rem;">5 preguntas sobre tu negocio</span></span><span class="arw" aria-hidden="true">&#8594;</span></a>
+        <a class="svc-related-card" href="/seo-geo"><span>SEO y GEO<span style="display:block;font-family:var(--ff-body);font-weight:400;font-size:.82rem;color:var(--text-3);margin-top:.25rem;">Aparecer en Google y en IA</span></span><span class="arw" aria-hidden="true">&#8594;</span></a>
+        <a class="svc-related-card" href="/ga4"><span>GA4 + Dashboard<span style="display:block;font-family:var(--ff-body);font-weight:400;font-size:.82rem;color:var(--text-3);margin-top:.25rem;">Medí lo que importa</span></span><span class="arw" aria-hidden="true">&#8594;</span></a>
+      </div>
+    </section>
+  </div>
 </main>
-
 <footer class="footer">
   <div class="footer-inner">
     <a href="/" class="footer-logo" aria-label="Potenciar Pymes">
@@ -1219,8 +1448,238 @@ a { color: inherit; }
       <a href="/meta-ads">Meta Ads</a>
       <a href="/whatsapp-business">WhatsApp Business</a>
     </nav>
-    <p class="footer-copy">© 2026 Potenciar Pymes · Buenos Aires</p>
+    <p class="footer-copy">© 2025 Potenciar Pymes · Buenos Aires</p>
   </div>
 </footer>
+
+<div class="sticky-bar" id="stickyBar" role="complementary" aria-label="Llamada a la accion">
+  <p class="sticky-bar-text"><strong>&iquest;Listo para ordenar tu sistema?</strong> Diagn&oacute;stico gratuito en 15 min.</p>
+  <div class="sticky-bar-actions">
+    <a href="https://wa.me/5491150161326?text=Hola%2C%20quiero%20hacer%20un%20diagn%C3%B3stico%20gratuito" class="sticky-bar-cta" target="_blank" rel="noopener">&#9889; Empezar</a>
+    <button class="sticky-close" id="stickyClose" aria-label="Cerrar">&#10005;</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  document.documentElement.classList.add('js');
+  var bar = document.getElementById('stickyBar');
+  var closeBtn = document.getElementById('stickyClose');
+  var dismissed = false;
+  function onScroll() {
+    if (dismissed) return;
+    var scrolled = window.scrollY > window.innerHeight * 0.7;
+    if (scrolled) { bar.classList.add('visible'); } else { bar.classList.remove('visible'); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  if (closeBtn) { closeBtn.addEventListener('click', function() { dismissed = true; bar.classList.remove('visible'); }); }
+
+  var items = document.querySelectorAll('.faq-item');
+  items.forEach(function(item) {
+    var btn = item.querySelector('.faq-q');
+    var ans = item.querySelector('.faq-a');
+    if (!btn || !ans) return;
+    btn.addEventListener('click', function() {
+      var isOpen = item.classList.contains('open');
+      items.forEach(function(i) {
+        i.classList.remove('open');
+        var b = i.querySelector('.faq-q'); var a = i.querySelector('.faq-a');
+        if (b) b.setAttribute('aria-expanded', 'false');
+        if (a) a.setAttribute('aria-hidden', 'true');
+      });
+      if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); ans.setAttribute('aria-hidden', 'false'); }
+    });
+  });
+
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    reveals.forEach(function(el) { el.classList.add('pre-reveal'); });
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.remove('pre-reveal'); e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(function(el) { obs.observe(el); });
+  } else { reveals.forEach(function(el) { el.classList.add('visible'); }); }
+})();
+</script>
+<script>
+(function(){
+  window.dataLayer = window.dataLayer || [];
+  window.ppTrack = function(eventName, params){
+    params = params || {};
+    params.page_path = params.page_path || window.location.pathname;
+    window.dataLayer.push(Object.assign({ event: eventName }, params));
+    if (typeof window.gtag === 'function') { window.gtag('event', eventName, params); }
+  };
+  document.addEventListener('click', function(e){
+    var link = e.target.closest('a');
+    if (!link) return;
+    var href = link.getAttribute('href') || '';
+    if (href.indexOf('wa.me') > -1) {
+      var loc = link.classList.contains('nav-cta') ? 'nav' : link.classList.contains('sticky-bar-cta') ? 'sticky_bar' : link.classList.contains('btn-primary') ? 'service_hero' : 'body';
+      window.ppTrack('click_whatsapp', { location: loc, service: document.body.getAttribute('data-service') || '', link_text: link.textContent.trim().slice(0,80) });
+    }
+    if (href.indexOf('diagnostico') > -1) {
+      window.ppTrack('start_diagnosis', { location: 'service_page', service: document.body.getAttribute('data-service') || '' });
+    }
+  });
+  var firedScroll = false;
+  window.addEventListener('scroll', function(){
+    if (firedScroll) return;
+    var doc = document.documentElement;
+    var scrollable = doc.scrollHeight - window.innerHeight;
+    if (scrollable > 0 && (window.scrollY / scrollable) >= 0.75) { firedScroll = true; window.ppTrack('scroll_75', { service: document.body.getAttribute('data-service') || '' }); }
+  }, { passive: true });
+})();
+</script>
+<script>
+(function(){
+  var stepUrl = document.getElementById('auditStepUrl');
+  var stepLoading = document.getElementById('auditStepLoading');
+  var stepContact = document.getElementById('auditStepContact');
+  var stepResult = document.getElementById('auditStepResult');
+
+  var urlInput = document.getElementById('auditUrl');
+  var startBtn = document.getElementById('auditStartBtn');
+  var startError = document.getElementById('auditStartError');
+
+  var revealBtn = document.getElementById('auditRevealBtn');
+  var revealError = document.getElementById('auditRevealError');
+
+  var token = null;
+
+  function showStep(step) {
+    [stepUrl, stepLoading, stepContact, stepResult].forEach(function(s){ s.classList.remove('active'); });
+    step.classList.add('active');
+  }
+
+  startBtn.addEventListener('click', function(){
+    var url = urlInput.value.trim();
+    startError.classList.remove('visible');
+    if (!url) { startError.textContent = 'Ingresá una URL.'; startError.classList.add('visible'); return; }
+    showStep(stepLoading);
+    fetch('/api/audit-teaser/start', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ url: url })
+    }).then(function(r){
+      if (!r.ok) throw new Error('bad_response');
+      return r.json();
+    }).then(function(data){
+      token = data.token;
+      if (window.ppTrack) window.ppTrack('audit_teaser_started', { service: 'auditoria-web' });
+      showStep(stepContact);
+    }).catch(function(){
+      showStep(stepUrl);
+      startError.textContent = 'No pudimos revisar esa URL. Confirmá que esté bien escrita e intentá de nuevo.';
+      startError.classList.add('visible');
+    });
+  });
+
+  revealBtn.addEventListener('click', function(){
+    var nombre = document.getElementById('auditNombre').value.trim();
+    var whatsapp = document.getElementById('auditWhatsapp').value.trim();
+    var tipoNegocio = document.getElementById('auditTipoNegocio').value.trim();
+    var problema = document.getElementById('auditProblema').value.trim();
+    revealError.classList.remove('visible');
+    if (!nombre || !whatsapp) {
+      revealError.textContent = 'Completá nombre y WhatsApp para ver el resultado.';
+      revealError.classList.add('visible');
+      return;
+    }
+    if (!token) { showStep(stepUrl); return; }
+    revealBtn.disabled = true;
+    fetch('/api/audit-teaser/reveal', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ token: token, nombre: nombre, whatsapp: whatsapp, tipoNegocio: tipoNegocio, problema: problema })
+    }).then(function(r){
+      if (!r.ok) throw new Error('bad_response');
+      return r.json();
+    }).then(function(data){
+      renderResult(data, urlInput.value.trim(), problema);
+      if (window.ppTrack) window.ppTrack('audit_teaser_completed', { service: 'auditoria-web', score: data.score.passed + '/' + data.score.total });
+      showStep(stepResult);
+    }).catch(function(){
+      revealBtn.disabled = false;
+      revealError.textContent = 'Algo falló al mostrar tu resultado. Probá de nuevo en un momento.';
+      revealError.classList.add('visible');
+    });
+  });
+
+  function renderResult(data, url, problema) {
+    document.getElementById('auditScoreNum').textContent = data.score.passed + '/' + data.score.total;
+    document.getElementById('auditScoreLabel').textContent = 'puntos aprobados';
+
+    var sevRow = document.getElementById('auditSeverityRow');
+    sevRow.innerHTML = '';
+    var sevLabels = { alto: 'urgente', medio: 'impacto medio', bajo: 'menor' };
+    ['alto','medio','bajo'].forEach(function(sev){
+      var count = (data.severityCounts && data.severityCounts[sev]) || 0;
+      var chip = document.createElement('span');
+      chip.className = 'audit-chip ' + sev;
+      chip.textContent = count + ' ' + sevLabels[sev];
+      sevRow.appendChild(chip);
+    });
+
+    var areaRow = document.getElementById('auditAreaRow');
+    areaRow.innerHTML = '';
+    (data.areasWithIssues || []).forEach(function(area){
+      var chip = document.createElement('span');
+      chip.className = 'audit-area-chip';
+      chip.textContent = area;
+      areaRow.appendChild(chip);
+    });
+
+    document.getElementById('auditRecommendation').textContent = data.recommendation;
+
+    var msg = 'Hola, quiero consultar por el diagnóstico de mi negocio.\n\nMi web es: ' + url + '\nLo que me gustaría mejorar es: ' + (problema || '-') + '\n\n(Código de referencia: ' + data.auditId + ')';
+    document.getElementById('auditWaBtn').href = 'https://wa.me/5491150161326?text=' + encodeURIComponent(msg);
+  }
+})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Auditoría Web Automática",
+      "url": "https://potenciarpymes.ar/auditoria-web",
+      "description": "Chequeo técnico automático y gratuito de SEO, datos estructurados y medición de una web, sin necesidad de login.",
+      "areaServed": { "@type": "Country", "name": "Argentina" },
+      "provider": { "@type": "Organization", "name": "Potenciar Pymes", "url": "https://potenciarpymes.ar/" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://potenciarpymes.ar/" },
+        { "@type": "ListItem", "position": 2, "name": "Auditoría Web Automática", "item": "https://potenciarpymes.ar/auditoria-web" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "&iquest;Esto reemplaza la Auditoría Full?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Este chequeo automático solo mira lo técnico y público de tu web. La Auditoría Full suma redes, Mercado Libre, WhatsApp Business y Google Business con evidencia y las soluciones ya incluidas." }
+        },
+        {
+          "@type": "Question",
+          "name": "&iquest;Necesito darles acceso a algo?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Solo miramos lo que cualquiera puede ver visitando tu web públicamente — nada de logins ni contraseñas." }
+        },
+        {
+          "@type": "Question",
+          "name": "&iquest;Por qué piden nombre y WhatsApp antes de mostrar el resultado?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Para poder conversar el resultado con vos si te sirve, y porque el detalle completo de qué falla y cómo arreglarlo es justamente lo que incluye la Auditoría Full." }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </body>
 </html>
