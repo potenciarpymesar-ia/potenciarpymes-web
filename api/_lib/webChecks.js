@@ -4,7 +4,11 @@
 // Instagram/Mercado Libre/WhatsApp Business/Google Business quedan afuera:
 // requieren sesion logueada o screenshots del cliente, no son verificables de forma anonima.
 
+const dns = require('node:dns').promises;
+
 const FETCH_TIMEOUT_MS = 8000;
+const MAX_REDIRECTS = 5;
+const MAX_BODY_CHARS = 2_000_000; // ~2MB, evita retener descargas gigantes en memoria
 
 function normalizeUrl(input) {
   let url = String(input || '').trim();
@@ -12,23 +16,78 @@ function normalizeUrl(input) {
   return new URL(url).toString();
 }
 
-async function fetchText(url, opts = {}) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
-  try {
-    const res = await fetch(url, {
-      signal: controller.signal,
-      redirect: 'follow',
-      headers: { 'user-agent': 'Mozilla/5.0 (compatible; PotenciarPymesAuditBot/1.0)' },
-      ...opts,
-    });
-    const text = await res.text().catch(() => '');
-    return { ok: res.ok, status: res.status, finalUrl: res.url, text };
-  } catch {
-    return { ok: false, status: 0, finalUrl: url, text: '' };
-  } finally {
-    clearTimeout(timer);
+// Protección SSRF real: resuelve DNS y valida la IP resuelta, no solo el
+// nombre de host. Sin esto, un sitio malicioso podría redirigir a
+// 169.254.169.254 (metadata de la nube) y el fetch lo seguiría ciego.
+const BLOCKED_HOSTNAMES = /^(localhost|0\.0\.0\.0|metadata\.google\.internal)$/i;
+
+function isPrivateIp(ip) {
+  if (/^127\./.test(ip)) return true;
+  if (/^10\./.test(ip)) return true;
+  if (/^192\.168\./.test(ip)) return true;
+  if (/^169\.254\./.test(ip)) return true;
+  const m172 = ip.match(/^172\.(\d{1,3})\./);
+  if (m172 && Number(m172[1]) >= 16 && Number(m172[1]) <= 31) return true;
+  if (ip === '::1') return true;
+  if (/^f[cd][0-9a-f]{2}:/i.test(ip)) return true; // IPv6 unique-local fc00::/7
+  if (/^fe80:/i.test(ip)) return true; // IPv6 link-local
+  return false;
+}
+
+async function assertSafeHost(hostname) {
+  if (BLOCKED_HOSTNAMES.test(hostname)) throw new Error('blocked_host');
+  if (/^\d{1,3}(\.\d{1,3}){3}$/.test(hostname) || hostname.includes(':')) {
+    if (isPrivateIp(hostname)) throw new Error('blocked_host');
+    return;
   }
+  const addrs = await dns.lookup(hostname, { all: true });
+  if (addrs.length === 0 || addrs.some((a) => isPrivateIp(a.address))) {
+    throw new Error('blocked_host');
+  }
+}
+
+async function fetchText(url, opts = {}) {
+  let currentUrl = url;
+  for (let hop = 0; hop < MAX_REDIRECTS; hop++) {
+    let hostname;
+    try {
+      hostname = new URL(currentUrl).hostname;
+      await assertSafeHost(hostname);
+    } catch {
+      return { ok: false, status: 0, finalUrl: currentUrl, text: '' };
+    }
+
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+    let res;
+    try {
+      res = await fetch(currentUrl, {
+        signal: controller.signal,
+        redirect: 'manual', // seguimos los saltos a mano para validar cada uno
+        headers: { 'user-agent': 'Mozilla/5.0 (compatible; PotenciarPymesAuditBot/1.0)' },
+        ...opts,
+      });
+    } catch {
+      return { ok: false, status: 0, finalUrl: currentUrl, text: '' };
+    } finally {
+      clearTimeout(timer);
+    }
+
+    if ([301, 302, 303, 307, 308].includes(res.status)) {
+      const location = res.headers.get('location');
+      if (!location) return { ok: false, status: res.status, finalUrl: currentUrl, text: '' };
+      try {
+        currentUrl = new URL(location, currentUrl).toString();
+      } catch {
+        return { ok: false, status: 0, finalUrl: currentUrl, text: '' };
+      }
+      continue;
+    }
+
+    const text = await res.text().catch(() => '');
+    return { ok: res.ok, status: res.status, finalUrl: currentUrl, text: text.slice(0, MAX_BODY_CHARS) };
+  }
+  return { ok: false, status: 0, finalUrl: currentUrl, text: '' };
 }
 
 function extract(re, text) {

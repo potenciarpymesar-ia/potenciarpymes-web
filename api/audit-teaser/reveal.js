@@ -58,9 +58,16 @@ module.exports = async (req, res) => {
   if (
     !token ||
     !nombre || typeof nombre !== 'string' || !nombre.trim() ||
-    !whatsapp || typeof whatsapp !== 'string' || !whatsapp.trim()
+    !whatsapp || typeof whatsapp !== 'string' || !whatsapp.trim() ||
+    (tipoNegocio && typeof tipoNegocio !== 'string') ||
+    (problema && typeof problema !== 'string')
   ) {
     res.status(400).json({ error: 'missing_fields' });
+    return;
+  }
+
+  if (nombre.length > 200 || whatsapp.length > 60 || (tipoNegocio || '').length > 200 || (problema || '').length > 500) {
+    res.status(400).json({ error: 'field_too_long' });
     return;
   }
 

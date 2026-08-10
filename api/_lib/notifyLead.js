@@ -2,6 +2,15 @@
 // esté lista, definir N8N_WEBHOOK_URL en las env vars de Vercel y este mismo
 // módulo empieza a postear ahí en vez de mandar el email, sin tocar quien lo llama.
 
+// Los campos del lead vienen del visitante -- escapar antes de embeber en
+// el HTML del email (si alguien pone "<img src=x onerror=...>" como nombre,
+// no queremos que el cliente de mail lo interprete).
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, (c) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+  }[c]));
+}
+
 async function dispatch(webhookPayload, subject, html) {
   const webhookUrl = process.env.N8N_WEBHOOK_URL;
   if (webhookUrl) {
@@ -54,14 +63,14 @@ async function notifyLead(lead) {
 
   const html = `
     <h2>Nuevo lead — Auditoría web automática</h2>
-    <p><strong>Código de referencia:</strong> ${lead.auditId}</p>
-    <p><strong>Nombre:</strong> ${lead.nombre}</p>
-    <p><strong>WhatsApp:</strong> ${lead.whatsapp}</p>
-    <p><strong>Web auditada:</strong> ${lead.url}</p>
-    <p><strong>Tipo de negocio:</strong> ${lead.tipoNegocio}</p>
-    <p><strong>Problema principal:</strong> ${lead.problema}</p>
+    <p><strong>Código de referencia:</strong> ${escapeHtml(lead.auditId)}</p>
+    <p><strong>Nombre:</strong> ${escapeHtml(lead.nombre)}</p>
+    <p><strong>WhatsApp:</strong> ${escapeHtml(lead.whatsapp)}</p>
+    <p><strong>Web auditada:</strong> ${escapeHtml(lead.url)}</p>
+    <p><strong>Tipo de negocio:</strong> ${escapeHtml(lead.tipoNegocio)}</p>
+    <p><strong>Problema principal:</strong> ${escapeHtml(lead.problema)}</p>
     <p><strong>Puntaje:</strong> ${lead.score.passed} / ${lead.score.total}</p>
-    <p><strong>Áreas con problemas:</strong> ${lead.areasWithIssues.join(', ') || 'ninguna'}</p>
+    <p><strong>Áreas con problemas:</strong> ${escapeHtml(lead.areasWithIssues.join(', ')) || 'ninguna'}</p>
     <p><strong>Detalle (interno, no se le mostró al visitante):</strong></p>
     <ul>${failedList || '<li>ninguno</li>'}</ul>
   `;
@@ -77,11 +86,11 @@ async function notifyLead(lead) {
 async function notifyDiagnosticLead(lead) {
   const html = `
     <h2>Nuevo lead — Diagnóstico inicial (5 preguntas)</h2>
-    <p><strong>Nombre:</strong> ${lead.nombre}</p>
-    <p><strong>WhatsApp:</strong> ${lead.whatsapp}</p>
-    <p><strong>Puntaje:</strong> ${lead.score} / 5 (${lead.nivel})</p>
-    <p><strong>Canales actuales:</strong> ${lead.canales}</p>
-    <p><strong>Áreas con más para mejorar:</strong> ${lead.brechas}</p>
+    <p><strong>Nombre:</strong> ${escapeHtml(lead.nombre)}</p>
+    <p><strong>WhatsApp:</strong> ${escapeHtml(lead.whatsapp)}</p>
+    <p><strong>Puntaje:</strong> ${lead.score} / 5 (${escapeHtml(lead.nivel)})</p>
+    <p><strong>Canales actuales:</strong> ${escapeHtml(lead.canales)}</p>
+    <p><strong>Áreas con más para mejorar:</strong> ${escapeHtml(lead.brechas)}</p>
   `;
 
   await dispatch(
