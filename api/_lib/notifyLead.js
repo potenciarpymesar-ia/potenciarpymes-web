@@ -28,7 +28,7 @@ async function dispatch(webhookPayload, subject, html) {
   }
 
   const resendKey = process.env.RESEND_API_KEY;
-  const notifyTo = process.env.LEAD_NOTIFY_EMAIL || 'potenciarpymes.ar@gmail.com';
+  const notifyTo = process.env.LEAD_NOTIFY_EMAIL || 'info@potenciarpymes.ar';
   if (!resendKey) {
     console.error('notifyLead: falta RESEND_API_KEY (y no hay N8N_WEBHOOK_URL) — lead solo queda en logs', webhookPayload);
     return;
