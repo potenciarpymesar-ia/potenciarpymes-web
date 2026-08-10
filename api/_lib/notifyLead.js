@@ -82,20 +82,32 @@ async function notifyLead(lead) {
   );
 }
 
-// Lead del diagnóstico de 5 preguntas (api/diagnostic-lead.js)
+// Lead del diagnóstico de 5 preguntas (api/diagnostic-lead.js), o del
+// formulario simple de contacto de la home (mismo endpoint, sin score).
 async function notifyDiagnosticLead(lead) {
-  const html = `
+  const isQuiz = lead.score !== undefined && lead.score !== null && lead.score !== '';
+
+  const html = isQuiz ? `
     <h2>Nuevo lead — Diagnóstico inicial (5 preguntas)</h2>
     <p><strong>Nombre:</strong> ${escapeHtml(lead.nombre)}</p>
     <p><strong>WhatsApp:</strong> ${escapeHtml(lead.whatsapp)}</p>
     <p><strong>Puntaje:</strong> ${lead.score} / 5 (${escapeHtml(lead.nivel)})</p>
     <p><strong>Canales actuales:</strong> ${escapeHtml(lead.canales)}</p>
     <p><strong>Áreas con más para mejorar:</strong> ${escapeHtml(lead.brechas)}</p>
+  ` : `
+    <h2>Nuevo lead — Formulario de contacto (home)</h2>
+    <p><strong>Nombre:</strong> ${escapeHtml(lead.nombre)}</p>
+    <p><strong>WhatsApp:</strong> ${escapeHtml(lead.whatsapp)}</p>
+    <p><strong>Rubro:</strong> ${escapeHtml(lead.rubro || '-')}</p>
   `;
 
+  const subject = isQuiz
+    ? `Nuevo lead diagnóstico — ${lead.nombre} (${lead.score}/5)`
+    : `Nuevo lead contacto (home) — ${lead.nombre}`;
+
   await dispatch(
-    { source: 'diagnostico', ...lead },
-    `Nuevo lead diagnóstico — ${lead.nombre} (${lead.score}/5)`,
+    { source: isQuiz ? 'diagnostico' : 'home_contacto', ...lead },
+    subject,
     html
   );
 }

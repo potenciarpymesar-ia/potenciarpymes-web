@@ -5,6 +5,9 @@ const { isRateLimited, getClientIp } = require('./_lib/rateLimit');
 // migración a Vercel (Vercel no procesa data-netlify, ese POST no llegaba
 // a ningún lado). Mismo lead, mismo momento de disparo, solo cambia el
 // mecanismo de entrega.
+//
+// También lo usa el formulario simple de contacto de la home (mismo bug,
+// mismo fix): ese envío no trae score/nivel/canales/brechas, solo rubro.
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
@@ -18,7 +21,7 @@ module.exports = async (req, res) => {
   }
 
   const body = req.body || {};
-  const { nombre, whatsapp, score, nivel, canales, brechas } = body;
+  const { nombre, whatsapp, score, nivel, canales, brechas, rubro } = body;
 
   if (!nombre || !whatsapp) {
     res.status(400).json({ error: 'missing_fields' });
@@ -32,6 +35,7 @@ module.exports = async (req, res) => {
     nivel: nivel || '',
     canales: canales || '',
     brechas: brechas || '',
+    rubro: rubro ? String(rubro).slice(0, 120) : '',
   });
 
   res.status(200).json({ ok: true });
