@@ -72,8 +72,8 @@ body{overflow-x:clip}
   --accent-dim: oklch(65% 0.18   145);
   --accent-dark:oklch(72% 0.22   145);
   --accent-glow:oklch(83% 0.22   145 / 0.14);
-  --secondary:      oklch(60% 0.20 280);
-  --secondary-glow: oklch(60% 0.20 280 / 0.12);
+  --secondary:      oklch(70% 0.16 50);
+  --secondary-glow: oklch(70% 0.16 50 / 0.12);
   --text-1:     oklch(97% 0      0);
   --text-2:     oklch(72% 0.008  145);
   --text-3:     oklch(60% 0.01   145);
@@ -92,7 +92,7 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   background-image:
-    radial-gradient(circle at 20% 50%, oklch(60% 0.20 280 / 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 20% 50%, oklch(70% 0.16 50 / 0.03) 0%, transparent 50%),
     radial-gradient(circle at 80% 80%, oklch(72% 0.22 145 / 0.02) 0%, transparent 50%);
   background-attachment: fixed;
 }
@@ -159,7 +159,7 @@ body::before {
 }
 .section {
   padding-block: clamp(4.5rem, 10vw, 8.5rem);
-  background: linear-gradient(180deg, transparent 0%, oklch(60% 0.20 280 / 0.02) 50%, transparent 100%);
+  background: linear-gradient(180deg, transparent 0%, oklch(70% 0.16 50 / 0.02) 50%, transparent 100%);
 }
 .section + .section {
   border-top: 1px solid;
@@ -197,7 +197,7 @@ body::before {
   display: inline-flex;
   align-items: center;
   gap: .45em;
-  background: linear-gradient(135deg, var(--secondary) 0%, oklch(55% 0.18 280) 100%);
+  background: linear-gradient(135deg, var(--secondary) 0%, oklch(58% 0.15 50) 100%);
   color: var(--paper-0);
   font-family: var(--ff-display);
   font-weight: 700;
@@ -265,7 +265,7 @@ body::before {
   inset: 0;
   background:
     radial-gradient(ellipse 100% 60% at 50% -20%, oklch(83% 0.22 145 / .08) 0%, transparent 60%),
-    radial-gradient(ellipse 100% 80% at 50% 120%, oklch(60% 0.20 280 / .05) 0%, transparent 70%);
+    radial-gradient(ellipse 100% 80% at 50% 120%, oklch(70% 0.16 50 / .05) 0%, transparent 70%);
   pointer-events: none;
   z-index: -1;
 }
@@ -278,6 +278,39 @@ body::before {
   text-transform: none;
   color: var(--accent);
   margin-bottom: 1.25rem;
+}
+.hero-dock {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+  padding-block: .25rem;
+}
+.dock-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--paper-2);
+  border: 1px solid oklch(100% 0 0 / .08);
+  color: var(--secondary);
+  text-decoration: none;
+  transition: transform .25s cubic-bezier(.34,1.56,.64,1), border-color .2s, background .2s;
+}
+.dock-item:hover, .dock-item:focus-visible {
+  transform: scale(1.22) translateY(-4px);
+  border-color: var(--secondary);
+  background: var(--paper-1);
+}
+.dock-item:focus-visible { outline: 2px solid var(--secondary); outline-offset: 2px; }
+.hero-dock:has(.dock-item:hover) .dock-item:not(:hover) {
+  transform: scale(0.94);
+}
+@media (prefers-reduced-motion: reduce) {
+  .dock-item { transition: none; }
+  .dock-item:hover, .dock-item:focus-visible,
+  .hero-dock:has(.dock-item:hover) .dock-item:not(:hover) { transform: none; }
 }
 .hero h1 {
   font-family: var(--ff-display);
@@ -678,7 +711,7 @@ body::before {
 .cliente-card:hover {
   transform: translateY(-4px);
   border-color: var(--secondary);
-  box-shadow: 0 12px 32px var(--secondary, oklch(60% 0.20 280 / 0.2));
+  box-shadow: 0 12px 32px var(--secondary, oklch(70% 0.16 50 / 0.2));
 }
 .cliente-name {
   font-family: var(--ff-display);
@@ -844,7 +877,7 @@ body::before {
 
 /* ── SERVICIOS ───────────────────────────────────────── */
 .servicios-section { background: var(--paper-1); }
-.svc-list a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--secondary, oklch(60% 0.20 280)); transition: text-decoration-color .2s; }
+.svc-list a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--secondary, oklch(70% 0.16 50)); transition: text-decoration-color .2s; }
 .svc-list a:hover { text-decoration-color: currentColor; opacity: .9; }
 .buckets {
   display: grid;
@@ -908,7 +941,7 @@ body::before {
 
 .faq-item:hover {
   border-color: var(--secondary);
-  box-shadow: 0 4px 16px var(--secondary, oklch(60% 0.20 280 / 0.1));
+  box-shadow: 0 4px 16px var(--secondary, oklch(70% 0.16 50 / 0.1));
 }
 .faq-trigger {
   width: 100%;
@@ -1393,12 +1426,12 @@ body::before {
 }
 
 .form-group input:focus::placeholder {
-  color: var(--secondary, oklch(60% 0.20 280 / 0.5));
+  color: var(--secondary, oklch(70% 0.16 50 / 0.5));
 }
 .form-group input:focus,
 .form-group select:focus {
   border-color: var(--secondary);
-  box-shadow: 0 0 0 2px var(--secondary, oklch(60% 0.20 280 / 0.4));
+  box-shadow: 0 0 0 2px var(--secondary, oklch(70% 0.16 50 / 0.4));
 }
 .form-group select { appearance: none; cursor: pointer; }
 .form-group select option { background: var(--paper-1); }
@@ -1607,7 +1640,7 @@ a[href]:hover::after {
 
 .pain-row:hover .pain-row-num {
   transform: scale(1.1);
-  text-shadow: 0 0 20px var(--secondary, oklch(60% 0.20 280 / 0.4));
+  text-shadow: 0 0 20px var(--secondary, oklch(70% 0.16 50 / 0.4));
 }
 .pain-row-body h3 {
   font-family: var(--ff-display);
@@ -1670,7 +1703,7 @@ a[href]:hover::after {
 
 .svc-main:hover {
   border-color: var(--secondary);
-  box-shadow: 0 8px 24px var(--secondary, oklch(60% 0.20 280 / 0.15));
+  box-shadow: 0 8px 24px var(--secondary, oklch(70% 0.16 50 / 0.15));
 }
 
 .svc-main:hover::before {
@@ -1703,7 +1736,7 @@ a[href]:hover::after {
 
 .svc-side:hover {
   border-color: var(--secondary);
-  box-shadow: 0 8px 24px var(--secondary, oklch(60% 0.20 280 / 0.15));
+  box-shadow: 0 8px 24px var(--secondary, oklch(70% 0.16 50 / 0.15));
 }
 
 .svc-side::before {
@@ -1998,6 +2031,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="hero-tag">Ecosistema digital para pymes argentinas</span>
         <h1 id="hero-h1"><span class="hero-h1-line hero-h1-line-1">Tu pyme tiene producto.</span><span class="hero-h1-line hero-h1-line-2">Falta <em>el sistema</em>.</span></h1>
         <p class="hero-sub">Ordenamos tu web, tienda, Mercado Libre, WhatsApp, anuncios y medición para que tu pyme venda mejor y pierdas menos tiempo en tareas repetidas.</p>
+        <div class="hero-dock" role="list" aria-label="Canales que conectamos">
+          <a href="/tiendanube" class="dock-item" title="Tiendanube" aria-label="Tiendanube" role="listitem">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </a>
+          <a href="/mercado-libre" class="dock-item" title="Mercado Libre" aria-label="Mercado Libre" role="listitem">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="3"/><circle cx="17" cy="17" r="3"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+          </a>
+          <a href="/whatsapp-business" class="dock-item" title="WhatsApp Business" aria-label="WhatsApp Business" role="listitem">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </a>
+          <a href="/meta-ads" class="dock-item" title="Meta Ads" aria-label="Meta Ads" role="listitem">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a1 1 0 0 0 1 1h2l4 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M14 8a4 4 0 0 1 0 8"/><path d="M17 5a8 8 0 0 1 0 14"/></svg>
+          </a>
+          <a href="/ga4" class="dock-item" title="GA4" aria-label="GA4" role="listitem">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15v-4"/><path d="M12 15V7"/><path d="M17 15v-2"/></svg>
+          </a>
+        </div>
         <div class="hero-actions">
           <a href="/diagnostico" class="btn-primary">
             Hacer el diagnóstico →
@@ -2417,7 +2467,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2 class="section-h2">No vendemos teoría. Ya construimos esto.</h2>
       <p class="section-lead">Antes de Potenciar Pymes, fundé y escalé Conectia Buenos Aires. Este es el sistema que armé — el mismo que ahora aplico para otras pymes.</p>
     </div>
-    <div class="reveal" style="background: var(--paper-2); border: 1px solid var(--secondary, oklch(60% 0.20 280 / 0.3)); border-radius: 16px; padding: clamp(2rem, 4vw, 3rem); position: relative; overflow: hidden;">
+    <div class="reveal" style="background: var(--paper-2); border: 1px solid var(--secondary, oklch(70% 0.16 50 / 0.3)); border-radius: 16px; padding: clamp(2rem, 4vw, 3rem); position: relative; overflow: hidden;">
       <div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--secondary), var(--accent), transparent);"></div>
       <div style="display: flex; gap: 1.25rem; align-items: center; margin-bottom: 1.75rem; flex-wrap: wrap;">
         <div style="width: 56px; height: 56px; border-radius: 12px; background: linear-gradient(135deg, var(--secondary), var(--accent-dark)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-family: var(--ff-display); font-size: 1.1rem; flex-shrink: 0;">CBA</div>
