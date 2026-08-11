@@ -94,5 +94,6 @@
       var offset=0,last=null,velocity=36,target=36,sequenceWidth=0;function measure(){sequenceWidth=sequence.getBoundingClientRect().width;offset=0}measure();if('ResizeObserver'in window)new ResizeObserver(measure).observe(grid);else window.addEventListener('resize',measure);grid.addEventListener('mouseenter',function(){target=0});grid.addEventListener('mouseleave',function(){target=36});function frame(now){if(last!==null){var dt=Math.min(.05,(now-last)/1000);velocity+=(target-velocity)*(1-Math.exp(-dt/.22));if(sequenceWidth){offset=(offset+velocity*dt)%sequenceWidth;track.style.transform='translate3d('+-offset+'px,0,0)'}}last=now;requestAnimationFrame(frame)}requestAnimationFrame(frame);
     })();
   </script>
+  <script>document.addEventListener('DOMContentLoaded',function(){var nav=document.querySelector('.nav-links');if(!nav||nav.querySelector('[data-launch-link]'))return;var link=document.createElement('a');link.href='/sistema-de-lanzamiento';link.textContent='Lanzamiento';link.setAttribute('data-launch-link','');nav.insertBefore(link,nav.children[1])});</script>
 </body>
 </html>
