@@ -5,6 +5,9 @@ http://potenciarpymes.ar/* https://potenciarpymes.ar/:splat 301!
 /diagnostico /diagnostico.html 200
 /diagnostico.html /diagnostico 301
 
+/diagnostico-digital /diagnostico-digital.html 200
+/diagnostico-digital.html /diagnostico-digital 301
+
 /sistema-de-lanzamiento /sistema-de-lanzamiento.html 200
 /sistema-de-lanzamiento.html /sistema-de-lanzamiento 301
 
