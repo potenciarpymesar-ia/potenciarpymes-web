@@ -1,46 +1,56 @@
 # Potenciar Pymes
 
-Última actualización: 22 de julio de 2026.
+Última actualización: 14 de agosto de 2026.
 
 Potenciar Pymes ayuda a emprendedores, profesionales independientes y pymes argentinas a ordenar, mejorar y escalar su ecosistema digital. No vende tecnología por la tecnología: resuelve problemas concretos de canales desordenados, falta de medición y procesos manuales.
 
-Fundador: Jonathan Frenquel — 20 años en operaciones digitales, fundador de 3 marcas D2C propias.
-Equipo: Marliese Muro Cash — Agente de la Propiedad Industrial (Mat. 3209), a cargo del registro de marca ante INPI y análisis de riesgos/compliance.
+Fundador: Jonathan Frenquel.
 
 Ubicación: Buenos Aires, Argentina. Servicio remoto para todo el país (no atiende en local físico).
 Sitio oficial: https://potenciarpymes.ar
 
 ## Servicios
 
-### Presencia digital
+### Presencia y marca
+- Sistema de Lanzamiento (marca, activos propios, web y captación para arrancar con presencia profesional)
+- Identidad Visual (logo, paleta, tipografía, plantillas para redes)
+- Google Business Profile (ficha en Maps y búsqueda local)
+
+### Ventas
 - Tiendanube (armado y configuración de tienda online)
 - Mercado Libre (integración y sincronización)
-- WhatsApp Business (atención y ventas)
-- Google Business Profile (ficha en Maps y búsqueda local)
-- Identidad Visual (logo, paleta, tipografía, plantillas para redes)
-- INPI — registro de marca (búsqueda de antecedentes, presentación, seguimiento del trámite)
+- Google Shopping
 
-### Tráfico y ventas
+### Captación
 - Meta Ads (Facebook e Instagram)
 - SEO + GEO (posicionamiento en Google y en herramientas de IA como ChatGPT, Claude, Gemini, Perplexity)
 - Contenido con IA
-- Google Shopping
 
-### Medición y crecimiento
-- GA4 + dashboard de negocio
-- Power BI (dashboards de ventas conectados a Tiendanube/Mercado Libre/GA4)
+### Conexión y medición
+- WhatsApp Business (atención y ventas)
 - Automatizaciones (n8n)
+- GA4 + dashboard de negocio
+- Power BI (dashboards conectados a Tiendanube/Mercado Libre/GA4)
 - Análisis mensual
+- INPI — registro de marca (búsqueda de antecedentes, presentación, seguimiento del trámite)
 
-## Planes
+## Diagnóstico
 
-Arranque, Crecimiento y Ecosistema — todos arrancan con un diagnóstico gratuito de 15 minutos. No hay precios publicados de forma fija: la inversión se define según el alcance real de cada caso.
+Dos puntos de entrada, sin costo:
+- Diagnóstico rápido (quiz de 5 preguntas): https://potenciarpymes.ar/diagnostico
+- Diagnóstico Digital Completo (con contexto, evidencia, prioridades y plan recomendado): https://potenciarpymes.ar/diagnostico-digital
+
+No hay precios publicados de forma fija: la inversión se define según el alcance real de cada caso.
 
 ## Clientes reales (sin cifras infladas)
 
-- NutrePHARMA (suplementos, Buenos Aires): base digital en Tiendanube, Mercado Libre, estructura comercial y medición.
-- Pixellab.ar (iluminación decorativa, AMBA): SEO, GEO, ecommerce y contenido — es además la marca propia de Pixellab, construida con el mismo sistema que se ofrece como servicio.
-- Wheels BA (accesorios, Capital Federal): flujo comercial entre anuncios, WhatsApp y seguimiento de consultas.
+- Conectia BA (informática, Buenos Aires): branding, redes, web, Tiendanube, Mercado Libre, Mercado Ads, WhatsApp Business, automatizaciones e IA aplicada a procesos internos. Mejor mes de facturación: $300M+.
+- Wheels BA (bicicletas urbanas y accesorios): branding desde cero, redes, web, Tiendanube, pasarelas de pago, atención B2B y B2C, mensajería automatizada y WhatsApp Business.
+- Nutrepharma (suplementos, Buenos Aires): auditoría digital, correcciones de GA4 y Google Analytics, Tiendanube, contenido, Meta, WhatsApp Business con IA, mensajería automatizada y CRM propio.
+
+## Recursos gratuitos
+
+Guías prácticas (SEO local, métricas, automatizaciones, WhatsApp Business, conexión de canales, uso de IA): https://potenciarpymes.ar/recursos
 
 ## Blog
 
