@@ -8,8 +8,10 @@ http://potenciarpymes.ar/* https://potenciarpymes.ar/:splat 301!
 /diagnostico-digital /diagnostico-digital.html 200
 /diagnostico-digital.html /diagnostico-digital 301
 
-/sistema-de-lanzamiento /sistema-de-lanzamiento.html 200
-/sistema-de-lanzamiento.html /sistema-de-lanzamiento 301
+/web-profesional /web-profesional.html 200
+/web-profesional.html /web-profesional 301
+/sistema-de-lanzamiento /web-profesional 301
+/sistema-de-lanzamiento.html /web-profesional 301
 
 /tiendanube /tiendanube.html 200
 /tiendanube.html /tiendanube 301
