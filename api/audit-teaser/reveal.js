@@ -53,7 +53,7 @@ module.exports = async (req, res) => {
   }
 
   const body = req.body || {};
-  const { token, nombre, whatsapp, tipoNegocio, problema } = body;
+  const { token, nombre, whatsapp, tipoNegocio, problema, requestId } = body;
 
   if (
     !token ||
@@ -70,6 +70,10 @@ module.exports = async (req, res) => {
     res.status(400).json({ error: 'field_too_long' });
     return;
   }
+  if (requestId !== undefined && (typeof requestId !== 'string' || !/^[a-zA-Z0-9_-]{16,100}$/.test(requestId))) {
+    res.status(400).json({ error: 'invalid_fields' });
+    return;
+  }
 
   const payload = verifyToken(token, secret);
   if (!payload) {
@@ -81,7 +85,9 @@ module.exports = async (req, res) => {
   const auditId = crypto.createHash('sha256').update(token).digest('hex').slice(0, 8).toUpperCase();
   const itemsFallidos = result.items.filter((i) => i.ok === false);
 
-  await notifyLead({
+  let receipt;
+  try {
+    receipt = await notifyLead({
     auditId,
     nombre: nombre.trim(),
     whatsapp: whatsapp.trim(),
@@ -91,9 +97,16 @@ module.exports = async (req, res) => {
     score: result.score,
     areasWithIssues: result.areasWithIssues,
     itemsFallidos,
+    ...(requestId ? { requestId } : {}),
   });
+  } catch (error) {
+    res.status(error.status || 502).json({ error: error.status ? error.message : 'contact_delivery_unconfirmed', stored: false, delivery: { status: 'unconfirmed' }, retryable: true });
+    return;
+  }
 
   res.status(200).json({
+    ok: true,
+    ...receipt,
     auditId,
     score: result.score,
     severityCounts: result.severityCounts,

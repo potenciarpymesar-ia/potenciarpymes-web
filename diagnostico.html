@@ -43,10 +43,10 @@ fbq('track', 'PageView');
 <meta charset="UTF-8">
   <link rel="icon" type="image/png" href="/favicon-potenciar-pymes-2026.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Diagnóstico Digital Gratis para Pymes | Potenciar Pymes</title>
-<meta name="description" content="Detectá qué está frenando el crecimiento digital de tu pyme. Diagnóstico gratuito sobre ventas, canales, publicidad, medición y automatización.">
-<meta property="og:title" content="Diagnóstico Digital Gratis para Pymes | Potenciar Pymes">
-<meta property="og:description" content="Detectá qué está frenando el crecimiento digital de tu pyme y qué conviene ordenar primero.">
+<title>Diagnóstico inicial gratis | Potenciar Pymes</title>
+<meta name="description" content="Respondé cinco preguntas sobre tu negocio y recibí una orientación inicial basada en tus respuestas. Gratis, con o sin web.">
+<meta property="og:title" content="Diagnóstico inicial gratis | Potenciar Pymes">
+<meta property="og:description" content="Cinco preguntas para una orientación inicial sobre tu negocio, basada en tus respuestas. Gratis, con o sin web.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://potenciarpymes.ar/diagnostico">
 <meta property="og:image" content="https://potenciarpymes.ar/og-potenciar-pymes-2026.png">
@@ -361,6 +361,7 @@ body::before{
   .score-wrap{flex-direction:column;gap:.75rem}
 }
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.nav-logo img{display:block!important;width:128px;height:auto}
 </style>
 <script type="application/ld+json">
 {
@@ -369,7 +370,7 @@ body::before{
   "name": "Diagnóstico Digital Gratis para Pymes",
   "url": "https://potenciarpymes.ar/diagnostico",
   "inLanguage": "es-AR",
-  "description": "Diagnóstico gratuito para detectar qué está frenando el crecimiento digital de una pyme: canales de venta, publicidad, medición, automatización y sistema comercial.",
+  "description": "Cuestionario gratuito de cinco preguntas sobre el negocio. La orientación inicial se basa en respuestas declaradas y no revisa sus canales.",
   "isPartOf": {
     "@type": "WebSite",
     "name": "Potenciar Pymes",
@@ -383,6 +384,9 @@ body::before{
 }
 </script>
 <link rel="stylesheet" href="/diagnostico-premium.css">
+<style>.diag-intro h2{line-height:1.03;letter-spacing:-.055em;max-width:11ch}.diag-intro>p:not(.eyebrow){max-width:38ch;margin-top:1.2rem;color:rgba(240,238,232,.7);font-size:.9rem;line-height:1.7}.diag-intro::after{margin-top:2.8rem}.question-h,.result-h{line-height:1.04;letter-spacing:-.05em}.wa-btn{white-space:normal;line-height:1.5}.result-note{line-height:1.6}@media(max-width:520px){.diag-intro h2{font-size:clamp(2.7rem,12vw,4rem)}.question-h{font-size:clamp(2.1rem,9vw,3rem)}.result-h{font-size:2.5rem}}</style>
+<link rel="stylesheet" href="/design-tokens.css">
+<link rel="stylesheet" href="/design-system.css">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -411,13 +415,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </form>
 
 <div class="page">
-  <h1 class="sr-only">Diagnóstico digital gratuito para pymes</h1>
+  <h1 class="sr-only">Diagnóstico inicial gratis</h1>
   <section class="diag-intro" aria-labelledby="diag-intro-title">
-    <p class="eyebrow">Diagnóstico Inicial sin web</p>
-    <h2 id="diag-intro-title">Antes de mover, <em>hay que leer.</em></h2>
-    <p>Una alternativa para negocios sin web, con una presencia difícil de revisar automáticamente o que todavía no saben dónde está el problema.</p>
+    <p class="eyebrow">Diagnóstico inicial gratis</p>
+    <h2 id="diag-intro-title">Una primera orientación para tu <em>negocio.</em></h2>
+    <p>Respondé cinco preguntas sobre cómo vendés, atraés clientes y medís resultados.</p><p class="diag-disclosure">Gratis. La orientación se basa en tus respuestas; no incluye una revisión de tus canales. Sirve con o sin web.</p><p class="diag-disclosure">Al terminar las preguntas te pediremos nombre y WhatsApp para identificar tu diagnóstico y poder contactarte. La orientación se muestra en esta página.</p>
   </section>
-  <p class="diag-kicker">5 preguntas · sin costo · primera lectura al final</p>
+  <p class="diag-kicker">5 preguntas · gratis · orientación al final</p>
 
   <!-- PROGRESS -->
   <div class="progress-wrap" id="progressWrap">
@@ -429,7 +433,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <!-- CARD -->
-  <div class="card" id="mainCard">
+  <div data-theme="light" class="card" id="mainCard">
 
     <!-- STEP 1 -->
     <div class="step" id="step1">
@@ -486,7 +490,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="step-label">Facturación online</p>
       <h2 class="question-h">¿Cuánto facturás online por mes?</h2>
       <p class="question-sub">Aproximado está bien.</p>
-      <div class="options" id="opts4" role="radiogroup" aria-label="Facturación anual">
+      <div class="options" id="opts4" role="radiogroup" aria-label="Facturación mensual online">
         <div class="option" data-val="f1" role="radio" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">Menos de $500.000 ARS</span></div>
         <div class="option" data-val="f2" role="radio" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">$500.000 – $2.000.000 ARS</span></div>
         <div class="option" data-val="f3" role="radio" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">$2.000.000 – $5.000.000 ARS</span></div>
@@ -512,15 +516,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="actions">
         <button class="btn-back" onclick="goTo(4)">← Anterior</button>
-        <button class="btn-next" id="next5" onclick="goTo(6)" disabled>Ver mi diagnóstico →</button>
+        <button class="btn-next" id="next5" onclick="goTo(6)" disabled>Ver mi orientación →</button>
       </div>
     </div>
 
     <!-- STEP 6: CONTACTO -->
     <div class="step" id="step6" style="display:none">
       <p class="step-label">Último paso</p>
-      <h2 class="question-h">¿A quién le enviamos el diagnóstico?</h2>
-      <p class="question-sub">Lo armamos personalizado según tus respuestas. Sin spam.</p>
+      <h2 class="question-h">Tus datos para ver la orientación.</h2>
+      <p class="question-sub">Nombre y WhatsApp son obligatorios. Los usamos para identificar tu diagnóstico y poder conversar sobre él; el resultado se muestra acá.</p>
       <div class="contact-form">
         <div class="field">
           <label for="inp-nombre">Nombre</label>
@@ -533,20 +537,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="actions">
         <button class="btn-back" onclick="goTo(5)">← Anterior</button>
-        <button class="btn-next" id="next6" onclick="showResult()" disabled>Ver mi diagnóstico →</button>
+        <button class="btn-next" id="next6" onclick="showResult()" disabled>Ver mi orientación →</button>
       </div>
+      <p class="result-note" id="diagnosticContactStatus" role="status" aria-live="polite" aria-atomic="true"></p>
     </div>
 
     <!-- RESULT -->
     <div class="result" id="resultStep">
       <div class="result-header">
-        <p class="result-name" id="res-nombre"></p>
+        <p class="result-name" id="res-nombre"></p><p class="result-note">Orientación inicial basada en tus respuestas declaradas. No inspeccionamos ni verificamos tus canales.</p>
         <h2 class="result-h" id="res-titulo"></h2>
         <div class="score-wrap">
-          <div class="score-circle">
-            <span class="score-num" id="res-score"></span>
-            <span class="score-denom">/ 5</span>
-          </div>
           <div>
             <div class="score-label" id="res-nivel"></div>
             <div class="result-sub" id="res-sublabel"></div>
@@ -555,27 +556,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="gaps">
-        <p class="gaps-title">Áreas con más para mejorar</p>
+        <p class="gaps-title">Temas sugeridos por tus respuestas</p>
         <div class="gap-list" id="res-gaps"></div>
       </div>
 
+      <p class="result-note" id="diagnosticSavedStatus" role="status" aria-live="polite" aria-atomic="true"></p>
       <div class="plan-rec" id="res-plan">
-        <p class="plan-rec-label">Recomendación</p>
+        <p class="plan-rec-label">Siguiente paso opcional / servicio pago</p>
         <p class="plan-rec-name">Diagnóstico Digital Completo</p>
-        <p class="plan-rec-desc">Este diagnóstico inicial te da una foto general. El Diagnóstico Digital Completo incorpora contexto, evidencia, prioridades y un plan recomendado para las áreas que correspondan a tu negocio.</p>
+        <p class="plan-rec-desc">El Diagnóstico Digital Completo suma revisión humana, evidencia, contexto del negocio, prioridades y un plan de acción según el alcance acordado.</p>
       </div>
 
       <a href="/diagnostico-digital" class="wa-btn" id="res-wa">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Ver Diagnóstico Digital Completo
+        <span aria-hidden="true">↗</span>
+        CONOCER EL DIAGNÓSTICO COMPLETO
       </a>
-      <p class="result-note">Este diagnóstico inicial es gratis. El Diagnóstico Digital Completo se solicita según tu caso.</p>
-      <p class="result-note"><a href="/auditoria-web">¿Tenés web? Hacé la lectura automática de señales públicas →</a></p>
+      <p class="result-note">Este diagnóstico inicial es gratis. El alcance y el valor del servicio completo se acuerdan antes de comenzar.</p>
+      <p class="result-note"><a href="/auditoria-web">¿Preferís revisar tu web? REVISAR MI WEB →</a></p>
     </div>
 
   </div><!-- /card -->
 </div><!-- /page -->
 
+<script src="/contact-client.js"></script>
 <script>
 var answers = { q1:[], q2:[], q3:'', q4:'', q5:'' };
 window.dataLayer = window.dataLayer || [];
@@ -583,21 +586,37 @@ function ppTrack(eventName, params){
   params = params || {};
   params.page_path = params.page_path || window.location.pathname;
   window.dataLayer.push(Object.assign({ event: eventName }, params));
-  if (typeof window.gtag === 'function') { window.gtag('event', eventName, params); }
 }
 var currentStep = 1;
+var diagnosticSubmitting = false;
+var diagnosticStored = false;
+var submitDiagnosticContact = window.ppCreateContactSubmitter('/api/diagnostic-lead');
+var diagnosisStarted = false;
+function trackDiagnosisStart(){if(!diagnosisStarted){diagnosisStarted=true;ppTrack('diagnostico_iniciado', { flow:'diagnostico_inicial' });}}
+document.querySelectorAll('.option').forEach(function(opt){opt.addEventListener('click',trackDiagnosisStart);});
 
 /* ── MULTI-SELECT ── */
+function toggleMultiAnswer(qKey, val) {
+  var arr = answers[qKey];
+  var idx = arr.indexOf(val);
+  if (idx > -1) arr.splice(idx, 1);
+  else if (qKey === 'q2' && val === 'nada') answers.q2 = ['nada'];
+  else {
+    if (qKey === 'q2') arr = answers.q2 = arr.filter(function(value){ return value !== 'nada'; });
+    arr.push(val);
+  }
+  return answers[qKey];
+}
 document.querySelectorAll('#opts1 .option, #opts2 .option').forEach(function(opt) {
   opt.addEventListener('click', function() {
-    opt.classList.toggle('selected');
-    opt.setAttribute('aria-checked', opt.classList.contains('selected'));
     var group = opt.closest('.options').id;
     var qKey = group === 'opts1' ? 'q1' : 'q2';
-    var val = opt.dataset.val;
-    var arr = answers[qKey];
-    var idx = arr.indexOf(val);
-    if (idx > -1) { arr.splice(idx,1); } else { arr.push(val); }
+    var arr = toggleMultiAnswer(qKey, opt.dataset.val);
+    document.querySelectorAll('#' + group + ' .option').forEach(function(option){
+      var selected = arr.includes(option.dataset.val);
+      option.classList.toggle('selected', selected);
+      option.setAttribute('aria-checked', selected);
+    });
     document.getElementById(qKey === 'q1' ? 'next1' : 'next2').disabled = arr.length === 0;
   });
   opt.addEventListener('keydown', function(e) {
@@ -609,16 +628,26 @@ document.querySelectorAll('#opts1 .option, #opts2 .option').forEach(function(opt
 ['opts3','opts4','opts5'].forEach(function(gid, i) {
   var qKey = 'q' + (i+3);
   var nextId = 'next' + (i+3);
-  document.querySelectorAll('#' + gid + ' .option').forEach(function(opt) {
+  var options = Array.from(document.querySelectorAll('#' + gid + ' .option'));
+  options.forEach(function(opt, index) {
+    opt.tabIndex = index === 0 ? 0 : -1;
     opt.addEventListener('click', function() {
-      document.querySelectorAll('#' + gid + ' .option').forEach(function(o){ o.classList.remove('selected'); o.setAttribute('aria-checked', 'false'); });
+      options.forEach(function(o){ o.classList.remove('selected'); o.setAttribute('aria-checked', 'false'); o.tabIndex = -1; });
       opt.classList.add('selected');
       opt.setAttribute('aria-checked', 'true');
+      opt.tabIndex = 0;
       answers[qKey] = opt.dataset.val;
       document.getElementById(nextId).disabled = false;
     });
     opt.addEventListener('keydown', function(e) {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); opt.click(); }
+      var direction = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? -1 : 0;
+      if (direction || e.key === 'Home' || e.key === 'End') {
+        e.preventDefault();
+        var next = e.key === 'Home' ? 0 : e.key === 'End' ? options.length - 1 : (index + direction + options.length) % options.length;
+        options[next].focus();
+        options[next].click();
+      }
     });
   });
 });
@@ -626,11 +655,13 @@ document.querySelectorAll('#opts1 .option, #opts2 .option').forEach(function(opt
 function checkContact() {
   var n = document.getElementById('inp-nombre').value.trim();
   var w = document.getElementById('inp-wa').value.trim();
-  document.getElementById('next6').disabled = !(n.length > 1 && w.length > 6);
+  document.getElementById('next6').disabled = diagnosticSubmitting || !(n.length > 1 && w.length > 6);
 }
 
 function goTo(step) {
-  ppTrack(step === 6 ? 'start_diagnosis_contact' : 'diagnosis_step_completed', { step: currentStep });
+  if (diagnosticSubmitting) return;
+  if(step > currentStep){ppTrack(step === 6 ? 'start_diagnosis_contact' : 'diagnosis_step_completed', { flow:'diagnostico_inicial', step:currentStep });}
+  if(step === 6 && currentStep === 5){ppTrack('diagnostico_answers_completed', { flow:'diagnostico_inicial' });}
   document.getElementById('step' + currentStep).style.display = 'none';
   currentStep = step;
   var el = document.getElementById('step' + step);
@@ -639,6 +670,9 @@ function goTo(step) {
     el.classList.remove('step');
     void el.offsetWidth;
     el.classList.add('step');
+    var heading = el.querySelector('h2');
+    heading.tabIndex = -1;
+    heading.focus();
   }
   updateProgress(step);
 }
@@ -655,88 +689,85 @@ function updateProgress(step) {
   }
 }
 
-/* ── SCORING ── */
-function calcScore() {
-  var score = 0;
-  // canales (max 2)
-  var canales = answers.q1;
-  if (canales.includes('ml')) score += 0.75;
-  if (canales.includes('tiendanube')) score += 0.75;
-  if (canales.includes('redes')) score += 0.5;
-  score = Math.min(score, 2);
-  // atracción (max 1.5)
-  var atr = answers.q2;
-  if (atr.includes('ads')) score += 0.5;
-  if (atr.includes('mlads')) score += 0.4;
-  if (atr.includes('seo')) score += 0.6;
-  score = Math.min(score, 3.5);
-  // medición (max 1)
-  if (answers.q3 === 'mide_bien') score += 1;
-  else if (answers.q3 === 'mide_algo') score += 0.4;
-  // facturación (max 0.5)
-  if (answers.q4 === 'f3') score += 0.25;
-  if (answers.q4 === 'f4') score += 0.5;
-  return Math.min(Math.round(score * 2) / 2, 5);
-}
-
+/* Orientación declarativa: estas respuestas no permiten puntuar la calidad del negocio. */
 function getGaps() {
+  var priorities = {
+    sin_clientes:{ id:'sin_clientes', icon:'📣', title:'Conseguir más clientes', desc:'Señalaste que necesitás más clientes. Conviene entender quién consulta hoy y qué vías de llegada tienen sentido para tu negocio antes de sumar canales.' },
+    ads_sin_retorno:{ id:'ads_sin_retorno', icon:'📊', title:'Entender el retorno de la publicidad', desc:'Contaste que invertís en publicidad sin ver un retorno claro. El primer tema es acordar qué resultado esperás y qué información permitiría evaluar esa inversión; no verificamos tus campañas.' },
+    desconectado:{ id:'desconectado', icon:'🔗', title:'Coordinar los canales que ya usás', desc:'Percibís tus canales como desconectados. Conviene revisar el recorrido entre esos canales y las tareas que se repiten, sin asumir que necesitás otras plataformas.' },
+    sin_tiempo:{ id:'sin_tiempo', icon:'⏱', title:'Recuperar tiempo en la operación', desc:'Tu problema principal es la falta de tiempo. Conviene identificar tareas repetidas y acordar cuáles simplificar o delegar antes de elegir herramientas.' },
+    sin_datos:{ id:'sin_datos', icon:'📊', title:'Entender qué está funcionando', desc:'Contaste que no sabés qué funciona. Conviene definir las decisiones que querés tomar y qué datos útiles necesitás; esto no confirma errores de analítica.' }
+  };
   var gaps = [];
-  var q1 = answers.q1, q2 = answers.q2;
-
-  if (!q1.includes('ml')) gaps.push({ icon:'📦', title:'Sin presencia en Mercado Libre', desc:'Mercado Libre puede ser un canal clave para muchas pymes argentinas. Si no está bien trabajado, podés estar perdiendo demanda que ya está buscando productos similares.' });
-  if (!q1.includes('tiendanube')) gaps.push({ icon:'🛒', title:'Sin e-commerce propio', desc:'Depender solo de ML te deja sin datos propios, sin marca y con márgenes ajustados. Tiendanube es el complemento necesario.' });
-  if (!q2.includes('ads') && !q2.includes('mlads') && !q2.includes('seo')) gaps.push({ icon:'📣', title:'Sin canal de tráfico activo', desc:'Tu negocio crece solo por boca en boca. Un canal de atracción activo (ads o SEO) genera clientes nuevos de manera predecible.' });
-  if (!q2.includes('seo')) gaps.push({ icon:'🔍', title:'Sin SEO ni GEO', desc:'Tu pyme puede estar poco clara para Google y herramientas de IA cuando alguien busca lo que vendés. Ordenar SEO y GEO ayuda a que tu información sea más fácil de entender y encontrar.' });
-  if (answers.q3 === 'no_mide' || answers.q3 === 'mide_algo') gaps.push({ icon:'📊', title:'Sin datos para tomar decisiones', desc:'Sin GA4 configurado no sabés qué funciona y qué no. Tomás decisiones de marketing en la oscuridad.' });
-  if (answers.q5 === 'desconectado') gaps.push({ icon:'🔗', title:'Canales desconectados', desc:'ML, Tiendanube e Instagram funcionando como islas separadas duplica el trabajo y pierde ventas entre canales.' });
-  if (answers.q5 === 'sin_tiempo') gaps.push({ icon:'⏱', title:'Operación manual sin automatizar', desc:'WhatsApp Business con respuestas rápidas, catálogo, etiquetas y seguimiento puede ahorrarte muchas tareas repetidas sin perder trato humano.' });
-
-  // Return top 3 most relevant
+  if (priorities[answers.q5]) gaps.push(priorities[answers.q5]);
+  if (answers.q3 !== 'mide_bien' && answers.q5 !== 'sin_datos' && answers.q5 !== 'ads_sin_retorno') {
+    gaps.push({ id:'medicion_declarada', icon:'📊', title:'Definir información útil para decidir', desc: answers.q3 === 'no_mide' ? 'Declaraste que hoy no medís resultados. Podés empezar por indicadores simples relacionados con tus objetivos, sin asumir que necesitás una herramienta específica.' : 'Declaraste que ves estadísticas pero no las entendés del todo. Conviene traducirlas a decisiones concretas antes de sumar medición.' });
+  }
+  if (answers.q2.includes('nada') && answers.q5 !== 'sin_clientes') {
+    gaps.push({ id:'captacion_declarada', icon:'📣', title:'Explorar cómo llegar a clientes adecuados', desc:'Declaraste que hoy no atraés clientes nuevos. Antes de elegir publicidad u otro canal, conviene entender tu oferta, tu público y tu capacidad de atender consultas.' });
+  }
   return gaps.slice(0,3);
 }
 
-function getNivel(score) {
-  if (score <= 1.5) return { label: 'Digital en cero', sub: 'Hay mucho por construir — y eso es una oportunidad.' };
-  if (score <= 2.5) return { label: 'Base incompleta', sub: 'Tenés algo, pero los canales no se conectan.' };
-  if (score <= 3.5) return { label: 'En desarrollo', sub: 'Buen punto de partida, falta sistema y escala.' };
-  if (score <= 4.5) return { label: 'Sistema parcial', sub: 'Avanzado, pero hay brechas clave que cerrar.' };
-  return { label: 'Sistema maduro', sub: 'Muy bien posicionado. Optimizamos lo que ya funciona.' };
-}
-
-function buildWAMsg(nombre, score, gaps) {
-  var canalesStr = answers.q1.join(', ') || 'ninguno';
-  var nivel = getNivel(score);
-  var gapTitles = gaps.map(function(g){ return g.title; }).join(' / ');
-  var msg = 'Hola Jonathan, hice el diagnóstico de Potenciar Pymes.'
-    + '\n\nNombre: ' + nombre
-    + '\nNivel digital: ' + nivel.label + ' (' + score + '/5)'
-    + '\nCanales actuales: ' + canalesStr
-    + '\nÁreas con más para mejorar: ' + gapTitles
-    + '\n\nQuiero consultar por el Diagnóstico Digital Completo.';
-  return 'https://wa.me/5491150161326?text=' + encodeURIComponent(msg);
+function getNivel() {
+  return { label:'Orientación basada en respuestas', sub:'El problema que declaraste guía el primer tema. No asignamos un nivel de madurez ni verificamos configuraciones técnicas.' };
 }
 
 
-function saveDiagnosticLead(nombre, whatsapp, score, gaps, nivel) {
+async function saveDiagnosticLead(nombre, whatsapp, gaps, nivel) {
   var payload = {
     nombre: nombre,
     whatsapp: whatsapp,
-    score: score,
+    score: null,
     nivel: nivel.label,
     canales: answers.q1.join(', '),
-    brechas: gaps.map(function(g){ return g.title; }).join(' / ')
+    brechas: gaps.map(function(g){ return g.title; }).join(' / '),
+    problema_declarado: answers.q5,
+    respuestas: answers
   };
-  if (window.fetch) {
-    fetch('/api/diagnostic-lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }).catch(function(){});
-  }
+  return submitDiagnosticContact(payload);
 }
 
-function showResult() {
+async function showResult() {
+  if (diagnosticSubmitting || diagnosticStored) return;
+  checkContact();
+  if (document.getElementById('next6').disabled) return;
   var nombre = document.getElementById('inp-nombre').value.trim();
   var whatsapp = document.getElementById('inp-wa').value.trim();
-  var score = calcScore();
   var gaps = getGaps();
-  var nivel = getNivel(score);
+  var nivel = getNivel();
+  diagnosticSubmitting = true;
+  checkContact();
+  var status = document.getElementById('diagnosticContactStatus');
+  status.setAttribute('aria-busy', 'true');
+  status.textContent = 'Enviando tu solicitud…';
+  document.getElementById('next6').textContent = 'Enviando…';
+  ppTrack('diagnostico_contact_submitted', { flow:'diagnostico_inicial' });
+  try {
+    var receipt = await saveDiagnosticLead(nombre, whatsapp, gaps, nivel);
+  } catch (error) {
+    status.textContent = 'No pudimos confirmar el envío de tu solicitud. Tus respuestas y datos siguen acá: podés reintentar.';
+    ppTrack('diagnostico_error', { flow:'diagnostico_inicial', stage:'contact_delivery' });
+    return;
+  } finally {
+    diagnosticSubmitting = false;
+    status.setAttribute('aria-busy', 'false');
+    document.getElementById('next6').textContent = 'Ver mi orientación →';
+    checkContact();
+  }
+  diagnosticStored = true;
+  if (receipt.stored === true && typeof receipt.leadId === 'string' && receipt.leadId.trim()) {
+    ppTrack('generate_lead', { form_name:'diagnostico', flow:'diagnostico_inicial' });
+    ppTrack('diagnostico_contact_saved', { flow:'diagnostico_inicial' });
+    ppTrack('diagnostico_completado', { flow:'diagnostico_inicial' });
+    ppTrack('diagnosis_completed', { flow:'diagnostico_inicial' });
+    status.textContent = 'Contacto guardado.';
+    document.getElementById('diagnosticSavedStatus').textContent = 'Tu contacto quedó guardado. La notificación al equipo se gestiona por separado.';
+  } else {
+    ppTrack('diagnostico_contact_sent', { flow:'diagnostico_inicial' });
+    status.textContent = 'Tu solicitud fue enviada.';
+    document.getElementById('diagnosticSavedStatus').textContent = 'Tu solicitud fue enviada. Esto confirma la aceptación del envío, no un guardado en un CRM ni la lectura del mensaje.';
+  }
 
   // Hide all steps, progress
   document.getElementById('step6').style.display = 'none';
@@ -744,38 +775,31 @@ function showResult() {
 
   // Fill result
   document.getElementById('res-nombre').textContent = 'Diagnóstico para ' + nombre;
-  document.getElementById('res-score').textContent = score;
   document.getElementById('res-nivel').textContent = nivel.label;
   document.getElementById('res-sublabel').textContent = nivel.sub;
 
-  var titulos = {
-    1: 'Tu pyme todavía no tiene sistema digital.',
-    2: 'Tenés canales, pero no están conectados.',
-    3: 'Vas por buen camino — falta el sistema.',
-    4: 'Buen sistema, con brechas clave a cerrar.',
-    5: 'Sistema maduro — optimizamos juntos.'
-  };
-  var scoreRound = Math.round(score);
-  document.getElementById('res-titulo').textContent = titulos[scoreRound] || titulos[3];
+  document.getElementById('res-titulo').textContent = 'Tu primer tema: ' + gaps[0].title.toLowerCase() + '.';
 
   // Gaps — solo nombres de área, sin detalle específico del Diagnóstico Digital Completo.
   var gapHtml = '';
   gaps.forEach(function(g) {
-    gapHtml += '<div class="gap-item"><span class="gap-icon">' + g.icon + '</span><div class="gap-body"><p class="gap-title">' + g.title + '</p></div></div>';
+    gapHtml += '<div class="gap-item"><span class="gap-icon">' + g.icon + '</span><div class="gap-body"><p class="gap-title">' + g.title + '</p><p class="result-note">' + g.desc + '</p></div></div>';
   });
   document.getElementById('res-gaps').innerHTML = gapHtml;
 
-  saveDiagnosticLead(nombre, whatsapp, score, gaps, nivel);
-  ppTrack('diagnosis_completed', { score: score, nivel: nivel.label });
-  ppTrack('generate_lead', { form_name: 'diagnostico', location: 'diagnostico_result' });
 
   // Show result
   var resEl = document.getElementById('resultStep');
   resEl.style.display = 'block';
   resEl.classList.add('step');
-  window.scrollTo({top:0,behavior:'smooth'});
+  var resultHeading = document.getElementById('res-titulo');
+  resultHeading.tabIndex = -1;
+  resultHeading.focus({preventScroll:true});
+  ppTrack('diagnostico_result_shown', { flow:'diagnostico_inicial' });
+  window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
 }
-document.getElementById('res-wa').addEventListener('click', function(){ window.dataLayer.push({ event: 'click_diagnostico_completo', location: 'diagnostico_inicial_result' }); });
+document.getElementById('res-wa').addEventListener('click', function(){ window.dataLayer.push({ event:'click_diagnostico_completo', flow:'diagnostico_inicial', location:'diagnostico_inicial_result' }); });
 </script>
+<script src="/design-system.js" defer></script>
 </body>
 </html>

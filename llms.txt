@@ -34,13 +34,17 @@ Sitio oficial: https://potenciarpymes.ar
 - Análisis mensual
 - INPI — registro de marca (búsqueda de antecedentes, presentación, seguimiento del trámite)
 
-## Diagnóstico
+## Por dónde empezar
 
-Dos puntos de entrada, sin costo:
-- Diagnóstico rápido (quiz de 5 preguntas): https://potenciarpymes.ar/diagnostico
-- Diagnóstico Digital Completo (con contexto, evidencia, prioridades y plan recomendado): https://potenciarpymes.ar/diagnostico-digital
+Dos opciones gratuitas e independientes:
+- Diagnóstico inicial gratis: cuestionario de cinco preguntas; orientación basada en respuestas declaradas, con o sin web. No inspecciona canales. https://potenciarpymes.ar/diagnostico
+- Chequeo web gratis: URL y señales públicas observables de SEO, medición y contacto; sin acceso a cuentas. https://potenciarpymes.ar/auditoria-web
 
-No hay precios publicados de forma fija: la inversión se define según el alcance real de cada caso.
+Servicio pago:
+- Diagnóstico Digital Completo: revisión humana, evidencia, contexto, validaciones de los canales aplicables, prioridades y plan de acción. Alcance y valor acordados antes de comenzar. https://potenciarpymes.ar/diagnostico-digital
+- La implementación posterior es opcional y se cotiza por separado.
+
+Los resultados gratuitos aparecen en las páginas de cada herramienta; /diagnostico-digital presenta el servicio comercial.
 
 ## Clientes reales (sin cifras infladas)
 

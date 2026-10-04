@@ -1,0 +1,93 @@
+{
+  "$schemaVersion": 1,
+  "description": "Potenciar Pymes. Single source for design-tokens.css. Brand colors never change with theme; semantic colors express status, not identity.",
+  "defaultTheme": "dark",
+  "brand": {
+    "ink": "#11110F",
+    "ink-soft": "#1A1A17",
+    "paper": "#F0EEE8",
+    "lime": "#D7FF3F",
+    "lime-hover": "#B9DC35"
+  },
+  "font": {
+    "display": "'Bricolage Grotesque', Arial, sans-serif",
+    "body": "'Manrope', Arial, sans-serif"
+  },
+  "type": {
+    "1": "0.75rem",
+    "2": "0.875rem",
+    "3": "1rem",
+    "4": "1.25rem",
+    "5": "1.5625rem",
+    "6": "clamp(1.5625rem, 1.35rem + 1vw, 1.953125rem)",
+    "7": "clamp(2rem, 4vw, 4.3rem)",
+    "8": "clamp(2.5rem, 6vw, 6.5rem)",
+    "9": "clamp(3rem, 9vw, 10rem)"
+  },
+  "weight": { "regular": 400, "medium": 500, "semibold": 600, "bold": 700, "display": 650, "heavy": 800 },
+  "leading": { "display": 1.02, "heading": 1.08, "body": 1.7, "label": 1.4 },
+  "tracking": { "display": "-0.045em", "heading": "-0.035em", "body": "0", "label": "0.09em" },
+  "space": { "1": "4px", "2": "8px", "3": "12px", "4": "16px", "5": "24px", "6": "32px", "7": "40px", "8": "48px", "9": "64px", "10": "80px", "11": "96px", "12": "128px" },
+  "breakpoint": { "diagnostic-mobile": "520px", "mobile": "560px", "portfolio": "760px", "home": "780px", "tablet": "900px" },
+  "container": { "max": "1440px", "reading": "68ch", "gutter": "clamp(1rem, 4vw, 3.5rem)" },
+  "radius": { "none": "0", "small": "4px", "round": "999px" },
+  "border-width": { "normal": "1px", "focus": "2px" },
+  "control": { "min-height": "48px", "compact-height": "44px" },
+  "z": { "base": 0, "raised": 1, "sticky": 50, "nav": 100, "dialog": 200, "toast": 300, "skip": 1000 },
+  "motion": { "fast": "150ms", "normal": "240ms", "slow": "600ms" },
+  "motion-reduced": { "fast": "0ms", "normal": "0ms", "slow": "0ms" },
+  "ease": { "standard": "cubic-bezier(0.2, 0, 0, 1)", "enter": "cubic-bezier(0.16, 1, 0.3, 1)" },
+  "themes": {
+    "dark": {
+      "bg": "{brand.ink}", "surface": "{brand.ink-soft}", "surface-raised": "#25251F",
+      "text": "{brand.paper}", "text-muted": "#BBBAB3", "text-subtle": "#A1A199", "border": "#77776F",
+      "action-bg": "{brand.lime}", "action-text": "{brand.ink}", "action-hover": "{brand.lime-hover}", "focus": "{brand.lime}",
+      "success": "#73D6B2", "success-bg": "#142D25",
+      "warning": "#F5CB76", "warning-bg": "#332815",
+      "danger": "#FFAAA5", "danger-bg": "#371E1D",
+      "info": "#9BC9FF", "info-bg": "#17293E",
+      "shadow": "0 16px 48px rgba(0, 0, 0, 0.35)"
+    },
+    "light": {
+      "bg": "{brand.paper}", "surface": "#FAF9F6", "surface-raised": "#FFFFFF",
+      "text": "{brand.ink}", "text-muted": "#595A54", "text-subtle": "#666760", "border": "#85857D",
+      "action-bg": "{brand.lime}", "action-text": "{brand.ink}", "action-hover": "{brand.lime-hover}", "focus": "#526900",
+      "success": "#146448", "success-bg": "#E0F1E8",
+      "warning": "#765000", "warning-bg": "#FCF0D4",
+      "danger": "#AA302A", "danger-bg": "#FCE8E5",
+      "info": "#245C9B", "info-bg": "#E6EFFB",
+      "shadow": "0 16px 48px rgba(17, 17, 15, 0.12)"
+    }
+  },
+  "aliases": {
+    "ink": "pp-brand-ink", "ink-soft": "pp-brand-ink-soft", "paper": "pp-brand-paper", "lime": "pp-brand-lime",
+    "display": "pp-font-display", "body": "pp-font-body", "ff-display": "pp-font-display", "ff-body": "pp-font-body", "ff-d": "pp-font-display", "ff-b": "pp-font-body",
+    "max": "pp-container-max", "max-w": "pp-container-max", "radius": "pp-radius-none",
+    "paper-0": "pp-bg", "paper-1": "pp-surface", "paper-2": "pp-surface-raised",
+    "text-1": "pp-text", "text-2": "pp-text-muted", "text-3": "pp-text-subtle", "muted": "pp-text-muted", "line": "pp-border",
+    "accent": "pp-action-bg", "accent-dim": "pp-action-hover"
+  },
+  "contrastPairs": [
+    { "foreground": "text", "background": "bg", "minimum": 4.5 },
+    { "foreground": "text", "background": "surface", "minimum": 4.5 },
+    { "foreground": "text", "background": "surface-raised", "minimum": 4.5 },
+    { "foreground": "text-muted", "background": "bg", "minimum": 4.5 },
+    { "foreground": "text-muted", "background": "surface", "minimum": 4.5 },
+    { "foreground": "text-muted", "background": "surface-raised", "minimum": 4.5 },
+    { "foreground": "text-subtle", "background": "bg", "minimum": 4.5 },
+    { "foreground": "text-subtle", "background": "surface", "minimum": 4.5 },
+    { "foreground": "text-subtle", "background": "surface-raised", "minimum": 4.5 },
+    { "foreground": "action-text", "background": "action-bg", "minimum": 4.5 },
+    { "foreground": "action-text", "background": "action-hover", "minimum": 4.5 },
+    { "foreground": "focus", "background": "bg", "minimum": 3 },
+    { "foreground": "focus", "background": "surface", "minimum": 3 },
+    { "foreground": "focus", "background": "surface-raised", "minimum": 3 },
+    { "foreground": "border", "background": "bg", "minimum": 3 },
+    { "foreground": "border", "background": "surface", "minimum": 3 },
+    { "foreground": "border", "background": "surface-raised", "minimum": 3 },
+    { "foreground": "success", "background": "success-bg", "minimum": 4.5 },
+    { "foreground": "warning", "background": "warning-bg", "minimum": 4.5 },
+    { "foreground": "danger", "background": "danger-bg", "minimum": 4.5 },
+    { "foreground": "info", "background": "info-bg", "minimum": 4.5 }
+  ]
+}

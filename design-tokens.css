@@ -1,0 +1,259 @@
+/* Generated from design-tokens.json. Do not edit; run node scripts/build-design-tokens.cjs.
+ * Contrast ratios use opaque sRGB colors; component opacity/background overlays require a separate check.
+ * dark: text/bg 16.29:1 (minimum 4.5:1)
+ * dark: text/surface 15.03:1 (minimum 4.5:1)
+ * dark: text/surface-raised 13.28:1 (minimum 4.5:1)
+ * dark: text-muted/bg 9.71:1 (minimum 4.5:1)
+ * dark: text-muted/surface 8.96:1 (minimum 4.5:1)
+ * dark: text-muted/surface-raised 7.91:1 (minimum 4.5:1)
+ * dark: text-subtle/bg 7.27:1 (minimum 4.5:1)
+ * dark: text-subtle/surface 6.71:1 (minimum 4.5:1)
+ * dark: text-subtle/surface-raised 5.92:1 (minimum 4.5:1)
+ * dark: action-text/action-bg 16.44:1 (minimum 4.5:1)
+ * dark: action-text/action-hover 12.02:1 (minimum 4.5:1)
+ * dark: focus/bg 16.44:1 (minimum 3:1)
+ * dark: focus/surface 15.17:1 (minimum 3:1)
+ * dark: focus/surface-raised 13.40:1 (minimum 3:1)
+ * dark: border/bg 4.19:1 (minimum 3:1)
+ * dark: border/surface 3.86:1 (minimum 3:1)
+ * dark: border/surface-raised 3.41:1 (minimum 3:1)
+ * dark: success/success-bg 8.37:1 (minimum 4.5:1)
+ * dark: warning/warning-bg 9.41:1 (minimum 4.5:1)
+ * dark: danger/danger-bg 8.45:1 (minimum 4.5:1)
+ * dark: info/info-bg 8.57:1 (minimum 4.5:1)
+ * light: text/bg 16.29:1 (minimum 4.5:1)
+ * light: text/surface 17.95:1 (minimum 4.5:1)
+ * light: text/surface-raised 18.90:1 (minimum 4.5:1)
+ * light: text-muted/bg 6.00:1 (minimum 4.5:1)
+ * light: text-muted/surface 6.61:1 (minimum 4.5:1)
+ * light: text-muted/surface-raised 6.96:1 (minimum 4.5:1)
+ * light: text-subtle/bg 4.93:1 (minimum 4.5:1)
+ * light: text-subtle/surface 5.43:1 (minimum 4.5:1)
+ * light: text-subtle/surface-raised 5.72:1 (minimum 4.5:1)
+ * light: action-text/action-bg 16.44:1 (minimum 4.5:1)
+ * light: action-text/action-hover 12.02:1 (minimum 4.5:1)
+ * light: focus/bg 5.36:1 (minimum 3:1)
+ * light: focus/surface 5.90:1 (minimum 3:1)
+ * light: focus/surface-raised 6.21:1 (minimum 3:1)
+ * light: border/bg 3.20:1 (minimum 3:1)
+ * light: border/surface 3.53:1 (minimum 3:1)
+ * light: border/surface-raised 3.72:1 (minimum 3:1)
+ * light: success/success-bg 6.08:1 (minimum 4.5:1)
+ * light: warning/warning-bg 6.36:1 (minimum 4.5:1)
+ * light: danger/danger-bg 5.63:1 (minimum 4.5:1)
+ * light: info/info-bg 5.88:1 (minimum 4.5:1)
+ */
+:root {
+  --pp-brand-ink: #11110F;
+  --pp-brand-ink-soft: #1A1A17;
+  --pp-brand-paper: #F0EEE8;
+  --pp-brand-lime: #D7FF3F;
+  --pp-brand-lime-hover: #B9DC35;
+  --pp-font-display: 'Bricolage Grotesque', Arial, sans-serif;
+  --pp-font-body: 'Manrope', Arial, sans-serif;
+  --pp-type-1: 0.75rem;
+  --pp-type-2: 0.875rem;
+  --pp-type-3: 1rem;
+  --pp-type-4: 1.25rem;
+  --pp-type-5: 1.5625rem;
+  --pp-type-6: clamp(1.5625rem, 1.35rem + 1vw, 1.953125rem);
+  --pp-type-7: clamp(2rem, 4vw, 4.3rem);
+  --pp-type-8: clamp(2.5rem, 6vw, 6.5rem);
+  --pp-type-9: clamp(3rem, 9vw, 10rem);
+  --pp-weight-regular: 400;
+  --pp-weight-medium: 500;
+  --pp-weight-semibold: 600;
+  --pp-weight-bold: 700;
+  --pp-weight-display: 650;
+  --pp-weight-heavy: 800;
+  --pp-leading-display: 1.02;
+  --pp-leading-heading: 1.08;
+  --pp-leading-body: 1.7;
+  --pp-leading-label: 1.4;
+  --pp-tracking-display: -0.045em;
+  --pp-tracking-heading: -0.035em;
+  --pp-tracking-body: 0;
+  --pp-tracking-label: 0.09em;
+  --pp-space-1: 4px;
+  --pp-space-2: 8px;
+  --pp-space-3: 12px;
+  --pp-space-4: 16px;
+  --pp-space-5: 24px;
+  --pp-space-6: 32px;
+  --pp-space-7: 40px;
+  --pp-space-8: 48px;
+  --pp-space-9: 64px;
+  --pp-space-10: 80px;
+  --pp-space-11: 96px;
+  --pp-space-12: 128px;
+  --pp-breakpoint-diagnostic-mobile: 520px;
+  --pp-breakpoint-mobile: 560px;
+  --pp-breakpoint-portfolio: 760px;
+  --pp-breakpoint-home: 780px;
+  --pp-breakpoint-tablet: 900px;
+  --pp-container-max: 1440px;
+  --pp-container-reading: 68ch;
+  --pp-container-gutter: clamp(1rem, 4vw, 3.5rem);
+  --pp-radius-none: 0;
+  --pp-radius-small: 4px;
+  --pp-radius-round: 999px;
+  --pp-border-width-normal: 1px;
+  --pp-border-width-focus: 2px;
+  --pp-control-min-height: 48px;
+  --pp-control-compact-height: 44px;
+  --pp-z-base: 0;
+  --pp-z-raised: 1;
+  --pp-z-sticky: 50;
+  --pp-z-nav: 100;
+  --pp-z-dialog: 200;
+  --pp-z-toast: 300;
+  --pp-z-skip: 1000;
+  --pp-motion-fast: 150ms;
+  --pp-motion-normal: 240ms;
+  --pp-motion-slow: 600ms;
+  --pp-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --pp-ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  color-scheme: dark;
+  --pp-bg: #11110F;
+  --pp-surface: #1A1A17;
+  --pp-surface-raised: #25251F;
+  --pp-text: #F0EEE8;
+  --pp-text-muted: #BBBAB3;
+  --pp-text-subtle: #A1A199;
+  --pp-border: #77776F;
+  --pp-action-bg: #D7FF3F;
+  --pp-action-text: #11110F;
+  --pp-action-hover: #B9DC35;
+  --pp-focus: #D7FF3F;
+  --pp-success: #73D6B2;
+  --pp-success-bg: #142D25;
+  --pp-warning: #F5CB76;
+  --pp-warning-bg: #332815;
+  --pp-danger: #FFAAA5;
+  --pp-danger-bg: #371E1D;
+  --pp-info: #9BC9FF;
+  --pp-info-bg: #17293E;
+  --pp-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+  --ink: var(--pp-brand-ink);
+  --ink-soft: var(--pp-brand-ink-soft);
+  --paper: var(--pp-brand-paper);
+  --lime: var(--pp-brand-lime);
+  --display: var(--pp-font-display);
+  --body: var(--pp-font-body);
+  --ff-display: var(--pp-font-display);
+  --ff-body: var(--pp-font-body);
+  --ff-d: var(--pp-font-display);
+  --ff-b: var(--pp-font-body);
+  --max: var(--pp-container-max);
+  --max-w: var(--pp-container-max);
+  --radius: var(--pp-radius-none);
+  --paper-0: var(--pp-bg);
+  --paper-1: var(--pp-surface);
+  --paper-2: var(--pp-surface-raised);
+  --text-1: var(--pp-text);
+  --text-2: var(--pp-text-muted);
+  --text-3: var(--pp-text-subtle);
+  --muted: var(--pp-text-muted);
+  --line: var(--pp-border);
+  --accent: var(--pp-action-bg);
+  --accent-dim: var(--pp-action-hover);
+}
+[data-theme="dark"] {
+  color-scheme: dark;
+  --pp-bg: #11110F;
+  --pp-surface: #1A1A17;
+  --pp-surface-raised: #25251F;
+  --pp-text: #F0EEE8;
+  --pp-text-muted: #BBBAB3;
+  --pp-text-subtle: #A1A199;
+  --pp-border: #77776F;
+  --pp-action-bg: #D7FF3F;
+  --pp-action-text: #11110F;
+  --pp-action-hover: #B9DC35;
+  --pp-focus: #D7FF3F;
+  --pp-success: #73D6B2;
+  --pp-success-bg: #142D25;
+  --pp-warning: #F5CB76;
+  --pp-warning-bg: #332815;
+  --pp-danger: #FFAAA5;
+  --pp-danger-bg: #371E1D;
+  --pp-info: #9BC9FF;
+  --pp-info-bg: #17293E;
+  --pp-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+  --ink: var(--pp-brand-ink);
+  --ink-soft: var(--pp-brand-ink-soft);
+  --paper: var(--pp-brand-paper);
+  --lime: var(--pp-brand-lime);
+  --display: var(--pp-font-display);
+  --body: var(--pp-font-body);
+  --ff-display: var(--pp-font-display);
+  --ff-body: var(--pp-font-body);
+  --ff-d: var(--pp-font-display);
+  --ff-b: var(--pp-font-body);
+  --max: var(--pp-container-max);
+  --max-w: var(--pp-container-max);
+  --radius: var(--pp-radius-none);
+  --paper-0: var(--pp-bg);
+  --paper-1: var(--pp-surface);
+  --paper-2: var(--pp-surface-raised);
+  --text-1: var(--pp-text);
+  --text-2: var(--pp-text-muted);
+  --text-3: var(--pp-text-subtle);
+  --muted: var(--pp-text-muted);
+  --line: var(--pp-border);
+  --accent: var(--pp-action-bg);
+  --accent-dim: var(--pp-action-hover);
+}
+[data-theme="light"] {
+  color-scheme: light;
+  --pp-bg: #F0EEE8;
+  --pp-surface: #FAF9F6;
+  --pp-surface-raised: #FFFFFF;
+  --pp-text: #11110F;
+  --pp-text-muted: #595A54;
+  --pp-text-subtle: #666760;
+  --pp-border: #85857D;
+  --pp-action-bg: #D7FF3F;
+  --pp-action-text: #11110F;
+  --pp-action-hover: #B9DC35;
+  --pp-focus: #526900;
+  --pp-success: #146448;
+  --pp-success-bg: #E0F1E8;
+  --pp-warning: #765000;
+  --pp-warning-bg: #FCF0D4;
+  --pp-danger: #AA302A;
+  --pp-danger-bg: #FCE8E5;
+  --pp-info: #245C9B;
+  --pp-info-bg: #E6EFFB;
+  --pp-shadow: 0 16px 48px rgba(17, 17, 15, 0.12);
+  --ink: var(--pp-brand-ink);
+  --ink-soft: var(--pp-brand-ink-soft);
+  --paper: var(--pp-brand-paper);
+  --lime: var(--pp-brand-lime);
+  --display: var(--pp-font-display);
+  --body: var(--pp-font-body);
+  --ff-display: var(--pp-font-display);
+  --ff-body: var(--pp-font-body);
+  --ff-d: var(--pp-font-display);
+  --ff-b: var(--pp-font-body);
+  --max: var(--pp-container-max);
+  --max-w: var(--pp-container-max);
+  --radius: var(--pp-radius-none);
+  --paper-0: var(--pp-bg);
+  --paper-1: var(--pp-surface);
+  --paper-2: var(--pp-surface-raised);
+  --text-1: var(--pp-text);
+  --text-2: var(--pp-text-muted);
+  --text-3: var(--pp-text-subtle);
+  --muted: var(--pp-text-muted);
+  --line: var(--pp-border);
+  --accent: var(--pp-action-bg);
+  --accent-dim: var(--pp-action-hover);
+}
+@media (prefers-reduced-motion: reduce) {
+  :root, [data-theme] {
+    --pp-motion-fast: 0ms;
+    --pp-motion-normal: 0ms;
+    --pp-motion-slow: 0ms;
+  }
+}

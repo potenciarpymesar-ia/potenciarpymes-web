@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Sistema visual — referencia interna | Potenciar Pymes</title>
+  <link rel="icon" href="/favicon-potenciar-pymes-2026.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/design-tokens.css"><link rel="stylesheet" href="/design-system.css">
+</head>
+<body class="pp-reference">
+<a class="pp-skip-link" href="#main">Saltar al contenido</a>
+<header class="pp-reference-header"><div class="pp-container"><a href="/" aria-label="Potenciar Pymes, inicio"><img src="/logo.png" alt="Potenciar Pymes" width="160" height="43"></a><nav aria-label="Referencia"><a href="#identidad">Identidad</a> · <a href="#tipo">Tipografía</a> · <a href="#componentes">Patrones</a> · <a href="#estados">Estados</a></nav></div></header>
+<main id="main">
+  <section class="pp-section pp-container pp-stack">
+    <p class="pp-label">Referencia interna / HTML estático</p><h1>Un sistema. Distintas composiciones.</h1>
+    <p class="pp-reading">MUCHO MOVIMIENTO. POCA CLARIDAD. Primero entendemos. Después decidimos qué mejorar. Esta página muestra reglas visuales y estados: no envía formularios ni genera leads.</p>
+    <fieldset><legend>Tema de esta referencia</legend><label><input type="radio" name="theme" value="dark" data-reference-theme checked> Oscuro</label> <label><input type="radio" name="theme" value="light" data-reference-theme> Claro</label></fieldset>
+    <p><a href="/docs/DESIGN_SYSTEM.md">Inventario y decisiones</a> · <a href="/docs/FIGMA_MAKE.md">Contrato para Figma Make</a> · <a href="/design-tokens.json">Tokens JSON (fuente de verdad)</a></p>
+  </section>
+  <section class="pp-section pp-container pp-stack" id="identidad"><p class="pp-label">01 / Color y composición</p><h2 class="pp-title">Contraste con intención.</h2>
+    <div class="pp-grid"><div class="pp-swatch" style="background:var(--pp-brand-ink);color:var(--pp-brand-paper)">INK / --pp-brand-ink</div><div class="pp-swatch" style="background:var(--pp-brand-paper);color:var(--pp-brand-ink)">PAPER / --pp-brand-paper</div><div class="pp-swatch" style="background:var(--pp-brand-lime);color:var(--pp-brand-ink)">LIME / --pp-brand-lime</div></div>
+    <div class="pp-grid"><article class="pp-panel pp-stack" data-theme="dark"><p class="pp-label">Oscuro</p><h3>Claridad para decidir.</h3><p>Superficie, texto, borde, foco y acciones toman el tema local.</p><button class="pp-button" type="button">Acción de referencia</button></article><article class="pp-panel pp-stack" data-theme="light"><p class="pp-label">Claro</p><h3>Espacio para entender.</h3><p>El énfasis lima no reemplaza los colores de advertencia o error.</p><button class="pp-button" type="button">Acción de referencia</button></article></div>
+    <p class="pp-reading">No usar texto PAPER sobre LIME. Los 42 pares aprobados están calculados en el CSS generado; no equivalen a conformidad de toda la web.</p>
+  </section>
+  <section class="pp-section pp-container pp-stack" id="tipo"><p class="pp-label">02 / Tipografía</p><h2 class="pp-title">Nueve niveles. Dos fuentes reales.</h2><p>Bricolage Grotesque para titulares; Manrope para lectura y controles. Arial y sans-serif como fallback.</p>
+    <div class="pp-table-wrap" tabindex="0" role="region" aria-label="Escala tipográfica"><table class="pp-table"><caption>Tokens responsive de tamaño; valores y usos completos en la documentación.</caption><thead><tr><th scope="col">Token</th><th scope="col">Muestra</th><th scope="col">Uso</th></tr></thead><tbody>
+      <tr><th scope="row">type-1</th><td style="font-size:var(--pp-type-1)">ETIQUETA</td><td>Metadatos</td></tr>
+      <tr><th scope="row">type-2</th><td style="font-size:var(--pp-type-2)">Acción</td><td>Navegación</td></tr>
+      <tr><th scope="row">type-3</th><td style="font-size:var(--pp-type-3)">Lectura clara.</td><td>Texto e inputs</td></tr>
+      <tr><th scope="row">type-4</th><td style="font-size:var(--pp-type-4)">Contexto</td><td>Bajada</td></tr>
+      <tr><th scope="row">type-5</th><td style="font-size:var(--pp-type-5)">Servicios</td><td>Subtítulos</td></tr>
+      <tr><th scope="row">type-6</th><td style="font-size:var(--pp-type-6)">Prioridad</td><td>Bloques</td></tr>
+      <tr><th scope="row">type-7</th><td style="font-size:var(--pp-type-7)">Orden</td><td>Herramientas</td></tr>
+      <tr><th scope="row">type-8</th><td style="font-size:var(--pp-type-8)">Sistema</td><td>Secciones</td></tr>
+      <tr><th scope="row">type-9</th><td style="font-size:var(--pp-type-9)">Plan</td><td>Portada</td></tr>
+    </tbody></table></div>
+  </section>
+  <section class="pp-section pp-container pp-stack" id="componentes"><p class="pp-label">03 / Patrones existentes</p><h2 class="pp-title">Una necesidad, un patrón.</h2>
+    <nav aria-label="Breadcrumb"><a href="/">Inicio</a> / <span aria-current="page">Sistema visual</span></nav>
+    <div class="pp-grid"><article class="pp-panel pp-stack"><p class="pp-label">01 / Orientación gratuita</p><h3>Diagnóstico inicial del negocio</h3><p>Cinco respuestas declaradas. Sirve con o sin web; no es una comprobación técnica.</p><a class="pp-button" href="/diagnostico">Responder las 5 preguntas</a></article><article class="pp-panel pp-stack"><p class="pp-label">02 / Señales públicas</p><h3>Chequeo inicial de la web</h3><p>Una URL. No confirma configuraciones internas, eventos, ventas ni prioridades comerciales.</p><a class="pp-button" href="/auditoria-web">Revisar mi web</a></article><article class="pp-panel pp-stack"><p class="pp-label">03 / Servicio pago</p><h3>Diagnóstico Digital Completo + Plan</h3><p>Revisión humana del alcance acordado. Evidencia, prioridades, acciones, dependencias, roles sugeridos y criterios de finalización.</p><a class="pp-button pp-button--secondary" href="/diagnostico-digital">Conocer el servicio</a></article></div>
+    <blockquote class="pp-reading">El diagnóstico es independiente. Podés implementar con tu equipo, otro proveedor o Potenciar Pymes. La implementación es opcional.</blockquote>
+    <details class="pp-panel"><summary>FAQ / ¿Esto es una auditoría automática?</summary><p>No. Esta es una referencia del sistema de diseño; cada recorrido explica su alcance.</p></details>
+    <ul><li>Listas para explicar alcance.</li><li>Metadatos para dar contexto, no prometer resultados.</li><li>Pendientes para lo que todavía necesita validación.</li></ul>
+    <form class="pp-panel pp-stack" data-reference-form><h3>Formulario de referencia</h3><p>No se envían datos. Usá únicamente información de prueba.</p><div class="pp-field"><label for="demo-name">Nombre (obligatorio)</label><input id="demo-name" name="nombre" autocomplete="off" required aria-describedby="demo-instruction"></div><p id="demo-instruction">El label identifica el dato; la instrucción explica su uso.</p><div class="pp-field"><label for="demo-channel">Canal</label><select id="demo-channel"><option>Web profesional</option><option>Ecommerce</option><option>Otros canales</option></select></div><fieldset><legend>Selección múltiple</legend><label><input type="checkbox"> Web</label> <label><input type="checkbox"> WhatsApp</label></fieldset><fieldset><legend>Necesidad principal</legend><label><input type="radio" name="need"> Presentarme</label> <label><input type="radio" name="need"> Vender</label></fieldset><div class="pp-field"><label for="demo-context">Contexto</label><textarea id="demo-context" rows="3"></textarea></div><button class="pp-button" type="submit">Probar confirmación local</button><p role="status" data-reference-status></p></form>
+    <div class="pp-panel pp-stack"><p class="pp-label">Paso 2 de 5 / muestra</p><label for="demo-progress">Progreso del cuestionario</label><progress id="demo-progress" max="5" value="2">2 de 5</progress><button class="pp-button pp-button--secondary" type="button">Anterior</button><button class="pp-button" type="button" disabled>Siguiente / deshabilitado</button></div>
+    <article class="pp-panel pp-stack"><p class="pp-label">Resultado de referencia / no es un expediente Audit</p><h3>Señales y límites.</h3><p>Una referencia pública observable no confirma la configuración interna.</p><dl><dt>Cobertura</dt><dd>Sólo señales públicas en el alcance consultado.</dd><dt>Hallazgo</dt><dd>Referencia observable; requiere contexto para interpretarla.</dd><dt>Pendiente</dt><dd>Validar funcionamiento con acceso acordado.</dd><dt>Prioridad</dt><dd>Se acuerda después de revisar evidencia y objetivos.</dd></dl></article>
+  </section>
+  <section class="pp-section pp-container pp-stack" id="estados"><p class="pp-label">04 / Feedback</p><h2 class="pp-title">Estados que explican.</h2><p class="pp-feedback">Información: resultados limitados al alcance observado.</p><p class="pp-feedback pp-feedback--success">Confirmación: prueba local completada; no se envió un contacto.</p><p class="pp-feedback pp-feedback--warning">Pendiente: falta validar la configuración interna. No es un error confirmado.</p><p class="pp-feedback pp-feedback--danger">Error: no pudimos completar la revisión. Podés volver a intentarlo.</p><p class="pp-feedback" role="status">Carga de referencia: revisando señales públicas…</p><p>El foco visible, los nombres de estado y las instrucciones no dependen sólo del color.</p></section>
+</main>
+<footer class="pp-container pp-section"><a href="/">Volver al sitio</a> · <a href="/privacidad">Privacidad</a><p>Referencia interna. No se agrega al sitemap ni a la navegación comercial.</p></footer>
+<script src="/design-system.js" defer></script>
+</body>
+</html>
