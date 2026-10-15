@@ -40,7 +40,7 @@ Auto Layout horizontal/vertical y wrap donde corresponda; texto hug-content, blo
 
 > Construí un sistema de diseño y cuatro vistas de referencia de Potenciar Pymes usando exclusivamente los archivos adjuntos y el sitio local. Usá design-tokens.json como fuente de colores, tamaños, espacios, estados y temas. Conservá negro cálido #11110f, papel #f0eee8 y lima #d7ff3f, Bricolage Grotesque para display y Manrope para cuerpo. La dirección es editorial, asimétrica, bordes rectos, numeración y separadores; no convertirla en un dashboard SaaS con tarjetas redondeadas genéricas.
 >
-> Conservá «Mucho movimiento. Poca claridad.» y «Primero entendemos. Después decidimos qué mejorar.», la idea de ecosistema y el retrato real de Jonathan Frenquel. Los casos reales describen trabajo realizado; no inventes resultados, testimonios, logos, credenciales ni nuevos clientes. Los conceptos del portfolio siguen identificados como conceptos.
+> Conservá «Mucho movimiento. Poca claridad.» y «Primero entendemos. Después decidimos qué mejorar.», la idea de ecosistema y el retrato real de Jonathan. Los casos reales describen trabajo realizado; no inventes resultados, testimonios, logos, credenciales ni nuevos clientes. Los conceptos del portfolio siguen identificados como conceptos.
 >
 > Home presenta dos alternativas gratuitas independientes. Diagnóstico inicial gratis: cinco preguntas, con o sin web, orientación por respuestas declaradas, sin verificar canales. Chequeo web gratis: URL y señales públicas observables, sin acceso a cuentas ni configuraciones internas. Ambos anticipan nombre y WhatsApp obligatorios en el flujo actual y muestran resultados en sus propias páginas. No agregues redirección automática ni vuelvas obligatorio completar ambos.
 >

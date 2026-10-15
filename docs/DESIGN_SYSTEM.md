@@ -16,7 +16,7 @@ El historial reciente incluye certificación Tiendanube, mejoras de hero móvil 
 
 1. Claridad antes que herramientas: mantener «Mucho movimiento. Poca claridad.» y «Primero entendemos. Después decidimos qué mejorar.».
 2. Ecosistema: presencia, ventas, atención, medición y conexiones; no reducir la propuesta a una web.
-3. Fundador visible: utilizar el retrato existente de Jonathan Frenquel, sin generar otra persona o atribuir credenciales nuevas.
+3. Fundador visible: utilizar el retrato existente de Jonathan, sin generar otra persona o atribuir credenciales nuevas.
 4. Evidencia antes que promesas: los casos describen trabajo realizado; no fabricar testimonios, porcentajes, clientes ni resultados comerciales.
 5. Dos entradas gratuitas independientes y un servicio pago para profundizar. Ninguna entrada gratuita exige completar la otra.
 6. Implementación posterior opcional, alcance independiente y cotización separada; el cliente puede implementar con su equipo o proveedor.
@@ -95,7 +95,7 @@ En las tablas, «teclado/a11y» define el contrato de aceptación; las brechas a
 | 03 Salto — `index.html .skip-link`; Completo `.skip` | Evitar cabecera repetida; link a main | Oculto en reposo / visible con foco | Funciona también con teclado móvil | Primer link; destino main válido, foco no tapado | Visible al enfocar / esconder con display:none |
 | 04 CTA principal — `index.html .button`; servicios `.btn-primary` | Acción dominante; texto + flecha | Lima / tinta; hover, focus, disabled si button | Texto multilínea y ancho disponible | Link para navegar; button para ejecutar; nombre sin depender de flecha | Acción concreta / «Empezar» ambiguo en todos los recorridos |
 | 05 CTA secundario — `.button-outline`, Completo `.ghost` | Alternativa menos dominante; borde + texto | Outline; hover, focus | Apilar sin reducir área táctil | Igual contrato que CTA principal; contraste del borde | Alternativa real / competir con cuatro primarios |
-| 06 Hero fundador — `index.html .hero .hero-photo` | Explicar propuesta y humanizar; picture + h1 + copy + acciones | Desktop editorial / retrato apilado | ≤780 imagen contenida, luego mensaje | Alt «Jonathan Frenquel, fundador…»; lectura del h1 antes de CTA | Retrato existente / persona generada o recorte que elimina rostro |
+| 06 Hero fundador — `index.html .hero .hero-photo` | Explicar propuesta y humanizar; picture + h1 + copy + acciones | Desktop editorial / retrato apilado | ≤780 imagen contenida, luego mensaje | Alt «Jonathan, fundador…»; lectura del h1 antes de CTA | Retrato existente / persona generada o recorte que elimina rostro |
 | 07 Kicker e índice — `.hero-kicker .hero-index .eyebrow` | Contextualizar; etiqueta corta + número opcional | Marca / sección / gratis o pago | No forzar una sola línea | Texto real; no reemplaza heading; N/A teclado | «Servicio pago» / usar microcopy para condiciones ocultas |
 | 08 Wordmark decorativo — `.hero-wordmark`; `.svc-hero::before` | Escala visual sin contenido nuevo | Home / watermark servicio; quieto o parallax | Home se oculta; watermark no desborda | `aria-hidden` si elemento; pseudo-elemento sin información exclusiva | Decoración / título sólo en pseudo-elemento |
 | 09 Apertura problema — `.insight-intro` | Introducir necesidad; eyebrow + h2 + explicación | Dark; visible / reveal | Una columna | Heading vinculado a sección; N/A | «Mucho movimiento. Poca claridad.» / borrar diferenciación por slogans genéricos |
