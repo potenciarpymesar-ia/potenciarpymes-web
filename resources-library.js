@@ -1,6 +1,13 @@
 (function(){
   "use strict";
-  var resources = (window.POTENCIAR_RESOURCES || []).filter(function(item){return item.status === "published";});
+  var allowedAccess=["open","follow_cta","keyword_dm","lead"], allowedGoals=["follow","save","share","traffic","lead"];
+  function valid(item){
+    var required=["id","title","summary","category","tags","url","format","status","featured","updatedAt","related","accessType","growthGoal","socialContent","keyword"];
+    return required.every(function(key){return Object.prototype.hasOwnProperty.call(item,key);}) &&
+      allowedAccess.indexOf(item.accessType)!==-1 && allowedGoals.indexOf(item.growthGoal)!==-1 &&
+      (item.accessType!=="keyword_dm" || Boolean(item.keyword));
+  }
+  var resources = (window.POTENCIAR_RESOURCES || []).filter(function(item){return item.status === "published" && valid(item);});
   var categories = ["Lo probamos por vos","Prompts","Checklists","Plantillas","Herramientas","Guías","Comparativas"];
   var list = document.querySelector("[data-resource-list]");
   var filters = document.querySelector("[data-resource-filters]");
@@ -28,11 +35,23 @@
   }
   function render(){
     var featuredSection=document.querySelector("[data-featured-resource]");
-    if(featuredSection) featuredSection.hidden=selected!=="Todos";
-    var visible=resources.filter(function(item){return selected==="Todos"? !item.featured : item.category===selected;});
+    var featuredItem=resources.filter(function(item){return item.featured;})[0];
+    if(featuredSection){
+      featuredSection.hidden=selected!=="Todos" || !featuredItem;
+      if(featuredItem){
+        var featuredLink=featuredSection.querySelector("[data-featured-link]");
+        if(featuredLink){featuredLink.href=featuredItem.url;featuredLink.dataset.resourceId=featuredItem.id;}
+        var featuredTitle=featuredSection.querySelector("[data-featured-title]");
+        var featuredSummary=featuredSection.querySelector("[data-featured-summary]");
+        if(featuredTitle) featuredTitle.textContent=featuredItem.title;
+        if(featuredSummary) featuredSummary.textContent=featuredItem.summary;
+      }
+    }
+    var visible=resources.filter(function(item){return selected==="Todos"? !featuredItem || item.id!==featuredItem.id : item.category===selected;});
     list.replaceChildren();
     visible.forEach(function(item){list.appendChild(card(item));});
-    count.textContent=visible.length+" "+(visible.length===1?"recurso":"recursos");
+    var total=visible.length+(selected==="Todos"&&featuredItem?1:0);
+    count.textContent=total+" "+(total===1?"recurso":"recursos");
     filters.querySelectorAll("button").forEach(function(button){button.setAttribute("aria-pressed",String(button.dataset.category===selected));});
     var latest=resources.filter(function(item){return item.category==="Lo probamos por vos"&&item.experiment;})[0];
     if(experiment) {
@@ -41,7 +60,19 @@
         experiment.querySelector("[data-experiment-title]").textContent=latest.experiment.tool;
         experiment.querySelector("[data-experiment-copy]").textContent=latest.summary;
         experiment.querySelector("[data-experiment-link]").href=latest.url;
-        experiment.querySelector("[data-experiment-link]").dataset.experimentId=latest.id;
+        experiment.querySelector("[data-experiment-link]").dataset.resourceId=latest.id;
+        var details=experiment.querySelector("[data-experiment-details]");
+        if(details){
+          details.replaceChildren();
+          var fields={date:"Fecha",version:"Versión o plan",claim:"Qué promete",whatTested:"Qué probamos",methodology:"Metodología",input:"Input",result:"Resultado",worked:"Qué funcionó",didNotWork:"Qué no funcionó",limitations:"Limitaciones",cost:"Costo",forWhom:"Para quién sirve",notForWhom:"Para quién no",verdict:"Veredicto Potenciar",evidence:"Evidencia"};
+          Object.keys(fields).forEach(function(key){
+            var value=latest.experiment[key];
+            if(value===undefined||value===null||value==="") return;
+            var dt=document.createElement("dt");dt.textContent=fields[key];
+            var dd=document.createElement("dd");dd.textContent=Array.isArray(value)?value.join(", "):String(value);
+            details.append(dt,dd);
+          });
+        }
       }
     }
   }
