@@ -5,7 +5,10 @@
     var required=["id","title","summary","category","tags","url","format","status","featured","updatedAt","related","accessType","growthGoal","socialContent","keyword"];
     return required.every(function(key){return Object.prototype.hasOwnProperty.call(item,key);}) &&
       allowedAccess.indexOf(item.accessType)!==-1 && allowedGoals.indexOf(item.growthGoal)!==-1 &&
-      (item.accessType!=="keyword_dm" || Boolean(item.keyword));
+      (item.accessType!=="keyword_dm" || Boolean(item.keyword)) &&
+      (item.category!=="Lo probamos por vos" || (item.format==="experiment" && item.experiment &&
+        (Array.isArray(item.experiment.evidence) ? item.experiment.evidence.some(function(value){return typeof value==="string" && value.trim().length>0;}) :
+          typeof item.experiment.evidence==="string" && item.experiment.evidence.trim().length>0)));
   }
   var resources = (window.POTENCIAR_RESOURCES || []).filter(function(item){return item.status === "published" && valid(item);});
   var categories = ["Lo probamos por vos","Prompts","Checklists","Plantillas","Herramientas","Guías","Comparativas"];
@@ -95,7 +98,5 @@
     }
     if(link.matches("[data-social-follow]")){emit("social_follow",null,{social_network:"instagram"});return;}
     if(link.matches("[data-resource-cta]")){emit("resource_cta",null,{cta_id:link.dataset.ctaId||"resources_cta"});return;}
-    window.dataLayer=window.dataLayer||[];
-    window.dataLayer.push({event:"resource_click",resource_path:link.getAttribute("href"),page_path:location.pathname});
   });
 })();
