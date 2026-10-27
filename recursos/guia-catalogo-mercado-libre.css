@@ -3,6 +3,7 @@ body.catalog-guide{margin:0;background:var(--pp-brand-ink);color:var(--pp-brand-
 .catalog-guide h1,.catalog-guide h2,.catalog-guide h3,.guide-statement{font-family:var(--pp-font-display);line-height:1.12;letter-spacing:-.035em;text-wrap:balance}
 .catalog-guide h1,.catalog-guide h2,.catalog-guide h3,.catalog-guide p{margin:0}
 .catalog-guide a{color:inherit;text-underline-offset:.25em}
+.catalog-guide a.pp-skip-link{color:var(--pp-brand-ink)}
 .catalog-guide a.pp-button{color:var(--pp-action-text)}
 .catalog-guide a.pp-button--secondary{color:var(--pp-text)}
 .catalog-guide a.pp-button--secondary:hover{color:var(--pp-action-text)}
