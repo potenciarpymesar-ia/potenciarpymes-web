@@ -8,7 +8,14 @@
       (item.accessType!=="keyword_dm" || Boolean(item.keyword));
   }
   var resources = (window.POTENCIAR_RESOURCES || []).filter(function(item){return item.status === "published" && valid(item);});
-  var categories = ["Lo probamos por vos","Prompts","Checklists","Plantillas","Herramientas","Guías","Comparativas"];
+  // Keep tools ahead of guides even when new resources are inserted at the top of the catalog.
+  var priority = {Herramientas:0,"Guías":1};
+  resources.sort(function(a,b){
+    var first=Object.prototype.hasOwnProperty.call(priority,a.category)?priority[a.category]:2;
+    var second=Object.prototype.hasOwnProperty.call(priority,b.category)?priority[b.category]:2;
+    return first-second;
+  });
+  var categories = ["Herramientas","Guías","Lo probamos por vos","Prompts","Checklists","Plantillas","Comparativas"];
   var list = document.querySelector("[data-resource-list]");
   var filters = document.querySelector("[data-resource-filters]");
   var count = document.querySelector("[data-resource-count]");
