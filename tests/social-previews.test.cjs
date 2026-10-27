@@ -14,7 +14,8 @@ const covers={
  'tiendanube.html':'tiendanube',
  'mercado-libre.html':'mercado-libre',
  'soluciones.html':'soluciones',
- 'recursos.html':'recursos'
+ 'recursos.html':'recursos',
+ 'recursos/guia-catalogo-mercado-libre.html':'guia-catalogo-mercado-libre'
 };
 function metadata(html,key){
  return [...html.matchAll(/<meta\b[^>]*>/gi)].flatMap(([tag])=>{
@@ -28,7 +29,7 @@ for(const [page,cover] of Object.entries(covers))test(page+' shares its approved
  assert.deepEqual(metadata(html,'og:image'),[expected]);
  assert.deepEqual(metadata(html,'twitter:image'),[expected]);
 });
-const pages=['', 'blog', 'herramientas'].flatMap(dir=>fs.readdirSync(path.join(root,dir)).filter(f=>f.endsWith('.html')&&f!=='design-system.html').map(f=>path.join(dir,f)));
+const pages=['', 'blog', 'herramientas', 'recursos'].flatMap(dir=>fs.readdirSync(path.join(root,dir)).filter(f=>f.endsWith('.html')&&f!=='design-system.html').map(f=>path.join(dir,f)));
 test('every public page exposes one complete, accessible social image',()=>{
  for(const page of pages){
   const html=fs.readFileSync(path.join(root,page),'utf8');
@@ -59,7 +60,7 @@ function jpegSize(buffer){
  }
  throw new Error('JPEG dimensions missing');
 }
-test('the eleven covers are real 1200x630 JPEGs under 500 KB each',()=>{
+test('resource and page covers are real 1200x630 JPEGs under 500 KB each',()=>{
  for(const cover of Object.values(covers)){
   const buffer=fs.readFileSync(path.join(root,'assets/social',cover+'-2026-10.jpg'));
   assert.deepEqual(jpegSize(buffer),[1200,630],cover);
