@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>QA responsive · Guía de Catálogo</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#ccc;font:16px/1.5 Arial,sans-serif;color:#111}
+    header{padding:12px 20px;background:#fff}h1{font-size:18px;margin:0 0 8px}button{font:inherit;padding:10px;margin:0 8px 8px 0;cursor:pointer}button[aria-pressed=true]{background:#111;color:#fff}
+    p{margin:0}main{padding:20px;width:max-content;min-width:100%}iframe{display:block;border:0;width:375px;height:1000px;background:#111}
+  </style>
+</head>
+<body>
+<header><h1>QA interno: guía real en un viewport independiente</h1>
+  <div role="group" aria-label="Ancho de prueba">
+    <button type="button" data-width="375" aria-pressed="true">375 px</button>
+    <button type="button" data-width="390" aria-pressed="false">390 px</button>
+    <button type="button" data-width="430" aria-pressed="false">430 px</button>
+    <button type="button" data-width="768" aria-pressed="false">768 px</button>
+    <button type="button" data-width="1440" aria-pressed="false">1440 px</button>
+  </div>
+  <p id="width-status" aria-live="polite">Viewport de prueba: 375 px. El marco carga la guía del mismo deploy. No emula hardware ni un navegador móvil.</p>
+</header>
+<main><iframe title="Guía de Catálogo en revisión" src="/recursos/guia-catalogo-mercado-libre"></iframe></main>
+<script>
+  document.querySelectorAll('[data-width]').forEach(function(button){
+    button.addEventListener('click',function(){
+      document.querySelector('iframe').style.width=button.dataset.width+'px';
+      document.querySelectorAll('[data-width]').forEach(function(other){other.setAttribute('aria-pressed',String(other===button));});
+      document.getElementById('width-status').textContent='Viewport de prueba: '+button.dataset.width+' px. El marco carga la guía del mismo deploy. No emula hardware ni un navegador móvil.';
+    });
+  });
+</script>
+</body>
+</html>
