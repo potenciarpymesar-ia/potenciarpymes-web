@@ -108,6 +108,9 @@
       #main>.hero .hero-actions .button-outline{min-height:44px;padding:10px 8px;border-color:transparent;background:transparent;color:var(--paper);font-size:10px}
     }
   </style>
+  <link rel="stylesheet" href="/home-hero.css">
+  <link rel="preload" as="image" href="/assets/home/workspace.svg" media="(min-width:768px)">
+  <link rel="preload" as="image" href="/assets/home/workspace-mobile.svg" media="(max-width:767px)">
 </head>
 <body>
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WW77R29R" height="0" width="0" style="display:none;visibility:hidden"></iframe><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1351362610300825&ev=PageView&noscript=1" alt=""></noscript>
@@ -120,15 +123,30 @@
     </div>
   </header>
   <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
-      <picture><source media="(max-width:767px)" srcset="jonathan-hero-mobile.webp" type="image/webp" width="1000" height="1333"><source srcset="jonathan.webp" type="image/webp"><img class="hero-photo" src="jonathan.jpg" alt="Jonathan, fundador de Potenciar Pymes" width="900" height="1200"></picture>
-      <div class="hero-shade"></div>
+    <section class="hero hero--cinematic" aria-labelledby="hero-title" data-cinematic-hero>
       <div class="hero-inner">
-        <p class="hero-kicker">Buenos Aires · Argentina · 2026</p><p class="hero-index">[ 01 — SISTEMAS DIGITALES ]</p>
-        <h1 id="hero-title">El crecimiento no se <em>improvisa.</em></h1>
-        <div class="hero-bottom"><p>Diseñamos y mejoramos sistemas digitales para pymes: ordenamos cómo tu negocio se muestra, vende, recibe consultas, mide resultados y conecta sus herramientas.</p><div class="hero-actions"><a class="button track-diagnosis track-initial" href="#diagnostico">Elegir cómo empezar <span>↗</span></a><a class="button button-outline" href="#problemas">Ver qué podemos mejorar <span>↓</span></a></div></div>
+        <div class="hero-copy">
+          <p class="hero-kicker">Sistemas digitales para negocios reales</p>
+          <h1 id="hero-title"><span class="hero-title-line">TU NEGOCIO</span> <span class="hero-title-line">TE NECESITA.</span> <em><span class="hero-title-line">PERO NO</span> <span class="hero-title-line">PARA TODO.</span></em></h1>
+          <div class="hero-bottom">
+            <p><span class="hero-description-desktop">Consultas, presupuestos, ventas y tareas que se acumulan. Te ayudamos a ordenar la parte digital de tu negocio, conectar tus herramientas y definir qué mejorar primero.</span><span class="hero-description-mobile">Ordenamos la parte digital de tu negocio y definimos qué mejorar primero.</span></p>
+            <div class="hero-actions"><a class="button track-diagnosis track-initial" href="/diagnostico">Hacer diagnóstico inicial gratis <span aria-hidden="true">↗</span></a></div>
+            <p class="hero-reassurance">Primero entendemos. Después decidimos qué mejorar.</p>
+          </div>
+        </div>
       </div>
-      <div class="hero-wordmark" aria-hidden="true">POTENCIAR</div>
+      <div class="hero-scene">
+        <div class="hero-camera">
+          <picture><source media="(max-width:767px)" srcset="/assets/home/workspace-mobile.svg" width="869" height="941"><img src="/assets/home/workspace.svg" width="1672" height="941" alt="" fetchpriority="high" decoding="async"></picture>
+          <svg class="hero-connections hero-connections--desktop" viewBox="0 0 1672 941" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path class="hero-route" pathLength="1" d="M1088 752 C1110 650 1220 702 1300 660 S1430 680 1490 738"/><path class="hero-route" pathLength="1" d="M1490 738 C1465 650 1360 646 1328 537 S1340 450 1365 418"/></svg>
+          <svg class="hero-connections hero-connections--mobile" viewBox="803 0 869 941" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path class="hero-route" pathLength="1" d="M1088 752 C1110 650 1220 702 1300 660 S1430 680 1490 738"/><path class="hero-route" pathLength="1" d="M1490 738 C1465 650 1360 646 1328 537 S1340 450 1365 418"/></svg>
+        </div>
+        <div class="hero-scene-caption">
+          <div class="hero-scene-steps" aria-hidden="true"><span class="hero-scene-step">01 / Todo se acumula.</span><span class="hero-scene-step">02 / Conectamos las partes.</span><span class="hero-scene-step">03 / Un camino más claro.</span></div>
+          <span class="hero-scene-legend" aria-hidden="true">Consultas · Seguimiento · Ventas</span>
+          <button class="hero-motion-toggle" data-hero-motion type="button" aria-pressed="false" hidden>Pausar animación</button>
+        </div>
+      </div>
     </section>
     <section class="ecommerce-trust wrap" aria-labelledby="ecommerce-trust-title">
       <p class="eyebrow">Ecommerce dentro de tu sistema digital</p>
@@ -162,18 +180,13 @@
       var form=document.querySelector('form[name="contacto"]');if(form){var submitContact=window.ppCreateContactSubmitter('/api/diagnostic-lead');var formStatus=form.querySelector('.form-status');var submitBtn=form.querySelector('.form-submit');form.addEventListener('submit',function(e){e.preventDefault();if(submitBtn&&submitBtn.disabled)return;var data={nombre:form.nombre.value,whatsapp:form.whatsapp.value,rubro:form.rubro.value};if(submitBtn)submitBtn.disabled=true;if(formStatus){formStatus.textContent='Enviando...';formStatus.removeAttribute('data-state')}submitContact(data).then(function(receipt){if(receipt.stored){window.ppTrack('generate_lead',{form_name:'contacto',location:'home_contacto'});window.ppTrack('contact_saved',{form_name:'contacto'});}else{window.ppTrack('contact_sent',{form_name:'contacto'});}if(formStatus){formStatus.textContent='Tu solicitud fue enviada. Te contactamos a la brevedad.';formStatus.setAttribute('data-state','success')}form.reset()}).catch(function(){if(formStatus){formStatus.textContent='No pudimos confirmar el envío. Tus datos siguen acá: podés reintentar o escribirnos por WhatsApp.';formStatus.setAttribute('data-state','error')}}).finally(function(){if(submitBtn)submitBtn.disabled=false})})}
       var fired=false;window.addEventListener('scroll',function(){if(fired)return;var doc=document.documentElement,scrollable=doc.scrollHeight-window.innerHeight;if(scrollable>0&&window.scrollY/scrollable>=.75){fired=true;window.ppTrack('scroll_75')}},{passive:true});
       if(reduced)return;
-      var hero=document.querySelector('.hero'),photo=hero.querySelector('.hero-photo'),wordmark=hero.querySelector('.hero-wordmark'),word=hero.querySelector('h1 em'),pointerX=0,pointerY=0,scrollY=0,ticking=false;
-      var wordLabel=document.createElement('span');wordLabel.className='pp-visually-hidden';wordLabel.textContent=word.textContent;var letters=Array.from(word.textContent).map(function(letter){var span=document.createElement('span');span.className='warp-letter';span.setAttribute('aria-hidden','true');span.textContent=letter;return span});word.replaceChildren.apply(word,[wordLabel].concat(letters));
-      function render(){if(reduced||window.matchMedia('(max-width:767px)').matches){ticking=false;return;}photo.style.transform='scale(1.055) translate3d('+(pointerX*12)+'px,'+(pointerY*8+scrollY*.08)+'px,0)';wordmark.style.transform='translate3d('+(pointerX*-5)+'px,'+(pointerY*-3-scrollY*.025)+'px,0)';ticking=false}
-      function requestRender(){if(!reduced&&!ticking){ticking=true;requestAnimationFrame(render)}}
-      hero.addEventListener('pointermove',function(event){if(reduced||window.matchMedia('(max-width:767px)').matches)return;var rect=hero.getBoundingClientRect();pointerX=(event.clientX-rect.left)/rect.width-.5;pointerY=(event.clientY-rect.top)/rect.height-.5;var wordRect=word.getBoundingClientRect(),x=(event.clientX-wordRect.left)/wordRect.width-.5,y=(event.clientY-wordRect.top)/wordRect.height-.5;letters.forEach(function(letter,index){var position=index/Math.max(letters.length-1,1)-.5,falloff=Math.max(0,1-Math.abs(position-x)*3.2);letter.style.transform='translate3d(0,'+(falloff*y*-15)+'px,0) rotate('+((position-x)*falloff*15)+'deg) scale('+(1+falloff*.055)+')'});requestRender()});
-      hero.addEventListener('pointerleave',function(){pointerX=0;pointerY=0;letters.forEach(function(letter){letter.style.transform='' });requestRender()});
-      window.addEventListener('scroll',function(){scrollY=Math.min(180,Math.max(0,window.scrollY));requestRender()},{passive:true});
       var grid=document.querySelector('.signature-grid'),brands=['conectia / BA','Wheels BA','nutrePHARMA','Nutrex','Suplement.ar','Marcas Muro','Brooklyn Toys','Pixel Lab','Hardtech Store'],track=document.createElement('div'),sequence=document.createElement('div');track.className='signature-track';track.setAttribute('aria-hidden','true');var brandList=document.createElement('span');brandList.className='pp-visually-hidden';brandList.textContent=brands.join(', ');grid.appendChild(brandList);sequence.className='signature-sequence';brands.forEach(function(name){var item=document.createElement('div');item.className='signature';item.dataset.brand=name;sequence.appendChild(item)});track.appendChild(sequence);track.appendChild(sequence.cloneNode(true));track.appendChild(sequence.cloneNode(true));grid.replaceChildren(brandList,track);
       var offset=0,last=null,velocity=36,target=36,sequenceWidth=0,manualPaused=false;var motionControl=document.createElement('button');motionControl.type='button';motionControl.className='pp-motion-control';motionControl.textContent='Pausar marcas';motionControl.setAttribute('aria-pressed','false');grid.parentNode.appendChild(motionControl);motionControl.addEventListener('click',function(){manualPaused=!manualPaused;motionControl.setAttribute('aria-pressed',String(manualPaused));motionControl.textContent=manualPaused?'Reanudar marcas':'Pausar marcas';target=manualPaused?0:36;velocity=0});grid.addEventListener('focusin',function(){target=0});grid.addEventListener('focusout',function(){target=manualPaused?0:36});function measure(){sequenceWidth=sequence.getBoundingClientRect().width;offset=0}measure();if('ResizeObserver'in window)new ResizeObserver(measure).observe(grid);else window.addEventListener('resize',measure);grid.addEventListener('mouseenter',function(){target=0});grid.addEventListener('mouseleave',function(){target=manualPaused?0:36});function frame(now){if(reduced)velocity=0;if(last!==null){var dt=Math.min(.05,(now-last)/1000);velocity+=((manualPaused||reduced?0:target)-velocity)*(1-Math.exp(-dt/.22));if(sequenceWidth){offset=(offset+velocity*dt)%sequenceWidth;track.style.transform='translate3d('+-offset+'px,0,0)'}}last=now;requestAnimationFrame(frame)}requestAnimationFrame(frame);
     })();
   </script>
 <script src="/design-system.js" defer></script>
+<script src="/vendor/gsap-3.13.0.min.js" defer></script>
+<script src="/home-hero.js" defer></script>
 <div class="consumer-notice" style="box-sizing:border-box;width:100%;padding:20px 24px;background:#11110F;color:#aaa;font-size:12px;line-height:1.6;text-align:center;letter-spacing:normal;"><p style="margin:0;color:inherit;font:inherit;">Dirección General de Defensa y Protección al Consumidor<br>Para consultas y/o denuncias <a href="https://buenosaires.gob.ar/defensaconsumidor/como-denunciar" style="color:inherit;text-decoration:underline;font:inherit;">Ingrese aquí</a></p></div>
 </body>
 </html>
