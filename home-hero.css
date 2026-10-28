@@ -15,7 +15,7 @@
   font-size:clamp(68px,7.2vw,112px);
   font-weight:650;
   font-variation-settings:'wdth' 85;
-  letter-spacing:-.055em !important;
+  letter-spacing:-.035em !important;
   line-height:1.01;
   max-width:none;
   text-wrap:initial;
@@ -32,7 +32,7 @@
 .hero-scene { position:absolute; inset:0; z-index:0; overflow:hidden; }
 .hero-camera { position:absolute; inset:0; transform-origin:75% 65%; }
 .hero-camera picture,.hero-camera img,.hero-connections { display:block; position:absolute; inset:0; width:100%; height:100%; }
-.hero-camera img { object-fit:cover; object-position:70% center; }
+.hero-camera img { object-fit:cover; object-position:center; }
 .hero-camera::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,var(--ink) 5%,rgba(17,17,15,.7) 36%,transparent 63%),linear-gradient(0deg,rgba(17,17,15,.55),transparent 30%); }
 .hero-connections { object-fit:cover; color:var(--lime); }
 .hero-connections--mobile { display:none; }
@@ -58,7 +58,7 @@
   #main > .hero--cinematic > .hero-inner { order:0; margin:0; }
   .hero-copy { width:100%; max-width:none; }
   .hero--cinematic .hero-kicker { margin-bottom:19px; font-size:10px; letter-spacing:.1em; }
-  #main > .hero--cinematic h1 { font-size:clamp(39px,11.4vw,72px) !important; line-height:1.02 !important; letter-spacing:-.05em !important; }
+  #main > .hero--cinematic h1 { font-size:clamp(39px,11.4vw,72px) !important; line-height:1.02 !important; letter-spacing:-.035em !important; }
   .hero--cinematic .hero-bottom { margin-top:22px; }
   .hero-description-desktop { display:none; }
   .hero-description-mobile { display:inline; }
@@ -75,7 +75,7 @@
   .hero-scene-caption { inset:auto 20px 16px; }
   .hero-scene-steps { margin-bottom:7px; }
   .hero-scene-legend { display:none; }
-  .hero-motion-toggle { position:absolute; bottom:0; right:0; margin:0; font-size:10px; }
+  .hero-motion-toggle { margin:10px 0 0 auto; font-size:10px; }
   #nav[data-home-mobile-nav]:not(:has(.pp-nav-ready)) + #main > .hero--cinematic { padding-top:28px; }
 }
 @media (prefers-reduced-motion:reduce) {
