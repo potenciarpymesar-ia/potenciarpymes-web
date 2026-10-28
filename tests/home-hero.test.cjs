@@ -56,3 +56,30 @@ test('destroy releases observer and page handlers',()=>{
   const f=fixture();f.controller.destroy();assert.equal(f.observer.disconnected,true);
   assert.equal(f.events.click,undefined);assert.equal(f.docEvents.visibilitychange,undefined);assert.ok(f.animations.every(a=>a.killed));
 });
+
+test('real GSAP delivers three notifications in order and repeats without stale screen state',()=>{
+  const real=require('../vendor/gsap-3.13.0.min.js').gsap;
+  const notifications=Array.from({length:3},()=>({opacity:1,x:0,y:0,scale:1,filter:'blur(0px)'}));
+  const messages=Array.from({length:3},()=>({opacity:1,y:0,backgroundColor:'#fafaf6'}));
+  const steps=Array.from({length:3},()=>({opacity:0}));
+  const route={opacity:1,strokeDashoffset:0},followup={opacity:1},signal={opacity:1,scale:1},camera={y:0};
+  const timelines=[];
+  const gsap={timeline:vars=>{const t=real.timeline(vars);timelines.push(t);return t;},set:(targets,vars)=>{
+    // clearProps is CSSPlugin-only; this test uses plain targets to inspect the actual timeline.
+    if(!vars.clearProps)return real.set(targets,vars);
+  }};
+  const button={hidden:true,setAttribute(){},addEventListener(){},removeEventListener(){}};
+  const root={dataset:{},classList:{add(){},remove(){}},querySelector:s=>({'[data-hero-motion]':button,'.hero-camera':camera,'.desk-followup':followup,'.connection-signal':signal}[s]),
+    querySelectorAll:s=>({'.hero-title-line':[{y:0,clearProps:''}],'.hero-route':[route],'.hero-scene-step':steps,'.phone-notification':notifications,'.desk-message':messages}[s])};
+  const document={querySelector:()=>null,hidden:false,addEventListener(){},removeEventListener(){}};
+  const window={};vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../home-hero.js'),'utf8'),{window,document});
+  const controller=window.ppInitHomeHero(root,{gsap,document,media:{matches:false,addEventListener(){},removeEventListener(){}}});
+  try{
+    const story=timelines[2];timelines.forEach(t=>t.pause());
+    story.time(0.1);assert.equal(notifications[0].opacity,0);assert.equal(notifications[1].opacity,0);
+    story.time(1.7);assert.ok(notifications[0].opacity>.95);assert.equal(notifications[1].opacity,0);assert.ok(messages[0].opacity>.2);
+    story.time(6.8);assert.ok(notifications[2].opacity>.95);assert.ok(messages[2].opacity>.2);
+    story.time(9.9);assert.ok(followup.opacity>.95);
+    story.totalTime(story.duration()+story.repeatDelay()+0.1);assert.equal(notifications[0].opacity,0);assert.equal(notifications[2].opacity,0);
+  }finally{controller.destroy();real.ticker.sleep();}
+});

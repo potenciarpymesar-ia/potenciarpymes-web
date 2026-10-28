@@ -44,7 +44,7 @@
         entrance.from(lines, { y:20, duration:0.85, stagger:0.09, clearProps:'transform' });
         var camera = gsap.timeline({ paused:true, repeat:-1, yoyo:true, defaults:{ ease:'sine.inOut' } });
         camera.fromTo(photo, { y:0 }, { y:-9, duration:6 });
-        var story = gsap.timeline({ paused:true, repeat:-1, repeatDelay:3, defaults:{ ease:'power2.inOut' } });
+        var story = gsap.timeline({ paused:true, repeat:-1, repeatDelay:0.3, defaults:{ ease:'power2.inOut' } });
         story.addLabel('arrival',0)
           .set(routes,{ strokeDashoffset:1,opacity:0.8 },0)
           .set(notifications,{ opacity:0,x:28,y:-8,scale:0.97,filter:'blur(3px)' },0)
@@ -53,7 +53,7 @@
           .set(signal,{ opacity:0 },0)
           .set(steps,{ opacity:0 },0).set(steps[0],{ opacity:1 },0);
         Array.from(notifications).forEach(function(notification,index){
-          var at=0.9+index*2.5;
+          var at=0.35+index*2.5;
           story.to(notification,{ opacity:1,x:0,y:0,scale:1,filter:'blur(0px)',duration:0.65,ease:'power3.out' },at)
             .to(messages[index],{ opacity:1,y:0,backgroundColor:'#edf2df',duration:0.7 },at+0.6)
             .fromTo(signal,{ opacity:0,scale:0.5 },{ opacity:1,scale:1,duration:0.6 },at+0.4);
