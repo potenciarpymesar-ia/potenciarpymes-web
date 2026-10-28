@@ -22,3 +22,7 @@ El CTA y el mensaje están disponibles sin esperar la animación. El movimiento 
 ## Validación
 
 Pruebas existentes y del controlador de movimiento; inspección visual a 375, 390, 430, 768 y 1440 px, teclado, zoom, fallback sin JS, carga de fuentes y ausencia de desbordes. No tocar CRM, Recursos ni PR #6.
+
+## Revisión solicitada por el usuario
+
+El usuario rechazó el preview fotográfico y pidió más estilo y movimiento dentro de la pantalla del celular (notificaciones de diferentes redes) y de la notebook. Se reemplaza la fotografía por dispositivos construidos en HTML/CSS, con notificaciones reconocibles y una bandeja de trabajo ilustrativa. Se conserva el mensaje y las fuentes. En móvil la escena aparece después del título y antes de la bajada/CTA, para demostrar el movimiento en la primera pantalla; la navegación conserva acceso al diagnóstico. Ningún aviso o resultado es dato real de un cliente.

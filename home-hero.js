@@ -12,6 +12,10 @@
     var lines = root.querySelectorAll('.hero-title-line');
     var routes = root.querySelectorAll('.hero-route');
     var steps = root.querySelectorAll('.hero-scene-step');
+    var notifications = root.querySelectorAll('.phone-notification');
+    var messages = root.querySelectorAll('.desk-message');
+    var followup = root.querySelector('.desk-followup');
+    var signal = root.querySelector('.connection-signal');
     var animations = [], userPaused = false, inView = true, observer;
 
     function sync() {
@@ -28,7 +32,7 @@
       animations.forEach(function (animation) { animation.kill(); });
       animations = [];
       root.classList.remove('has-hero-motion');
-      if (gsap) gsap.set([photo].concat(Array.from(lines), Array.from(routes), Array.from(steps)), { clearProps:'transform,opacity,visibility,strokeDashoffset' });
+      if (gsap) gsap.set([photo].concat(Array.from(lines), Array.from(routes), Array.from(steps), Array.from(notifications), Array.from(messages), [followup,signal]), { clearProps:'transform,opacity,visibility,strokeDashoffset,filter,backgroundColor' });
     }
 
     function build() {
@@ -39,20 +43,31 @@
         // Never fade out the title or CTA: both remain readable throughout entry.
         entrance.from(lines, { y:20, duration:0.85, stagger:0.09, clearProps:'transform' });
         var camera = gsap.timeline({ paused:true, repeat:-1, yoyo:true, defaults:{ ease:'sine.inOut' } });
-        camera.fromTo(photo, { scale:1.015, xPercent:-0.3 }, { scale:1.075, xPercent:0.3, duration:13 });
+        camera.fromTo(photo, { y:0 }, { y:-9, duration:6 });
         var story = gsap.timeline({ paused:true, repeat:-1, repeatDelay:3, defaults:{ ease:'power2.inOut' } });
-        story.addLabel('accumulation',0)
-          .set(routes,{ strokeDashoffset:1 },0)
-          .set(steps,{ opacity:0 },0).set(steps[0],{ opacity:1 },0)
-          .addLabel('connection',3)
-          .to(steps[0],{ opacity:0,duration:0.4 },'connection')
-          .to(steps[1],{ opacity:1,duration:0.4 },'connection+=0.4')
-          .to(routes,{ strokeDashoffset:0,duration:3,stagger:0.7 },'connection')
-          .addLabel('clarity',8)
-          .to(steps[1],{ opacity:0,duration:0.4 },'clarity')
-          .to(steps[2],{ opacity:1,duration:0.4 },'clarity+=0.4')
-          .to(routes,{ opacity:0.85,duration:2 },'clarity')
-          .to([routes,steps[2]],{ opacity:0,duration:1 },12);
+        story.addLabel('arrival',0)
+          .set(routes,{ strokeDashoffset:1,opacity:0.8 },0)
+          .set(notifications,{ opacity:0,x:28,y:-8,scale:0.97,filter:'blur(3px)' },0)
+          .set(messages,{ opacity:0.2,y:0 },0)
+          .set(followup,{ opacity:0.3 },0)
+          .set(signal,{ opacity:0 },0)
+          .set(steps,{ opacity:0 },0).set(steps[0],{ opacity:1 },0);
+        Array.from(notifications).forEach(function(notification,index){
+          var at=0.9+index*2.5;
+          story.to(notification,{ opacity:1,x:0,y:0,scale:1,filter:'blur(0px)',duration:0.65,ease:'power3.out' },at)
+            .to(messages[index],{ opacity:1,y:0,backgroundColor:'#edf2df',duration:0.7 },at+0.6)
+            .fromTo(signal,{ opacity:0,scale:0.5 },{ opacity:1,scale:1,duration:0.6 },at+0.4);
+        });
+        story.addLabel('connection',4)
+          .to(steps[0],{ opacity:0,duration:0.3 },'connection')
+          .to(steps[1],{ opacity:1,duration:0.3 },'connection+=0.3')
+          .to(routes,{ strokeDashoffset:0,duration:3 },'connection')
+          .addLabel('clarity',9)
+          .to(steps[1],{ opacity:0,duration:0.3 },'clarity')
+          .to(steps[2],{ opacity:1,duration:0.3 },'clarity+=0.3')
+          .to(followup,{ opacity:1,duration:0.8 },'clarity')
+          .to(notifications,{ opacity:0,x:-12,duration:0.5,stagger:0.12 },13)
+          .to([routes,steps[2],signal],{ opacity:0,duration:0.7 },13.5);
         animations = [entrance,camera,story];
       }
       sync();

@@ -1,9 +1,7 @@
-# Escena del hero
+# Escena de dispositivos
 
-Fotografía conceptual generada para el hero de Potenciar Pymes el 28 de octubre de 2026. No representa un cliente ni resultados reales. Fuente de trabajo: `generated_images/exec-825f6e53-039a-4941-8efd-7f7e9bbbbab1.png` en el entorno de creación.
+La escena del hero se construye con HTML/CSS: un celular con notificaciones de ejemplo de WhatsApp, Instagram y Facebook, y una notebook con una bandeja ilustrativa de consultas. No carga imágenes de fondo, video, datos de clientes ni servicios de las redes sociales.
 
-Prompt: escritorio de una pequeña empresa después del cierre, teléfono, computadora, presupuesto y caja; luz cálida, sombras INK, sin personas, marcas, texto legible ni interfaces flotantes. Negativo a la izquierda y objetos a la derecha para desktop y recorte móvil.
+GSAP coordina las entradas de notificaciones y filas de la notebook. Todo el contenido es ilustrativo y el estado sin JavaScript o con movimiento reducido conserva la escena completa. El hero utiliza las tipografías y colores originales del sitio.
 
-Los SVG contienen el mismo WebP optimizado (49.768 bytes) con dos viewBox. Se entregan como texto autónomo para revisión y transferencia mediante el conector del repositorio. El navegador elige un solo encuadre con `picture`; los SVG no ejecutan scripts ni cargan recursos externos.
-
-El movimiento es de cámara y trazos programados: no es una secuencia de video generada. La fotografía original se conserva en el entorno de trabajo, fuera de los archivos servidos.
+La versión anterior del preview usaba una fotografía conceptual; fue retirada a pedido del usuario para que la actividad ocurra dentro de las pantallas.

@@ -109,8 +109,6 @@
     }
   </style>
   <link rel="stylesheet" href="/home-hero.css">
-  <link rel="preload" as="image" href="/assets/home/workspace.svg" media="(min-width:768px)">
-  <link rel="preload" as="image" href="/assets/home/workspace-mobile.svg" media="(max-width:767px)">
 </head>
 <body>
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WW77R29R" height="0" width="0" style="display:none;visibility:hidden"></iframe><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1351362610300825&ev=PageView&noscript=1" alt=""></noscript>
@@ -135,15 +133,40 @@
           </div>
         </div>
       </div>
-      <div class="hero-scene">
-        <div class="hero-camera">
-          <picture><source media="(max-width:767px)" srcset="/assets/home/workspace-mobile.svg" width="869" height="941"><img src="/assets/home/workspace.svg" width="1672" height="941" alt="" fetchpriority="high" decoding="async"></picture>
-          <svg class="hero-connections hero-connections--desktop" viewBox="0 0 1672 941" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path class="hero-route" pathLength="1" d="M1088 752 C1110 650 1220 702 1300 660 S1430 680 1490 738"/><path class="hero-route" pathLength="1" d="M1490 738 C1465 650 1360 646 1328 537 S1340 450 1365 418"/></svg>
-          <svg class="hero-connections hero-connections--mobile" viewBox="803 0 869 941" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path class="hero-route" pathLength="1" d="M1088 752 C1110 650 1220 702 1300 660 S1430 680 1490 738"/><path class="hero-route" pathLength="1" d="M1490 738 C1465 650 1360 646 1328 537 S1340 450 1365 418"/></svg>
+      <div class="hero-scene hero-scene--devices">
+        <div class="hero-camera devices-stage" aria-hidden="true">
+          <div class="device-orbit"><span></span><span></span><span></span></div>
+          <div class="device-laptop">
+            <div class="laptop-lid"><div class="laptop-camera"></div><div class="laptop-screen">
+              <div class="desk-toolbar"><span class="desk-brand">POTENCIAR<span> / TU NEGOCIO</span></span><span class="desk-online">En línea</span></div>
+              <div class="desk-layout"><div class="desk-sidebar"><span class="desk-nav-active">Consultas</span><span>Seguimiento</span><span>Pedidos</span><span>Mi negocio</span><b>Todo conectado.</b></div>
+                <div class="desk-main"><div class="desk-heading"><span>Tu próximo movimiento</span><b>Las conversaciones,<br>en un mismo lugar.</b></div>
+                  <div class="desk-inbox">
+                    <div class="desk-message"><span class="network-mark network-mark--wa"><svg viewBox="0 0 24 24"><path d="M5 19l-2 2 1-5a9 9 0 1 1 3 4z"/><path d="M8 7c0 5 4 9 8 9l1-3-3-1-1 1c-2-1-3-2-3-3l1-1-1-2z"/></svg></span><div><strong>Consulta recibida</strong><small>WhatsApp · ¿Tenés disponibilidad?</small></div><span class="desk-state">Recibido</span></div>
+                    <div class="desk-message"><span class="network-mark network-mark--ig"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg></span><div><strong>Una nueva conversación</strong><small>Instagram · Quiero más información</small></div><span class="desk-state">Recibido</span></div>
+                    <div class="desk-message"><span class="network-mark network-mark--fb">f</span><div><strong>Presupuesto para seguir</strong><small>Facebook · ¿Cómo podemos avanzar?</small></div><span class="desk-state">Recibido</span></div>
+                  </div>
+                  <div class="desk-followup"><span class="followup-indicator"></span><span>Una prioridad clara.<br><strong>Dar el próximo paso.</strong></span><span class="followup-arrow">↗</span></div>
+                </div>
+              </div>
+            </div></div><div class="laptop-base"><span></span></div>
+          </div>
+          <div class="device-phone">
+            <div class="phone-side"></div><div class="phone-screen"><div class="phone-island"></div>
+              <div class="phone-status"><span>9:41</span><svg viewBox="0 0 40 12" width="29" height="9"><path d="M1 10V7M5 10V5M9 10V2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 4Q21 0 26 4M18 7Q21 4 24 7" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="30" y="2" width="8" height="8" rx="1" fill="none" stroke="currentColor"/></svg></div>
+              <div class="phone-clock"><span>Miércoles</span><strong>9:41</strong><small>Tu negocio sigue en movimiento.</small></div>
+              <div class="phone-notifications">
+                <div class="phone-notification"><div class="notification-top"><span class="network-mark network-mark--wa"><svg viewBox="0 0 24 24"><path d="M5 19l-2 2 1-5a9 9 0 1 1 3 4z"/><path d="M8 7c0 5 4 9 8 9l1-3-3-1-1 1c-2-1-3-2-3-3l1-1-1-2z"/></svg></span><strong>WhatsApp</strong><small>ahora</small></div><b>Una consulta nueva</b><p>Hola, ¿tenés disponibilidad?</p></div>
+                <div class="phone-notification"><div class="notification-top"><span class="network-mark network-mark--ig"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg></span><strong>Instagram</strong><small>ahora</small></div><b>Te enviaron un mensaje</b><p>Quiero saber más de lo que hacés.</p></div>
+                <div class="phone-notification"><div class="notification-top"><span class="network-mark network-mark--fb">f</span><strong>Facebook</strong><small>ahora</small></div><b>Una oportunidad para seguir</b><p>¿Me pasás un presupuesto?</p></div>
+              </div><div class="phone-home-bar"></div>
+            </div>
+          </div>
+          <div class="device-connection"><svg viewBox="0 0 300 170"><path class="hero-route" pathLength="1" d="M10 150 C65 150 50 25 120 25 S215 100 285 25"/></svg><span class="connection-signal"></span></div>
         </div>
         <div class="hero-scene-caption">
-          <div class="hero-scene-steps" aria-hidden="true"><span class="hero-scene-step">01 / Todo se acumula.</span><span class="hero-scene-step">02 / Conectamos las partes.</span><span class="hero-scene-step">03 / Un camino más claro.</span></div>
-          <span class="hero-scene-legend" aria-hidden="true">Consultas · Seguimiento · Ventas</span>
+          <div class="hero-scene-steps" aria-hidden="true"><span class="hero-scene-step">Las consultas llegan.</span><span class="hero-scene-step">Conectamos las partes.</span><span class="hero-scene-step">Un próximo paso más claro.</span></div>
+          <span class="hero-scene-legend">Escena ilustrativa</span>
           <button class="hero-motion-toggle" data-hero-motion type="button" aria-pressed="false" hidden>Pausar animación</button>
         </div>
       </div>
