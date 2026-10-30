@@ -91,3 +91,19 @@
 #hero-title:focus-visible{outline:1px solid var(--lime)}
 @media(max-width:767px){.hero-flow{opacity:.55;mask-image:linear-gradient(#0003,#000 45%,#0003)}.hero-flow svg{width:180%;margin-left:-40%}}
 @media(prefers-reduced-motion:reduce){.hero-flow-pulses use{animation:none!important}.hero-glyph{transition:none!important;transform:none!important}#hero-title{transform:none!important}}
+
+/* Editorial backdrop: one broad brand-colored plane frames the devices. */
+.hero-backdrop{position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+.hero-backdrop-plane{position:absolute;inset:-8% -4% -10% 32%;background:#252c1b;clip-path:polygon(49% 0,100% 0,100% 100%,0 100%);transform-origin:80% 55%;animation:hero-plane-drift 22s cubic-bezier(.45,0,.55,1) infinite alternate;animation-play-state:paused}
+.hero-backdrop-plane::after{content:'';position:absolute;inset:0;background:#303923;clip-path:polygon(80% 0,100% 0,100% 100%,31% 100%)}
+[data-motion="running"] .hero-backdrop-plane{animation-play-state:running}
+@keyframes hero-plane-drift{from{transform:translate3d(0,-8px,0) rotate(-.7deg)}to{transform:translate3d(18px,10px,0) rotate(.7deg)}}
+.hero-flow{opacity:.9;mask-image:linear-gradient(90deg,#0004,#0002 34%,#000 69%)}
+.hero-flow-lines{opacity:.2}.hero-flow-pulses{opacity:.5}
+.device-orbit{display:none}
+@media(max-width:767px){
+ .hero-backdrop{inset:29% 0 17%}
+ .hero-backdrop-plane{inset:-8% -28% -10% 4%;clip-path:polygon(57% 0,100% 0,100% 100%,0 100%)}
+ .hero-flow{opacity:.65;mask-image:linear-gradient(#0001,#000 48%,#0001)}
+}
+@media(prefers-reduced-motion:reduce){.hero-backdrop-plane{animation:none!important;transform:none!important}}
