@@ -138,3 +138,7 @@
  .hero-backdrop-plane{inset:-8% -28% -10% 4%}
  .hero-flow{opacity:.45}
 }
+@media(max-width:360px){
+ .phone-clock{padding:1% 0 2%}
+ .phone-clock>small{display:none}
+}
