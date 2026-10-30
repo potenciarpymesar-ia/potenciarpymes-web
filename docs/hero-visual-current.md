@@ -33,3 +33,9 @@ No probado en teléfono físico ni Safari/iOS. No afirmar que el detector está 
 ## Refinamiento con UI UX Pro Max — 30/10/2026
 
 La revisión solicitada conserva identidad, titular y hardware. Se reduce el fondo a un plano tonal y la flotación de 9 a 3 px. Las notificaciones conservan protagonismo. En móvil, el orden visual y DOM pasa a titular → bajada/CTA → dispositivos; la escena se compacta a relación 1.25. El control de pausa gana área de 44px y texto de 11px. En tablet los dispositivos se encuadran dentro del ancho disponible. Las recomendaciones de la skill orientan la revisión; no sustituyen la identidad confirmada ni autorizan publicación.
+
+## React Threads — nuevo preview
+
+El usuario eligió Threads de React Bits y pidió retirar el corte verde diagonal. La nueva rama feat/hero-react-threads elimina el plano y las curvas anteriores. Threads es la única capa de fondo sobre INK, con líneas lima atenuadas bajo el texto. Se mantienen titular, CTA, dispositivos y orden móvil aprobados.
+
+React se monta únicamente en el contenedor decorativo, con bundle local y compilación reproducible. Pausa compartida, preferencia reducida dinámica, suspensión fuera de pantalla y fallback SVG sin JavaScript/WebGL2. Procedencia y modificaciones en frontend/hero-threads/README.md. Revisión de navegador pendiente; sin publicación en producción.
