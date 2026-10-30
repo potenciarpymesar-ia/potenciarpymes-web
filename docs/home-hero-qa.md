@@ -36,4 +36,4 @@ El usuario señaló que la bandeja sugería venta de un CRM y aprobó reemplazar
 
 ## Revisión de realismo — 30 de octubre
 
-Se reemplazan los marcos dibujados en CSS por recursos transparentes fotorrealistas generados. Las pantallas conservan HTML y animación real, alineadas a las aperturas del hardware. La notebook ahora muestra teclado, trackpad, bisagra y base completos. Los recursos optimizados suman aproximadamente 199 KB. Suite local: 93/93; revisión visual del preview pendiente.
+Se reemplazan los marcos dibujados en CSS por recursos transparentes fotorrealistas generados. Las pantallas conservan HTML y animación real, alineadas a las aperturas del hardware. La notebook ahora muestra teclado, trackpad, bisagra y base completos. Los recursos optimizados suman aproximadamente 199 KB. Suite local: 93/93; preview Netlify verificado a 1440, 390 y 320 px: sin desborde, tarjetas dentro del celular, pantallas alineadas y teclado completo visible. No se probó en teléfono físico.
