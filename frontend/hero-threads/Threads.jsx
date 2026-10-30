@@ -1,7 +1,7 @@
 /* Adapted from React Bits Threads by David Haz. See LICENSE.react-bits.md. */
 'use client';
 
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import './Threads.css';
 
