@@ -33,3 +33,7 @@ CRM, Recursos y PR #6 sin modificaciones. No se integró el PR #9 ni se publicó
 ## Revisión de posicionamiento — 30 de octubre
 
 El usuario señaló que la bandeja sugería venta de un CRM y aprobó reemplazarla por web, tienda y consulta. Se actualizaron las bajadas para explicitar consultoría sobre web, canales de venta y procesos. La prueba con GSAP confirma que al mostrarse el tercer panel los anteriores quedan ocultos. Suite: 93/93. Se conservan hardware, notificaciones, fuentes y CTA.
+
+## Revisión de realismo — 30 de octubre
+
+Se reemplazan los marcos dibujados en CSS por recursos transparentes fotorrealistas generados. Las pantallas conservan HTML y animación real, alineadas a las aperturas del hardware. La notebook ahora muestra teclado, trackpad, bisagra y base completos. Los recursos optimizados suman aproximadamente 199 KB. Suite local: 93/93; revisión visual del preview pendiente.

@@ -1,7 +1,7 @@
 # Escena de dispositivos
 
-La escena del hero se construye con HTML/CSS: un celular con notificaciones de ejemplo de WhatsApp, Instagram y Facebook, y una notebook con una bandeja ilustrativa de consultas. No carga imágenes de fondo, video, datos de clientes ni servicios de las redes sociales.
+Hardware fotorrealista generado con la herramienta integrada de generación de imágenes el 30 de octubre de 2026. Son ilustraciones generadas, no fotografías de productos físicos. Notebook frontal de grafito con teclado completo, trackpad, bisagras y pantalla vacía; celular frontal de grafito con vidrio, botones y pantalla vacía. Ambos originales tienen transparencia.
 
-GSAP coordina las entradas de notificaciones y filas de la notebook. Todo el contenido es ilustrativo y el estado sin JavaScript o con movimiento reducido conserva la escena completa. El hero utiliza las tipografías y colores originales del sitio.
+Originales: exec-1a209c03-1e88-4292-8df5-a9aa56f040c7.png (1536 × 1024) y exec-4917e242-a60d-4d7f-bbc3-acae386a018a.png (887 × 1774). Exportados a WebP RGBA calidad 84 y embebidos en SVG autocontenidos para distribución. Los dos recursos suman aproximadamente 199 KB.
 
-La versión anterior del preview usaba una fotografía conceptual; fue retirada a pedido del usuario para que la actividad ocurra dentro de las pantallas.
+Las pantallas contienen HTML animado con GSAP, con ejemplos de notificaciones de WhatsApp, Instagram y Facebook y vistas de web, tienda y conversación. No hay conexiones con las redes ni datos de clientes. Se conservan pausa, movimiento reducido, contenido sin JavaScript y fuentes originales.
