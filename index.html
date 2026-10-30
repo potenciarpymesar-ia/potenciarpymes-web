@@ -122,10 +122,17 @@
   </header>
   <main id="main">
     <section class="hero hero--cinematic" aria-labelledby="hero-title" data-cinematic-hero>
+      <div class="hero-flow" aria-hidden="true">
+        <svg viewBox="0 0 1800 900" preserveAspectRatio="none" focusable="false">
+          <defs><path id="flow-a" pathLength="100" d="M-180 640 C190 120 420 110 790 400 S1320 900 1990 110"/><path id="flow-b" pathLength="100" d="M-140 780 C290 320 470 840 920 560 S1390 -60 1940 310"/><path id="flow-c" pathLength="100" d="M-180 250 C250 700 540 20 980 260 S1420 670 1970 570"/></defs>
+          <g class="hero-flow-lines"><use href="#flow-a"/><use href="#flow-b"/><use href="#flow-c"/></g>
+          <g class="hero-flow-pulses"><use href="#flow-a" pathLength="100"/><use href="#flow-b" pathLength="100"/><use href="#flow-c" pathLength="100"/></g>
+        </svg>
+      </div>
       <div class="hero-inner">
         <div class="hero-copy">
           <p class="hero-kicker">Sistemas digitales para negocios reales</p>
-          <h1 id="hero-title"><span class="hero-title-line">TU NEGOCIO</span> <span class="hero-title-line">TE NECESITA.</span> <em><span class="hero-title-line">PERO NO</span> <span class="hero-title-line">PARA TODO.</span></em></h1>
+          <h1 id="hero-title" tabindex="0" aria-label="Tu negocio te necesita. Pero no para todo."><span class="hero-title-line">TU NEGOCIO</span> <span class="hero-title-line">TE NECESITA.</span> <em><span class="hero-title-line">PERO NO</span> <span class="hero-title-line">PARA TODO.</span></em></h1>
         </div>
       <div class="hero-scene hero-scene--devices">
         <div class="hero-camera devices-stage" aria-hidden="true">
