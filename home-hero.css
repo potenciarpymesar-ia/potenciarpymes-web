@@ -129,7 +129,9 @@
  #main>.hero--cinematic .hero-bottom .hero-reassurance{font-size:12px;line-height:1.5;max-width:40ch;margin-top:12px}
  .hero--cinematic .hero-actions{margin-top:16px}
  .device-laptop{width:100%;right:-3%;top:-3%}
- .device-phone{width:34%;left:7%;top:7%}
+ .device-phone{width:36%;left:7%;top:4%}
+ .phone-clock{padding:5% 0 6%}.phone-clock>strong{font-size:3.5em}
+ .phone-notifications{gap:.45em}.phone-notification{padding:.65em .7em}
  .hero-scene-caption{right:20px;bottom:8px;font-size:10px;letter-spacing:0}
  .hero-motion-toggle{min-height:44px;font-size:11px;padding:9px 12px;margin-top:8px}
  .hero-backdrop{inset:42% 0 0}
