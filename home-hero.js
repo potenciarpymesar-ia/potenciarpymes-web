@@ -48,14 +48,15 @@
         story.addLabel('arrival',0)
           .set(routes,{ strokeDashoffset:1,opacity:0.8 },0)
           .set(notifications,{ opacity:0,x:28,y:-8,scale:0.97,filter:'blur(3px)' },0)
-          .set(messages,{ opacity:0.2,y:0 },0)
+          .set(messages,{ opacity:0,y:0 },0).set(messages[0],{ opacity:1 },0)
           .set(followup,{ opacity:0.3 },0)
           .set(signal,{ opacity:0 },0)
           .set(steps,{ opacity:0 },0).set(steps[0],{ opacity:1 },0);
         Array.from(notifications).forEach(function(notification,index){
           var at=0.35+index*2.5;
           story.to(notification,{ opacity:1,x:0,y:0,scale:1,filter:'blur(0px)',duration:0.65,ease:'power3.out' },at)
-            .to(messages[index],{ opacity:1,y:0,backgroundColor:'#edf2df',duration:0.7 },at+0.6)
+            .to(messages,{ opacity:0,duration:0.25 },at+0.35)
+            .to(messages[index],{ opacity:1,y:0,duration:0.5 },at+0.6)
             .fromTo(signal,{ opacity:0,scale:0.5 },{ opacity:1,scale:1,duration:0.6 },at+0.4);
         });
         story.addLabel('connection',4)

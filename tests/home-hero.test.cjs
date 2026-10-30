@@ -78,7 +78,7 @@ test('real GSAP delivers three notifications in order and repeats without stale 
     const story=timelines[2];timelines.forEach(t=>t.pause());
     story.time(0.1);assert.equal(notifications[0].opacity,0);assert.equal(notifications[1].opacity,0);
     story.time(1.7);assert.ok(notifications[0].opacity>.95);assert.equal(notifications[1].opacity,0);assert.ok(messages[0].opacity>.2);
-    story.time(6.8);assert.ok(notifications[2].opacity>.95);assert.ok(messages[2].opacity>.2);
+    story.time(6.8);assert.ok(notifications[2].opacity>.95);assert.ok(messages[2].opacity>.95);assert.equal(messages[0].opacity,0);assert.equal(messages[1].opacity,0);
     story.time(9.9);assert.ok(followup.opacity>.95);
     story.totalTime(story.duration()+story.repeatDelay()+0.1);assert.equal(notifications[0].opacity,0);assert.equal(notifications[2].opacity,0);
   }finally{controller.destroy();real.ticker.sleep();}

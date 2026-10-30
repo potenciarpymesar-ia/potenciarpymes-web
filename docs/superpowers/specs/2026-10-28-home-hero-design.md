@@ -26,3 +26,7 @@ Pruebas existentes y del controlador de movimiento; inspección visual a 375, 39
 ## Revisión solicitada por el usuario
 
 El usuario rechazó el preview fotográfico y pidió más estilo y movimiento dentro de la pantalla del celular (notificaciones de diferentes redes) y de la notebook. Se reemplaza la fotografía por dispositivos construidos en HTML/CSS, con notificaciones reconocibles y una bandeja de trabajo ilustrativa. Se conserva el mensaje y las fuentes. En móvil la escena aparece después del título y antes de la bajada/CTA, para demostrar el movimiento en la primera pantalla; la navegación conserva acceso al diagnóstico. Ningún aviso o resultado es dato real de un cliente.
+
+## Posicionamiento aprobado — 30 de octubre
+
+Retirar la apariencia de CRM: reemplazar bandeja con marca y menú lateral por tres escenas alternadas (web, tienda y conversación). Conservar los dispositivos y notificaciones. Bajada: «Te ayudamos a mejorar tu web, tus canales de venta y tus procesos. Primero detectamos qué necesita tu negocio; después conectamos las herramientas que tengan sentido para vos.» En móvil: «Consultoría para mejorar tu web, tus canales de venta y tus procesos.»
