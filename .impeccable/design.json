@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-30T18:20:00Z",
+  "title": "Design System: Potenciar Pymes",
+  "extensions": {
+    "motion": [
+      {
+        "name": "glyph-return",
+        "value": "380ms cubic-bezier(.16,1,.3,1)",
+        "purpose": "Retorno de letras del hero."
+      },
+      {
+        "name": "editorial-plane",
+        "value": "22s cubic-bezier(.45,0,.55,1) alternate infinite",
+        "purpose": "Plano decorativo local del hero; respeta pausa y movimiento reducido."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "hero-mobile",
+        "value": "767px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Hero Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Acceso al diagnóstico inicial.",
+      "html": "<a class=\"ds-button\" href=\"/diagnostico\">HACER DIAGNÓSTICO INICIAL GRATIS</a>",
+      "css": ".ds-button{display:inline-flex;align-items:center;min-height:54px;padding:17px 21px;background:var(--lime,#D7FF3F);color:var(--ink,#11110F);border:1px solid var(--lime,#D7FF3F);font:800 11px/1.5 Manrope,Arial,sans-serif;text-decoration:none;letter-spacing:.09em;transition:transform .2s,background .2s,color .2s}.ds-button:hover{background:transparent;color:var(--lime,#D7FF3F);transform:translateY(-3px)}.ds-button:focus-visible{outline:3px solid var(--paper,#F0EEE8);outline-offset:5px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Editorial de marca",
+    "overview": "Identidad editorial contemporánea: titulares con carácter, contraste fuerte, aire y un acento lima reconocible. El contenido de negocio y los dispositivos ilustrativos sostienen la comunicación; los efectos acompañan su lectura.",
+    "keyCharacteristics": [
+      "Tipografía expresiva y jerarquía clara.",
+      "Negro cálido, papel y lima como identidad.",
+      "Composición editorial con separación entre mensaje y demostración.",
+      "Movimiento controlado y reversible."
+    ]
+  }
+}
