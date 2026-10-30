@@ -88,7 +88,7 @@
         // Never fade out the title or CTA: both remain readable throughout entry.
         entrance.from(lines, { y:20, duration:0.85, stagger:0.09, clearProps:'transform' });
         var camera = gsap.timeline({ paused:true, repeat:-1, yoyo:true, defaults:{ ease:'sine.inOut' } });
-        camera.fromTo(photo, { y:0 }, { y:-9, duration:6 });
+        camera.fromTo(photo, { y:0 }, { y:-3, duration:8 });
         var story = gsap.timeline({ paused:true, repeat:-1, repeatDelay:0.3, defaults:{ ease:'power2.inOut' } });
         story.addLabel('arrival',0)
           .set(routes,{ strokeDashoffset:1,opacity:0.8 },0)

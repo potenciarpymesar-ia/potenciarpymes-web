@@ -107,3 +107,32 @@
  .hero-flow{opacity:.65;mask-image:linear-gradient(#0001,#000 48%,#0001)}
 }
 @media(prefers-reduced-motion:reduce){.hero-backdrop-plane{animation:none!important;transform:none!important}}
+
+/* UI UX Pro Max refinement: message first; a quieter, contained scene. */
+.hero-backdrop-plane{background:#202619;animation-duration:36s}
+.hero-backdrop-plane::after{display:none}
+.hero-flow-lines{opacity:.13}.hero-flow-pulses{opacity:.3}
+.device-laptop{width:102%;right:0;top:12%}
+.device-phone{width:32%;left:6%;top:34%}
+.hero-motion-toggle{font-size:12px;min-height:44px}
+@media(min-width:768px) and (max-width:1100px){
+ .hero-scene--devices{left:48%;right:0;top:165px}
+ .device-laptop{width:100%;right:0;top:22%}
+ .device-phone{width:36%;left:8%;top:43%}
+ .hero-scene-caption{right:24px;bottom:26px}
+}
+@media(max-width:767px){
+ #main>.hero--cinematic{gap:20px;padding-bottom:24px}
+ .hero--cinematic .hero-bottom{order:1}
+ .hero--cinematic .hero-scene--devices{order:2;aspect-ratio:1.25;margin-top:0}
+ #main>.hero--cinematic .hero-bottom>p{font-size:16px;line-height:1.55;max-width:37ch}
+ #main>.hero--cinematic .hero-bottom .hero-reassurance{font-size:12px;line-height:1.5;max-width:40ch;margin-top:12px}
+ .hero--cinematic .hero-actions{margin-top:16px}
+ .device-laptop{width:100%;right:-3%;top:-3%}
+ .device-phone{width:34%;left:7%;top:7%}
+ .hero-scene-caption{right:20px;bottom:8px;font-size:10px;letter-spacing:0}
+ .hero-motion-toggle{min-height:44px;font-size:11px;padding:9px 12px;margin-top:8px}
+ .hero-backdrop{inset:42% 0 0}
+ .hero-backdrop-plane{inset:-8% -28% -10% 4%}
+ .hero-flow{opacity:.45}
+}

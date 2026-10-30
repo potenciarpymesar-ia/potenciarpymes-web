@@ -74,7 +74,7 @@ El hero usa peso 650, variación de ancho 85 y líneas fijadas en cuatro grupos.
 
 El sitio usa contenedores y secciones de ancho completo. El máximo compartido es 1440px; el contenido del hero actual tiene máximo 1320px. El hero de escritorio distribuye texto a la izquierda y dispositivos a la derecha.
 
-En móvil el orden es titular, escena, bajada y CTA. El breakpoint específico de la escena es 767px; otros componentes conservan sus breakpoints existentes. No unificar breakpoints sin revisar cada superficie.
+En el preview refinado, el orden móvil es titular, bajada/CTA y escena. El orden DOM coincide con la secuencia visual. El breakpoint específico de la escena es 767px; otros componentes conservan sus breakpoints existentes. No unificar breakpoints sin revisar cada superficie.
 
 ## Elevation & Depth
 
