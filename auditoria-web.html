@@ -1657,6 +1657,7 @@ body{background:var(--paper-0);font-family:var(--ff-body);font-size:1rem;line-he
     contactStatus.textContent = 'Enviando tu solicitud y preparando el resultado…';
     window.ppTrack('audit_contact_submitted', { flow: 'chequeo_web' });
     submitContact({ token: token, nombre: nombre, whatsapp: whatsapp, tipoNegocio: tipoNegocio, problema: problema }).then(function(data){
+      window.ppTrack('generate_lead', { form_name: 'chequeo_web', flow: 'chequeo_web' });
       window.ppTrack(data.stored ? 'audit_contact_saved' : 'audit_contact_sent', { flow: 'chequeo_web' });
       tool.setAttribute('aria-busy', 'false');
       contactStatus.textContent = '';

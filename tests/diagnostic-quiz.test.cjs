@@ -53,7 +53,8 @@ test('guardado confirmado muestra orientación coherente y emite conversiones de
   assert.match(h.element('res-titulo').textContent,/tiempo/i);
   assert.equal(h.requests[0].score,null);
   assert.equal(h.requests[0].problema_declarado,'sin_tiempo');
-  assert.match(h.element('diagnosticContactStatus').textContent,/guardado/i);
+  assert.equal(h.element('diagnosticContactStatus').textContent, 'Listo, recibimos tus datos.');
+  assert.equal(h.events.filter(e=>e.event==='diagnostico_contact_saved').length,1);
   assert.equal(h.events.some(e=>JSON.stringify(e).includes('TEST POTENCIAR')),false);
 });
 test('doble clic durante envío realiza una sola solicitud y conserva respuestas ante error de red', async () => {
@@ -101,12 +102,16 @@ test('no atraigo actualmente es excluyente con canales declarados y permite dese
   h.context.toggleMultiAnswer('q2','boca');
   assert.equal(JSON.stringify(h.context.answers.q2),'[]');
 });
-test('envío aceptado sin CRM muestra resultado pero no afirma guardado ni emite lead', async () => {
+test('envío aceptado por Resend muestra resultado y registra una conversión sin marcar guardado', async () => {
   const h=harness(()=>({ok:true,json:async()=>({ok:true,stored:false,delivery:{status:'accepted',provider:'resend'}})}));
   await h.context.showResult();
   assert.equal(h.element('resultStep').style.display,'block');
-  assert.match(h.element('diagnosticSavedStatus').textContent,/enviada/i);
-  assert.equal(h.events.some(e=>['generate_lead','diagnostico_contact_saved','diagnostico_completado','diagnosis_completed'].includes(e.event)),false);
+  assert.equal(h.element('diagnosticContactStatus').textContent, 'Listo, recibimos tus datos.');
+  assert.equal(h.element('diagnosticSavedStatus').textContent, 'Te vamos a escribir por WhatsApp para conversar sobre tu orientación.');
+  for (const event of ['generate_lead', 'diagnostico_completado', 'diagnosis_completed']) {
+    assert.equal(h.events.filter(e=>e.event===event).length,1);
+  }
+  assert.equal(h.events.some(e=>e.event==='diagnostico_contact_saved'),false);
   assert.equal(h.events.filter(e=>e.event==='diagnostico_contact_sent').length,1);
 });
 test('envío pendiente impide volver a editar; el error libera la navegación sin perder respuestas', async () => {

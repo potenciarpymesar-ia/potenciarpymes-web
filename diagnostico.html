@@ -764,18 +764,12 @@ async function showResult() {
     checkContact();
   }
   diagnosticStored = true;
-  if (receipt.stored === true && typeof receipt.leadId === 'string' && receipt.leadId.trim()) {
-    ppTrack('generate_lead', { form_name:'diagnostico', flow:'diagnostico_inicial' });
-    ppTrack('diagnostico_contact_saved', { flow:'diagnostico_inicial' });
-    ppTrack('diagnostico_completado', { flow:'diagnostico_inicial' });
-    ppTrack('diagnosis_completed', { flow:'diagnostico_inicial' });
-    status.textContent = 'Contacto guardado.';
-    document.getElementById('diagnosticSavedStatus').textContent = 'Tu contacto quedó guardado. La notificación al equipo se gestiona por separado.';
-  } else {
-    ppTrack('diagnostico_contact_sent', { flow:'diagnostico_inicial' });
-    status.textContent = 'Tu solicitud fue enviada.';
-    document.getElementById('diagnosticSavedStatus').textContent = 'Tu solicitud fue enviada. Esto confirma la aceptación del envío, no un guardado en un CRM ni la lectura del mensaje.';
-  }
+  ppTrack('generate_lead', { form_name:'diagnostico', flow:'diagnostico_inicial' });
+  ppTrack(receipt.stored === true ? 'diagnostico_contact_saved' : 'diagnostico_contact_sent', { flow:'diagnostico_inicial' });
+  ppTrack('diagnostico_completado', { flow:'diagnostico_inicial' });
+  ppTrack('diagnosis_completed', { flow:'diagnostico_inicial' });
+  status.textContent = 'Listo, recibimos tus datos.';
+  document.getElementById('diagnosticSavedStatus').textContent = 'Te vamos a escribir por WhatsApp para conversar sobre tu orientación.';
 
   // Hide all steps, progress
   document.getElementById('step6').style.display = 'none';
