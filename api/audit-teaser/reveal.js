@@ -26,10 +26,10 @@ function verifyToken(token, secret) {
 function buildRecommendation(score, severityCounts) {
   const ratio = score.total > 0 ? score.passed / score.total : 1;
   if (severityCounts.alto >= 3 || ratio < 0.5) {
-    return 'Tu web tiene varias áreas críticas sin resolver. Te conviene una Auditoría Full para ver el detalle completo y las prioridades.';
+    return 'Tu web tiene varias áreas críticas sin resolver. El Diagnóstico Digital Completo te ayuda a validar estas señales y definir prioridades.';
   }
   if (severityCounts.alto >= 1 || ratio < 0.75) {
-    return 'Hay puntos importantes para corregir. Una Auditoría Full te da el detalle exacto y por dónde arrancar.';
+    return 'Hay puntos importantes para corregir. El Diagnóstico Digital Completo te ayuda a definir por dónde arrancar.';
   }
   return 'La base técnica está relativamente ordenada. El siguiente paso lógico es revisar redes y canales de venta, que este chequeo automático no cubre.';
 }
