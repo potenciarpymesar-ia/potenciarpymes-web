@@ -147,3 +147,113 @@ test('audit reveal email failure is reattemptable and does not claim accepted de
   assert.equal(result.code, 502); assert.equal(result.data.delivery.status, 'unconfirmed');
   assert.equal(result.data.retryable, true); assert.equal(result.data.stored, false);
 });
+
+const env2 = {
+  LEADS_STORE_URL: 'https://sheet.invalid/exec',
+  LEADS_STORE_TOKEN: 'test-token',
+  RESEND_API_KEY: 'test-key',
+};
+const sheetReceipt = { body: { stored: true, leadId: 'sheet-lead-1' } };
+const emailReceipt = { body: { id: 'email-1' } };
+
+test('starts sheet storage first and notifies via Resend without waiting for storage', async () => {
+  let resolveStorage;
+  const pendingStorage = new Promise((resolve) => { resolveStorage = resolve; });
+  const h = harness(env2, [{ body: pendingStorage }, emailReceipt]);
+  const request = h.request('api/diagnostic-lead.js', lead);
+  assert.equal(h.calls.length, 2);
+  assert.equal(h.calls[0].url, env2.LEADS_STORE_URL);
+  assert.equal(h.calls[0].options.redirect, undefined);
+  const payload = JSON.parse(h.calls[0].options.body);
+  assert.equal(payload.token, env2.LEADS_STORE_TOKEN);
+  assert.equal(payload.requestId, lead.requestId);
+  assert.equal(payload.source, 'home_contacto');
+  assert.equal(h.calls[1].url, 'https://api.resend.com/emails');
+  resolveStorage(sheetReceipt.body);
+  const result = await request;
+  assert.equal(result.code, 200);
+  assert.equal(result.data.stored, true);
+  assert.equal(result.data.leadId, 'sheet-lead-1');
+  assert.equal(result.data.delivery.provider, 'resend');
+});
+
+test('sheet network failure preserves a confirmed Resend notification', async () => {
+  const h = harness(env2, [new Error('offline'), emailReceipt]);
+  const result = await h.request('api/diagnostic-lead.js', lead);
+  assert.equal(result.code, 200);
+  assert.equal(result.data.stored, false);
+  assert.equal(result.data.delivery.provider, 'resend');
+});
+
+test('confirmed sheet storage accepts the contact when Resend fails', async () => {
+  const h = harness(env2, [sheetReceipt, { ok: false }]);
+  const result = await h.request('api/diagnostic-lead.js', lead);
+  assert.equal(result.code, 200);
+  assert.equal(result.data.stored, true);
+  assert.equal(result.data.leadId, 'sheet-lead-1');
+  assert.deepEqual(result.data.delivery, { status: 'accepted', provider: 'sheet' });
+  assert.equal(result.data.notification.status, 'failed');
+});
+
+test('when sheet storage and Resend fail the response remains retryable', async () => {
+  const h = harness(env2, [{ ok: false }, { ok: false }]);
+  const result = await h.request('api/diagnostic-lead.js', lead);
+  assert.equal(result.code, 502);
+  assert.equal(result.data.stored, false);
+  assert.equal(result.data.retryable, true);
+});
+
+test('sheet HTTP 200 without a valid receipt does not confirm storage', async () => {
+  for (const body of [{}, { stored: true, leadId: '' }]) {
+    const h = harness(env2, [{ body }, emailReceipt]);
+    const result = await h.request('api/diagnostic-lead.js', lead);
+    assert.equal(result.code, 200);
+    assert.equal(result.data.stored, false);
+    assert.equal(result.data.leadId, undefined);
+  }
+});
+
+test('a sheet URL without a token makes only the Resend request', async () => {
+  const h = harness({ LEADS_STORE_URL: env2.LEADS_STORE_URL, RESEND_API_KEY: env2.RESEND_API_KEY }, [emailReceipt]);
+  const result = await h.request('api/diagnostic-lead.js', lead);
+  assert.equal(result.code, 200);
+  assert.equal(result.data.stored, false);
+  assert.equal(h.calls.length, 1);
+  assert.equal(h.calls[0].url, 'https://api.resend.com/emails');
+});
+
+test('audit reveal preserves the score when sheet storage and Resend succeed', async () => {
+  const h = harness({ ...env2, AUDIT_TOKEN_SECRET: 'test-secret' }, [sheetReceipt, emailReceipt]);
+  const result = await h.request('api/audit-teaser/reveal.js', { ...lead, token: token() });
+  assert.equal(result.code, 200);
+  assert.equal(result.data.stored, true);
+  assert.deepEqual(result.data.score, { passed: 1, total: 2 });
+});
+
+test('diagnostic contact fields are normalized before reaching storage', async () => {
+  const h = harness(env2, [sheetReceipt, emailReceipt]);
+  const result = await h.request('api/diagnostic-lead.js', {
+    ...lead, nivel: 'a'.repeat(1000), canales: [], brechas: 'b'.repeat(1000),
+    score: {}, rubro: 'c'.repeat(1000),
+  });
+  assert.equal(result.code, 200);
+  const payload = JSON.parse(h.calls[0].options.body);
+  assert.equal(payload.nivel.length, 300);
+  assert.equal(payload.canales, '');
+  assert.equal(payload.brechas.length, 300);
+  assert.equal(payload.score, null);
+  assert.equal(payload.rubro.length, 300);
+});
+
+test('the browser receipt excludes the sheet URL and token', async () => {
+  const h = harness(env2, [
+    { body: { ...sheetReceipt.body, token: env2.LEADS_STORE_TOKEN, url: env2.LEADS_STORE_URL } },
+    emailReceipt,
+  ]);
+  const result = await h.request('api/diagnostic-lead.js', lead);
+  assert.equal(result.code, 200);
+  assert.equal(result.data.stored, true);
+  const response = JSON.stringify(result.data);
+  assert.equal(response.includes(env2.LEADS_STORE_TOKEN), false);
+  assert.equal(response.includes(env2.LEADS_STORE_URL), false);
+});
