@@ -1,6 +1,5 @@
-// Preserve existing delivery providers. Accepted delivery is not durable CRM
-// storage or final mailbox delivery. Only an optional explicit webhook storage
-// receipt may claim stored:true; that external contract remains unverified.
+// Storage and notifications are independent. A provider accepting an email
+// does not confirm either storage or delivery to the mailbox.
 
 // Los campos del lead vienen del visitante -- escapar antes de embeber en
 // el HTML del email (si alguien pone "<img src=x onerror=...>" como nombre,
@@ -11,7 +10,57 @@ function escapeHtml(value) {
   }[c]));
 }
 
+async function storeLead(payload) {
+  const url = process.env.LEADS_STORE_URL;
+  const token = process.env.LEADS_STORE_TOKEN;
+  if (!url || !token) {
+    if (url || token) console.error('leads_store_misconfigured');
+    return { stored: false, configured: false };
+  }
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ token, ...payload }),
+      signal: AbortSignal.timeout(8000),
+    });
+    if (response.ok) {
+      const receipt = await response.json();
+      const leadId = receipt?.leadId;
+      if (receipt?.stored === true && typeof leadId === 'string' && leadId.trim() && leadId.length <= 200) {
+        return { stored: true, leadId };
+      }
+    }
+  } catch {
+    // Report only the operation code and request identifier below.
+  }
+  console.error('leads_store_failed', payload.requestId || '');
+  return { stored: false, configured: true };
+}
+
 async function dispatch(webhookPayload, subject, html) {
+  const [storage, notification] = await Promise.allSettled([
+    storeLead(webhookPayload),
+    notify(webhookPayload, subject, html),
+  ]);
+  const saved = storage.status === 'fulfilled' && storage.value.stored;
+  if (notification.status === 'fulfilled') {
+    if (!saved) return notification.value;
+    return { ...notification.value, stored: true, leadId: storage.value.leadId };
+  }
+  if (saved) {
+    return {
+      stored: true,
+      leadId: storage.value.leadId,
+      delivery: { status: 'accepted', provider: 'sheet' },
+      notification: { status: 'failed' },
+    };
+  }
+  throw notification.reason;
+}
+
+async function notify(webhookPayload, subject, html) {
   const webhookUrl = process.env.N8N_WEBHOOK_URL;
   let webhookRejected = false;
   if (webhookUrl) {
