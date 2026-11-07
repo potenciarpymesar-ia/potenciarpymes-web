@@ -111,6 +111,7 @@ module.exports = async (req, res) => {
     score: result.score,
     severityCounts: result.severityCounts,
     areasWithIssues: result.areasWithIssues,
+    items: result.items.map(({ id, area, label, ok }) => ({ id, area, label, ok })),
     recommendation: buildRecommendation(result.score, result.severityCounts),
   });
 };

@@ -1252,7 +1252,8 @@ a { color: inherit; }
   border: 1px solid oklch(100% 0 0 / .12);
 }
 .audit-chip.alto { color: oklch(72% 0.18 30); border-color: oklch(72% 0.18 30 / .35); }
-.audit-chip.medio { color: oklch(78% 0.15 80); border-color: oklch(78% 0.15 80 / .35); }
+.audit-chip.medio, .audit-items .medio { color: oklch(78% 0.15 80); }
+.audit-chip.medio { border-color: oklch(78% 0.15 80 / .35); }
 .audit-chip.bajo { color: var(--text-3); }
 .audit-area-row {
   display: flex;
@@ -1283,6 +1284,12 @@ a { color: inherit; }
   margin-bottom: 1.75rem;
   max-width: 60ch;
 }
+.audit-items {
+  list-style: none;
+  padding: 0;
+  color: var(--text-3);
+}
+.audit-items li + li { margin-top: 6px; }
 .audit-wa-btn {
   display: inline-flex;
   align-items: center;
@@ -1348,6 +1355,7 @@ body{background:var(--paper-0);font-family:var(--ff-body);font-size:1rem;line-he
           </div>
           <button class="audit-submit" id="auditStartBtn" type="button">REVISAR MI WEB</button>
           <p class="audit-error" id="auditStartError" role="alert" aria-atomic="true">No pudimos revisar esa URL. Confirmá que esté bien escrita e intentá de nuevo.</p>
+          <a id="auditStartWhatsApp" href="https://wa.me/5491150161326?text=Hola%2C%20quiero%20que%20revisen%20mi%20web%20y%20el%20chequeo%20autom%C3%A1tico%20no%20pudo%20leerla." hidden>Escribinos por WhatsApp</a>
           <p class="audit-note" id="auditContactNotice">Para ver el resultado te pediremos nombre y WhatsApp. Los usamos para identificar tu chequeo y poder conversar sobre él. El resultado se muestra acá, en esta página.</p><p class="audit-note"><a href="/diagnostico">¿Preferís empezar por tu negocio? Respondé cinco preguntas.</a></p>
         </div>
 
@@ -1387,6 +1395,7 @@ body{background:var(--paper-0);font-family:var(--ff-body);font-size:1rem;line-he
           </div>
           <div class="audit-severity-row" id="auditSeverityRow"></div>
           <div class="audit-area-row" id="auditAreaRow"></div>
+          <ul class="audit-items" id="auditItems"></ul>
           <div class="audit-recommendation" id="auditRecommendation"></div>
           <p class="audit-disclaimer">Este recuento corresponde a checks automatizados de señales públicas. No mide la calidad general de tu negocio ni confirma que la medición o los contactos funcionen.</p>
           <a class="audit-wa-btn" id="auditWaBtn" href="#" target="_blank" rel="noopener">&#9889; Consultar por WhatsApp</a>
@@ -1576,6 +1585,7 @@ body{background:var(--paper-0);font-family:var(--ff-body);font-size:1rem;line-he
   var urlInput = document.getElementById('auditUrl');
   var startBtn = document.getElementById('auditStartBtn');
   var startError = document.getElementById('auditStartError');
+  var startWhatsApp = document.getElementById('auditStartWhatsApp');
 
   var revealBtn = document.getElementById('auditRevealBtn');
   var revealError = document.getElementById('auditRevealError');
@@ -1600,6 +1610,7 @@ body{background:var(--paper-0);font-family:var(--ff-body);font-size:1rem;line-he
   startBtn.addEventListener('click', function(){
     var url = urlInput.value.trim();
     startError.classList.remove('visible');
+    startWhatsApp.hidden = true;
     urlInput.removeAttribute('aria-invalid');
     if (!url) { startError.textContent = 'Ingresá una URL.'; startError.classList.add('visible'); urlInput.setAttribute('aria-invalid', 'true'); urlInput.focus(); return; }
     trackStart();
@@ -1612,6 +1623,11 @@ body{background:var(--paper-0);font-family:var(--ff-body);font-size:1rem;line-he
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ url: url })
     }).then(function(r){
+      if (r.status === 422) {
+        return r.json().then(function(data){
+          throw new Error(data.error === 'site_unreachable' ? 'site_unreachable' : 'bad_response');
+        });
+      }
       if (!r.ok) throw new Error('bad_response');
       return r.json();
     }).then(function(data){
@@ -1622,12 +1638,16 @@ body{background:var(--paper-0);font-family:var(--ff-body);font-size:1rem;line-he
       window.ppTrack('audit_check_completed', { flow: 'chequeo_web' });
       if (window.ppTrack) window.ppTrack('audit_teaser_started', { service: 'auditoria-web' });
       showStep(stepContact);
-    }).catch(function(){
+    }).catch(function(error){
       startBtn.disabled = false;
       tool.setAttribute('aria-busy', 'false');
       window.ppTrack('audit_error', { flow: 'chequeo_web', stage: 'check' });
       showStep(stepUrl);
-      startError.textContent = 'No pudimos revisar esa URL. Confirmá que esté bien escrita e intentá de nuevo.';
+      var unreachable = error.message === 'site_unreachable';
+      startError.textContent = unreachable
+        ? 'No pudimos leer tu web. Puede estar caída, bloquear revisiones automáticas o tener un error en la dirección. Revisala o escribinos por WhatsApp.'
+        : 'No pudimos revisar esa URL. Confirmá que esté bien escrita e intentá de nuevo.';
+      startWhatsApp.hidden = !unreachable;
       startError.classList.add('visible');
       urlInput.setAttribute('aria-invalid', 'true');
       urlInput.focus();
@@ -1682,7 +1702,7 @@ body{background:var(--paper-0);font-family:var(--ff-body);font-size:1rem;line-he
 
     var sevRow = document.getElementById('auditSeverityRow');
     sevRow.innerHTML = '';
-    var sevLabels = { alto: 'urgente', medio: 'impacto medio', bajo: 'menor' };
+    var sevLabels = { alto: 'importantes', medio: 'a revisar', bajo: 'menores' };
     ['alto','medio','bajo'].forEach(function(sev){
       var count = (data.severityCounts && data.severityCounts[sev]) || 0;
       var chip = document.createElement('span');
@@ -1698,6 +1718,18 @@ body{background:var(--paper-0);font-family:var(--ff-body);font-size:1rem;line-he
       chip.className = 'audit-area-chip';
       chip.textContent = area;
       areaRow.appendChild(chip);
+    });
+
+    var items = document.getElementById('auditItems');
+    items.replaceChildren();
+    [false, 'na', true].forEach(function(status){
+      (data.items || []).filter(function(item){ return item.ok === status; }).forEach(function(item){
+        var li = document.createElement('li');
+        var prefix = status === true ? '✓ ' : status === false ? '✗ ' : '? ';
+        li.textContent = prefix + item.label + (status === 'na' ? ' (no se pudo confirmar)' : '');
+        if (status === false) li.classList.add('medio');
+        items.appendChild(li);
+      });
     });
 
     document.getElementById('auditRecommendation').textContent = String(data.recommendation || '');
