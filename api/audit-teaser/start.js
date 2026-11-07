@@ -43,6 +43,10 @@ module.exports = async (req, res) => {
   }
 
   const result = await runWebChecks(normalized);
+  if (!result.reachable) {
+    res.status(422).json({ error: 'site_unreachable' });
+    return;
+  }
 
   const payload = {
     v: 1,

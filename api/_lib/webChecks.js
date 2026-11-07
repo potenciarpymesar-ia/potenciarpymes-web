@@ -135,6 +135,8 @@ async function runWebChecks(rawUrl) {
   ]);
 
   const html = home.text || '';
+  const hasGa4 = /G-[A-Z0-9]{6,}/.test(html);
+  const hasGtm = /GTM-[A-Z0-9]+/.test(html);
   const titleMatch = extract(/<title[^>]*>([^<]*)<\/title>/i, html);
   const title = titleMatch ? titleMatch.replace(/<[^>]+>/g, '').trim() : '';
   const descMatch = html.match(/<meta[^>]+name=["']description["'][^>]*content=["']([^"']*)["']/i);
@@ -239,15 +241,15 @@ async function runWebChecks(rawUrl) {
       id: 'ga4_present',
       area: 'Medición y analítica',
       severity: 'alto',
-      label: 'Google Analytics 4 instalado',
-      ok: /G-[A-Z0-9]{6,}/.test(html),
+      label: 'Google Analytics 4 (puede cargarse desde Tag Manager)',
+      ok: hasGa4 ? true : hasGtm ? 'na' : false,
     },
     {
       id: 'gtm_present',
       area: 'Medición y analítica',
       severity: 'medio',
       label: 'Google Tag Manager instalado',
-      ok: /GTM-[A-Z0-9]+/.test(html),
+      ok: hasGtm,
     },
     {
       id: 'meta_pixel_present',
@@ -271,15 +273,11 @@ async function runWebChecks(rawUrl) {
       ok: /clarity\.ms|hotjar/i.test(html),
     },
     {
-      id: 'form_real_capture',
+      id: 'form_present',
       area: 'Conversión básica',
-      severity: 'alto',
-      label: 'Los formularios capturan de verdad',
-      ok: (() => {
-        const forms = html.match(/<form[^>]*>/gi) || [];
-        if (forms.length === 0) return 'na';
-        return forms.some((f) => /data-netlify/i.test(f) || /action=["'][^"'#]+["']/i.test(f));
-      })(),
+      severity: 'bajo',
+      label: 'Formulario de contacto en la página',
+      ok: /<form[\s>]/i.test(html),
     },
     {
       id: 'whatsapp_link_present',
@@ -300,6 +298,7 @@ async function runWebChecks(rawUrl) {
 
   return {
     url: targetUrl,
+    reachable: home.ok && home.status === 200,
     checkedAt: new Date().toISOString(),
     items,
     score: { passed, total: scored.length },
