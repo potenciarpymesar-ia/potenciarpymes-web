@@ -1,20 +1,6 @@
 const crypto = require('node:crypto');
-const { runWebChecks, normalizeUrl } = require('../_lib/webChecks');
+const { runWebChecks, normalizeUrl, assertSafeUrl } = require('../_lib/webChecks');
 const { isRateLimited, getClientIp } = require('../_lib/rateLimit');
-
-// Protección básica anti-SSRF: no dejar auditar IPs/hosts internos.
-// No es exhaustiva (no resuelve DNS), pero bloquea el abuso obvio de un form público.
-const BLOCKED_HOST_RE =
-  /^(localhost|127\.|10\.|192\.168\.|169\.254\.|0\.0\.0\.0|::1|metadata\.google\.internal)/i;
-function isPrivateIpLike(hostname) {
-  if (BLOCKED_HOST_RE.test(hostname)) return true;
-  const m = hostname.match(/^172\.(\d{1,3})\./);
-  if (m) {
-    const n = Number(m[1]);
-    if (n >= 16 && n <= 31) return true;
-  }
-  return false;
-}
 
 function signPayload(payload, secret) {
   const json = JSON.stringify(payload);
@@ -50,13 +36,8 @@ module.exports = async (req, res) => {
   let normalized;
   try {
     normalized = normalizeUrl(rawUrl);
+    await assertSafeUrl(normalized);
   } catch {
-    res.status(400).json({ error: 'invalid_url' });
-    return;
-  }
-
-  const hostname = new URL(normalized).hostname;
-  if (isPrivateIpLike(hostname)) {
     res.status(400).json({ error: 'invalid_url' });
     return;
   }

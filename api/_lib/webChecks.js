@@ -5,6 +5,7 @@
 // requieren sesion logueada o screenshots del cliente, no son verificables de forma anonima.
 
 const dns = require('node:dns').promises;
+const net = require('node:net');
 
 const FETCH_TIMEOUT_MS = 8000;
 const MAX_REDIRECTS = 5;
@@ -12,80 +13,102 @@ const MAX_BODY_CHARS = 2_000_000; // ~2MB, evita retener descargas gigantes en m
 
 function normalizeUrl(input) {
   let url = String(input || '').trim();
-  if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+  const hasScheme = /^[a-z][a-z0-9+.-]*:/i.test(url);
+  const hasBarePort = /^[^/:?#]+\.[^/:?#]+:[0-9]+(?:[/?#]|$)/.test(url);
+  if (!hasScheme || hasBarePort) url = 'https://' + url;
   return new URL(url).toString();
 }
 
-// Protección SSRF real: resuelve DNS y valida la IP resuelta, no solo el
-// nombre de host. Sin esto, un sitio malicioso podría redirigir a
-// 169.254.169.254 (metadata de la nube) y el fetch lo seguiría ciego.
-const BLOCKED_HOSTNAMES = /^(localhost|0\.0\.0\.0|metadata\.google\.internal)$/i;
+const BLOCKED_HOSTNAMES = /^(localhost|metadata\.google\.internal)\.?$/i;
+const blockedIPv4 = new net.BlockList();
+const blockedIPv6 = new net.BlockList();
+for (const [address, prefix] of [
+  ['0.0.0.0', 8], ['10.0.0.0', 8], ['100.64.0.0', 10], ['127.0.0.0', 8],
+  ['169.254.0.0', 16], ['172.16.0.0', 12], ['192.0.0.0', 24], ['192.168.0.0', 16],
+  ['198.18.0.0', 15], ['224.0.0.0', 4], ['240.0.0.0', 4],
+]) {
+  blockedIPv4.addSubnet(address, prefix);
+}
+for (const [address, prefix] of [
+  ['::', 128], ['::1', 128], ['fc00::', 7], ['fe80::', 10],
+  ['ff00::', 8], ['::ffff:0:0', 96],
+]) {
+  blockedIPv6.addSubnet(address, prefix, 'ipv6');
+}
 
-function isPrivateIp(ip) {
-  if (/^127\./.test(ip)) return true;
-  if (/^10\./.test(ip)) return true;
-  if (/^192\.168\./.test(ip)) return true;
-  if (/^169\.254\./.test(ip)) return true;
-  const m172 = ip.match(/^172\.(\d{1,3})\./);
-  if (m172 && Number(m172[1]) >= 16 && Number(m172[1]) <= 31) return true;
-  if (ip === '::1') return true;
-  if (/^f[cd][0-9a-f]{2}:/i.test(ip)) return true; // IPv6 unique-local fc00::/7
-  if (/^fe80:/i.test(ip)) return true; // IPv6 link-local
-  return false;
+function isBlockedAddress(ip) {
+  const address = ip.replace(/^\[(.*)\]$/, '$1');
+  const family = net.isIP(address);
+  if (family === 4) return blockedIPv4.check(address);
+  return family === 0 || blockedIPv6.check(address, 'ipv6');
 }
 
 async function assertSafeHost(hostname) {
-  if (BLOCKED_HOSTNAMES.test(hostname)) throw new Error('blocked_host');
-  if (/^\d{1,3}(\.\d{1,3}){3}$/.test(hostname) || hostname.includes(':')) {
-    if (isPrivateIp(hostname)) throw new Error('blocked_host');
-    return;
-  }
-  const addrs = await dns.lookup(hostname, { all: true });
-  if (addrs.length === 0 || addrs.some((a) => isPrivateIp(a.address))) {
+  const host = hostname.replace(/^\[(.*)\]$/, '$1');
+  if (BLOCKED_HOSTNAMES.test(host)) throw new Error('blocked_host');
+  const addresses = net.isIP(host) ? [{ address: host }] : await dns.lookup(host, { all: true });
+  if (addresses.length === 0 || addresses.some(({ address }) => isBlockedAddress(address))) {
     throw new Error('blocked_host');
   }
 }
 
-async function fetchText(url, opts = {}) {
+async function assertSafeUrl(url) {
+  const { protocol, port, hostname } = new URL(url);
+  if (!['http:', 'https:'].includes(protocol) || !['', '80', '443'].includes(port)) {
+    throw new Error('blocked_url');
+  }
+  await assertSafeHost(hostname);
+}
+
+async function readBody(body) {
+  if (!body) return '';
+  const reader = body.getReader();
+  const decoder = new TextDecoder();
+  let remaining = MAX_BODY_CHARS;
+  let text = '';
+  try {
+    while (remaining > 0) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      const chunk = value.subarray(0, remaining);
+      remaining -= chunk.byteLength;
+      text += decoder.decode(chunk, { stream: true });
+    }
+    return text + decoder.decode();
+  } finally {
+    if (remaining === 0) void reader.cancel().catch(() => {});
+    reader.releaseLock();
+  }
+}
+
+async function fetchText(url) {
   let currentUrl = url;
   for (let hop = 0; hop < MAX_REDIRECTS; hop++) {
-    let hostname;
-    try {
-      hostname = new URL(currentUrl).hostname;
-      await assertSafeHost(hostname);
-    } catch {
-      return { ok: false, status: 0, finalUrl: currentUrl, text: '' };
-    }
-
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
-    let res;
     try {
-      res = await fetch(currentUrl, {
+      await assertSafeUrl(currentUrl);
+      const res = await fetch(currentUrl, {
         signal: controller.signal,
-        redirect: 'manual', // seguimos los saltos a mano para validar cada uno
+        redirect: 'manual',
         headers: { 'user-agent': 'Mozilla/5.0 (compatible; PotenciarPymesAuditBot/1.0)' },
-        ...opts,
       });
+
+      if ([301, 302, 303, 307, 308].includes(res.status)) {
+        const location = res.headers.get('location');
+        if (res.body) void res.body.cancel().catch(() => {});
+        if (!location) return { ok: false, status: res.status, finalUrl: currentUrl, text: '' };
+        currentUrl = new URL(location, currentUrl).toString();
+        continue;
+      }
+
+      const text = await readBody(res.body);
+      return { ok: res.ok, status: res.status, finalUrl: currentUrl, text };
     } catch {
       return { ok: false, status: 0, finalUrl: currentUrl, text: '' };
     } finally {
       clearTimeout(timer);
     }
-
-    if ([301, 302, 303, 307, 308].includes(res.status)) {
-      const location = res.headers.get('location');
-      if (!location) return { ok: false, status: res.status, finalUrl: currentUrl, text: '' };
-      try {
-        currentUrl = new URL(location, currentUrl).toString();
-      } catch {
-        return { ok: false, status: 0, finalUrl: currentUrl, text: '' };
-      }
-      continue;
-    }
-
-    const text = await res.text().catch(() => '');
-    return { ok: res.ok, status: res.status, finalUrl: currentUrl, text: text.slice(0, MAX_BODY_CHARS) };
   }
   return { ok: false, status: 0, finalUrl: currentUrl, text: '' };
 }
@@ -285,4 +308,4 @@ async function runWebChecks(rawUrl) {
   };
 }
 
-module.exports = { runWebChecks, normalizeUrl };
+module.exports = { runWebChecks, normalizeUrl, isBlockedAddress, assertSafeUrl };
