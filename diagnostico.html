@@ -552,18 +552,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <p class="result-note" id="diagnosticSavedStatus" role="status" aria-live="polite" aria-atomic="true"></p>
+      <a class="wa-btn" id="res-result-whatsapp" target="_blank" rel="noopener">Hablar por WhatsApp sobre mi resultado</a>
       <div class="plan-rec" id="res-plan">
         <p class="plan-rec-label">Siguiente paso opcional / servicio pago</p>
         <p class="plan-rec-name">Diagnóstico Digital Completo</p>
         <p class="plan-rec-desc">El Diagnóstico Digital Completo suma revisión humana, evidencia, contexto del negocio, prioridades y un plan de acción según el alcance acordado.</p>
       </div>
 
-      <a href="/diagnostico-digital" class="wa-btn" id="res-wa">
-        <span aria-hidden="true">↗</span>
-        CONOCER EL DIAGNÓSTICO COMPLETO
-      </a>
+      <p class="result-note"><a href="/diagnostico-digital" id="res-wa">Ver el Diagnóstico Digital Completo</a></p>
       <p class="result-note">Este diagnóstico inicial es gratis. El alcance y el valor del servicio completo se acuerdan antes de comenzar.</p>
-      <p class="result-note"><a href="/auditoria-web">¿Preferís revisar tu web? REVISAR MI WEB →</a></p>
+      <p class="result-note"><a href="/auditoria-web" id="res-web-check">¿Preferís revisar tu web? REVISAR MI WEB →</a></p>
     </div>
 
   </div><!-- /card -->
@@ -753,6 +751,12 @@ async function showResult() {
   status.textContent = 'Listo, recibimos tus datos.';
   document.getElementById('diagnosticSavedStatus').textContent = 'Te vamos a escribir por WhatsApp para conversar sobre tu orientación.';
 
+  var message = 'Hola, soy ' + nombre + '. Hice el test y mi primer tema es: ' + gaps[0].title + '. Quiero conversar sobre por dónde empezar.';
+  document.getElementById('res-result-whatsapp').href = 'https://wa.me/5491150161326?text=' + encodeURIComponent(message);
+  if (answers.q1.includes('tiendanube') || answers.q1.includes('redes')) {
+    document.getElementById('res-web-check').textContent = 'Ahora revisá tu web con el chequeo gratis →';
+  }
+
   // Hide all steps, progress
   document.getElementById('step5').style.display = 'none';
   document.getElementById('progressWrap').style.display = 'none';
@@ -782,6 +786,9 @@ async function showResult() {
   ppTrack('diagnostico_result_shown', { flow:'diagnostico_inicial' });
   window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
 }
+document.getElementById('res-result-whatsapp').addEventListener('click', function(){
+  ppTrack('click_whatsapp', { location:'diagnostico_resultado' });
+});
 document.getElementById('res-wa').addEventListener('click', function(){ window.dataLayer.push({ event:'click_diagnostico_completo', flow:'diagnostico_inicial', location:'diagnostico_inicial_result' }); });
 </script>
 <script src="/design-system.js" defer></script>
