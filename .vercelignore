@@ -1,0 +1,10 @@
+*.md
+docs/
+tests/
+scripts/
+frontend/
+qa/
+design-system.html
+netlify.toml
+_redirects
+.git/
