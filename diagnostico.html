@@ -531,6 +531,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button class="btn-next" id="next5" onclick="showResult()" disabled>Ver mi orientación →</button>
       </div>
       <p class="result-note" id="diagnosticContactStatus" role="status" aria-live="polite" aria-atomic="true"></p>
+      <p class="result-note"><a id="diagnosticFailureWhatsApp" target="_blank" rel="noopener" hidden>Escribinos por WhatsApp</a></p>
     </div>
 
     <!-- RESULT -->
@@ -728,13 +729,17 @@ async function showResult() {
   checkContact();
   var status = document.getElementById('diagnosticContactStatus');
   status.setAttribute('aria-busy', 'true');
+  var fallback = document.getElementById('diagnosticFailureWhatsApp');
+  fallback.hidden = true;
   status.textContent = 'Enviando tu solicitud…';
   document.getElementById('next5').textContent = 'Enviando…';
   ppTrack('diagnostico_contact_submitted', { flow:'diagnostico_inicial' });
   try {
     var receipt = await saveDiagnosticLead(nombre, whatsapp, gaps, nivel);
   } catch (error) {
-    status.textContent = 'No pudimos confirmar el envío de tu solicitud. Tus respuestas y datos siguen acá: podés reintentar.';
+    status.textContent = 'No pudimos confirmar el envío. Tus respuestas siguen acá: podés reintentar o escribirnos por WhatsApp.';
+    fallback.href = 'https://wa.me/5491150161326?text=' + encodeURIComponent('Hola, quise completar el test pero el envío falló. Mi nombre es ' + nombre + '.');
+    fallback.hidden = false;
     ppTrack('diagnostico_error', { flow:'diagnostico_inicial', stage:'contact_delivery' });
     return;
   } finally {

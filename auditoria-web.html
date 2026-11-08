@@ -1385,6 +1385,7 @@ body{background:var(--paper-0);font-family:var(--ff-body);font-size:1rem;line-he
           <button class="audit-submit" id="auditRevealBtn" type="button">Ver mi resultado</button>
           <p class="audit-note" id="auditContactStatus" role="status" aria-live="polite" aria-atomic="true"></p>
           <p class="audit-error" id="auditRevealError" role="alert" aria-atomic="true">Completá nombre y WhatsApp para ver el resultado.</p>
+          <a id="auditFailureWhatsApp" target="_blank" rel="noopener" hidden>Escribinos por WhatsApp</a>
         </div>
 
         <div class="audit-step" id="auditStepResult">
@@ -1660,6 +1661,8 @@ body{background:var(--paper-0);font-family:var(--ff-body);font-size:1rem;line-he
     var whatsapp = document.getElementById('auditWhatsapp').value.trim();
     var tipoNegocio = document.getElementById('auditTipoNegocio').value.trim();
     var problema = document.getElementById('auditProblema').value.trim();
+    var fallback = document.getElementById('auditFailureWhatsApp');
+    fallback.hidden = true;
     revealError.classList.remove('visible');
     document.getElementById('auditNombre').removeAttribute('aria-invalid');
     document.getElementById('auditWhatsapp').removeAttribute('aria-invalid');
@@ -1691,6 +1694,8 @@ body{background:var(--paper-0);font-family:var(--ff-body);font-size:1rem;line-he
       contactStatus.textContent = '';
       window.ppTrack('audit_error', { flow: 'chequeo_web', stage: 'contact' });
       revealError.textContent = 'No pudimos confirmar el envío. Tus datos y la web ingresada siguen acá: podés reintentar.';
+      fallback.href = 'https://wa.me/5491150161326?text=' + encodeURIComponent('Hola, quise ver el chequeo de mi web pero el envío falló. Mi nombre es ' + nombre + '.');
+      fallback.hidden = false;
       revealError.classList.add('visible');
       revealBtn.focus();
     });
