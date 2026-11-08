@@ -159,7 +159,7 @@ async function notifyDiagnosticLead(lead) {
   const isQuiz = !!lead.respuestas || (lead.score !== undefined && lead.score !== null && lead.score !== '');
 
   const html = isQuiz ? `
-    <h2>Nuevo lead — Diagnóstico inicial (5 preguntas)</h2>
+    <h2>Nuevo lead — Test inicial (4 preguntas)</h2>
     <p><strong>Nombre:</strong> ${escapeHtml(lead.nombre)}</p>
     <p><strong>WhatsApp:</strong> ${escapeHtml(lead.whatsapp)}</p>
     <p><strong>Orientación:</strong> ${escapeHtml(lead.nivel)}</p>

@@ -15,7 +15,7 @@ function harness(reply) {
   const context = vm.createContext({ document: { querySelectorAll: () => [], getElementById: element }, window: { dataLayer: events, location: { pathname: '/diagnostico' }, fetch: async (url, options) => { requests.push(JSON.parse(options.body)); return reply(); }, matchMedia: () => ({ matches: true }), scrollTo(){} }, console, AbortController, setTimeout, clearTimeout });
   vm.runInContext(fs.readFileSync(path.join(__dirname,'..','contact-client.js'),'utf8'),context);
   vm.runInContext(script, context);
-  context.answers = { q1:['whatsapp'], q2:['boca'], q3:'mide_bien', q4:'f1', q5:'sin_tiempo' };
+  context.answers = { q1:['whatsapp'], q2:['boca'], q3:'mide_bien', q5:'sin_tiempo' };
   element('inp-nombre').value = 'TEST POTENCIAR PYMES'; element('inp-wa').value = '+54000000000';
   return { context, element, events, requests };
 }
@@ -27,10 +27,10 @@ test('el problema declarado ocupa la primera prioridad para los cinco problemas'
   const h = harness();
   for (const pain of ['sin_clientes','ads_sin_retorno','desconectado','sin_tiempo','sin_datos']) { h.context.answers.q5 = pain; assert.equal(h.context.getGaps()[0].id, pain); }
 });
-test('facturación y cantidad de canales no producen juicio de madurez', () => {
+test('cantidad de canales no producen juicio de madurez', () => {
   const h = harness();
   const first = JSON.stringify(h.context.getNivel());
-  h.context.answers.q1 = ['ml','tiendanube','redes']; h.context.answers.q2 = ['ads','mlads','seo']; h.context.answers.q4 = 'f4';
+  h.context.answers.q1 = ['ml','tiendanube','redes']; h.context.answers.q2 = ['ads','mlads','seo'];
   assert.equal(JSON.stringify(h.context.getNivel()), first);
   assert.match(first, /Orientación basada en respuestas/);
 });
@@ -40,8 +40,8 @@ for (const [name, body] of [['200 sin recibo',{ok:true}], ['guardado false',{sto
     await h.context.showResult();
     assert.equal(h.events.some(e => ['generate_lead','diagnostico_contact_saved','diagnosis_completed','diagnostico_completado'].includes(e.event)), false);
     assert.equal(h.element('inp-nombre').value, 'TEST POTENCIAR PYMES');
-    assert.equal(h.element('next6').disabled, false);
-    assert.notEqual(h.element('step6').style.display, 'none');
+    assert.equal(h.element('next5').disabled, false);
+    assert.notEqual(h.element('step5').style.display, 'none');
     assert.match(h.element('diagnosticContactStatus').textContent, /reintentar/i);
   });
 }
@@ -66,7 +66,7 @@ test('doble clic durante envío realiza una sola solicitud y conserva respuestas
   rejectRequest(new Error('offline'));
   await Promise.all([first,second]);
   assert.equal(h.context.answers.q5,'sin_tiempo');
-  assert.equal(h.element('next6').disabled,false);
+  assert.equal(h.element('next5').disabled,false);
 });
 test('un error HTTP conserva idempotencia y el reintento confirmado guarda una sola vez', async () => {
   let attempt = 0;
@@ -82,9 +82,9 @@ test('un error HTTP conserva idempotencia y el reintento confirmado guarda una s
 test('perfiles comercio, profesional y servicio local mantienen la prioridad declarada sin prescribir canales nuevos', () => {
   const h = harness();
   for (const profile of [
-    {q1:['whatsapp'],q2:['boca'],q3:'no_mide',q4:'f1',q5:'sin_clientes'},
-    {q1:['ml','tiendanube'],q2:['ads'],q3:'mide_algo',q4:'f4',q5:'ads_sin_retorno'},
-    {q1:['redes'],q2:['nada'],q3:'mide_bien',q4:'f2',q5:'desconectado'}
+    {q1:['whatsapp'],q2:['boca'],q3:'no_mide',q5:'sin_clientes'},
+    {q1:['ml','tiendanube'],q2:['ads'],q3:'mide_algo',q5:'ads_sin_retorno'},
+    {q1:['redes'],q2:['nada'],q3:'mide_bien',q5:'desconectado'}
   ]) {
     h.context.answers=profile;
     const priorities=h.context.getGaps();
@@ -118,13 +118,13 @@ test('envío pendiente impide volver a editar; el error libera la navegación si
   let rejectRequest;
   const pending=new Promise((resolve,reject)=>{rejectRequest=reject;});
   const h=harness(()=>pending);
-  h.context.currentStep=6;
+  h.context.currentStep=5;
   const submit=h.context.showResult();
-  h.context.goTo(5);
-  assert.equal(h.context.currentStep,6);
+  h.context.goTo(4);
+  assert.equal(h.context.currentStep,5);
   rejectRequest(new Error('offline'));
   await submit;
-  h.context.goTo(5);
-  assert.equal(h.context.currentStep,5);
+  h.context.goTo(4);
+  assert.equal(h.context.currentStep,4);
   assert.equal(h.context.answers.q5,'sin_tiempo');
 });

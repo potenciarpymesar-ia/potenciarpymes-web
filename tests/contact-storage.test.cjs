@@ -58,7 +58,7 @@ for (const [name, response] of [
 });
 test('an explicit optional storage receipt is distinguished from delivery, without duplicate Resend notification', async () => {
   const h = harness(env, [{ body: { stored: true, leadId: 'lead-1' } }]);
-  const result = await h.request('api/diagnostic-lead.js', { ...lead, score: null, nivel: 'Orientación basada en respuestas', problema_declarado: 'sin_tiempo', respuestas: { q1: ['whatsapp'], q2: ['boca'], q3: 'mide_algo', q4: 'f1', q5: 'sin_tiempo' } });
+  const result = await h.request('api/diagnostic-lead.js', { ...lead, score: null, nivel: 'Orientación basada en respuestas', problema_declarado: 'sin_tiempo', respuestas: { q1: ['whatsapp'], q2: ['boca'], q3: 'mide_algo', q5: 'sin_tiempo' } });
   assert.equal(result.code, 200); assert.equal(result.data.stored, true);
   assert.equal(result.data.leadId, 'lead-1'); assert.equal(result.data.delivery.status, 'accepted');
   const sent = JSON.parse(h.calls[0].options.body);
@@ -257,3 +257,15 @@ test('the browser receipt excludes the sheet URL and token', async () => {
   assert.equal(response.includes(env2.LEADS_STORE_TOKEN), false);
   assert.equal(response.includes(env2.LEADS_STORE_URL), false);
 });
+
+for (const cached of [false, true]) {
+  test(cached ? 'accepts cached answers and drops q4' : 'accepts the four current answers', async () => {
+    const answers = { q1: ['whatsapp'], q2: ['boca'], q3: 'mide_algo', q5: 'sin_tiempo' };
+    const h = harness(env, [{ body: { stored: true, leadId: 'lead-four' } }]);
+    const result = await h.request('api/diagnostic-lead.js', {
+      ...lead, respuestas: cached ? { ...answers, q4: 'f1' } : answers,
+    });
+    assert.equal(result.code, 200);
+    assert.deepEqual(JSON.parse(h.calls[0].options.body).respuestas, answers);
+  });
+}

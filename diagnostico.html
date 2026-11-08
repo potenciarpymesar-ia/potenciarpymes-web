@@ -434,7 +434,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- PROGRESS -->
   <div class="progress-wrap" id="progressWrap">
     <div class="progress-meta">
-      <span id="progressLabel">Pregunta 1 de 5</span>
+      <span id="progressLabel">Pregunta 1 de 4</span>
       <span id="progressPct">20%</span>
     </div>
     <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:20%"></div></div>
@@ -495,23 +495,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- STEP 4 -->
     <div class="step" id="step4" style="display:none">
-      <p class="step-label">Facturación online</p>
-      <h2 class="question-h">¿Cuánto facturás online por mes?</h2>
-      <p class="question-sub">Aproximado está bien.</p>
-      <div class="options" id="opts4" role="radiogroup" aria-label="Facturación mensual online">
-        <div class="option" data-val="f1" role="radio" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">Menos de $500.000 ARS</span></div>
-        <div class="option" data-val="f2" role="radio" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">$500.000 – $2.000.000 ARS</span></div>
-        <div class="option" data-val="f3" role="radio" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">$2.000.000 – $5.000.000 ARS</span></div>
-        <div class="option" data-val="f4" role="radio" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">Más de $5.000.000 ARS</span></div>
-      </div>
-      <div class="actions">
-        <button class="btn-back" onclick="goTo(3)">← Anterior</button>
-        <button class="btn-next" id="next4" onclick="goTo(5)" disabled>Siguiente →</button>
-      </div>
-    </div>
-
-    <!-- STEP 5 -->
-    <div class="step" id="step5" style="display:none">
       <p class="step-label">Dolor principal</p>
       <h2 class="question-h">¿Cuál es tu mayor problema ahora mismo?</h2>
       <p class="question-sub">El que más te quita el sueño.</p>
@@ -523,13 +506,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="option" data-val="sin_datos" role="radio" aria-checked="false" tabindex="0"><div class="option-check"></div><span class="option-text">No sé qué está funcionando y qué no</span></div>
       </div>
       <div class="actions">
-        <button class="btn-back" onclick="goTo(4)">← Anterior</button>
-        <button class="btn-next" id="next5" onclick="goTo(6)" disabled>Ver mi orientación →</button>
+        <button class="btn-back" onclick="goTo(3)">← Anterior</button>
+        <button class="btn-next" id="next4" onclick="goTo(5)" disabled>Ver mi orientación →</button>
       </div>
     </div>
 
-    <!-- STEP 6: CONTACTO -->
-    <div class="step" id="step6" style="display:none">
+    <!-- STEP 5: CONTACTO -->
+    <div class="step" id="step5" style="display:none">
       <p class="step-label">Último paso</p>
       <h2 class="question-h">Tus datos para ver la orientación.</h2>
       <p class="question-sub">Nombre y WhatsApp son obligatorios. Los usamos para identificar tu diagnóstico y poder conversar sobre él; el resultado se muestra acá.</p>
@@ -544,8 +527,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="actions">
-        <button class="btn-back" onclick="goTo(5)">← Anterior</button>
-        <button class="btn-next" id="next6" onclick="showResult()" disabled>Ver mi orientación →</button>
+        <button class="btn-back" onclick="goTo(4)">← Anterior</button>
+        <button class="btn-next" id="next5" onclick="showResult()" disabled>Ver mi orientación →</button>
       </div>
       <p class="result-note" id="diagnosticContactStatus" role="status" aria-live="polite" aria-atomic="true"></p>
     </div>
@@ -588,7 +571,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script src="/contact-client.js"></script>
 <script>
-var answers = { q1:[], q2:[], q3:'', q4:'', q5:'' };
+var answers = { q1:[], q2:[], q3:'', q5:'' };
 window.dataLayer = window.dataLayer || [];
 function ppTrack(eventName, params){
   params = params || {};
@@ -633,9 +616,8 @@ document.querySelectorAll('#opts1 .option, #opts2 .option').forEach(function(opt
 });
 
 /* ── SINGLE-SELECT ── */
-['opts3','opts4','opts5'].forEach(function(gid, i) {
-  var qKey = 'q' + (i+3);
-  var nextId = 'next' + (i+3);
+[['opts3', 'q3', 'next3'], ['opts5', 'q5', 'next4']].forEach(function(group) {
+  var [gid, qKey, nextId] = group;
   var options = Array.from(document.querySelectorAll('#' + gid + ' .option'));
   options.forEach(function(opt, index) {
     opt.tabIndex = index === 0 ? 0 : -1;
@@ -663,13 +645,13 @@ document.querySelectorAll('#opts1 .option, #opts2 .option').forEach(function(opt
 function checkContact() {
   var n = document.getElementById('inp-nombre').value.trim();
   var w = document.getElementById('inp-wa').value.trim();
-  document.getElementById('next6').disabled = diagnosticSubmitting || !(n.length > 1 && w.length > 6);
+  document.getElementById('next5').disabled = diagnosticSubmitting || !(n.length > 1 && w.length > 6);
 }
 
 function goTo(step) {
   if (diagnosticSubmitting) return;
-  if(step > currentStep){ppTrack(step === 6 ? 'start_diagnosis_contact' : 'diagnosis_step_completed', { flow:'diagnostico_inicial', step:currentStep });}
-  if(step === 6 && currentStep === 5){ppTrack('diagnostico_answers_completed', { flow:'diagnostico_inicial' });}
+  if(step > currentStep){ppTrack(step === 5 ? 'start_diagnosis_contact' : 'diagnosis_step_completed', { flow:'diagnostico_inicial', step:currentStep });}
+  if(step === 5 && currentStep === 4){ppTrack('diagnostico_answers_completed', { flow:'diagnostico_inicial' });}
   document.getElementById('step' + currentStep).style.display = 'none';
   currentStep = step;
   var el = document.getElementById('step' + step);
@@ -686,12 +668,12 @@ function goTo(step) {
 }
 
 function updateProgress(step) {
-  var total = 6;
+  var total = 5;
   var pct = Math.round((step / total) * 100);
   document.getElementById('progressFill').style.width = pct + '%';
   document.getElementById('progressPct').textContent = pct + '%';
-  if (step <= 5) {
-    document.getElementById('progressLabel').textContent = 'Pregunta ' + step + ' de 5';
+  if (step <= 4) {
+    document.getElementById('progressLabel').textContent = 'Pregunta ' + step + ' de 4';
   } else {
     document.getElementById('progressLabel').textContent = 'Último paso';
   }
@@ -739,7 +721,7 @@ async function saveDiagnosticLead(nombre, whatsapp, gaps, nivel) {
 async function showResult() {
   if (diagnosticSubmitting || diagnosticStored) return;
   checkContact();
-  if (document.getElementById('next6').disabled) return;
+  if (document.getElementById('next5').disabled) return;
   var nombre = document.getElementById('inp-nombre').value.trim();
   var whatsapp = document.getElementById('inp-wa').value.trim();
   var gaps = getGaps();
@@ -749,7 +731,7 @@ async function showResult() {
   var status = document.getElementById('diagnosticContactStatus');
   status.setAttribute('aria-busy', 'true');
   status.textContent = 'Enviando tu solicitud…';
-  document.getElementById('next6').textContent = 'Enviando…';
+  document.getElementById('next5').textContent = 'Enviando…';
   ppTrack('diagnostico_contact_submitted', { flow:'diagnostico_inicial' });
   try {
     var receipt = await saveDiagnosticLead(nombre, whatsapp, gaps, nivel);
@@ -760,7 +742,7 @@ async function showResult() {
   } finally {
     diagnosticSubmitting = false;
     status.setAttribute('aria-busy', 'false');
-    document.getElementById('next6').textContent = 'Ver mi orientación →';
+    document.getElementById('next5').textContent = 'Ver mi orientación →';
     checkContact();
   }
   diagnosticStored = true;
@@ -772,7 +754,7 @@ async function showResult() {
   document.getElementById('diagnosticSavedStatus').textContent = 'Te vamos a escribir por WhatsApp para conversar sobre tu orientación.';
 
   // Hide all steps, progress
-  document.getElementById('step6').style.display = 'none';
+  document.getElementById('step5').style.display = 'none';
   document.getElementById('progressWrap').style.display = 'none';
 
   // Fill result
