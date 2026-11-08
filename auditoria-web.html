@@ -1688,14 +1688,15 @@ body{background:var(--paper-0);font-family:var(--ff-body);font-size:1rem;line-he
       window.ppTrack('audit_teaser_completed', { service: 'auditoria-web', flow: 'chequeo_web' });
       showStep(stepResult);
       window.ppTrack('audit_result_shown', { flow: 'chequeo_web' });
-    }).catch(function(){
+    }).catch(function(error){
       revealBtn.disabled = false;
       tool.setAttribute('aria-busy', 'false');
       contactStatus.textContent = '';
       window.ppTrack('audit_error', { flow: 'chequeo_web', stage: 'contact' });
-      revealError.textContent = 'No pudimos confirmar el envío. Tus datos y la web ingresada siguen acá: podés reintentar.';
+      var invalidWhatsapp = error.code === 'invalid_whatsapp';
+      revealError.textContent = invalidWhatsapp ? 'Revisá el número de WhatsApp: incluí el código de área (por ejemplo, 11 2345 6789).' : 'No pudimos confirmar el envío. Tus datos y la web ingresada siguen acá: podés reintentar.';
       fallback.href = 'https://wa.me/5491150161326?text=' + encodeURIComponent('Hola, quise ver el chequeo de mi web pero el envío falló. Mi nombre es ' + nombre + '.');
-      fallback.hidden = false;
+      fallback.hidden = invalidWhatsapp;
       revealError.classList.add('visible');
       revealBtn.focus();
     });

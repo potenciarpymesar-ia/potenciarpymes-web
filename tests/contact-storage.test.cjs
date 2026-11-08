@@ -269,3 +269,31 @@ for (const cached of [false, true]) {
     assert.deepEqual(JSON.parse(h.calls[0].options.body).respuestas, answers);
   });
 }
+
+for (const endpoint of ['api/diagnostic-lead.js', 'api/audit-teaser/reveal.js']) {
+  const testEnv = { ...env, AUDIT_TOKEN_SECRET: 'test-secret' };
+  for (const whatsapp of ['abc', '123', '1234567890123456']) {
+    test(`${endpoint} rejects WhatsApp ${whatsapp} without calling a provider`, async () => {
+      const h = harness(testEnv);
+      const result = await h.request(endpoint, { ...lead, token: token(), whatsapp });
+      assert.equal(result.code, 400);
+      assert.equal(result.data.error, 'invalid_whatsapp');
+      assert.equal(h.calls.length, 0);
+    });
+  }
+
+  test(`${endpoint} accepts a formatted WhatsApp number`, async () => {
+    const h = harness(testEnv, [{ body: { stored: true, leadId: 'lead-whatsapp' } }]);
+    const result = await h.request(endpoint, { ...lead, token: token(), whatsapp: '+54 9 11 2345-6789' });
+    assert.equal(result.code, 200);
+    assert.equal(h.calls.length, 1);
+  });
+
+  test(`${endpoint} rejects the filled honeypot without calling a provider`, async () => {
+    const h = harness(testEnv);
+    const result = await h.request(endpoint, { ...lead, token: token(), hp: 'x' });
+    assert.equal(result.code, 400);
+    assert.equal(result.data.error, 'invalid_fields');
+    assert.equal(h.calls.length, 0);
+  });
+}

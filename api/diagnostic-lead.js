@@ -21,10 +21,20 @@ module.exports = async (req, res) => {
   }
 
   const body = req.body || {};
+  if (body.hp !== undefined && body.hp !== null && body.hp !== '') {
+    res.status(400).json({ error: 'invalid_fields' });
+    return;
+  }
   const { nombre, whatsapp, score, nivel, canales, brechas, rubro, requestId, problema_declarado, respuestas } = body;
 
-  if (typeof nombre !== 'string' || !nombre.trim() || typeof whatsapp !== 'string' || !whatsapp.trim()) {
+  if (typeof nombre !== 'string' || !nombre.trim() || typeof whatsapp !== 'string') {
     res.status(400).json({ error: 'missing_fields' });
+    return;
+  }
+
+  const digits = whatsapp.replace(/[^0-9]/g, '').length;
+  if (digits < 8 || digits > 15) {
+    res.status(400).json({ error: 'invalid_whatsapp' });
     return;
   }
 

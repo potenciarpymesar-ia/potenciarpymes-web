@@ -53,16 +53,26 @@ module.exports = async (req, res) => {
   }
 
   const body = req.body || {};
+  if (body.hp !== undefined && body.hp !== null && body.hp !== '') {
+    res.status(400).json({ error: 'invalid_fields' });
+    return;
+  }
   const { token, nombre, whatsapp, tipoNegocio, problema, requestId } = body;
 
   if (
     !token ||
     !nombre || typeof nombre !== 'string' || !nombre.trim() ||
-    !whatsapp || typeof whatsapp !== 'string' || !whatsapp.trim() ||
+    typeof whatsapp !== 'string' ||
     (tipoNegocio && typeof tipoNegocio !== 'string') ||
     (problema && typeof problema !== 'string')
   ) {
     res.status(400).json({ error: 'missing_fields' });
+    return;
+  }
+
+  const digits = whatsapp.replace(/[^0-9]/g, '').length;
+  if (digits < 8 || digits > 15) {
+    res.status(400).json({ error: 'invalid_whatsapp' });
     return;
   }
 

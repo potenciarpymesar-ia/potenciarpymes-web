@@ -737,9 +737,10 @@ async function showResult() {
   try {
     var receipt = await saveDiagnosticLead(nombre, whatsapp, gaps, nivel);
   } catch (error) {
-    status.textContent = 'No pudimos confirmar el envío. Tus respuestas siguen acá: podés reintentar o escribirnos por WhatsApp.';
+    var invalidWhatsapp = error.code === 'invalid_whatsapp';
+    status.textContent = invalidWhatsapp ? 'Revisá el número de WhatsApp: incluí el código de área (por ejemplo, 11 2345 6789).' : 'No pudimos confirmar el envío. Tus respuestas siguen acá: podés reintentar o escribirnos por WhatsApp.';
     fallback.href = 'https://wa.me/5491150161326?text=' + encodeURIComponent('Hola, quise completar el test pero el envío falló. Mi nombre es ' + nombre + '.');
-    fallback.hidden = false;
+    fallback.hidden = invalidWhatsapp;
     ppTrack('diagnostico_error', { flow:'diagnostico_inicial', stage:'contact_delivery' });
     return;
   } finally {
