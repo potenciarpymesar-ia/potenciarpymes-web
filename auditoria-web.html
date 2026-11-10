@@ -1352,7 +1352,7 @@ body{background:var(--paper-0);font-family:var(--ff-body);font-size:1rem;line-he
           <div class="audit-field">
             <label for="auditUrl">Dirección de tu web</label>
             <div class="audit-row">
-              <input class="audit-input" type="text" id="auditUrl" inputmode="url" aria-describedby="auditContactNotice auditStartError" placeholder="ejemplo: mitienda.com.ar" autocomplete="url">
+              <input class="audit-input" type="text" id="auditUrl" inputmode="url" aria-describedby="auditContactNotice auditStartError" placeholder="ejemplo: mitienda.com.ar" autocomplete="url" data-clarity-mask="true">
             </div>
           </div>
           <button class="audit-submit" id="auditStartBtn" type="button">REVISAR MI WEB</button>
@@ -1370,19 +1370,19 @@ body{background:var(--paper-0);font-family:var(--ff-body);font-size:1rem;line-he
           <p class="lead" style="margin-bottom:1.25rem;">El chequeo terminó. Completá nombre y WhatsApp para ver las señales detectadas en esta página. Tipo de negocio y qué querés mejorar son opcionales.</p>
           <div class="audit-field">
             <label for="auditNombre">Nombre (obligatorio)</label>
-            <input class="audit-input" type="text" id="auditNombre" required autocomplete="name" aria-describedby="auditRevealError">
+            <input class="audit-input" type="text" id="auditNombre" required autocomplete="name" aria-describedby="auditRevealError" data-clarity-mask="true">
           </div>
           <div class="audit-field">
             <label for="auditWhatsapp">WhatsApp (obligatorio)</label>
-            <input class="audit-input" type="tel" id="auditWhatsapp" required autocomplete="tel" placeholder="11 1234 5678" aria-describedby="auditRevealError">
+            <input class="audit-input" type="tel" id="auditWhatsapp" required autocomplete="tel" placeholder="11 1234 5678" aria-describedby="auditRevealError" data-clarity-mask="true">
           </div>
           <div class="audit-field">
             <label for="auditTipoNegocio">Tipo de negocio</label>
-            <input class="audit-input" type="text" id="auditTipoNegocio" placeholder="ej. indumentaria, gastronomía, servicios">
+            <input class="audit-input" type="text" id="auditTipoNegocio" placeholder="ej. indumentaria, gastronomía, servicios" data-clarity-mask="true">
           </div>
           <div class="audit-field">
             <label for="auditProblema">¿Qué te gustaría mejorar?</label>
-            <input class="audit-input" type="text" id="auditProblema" placeholder="ej. no me encuentran en Google">
+            <input class="audit-input" type="text" id="auditProblema" placeholder="ej. no me encuentran en Google" data-clarity-mask="true">
           </div>
           <button class="audit-submit" id="auditRevealBtn" type="button">Ver mi resultado</button>
           <p class="audit-note">Al enviar, aceptás que usemos tus datos para contactarte, según nuestra <a href="/privacidad">política de privacidad</a>.</p>

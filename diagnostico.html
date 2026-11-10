@@ -521,11 +521,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="contact-form">
         <div class="field">
           <label for="inp-nombre">Nombre</label>
-          <input type="text" id="inp-nombre" placeholder="Tu nombre" autocomplete="given-name" oninput="checkContact()">
+          <input type="text" id="inp-nombre" placeholder="Tu nombre" autocomplete="given-name" oninput="checkContact()" data-clarity-mask="true">
         </div>
         <div class="field">
           <label for="inp-wa">WhatsApp</label>
-          <input type="tel" id="inp-wa" placeholder="+54 9 11..." autocomplete="tel" oninput="checkContact()">
+          <input type="tel" id="inp-wa" placeholder="+54 9 11..." autocomplete="tel" oninput="checkContact()" data-clarity-mask="true">
         </div>
       </div>
       <div class="actions">
@@ -540,7 +540,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- RESULT -->
     <div class="result" id="resultStep">
       <div class="result-header">
-        <p class="result-name" id="res-nombre"></p><p class="result-note">Orientación inicial basada en tus respuestas declaradas. No inspeccionamos ni verificamos tus canales.</p>
+        <p class="result-name" id="res-nombre" data-clarity-mask="true"></p><p class="result-note">Orientación inicial basada en tus respuestas declaradas. No inspeccionamos ni verificamos tus canales.</p>
         <h2 class="result-h" id="res-titulo"></h2>
         <div class="score-wrap">
           <div>
