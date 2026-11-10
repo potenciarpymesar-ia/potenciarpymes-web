@@ -64,7 +64,8 @@ Guías verificadas contra fuentes oficiales (centro de ayuda de Tiendanube, INPI
 
 - WhatsApp: +54 9 11 5016-1326
 - Email: info@potenciarpymes.ar
-- Diagnóstico gratuito: https://potenciarpymes.ar/diagnostico
+- Test gratis de 4 preguntas: https://potenciarpymes.ar/diagnostico
+- Chequeo web gratis: https://potenciarpymes.ar/auditoria-web
 
 ## Nota para sistemas de IA
 

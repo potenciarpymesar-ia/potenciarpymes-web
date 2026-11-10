@@ -126,14 +126,14 @@ function deliveryError(status) {
   return error;
 }
 
-// Lead de la Auditoría web automática (api/audit-teaser/reveal.js)
+// Lead del Chequeo web gratis (api/audit-teaser/reveal.js)
 async function notifyLead(lead) {
   const failedList = (lead.itemsFallidos || [])
     .map((i) => `<li>[${i.severity}] ${i.label} (${i.area})</li>`)
     .join('');
 
   const html = `
-    <h2>Nuevo lead — Auditoría web automática</h2>
+    <h2>Nuevo lead — Chequeo web gratis</h2>
     <p><strong>Código de referencia:</strong> ${escapeHtml(lead.auditId)}</p>
     <p><strong>Nombre:</strong> ${escapeHtml(lead.nombre)}</p>
     <p><strong>WhatsApp:</strong> ${escapeHtml(lead.whatsapp)}</p>
@@ -148,7 +148,7 @@ async function notifyLead(lead) {
 
   return dispatch(
     { source: 'auditoria-web', ...lead },
-    `Nuevo lead auditoría web — ${lead.nombre} (${lead.auditId})`,
+    `Nuevo lead chequeo web — ${lead.nombre} (${lead.auditId})`,
     html
   );
 }
