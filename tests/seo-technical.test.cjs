@@ -75,7 +75,7 @@ const rootGuides = [
 ].map((slug) => `${slug}.html`);
 const breadcrumbPages = new Set([
   ...rootGuides, 'blog.html', ...pages.filter((page) => page.startsWith('blog/')),
-  'herramientas/product-lock.html', 'diagnostico.html', 'privacidad.html',
+  'herramientas/product-lock.html', 'recursos/auditoria-tienda-claude.html', 'diagnostico.html', 'privacidad.html',
 ]);
 
 for (const [page, html] of htmlByPage) {
@@ -146,10 +146,10 @@ test('privacy has a minimal WebPage schema', () => {
   assert.equal(page.inLanguage, 'es-AR');
 });
 
-test('sitemap contains exactly the 37 public pages, once each, and no unknown files', () => {
+test('sitemap contains every public page exactly once and no unknown files', () => {
   const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
   const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url);
-  assert.equal(urls.length, 37);
+  assert.equal(urls.length, pages.length);
   assert.equal(new Set(urls).size, urls.length);
   assert.deepEqual([...urls].sort(), [...routes.keys()].map((url) => origin + url).sort());
 });
