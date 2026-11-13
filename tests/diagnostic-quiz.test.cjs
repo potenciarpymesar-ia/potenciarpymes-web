@@ -5,14 +5,14 @@ const vm = require('node:vm');
 const path = require('node:path');
 const html = fs.readFileSync(path.join(__dirname, '..', 'diagnostico.html'), 'utf8');
 const script = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]).find(s => s.includes('var answers ='));
-function harness(reply) {
+function harness(reply, search = '') {
   const elements = new Map();
   function element(id) {
     if (!elements.has(id)) elements.set(id, { value: '', textContent: '', innerHTML: '', disabled: false, style: {}, classList: { add(){}, remove(){} }, setAttribute(){}, addEventListener(){}, focus(){}, querySelector(){ return element('heading'); } });
     return elements.get(id);
   }
   const events = [], requests = [];
-  const context = vm.createContext({ document: { querySelectorAll: () => [], getElementById: element }, window: { dataLayer: events, location: { pathname: '/diagnostico' }, fetch: async (url, options) => { requests.push(JSON.parse(options.body)); return reply(); }, matchMedia: () => ({ matches: true }), scrollTo(){} }, console, AbortController, setTimeout, clearTimeout });
+  const context = vm.createContext({ document: { querySelectorAll: () => [], getElementById: element }, window: { dataLayer: events, location: { pathname: '/diagnostico', search }, fetch: async (url, options) => { requests.push(JSON.parse(options.body)); return reply(); }, matchMedia: () => ({ matches: true }), scrollTo(){} }, console, URLSearchParams, AbortController, setTimeout, clearTimeout });
   vm.runInContext(fs.readFileSync(path.join(__dirname,'..','contact-client.js'),'utf8'),context);
   vm.runInContext(script, context);
   context.answers = { q1:['whatsapp'], q2:['boca'], q3:'mide_bien', q5:'sin_tiempo' };
@@ -127,4 +127,11 @@ test('envío pendiente impide volver a editar; el error libera la navegación si
   h.context.goTo(4);
   assert.equal(h.context.currentStep,4);
   assert.equal(h.context.answers.q5,'sin_tiempo');
+});
+
+test('registra el origen de la guía solo en la conversión confirmada', async () => {
+  const h = harness(() => ({ok:true,json:async()=>({ok:true,stored:true,leadId:'test-source'})}), '?source=guia-auditoria-claude');
+  await h.context.showResult();
+  assert.equal(h.events.find(e => e.event === 'generate_lead').source, 'guia-auditoria-claude');
+  assert.equal(Object.hasOwn(h.requests[0], 'source'), false);
 });
