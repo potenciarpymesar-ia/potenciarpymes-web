@@ -108,7 +108,7 @@ for (const [page, html] of htmlByPage) {
       assert.ok(article.description?.trim());
       assert.ok(article.url || article.mainEntityOfPage);
       assert.equal(article.inLanguage, 'es-AR');
-      assert.equal(article.author?.['@id'], organization);
+      assert.deepEqual(article.author, { '@type': 'Person', '@id': `${origin}/#jonathan`, name: 'Jonathan' });
       assert.equal(article.publisher?.['@id'], organization);
       assert.match(article.dateModified, /^\d{4}-\d{2}-\d{2}$/);
     }

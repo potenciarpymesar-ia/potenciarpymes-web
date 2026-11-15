@@ -8,11 +8,9 @@
       (item.accessType!=="keyword_dm" || Boolean(item.keyword));
   }
   var resources = (window.POTENCIAR_RESOURCES || []).filter(function(item){return item.status === "published" && valid(item);});
-  // Lead with the Claude guide, then retain the library’s existing category order.
+  // Keep tools ahead of guides even when new resources are inserted at the top of the catalog.
   var priority = {Herramientas:0,"Guías":1};
   resources.sort(function(a,b){
-    var leadId="auditoria-tienda-claude";
-    if(a.id===leadId || b.id===leadId) return Number(b.id===leadId)-Number(a.id===leadId);
     var first=Object.prototype.hasOwnProperty.call(priority,a.category)?priority[a.category]:2;
     var second=Object.prototype.hasOwnProperty.call(priority,b.category)?priority[b.category]:2;
     return first-second;
