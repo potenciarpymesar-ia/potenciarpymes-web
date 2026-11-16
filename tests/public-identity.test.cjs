@@ -5,7 +5,10 @@ const path=require('node:path');
 const root=path.join(__dirname,'..');
 // Keep the private identifier out of this potentially downloadable test file.
 const privateName=String.fromCharCode(102,114,101,110,113,117,101,108);
-test('public text and asset paths do not disclose the private identity',()=>{
+// El nombre legal ahora se publica a propósito en el pie y en las políticas (verificación de Meta).
+// Esta prueba solo cuida que no aparezca en nombres de archivos ni de carpetas. El domicilio fiscal
+// se controla en tests/identidad-legal.test.cjs.
+test('public asset paths do not disclose the legal name',()=>{
  const violations=[];
  function visit(dir){
   for(const entry of fs.readdirSync(dir,{withFileTypes:true})){
@@ -14,7 +17,6 @@ test('public text and asset paths do not disclose the private identity',()=>{
    const relative=path.relative(root,file);
    if(relative.toLowerCase().includes(privateName))violations.push(relative);
    if(entry.isDirectory())visit(file);
-   else if(/\.(html|css|js|json|txt|xml|svg|md|webmanifest)$/i.test(entry.name)&&fs.readFileSync(file,'utf8').toLowerCase().includes(privateName))violations.push(relative);
   }
  }
  visit(root);
