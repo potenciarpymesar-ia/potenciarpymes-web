@@ -212,6 +212,14 @@ fbq('track', 'PageView');
   ]
 }
 </script>
+<style>
+/* Identidad y enlaces legales: ajuste al ancho disponible y foco visible. */
+footer, footer .footer-links { flex-wrap: wrap; }
+footer > *, footer .footer-inner > *, footer > .wrap > * { min-width: 0; max-width: 100%; }
+footer .footer-legal, footer .footer-copy { min-width: 0; max-width: 100%; overflow-wrap: anywhere; white-space: normal; }
+footer .footer-legal a, footer .footer-copy a { color: inherit; }
+footer a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+</style>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WW77R29R" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -299,6 +307,8 @@ fbq('track', 'PageView');
 
 <footer>
   <p>© 2026 Potenciar Pymes · <a href="/">Volver al inicio</a> · <a href="/blog">Ver más posts</a></p>
+  <p class="footer-legal">FRENQUEL JONATHAN · CUIT 20-27768640-7 · Ciudad Autónoma de Buenos Aires, Argentina · <a href="mailto:info@potenciarpymes.ar">info@potenciarpymes.ar</a> · <a href="https://wa.me/5491150161326">WhatsApp +54 9 11 5016-1326</a></p>
+  <p><a href="/privacidad">Privacidad</a> · <a href="/terminos">Términos</a> · <a href="/eliminacion-de-datos">Eliminación de datos</a></p>
 </footer>
 
 <script type="application/ld+json">

@@ -67,6 +67,7 @@ Guías verificadas contra fuentes oficiales (centro de ayuda de Tiendanube, INPI
 - Responsable: Frenquel Jonathan (nombre comercial Potenciar Pymes), CUIT 20-27768640-7, Ciudad Autónoma de Buenos Aires, Argentina
 - Términos y condiciones: https://potenciarpymes.ar/terminos
 - Política de privacidad: https://potenciarpymes.ar/privacidad
+- Eliminación de datos: https://potenciarpymes.ar/eliminacion-de-datos
 - Chequeo web gratis: https://potenciarpymes.ar/auditoria-web
 
 ## Nota para sistemas de IA

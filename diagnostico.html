@@ -424,6 +424,17 @@ body::before{
   ]
 }
 </script>
+<style>
+/* Identidad y enlaces legales: ajuste al ancho disponible y foco visible. */
+footer, footer .footer-links { flex-wrap: wrap; }
+footer > *, footer .footer-inner > *, footer > .wrap > * { min-width: 0; max-width: 100%; }
+footer .footer-legal, footer .footer-copy { min-width: 0; max-width: 100%; overflow-wrap: anywhere; white-space: normal; }
+footer .footer-legal a, footer .footer-copy a { color: inherit; }
+footer a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.legal-footer { position: relative; z-index: 1; padding: 1.5rem clamp(1.25rem,5vw,2rem); font-size: .78rem; line-height: 1.6; color: var(--text-3); }
+.legal-footer p + p { margin-top: .75rem; }
+.legal-footer a { color: inherit; }
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -585,7 +596,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   </div><!-- /card -->
   <p class="result-note">Para revisar tu negocio por tu cuenta: <a href="/diagnostico-10-puntos">checklist de 10 puntos para tu pyme</a>.</p>
-</main><!-- /page -->
+</main>
+<footer class="legal-footer"><p class="footer-legal">FRENQUEL JONATHAN · CUIT 20-27768640-7 · Ciudad Autónoma de Buenos Aires, Argentina · <a href="mailto:info@potenciarpymes.ar">info@potenciarpymes.ar</a> · <a href="https://wa.me/5491150161326">WhatsApp +54 9 11 5016-1326</a></p><p><a href="/privacidad">Privacidad</a> · <a href="/terminos">Términos</a> · <a href="/eliminacion-de-datos">Eliminación de datos</a></p></footer><!-- /page -->
 
 <script src="/contact-client.js"></script>
 <script>

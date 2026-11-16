@@ -11,6 +11,7 @@ const LEGAL_NAME = 'frenquel jonathan';
 const CUIT = '20-27768640-7';
 const CITY = 'ciudad autónoma de buenos aires';
 const MAIL = 'info@potenciarpymes.ar';
+const WHATSAPP = '+54 9 11 5016-1326';
 
 // El domicilio fiscal no puede aparecer en ningún archivo público. Para no dejar la
 // calle escrita en el repositorio, se compara por huella SHA-256 de la palabra normalizada.
@@ -19,7 +20,16 @@ const FORBIDDEN_WORD_HASHES = new Set([
 ]);
 const FORBIDDEN_WORDS = ['dpto', 'depto'];
 
-const identityPages = ['index.html', 'diagnostico-digital.html', 'web-profesional.html', 'privacidad.html', 'terminos.html'];
+function publicPages(dir = '') {
+  return fs.readdirSync(path.join(root, dir), { withFileTypes: true }).flatMap((entry) => {
+    const file = path.posix.join(dir, entry.name);
+    if (entry.isDirectory() && (dir || ['blog', 'recursos', 'herramientas'].includes(entry.name))) {
+      return publicPages(file);
+    }
+    return entry.isFile() && entry.name.endsWith('.html') && entry.name !== 'design-system.html' ? [file] : [];
+  });
+}
+const identityPages = publicPages();
 
 function publicFiles() {
   const out = [];
@@ -37,6 +47,7 @@ function publicFiles() {
 
 function visibleText(html) {
   return html
+    .replace(/<!--[\s\S]*?-->/g, ' ')
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')
     .replace(/<style[\s\S]*?<\/style>/gi, ' ')
     .replace(/<[^>]+>/g, ' ')
@@ -46,14 +57,58 @@ function visibleText(html) {
 }
 
 for (const page of identityPages) {
-  test(`${page} muestra nombre legal, CUIT, ciudad y mail`, () => {
-    const text = visibleText(read(page));
+  test(`${page} muestra la identidad completa y los enlaces legales en el pie`, () => {
+    const html = read(page);
+    const footer = html.match(/<footer\b[^>]*>[\s\S]*?<\/footer>/i)?.[0];
+    assert.ok(footer, 'falta el pie');
+    const text = visibleText(footer);
     assert.ok(text.includes(LEGAL_NAME), 'falta el nombre legal');
     assert.ok(text.includes(CUIT), 'falta el CUIT');
     assert.ok(text.includes(CITY), 'falta la ciudad');
     assert.ok(text.includes(MAIL), 'falta el mail de contacto');
+    assert.ok(text.includes(WHATSAPP), 'falta el WhatsApp visible');
+    assert.doesNotMatch(footer, /\bhidden\b|aria-hidden="true"|display\s*:\s*none|visibility\s*:\s*hidden/i);
+    for (const [href, label] of [
+      ['mailto:info@potenciarpymes.ar', MAIL],
+      ['https://wa.me/5491150161326', `WhatsApp ${WHATSAPP}`],
+      ['/privacidad', 'Privacidad'], ['/terminos', 'Términos'], ['/eliminacion-de-datos', 'Eliminación de datos'],
+    ]) {
+      const links = [...footer.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi)]
+        .filter(([, url]) => url === href);
+      assert.ok(links.some(([, , labelHTML]) => visibleText(labelHTML).trim() === label.toLowerCase()), `${page}: falta el enlace visible a ${href}`);
+      if (href.startsWith('/')) assert.equal(links.length, 1, `${page}: enlace legal duplicado: ${href}`);
+    }
   });
 }
+
+test('eliminacion-de-datos.html existe y está enlazada desde sitemap, llms y Tus derechos', () => {
+  assert.ok(fs.existsSync(path.join(root, 'eliminacion-de-datos.html')));
+  assert.ok(identityPages.includes('eliminacion-de-datos.html'));
+  assert.ok(publicFiles().includes('eliminacion-de-datos.html'), 'la página nueva debe quedar cubierta por el control de domicilio fiscal');
+  assert.match(read('sitemap.xml'), /<loc>https:\/\/potenciarpymes\.ar\/eliminacion-de-datos<\/loc>\s*<lastmod>2026-11-16<\/lastmod>\s*<changefreq>monthly<\/changefreq>\s*<priority>0\.6<\/priority>/);
+  assert.match(read('llms.txt'), /https:\/\/potenciarpymes\.ar\/eliminacion-de-datos/);
+  const rights = read('privacidad.html').match(/<h2>Tus derechos<\/h2>([\s\S]*?)<\/div>/)?.[1];
+  assert.match(rights || '', /href="\/eliminacion-de-datos"/);
+});
+
+test('la página de eliminación explica el pedido, el alcance y el plazo sin pedir datos sensibles', () => {
+  const html = read('eliminacion-de-datos.html');
+  assert.match(html, /<main id="main">\s*<!-- BORRADOR para revisión legal/);
+  assert.match(html, /<body data-service="eliminacion-de-datos">/);
+  const headings = [...html.matchAll(/<h2>([^<]+)<\/h2>/g)].map(([, heading]) => heading);
+  assert.deepEqual(headings, ['Qué podés pedir', 'Cómo pedirlo', 'Cuánto tardamos', 'Qué eliminamos', 'Qué podemos conservar', 'Datos en plataformas de terceros', 'Reclamos', 'Contacto']);
+  const text = visibleText(html);
+  for (const phrase of ['test gratis de 4 preguntas', 'chequeo web gratis', 'eliminar mis datos', '5 días hábiles', 'ley 25.326', 'planilla privada', 'copias de respaldo', 'aaip', 'no nos envíes documentos ni datos sensibles']) {
+    assert.ok(text.includes(phrase), `falta: ${phrase}`);
+  }
+  const blocks = [...html.matchAll(/<script[^>]+application\/ld\+json[^>]*>([\s\S]*?)<\/script>/gi)].map(([, body]) => JSON.parse(body));
+  const breadcrumb = blocks.find((block) => block['@type'] === 'BreadcrumbList');
+  assert.equal(breadcrumb?.itemListElement.at(-1).item, 'https://potenciarpymes.ar/eliminacion-de-datos');
+  const webpage = blocks.find((block) => block['@type'] === 'WebPage');
+  assert.equal(webpage?.url, 'https://potenciarpymes.ar/eliminacion-de-datos');
+  assert.equal(webpage?.name, 'Eliminación de datos');
+  assert.equal(webpage?.inLanguage, 'es-AR');
+});
 
 test('ningún archivo público contiene el domicilio fiscal', () => {
   for (const file of publicFiles()) {
@@ -106,6 +161,14 @@ test('los datos estructurados de la organización incluyen nombre legal, CUIT y 
   assert.equal(org.address.addressCountry, 'AR');
   assert.equal(org.address.addressLocality, 'Ciudad Autónoma de Buenos Aires');
   for (const field of ['streetAddress', 'postalCode']) assert.equal(org.address[field], undefined);
+  assert.deepEqual(org.contactPoint, {
+    '@type': 'ContactPoint',
+    contactType: 'customer service',
+    email: MAIL,
+    telephone: WHATSAPP,
+    areaServed: 'AR',
+    availableLanguage: 'es',
+  });
 });
 
 test('el teléfono de WhatsApp es el mismo en todo el sitio', () => {
