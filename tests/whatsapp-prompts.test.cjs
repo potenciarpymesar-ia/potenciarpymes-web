@@ -8,15 +8,15 @@ const { join } = require('node:path');
 const guide = join(__dirname, '../recursos');
 const html = readFileSync(join(guide, 'prompts-claude-whatsapp.html'), 'utf8');
 const approvedHashes = {
-  consultas: '95913bacea4388e0d762e1a3c8dbe7e04d4aa63df55fa045171a15579fba7c0b',
-  presupuestos: 'f4c3237a2f05a10c0b21e8d5d4da05c5a4df42b7f2e9629acdc17393be682a24',
-  seguimiento: '7c56205e5d7a9a0503f9c97e44858294d220c1a61eaafe46cd390377d68ddfe1',
-  objeciones: '9883eaf549901cdcf1167850b826898936ebb95cb39934d4bd223b8de7c75fea',
-  posventa: 'f3d692c5f9502e566fe08a2fb861a90b545aba908606367bfe95b8a30ee9fbfe',
+  consultas: 'a7d81e92e5853de9c6744e7a41c46dfe21d041a4a35642a75d54c924827a859a',
+  presupuestos: '975396f7d7dcac6dc99466a7953cbbe931acf8bdfa8cabfabfe8ae21924310db',
+  seguimiento: '728a55d612622f5e872a4d4bc45ec889ed395607e3ebd29fab128b12a5503bc8',
+  objeciones: '74743e5dc4133573429f264e0530b06c05acb662ab4fa2172cdccb5e3eb9fc73',
+  posventa: '6f41bc958459627fd85f2abfc212ba93382d342e87ba2a7fa58acc86013aad1f',
 };
 const fields = Object.fromEntries([...html.matchAll(/<textarea id="(prompt-[^"]+)"[^>]*>([\s\S]*?)<\/textarea>/g)]
   .map(([, id, value]) => [id, {
-    value: value.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&'),
+    value: value.replace(/\r\n/g, '\n').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&'),
     focus() { this.focused = true; },
     select() { this.selected = true; },
   }]));
@@ -25,6 +25,14 @@ test('the five prompts preserve the exact Framework section 02 text', () => {
   assert.equal(Object.keys(fields).length, 5);
   for (const [placement, hash] of Object.entries(approvedHashes)) {
     assert.equal(createHash('sha256').update(fields['prompt-' + placement].value).digest('hex'), hash, placement);
+  }
+});
+
+test('every prompt keeps the safety rules: no invented data and manual sending', () => {
+  for (const [id, field] of Object.entries(fields)) {
+    assert.match(field.value, /No inventes/, id);
+    assert.match(field.value, /manual/, id);
+    assert.match(field.value, /RESULTADO ESPERADO/, id);
   }
 });
 

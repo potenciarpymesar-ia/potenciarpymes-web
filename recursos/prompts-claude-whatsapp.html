@@ -139,29 +139,35 @@ footer a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
             <label for="prompt-consultas">Prompt 01 · Responder consultas</label>
             <button type="button" class="pp-button" data-copy-prompt="consultas" data-copy-target="prompt-consultas" aria-controls="prompt-consultas" aria-label="Copiar prompt de responder consultas" hidden>Copiar prompt</button>
           </div>
-          <textarea id="prompt-consultas" readonly rows="10">Ayudame a redactar una respuesta comercial para enviar manualmente por WhatsApp.
+          <textarea id="prompt-consultas" readonly rows="16">Ayudame a redactar una respuesta comercial para enviar manualmente por WhatsApp.
 
-DATOS:
-Negocio: [nombre]
+DATOS DEL NEGOCIO:
+
+Nombre: [nombre del negocio]
 Qué vendemos: [productos o servicios]
-Consulta textual del cliente: [pegar consulta]
-Información confirmada: [datos reales]
-Tono: [cercano/profesional/informal]
-Objetivo: [aclarar duda/ofrecer opción/avanzar con compra]
+Consulta del cliente: [pegar mensaje recibido]
+Información confirmada: [precios, características, disponibilidad y condiciones]
+Tono: [cercano / profesional / informal]
+Objetivo: [resolver duda / ofrecer producto / avanzar con compra]
 
 INSTRUCCIONES:
-1. Interpretá la consulta sin asumir información que no está escrita.
-2. Si falta un dato indispensable, preguntámelo antes de redactar.
-3. No inventes precios, stock, plazos, garantías ni condiciones.
-4. Redactá un mensaje en español argentino, natural y breve.
-5. Respondé primero la consulta y después proponé un siguiente paso cuando corresponda.
-6. Evitá frases robóticas, presión comercial y exageraciones.
-7. No afirmes haber verificado información externa.
 
-ENTREGA:
-Un mensaje listo para copiar en WhatsApp.
-Indicá por separado cualquier información pendiente.
-Yo lo revisaré y enviaré manualmente.</textarea>
+1. Analizá qué necesita saber el cliente.
+2. Respondé primero su consulta concreta.
+3. Si falta información indispensable, preguntámela antes de redactar.
+4. No inventes precios, stock, características, plazos ni garantías.
+5. Utilizá español argentino, natural y cercano.
+6. Evitá respuestas robóticas, exageraciones y presión comercial.
+7. Incluí una pregunta o siguiente paso útil cuando corresponda.
+8. No agregues información que no esté confirmada.
+
+RESULTADO ESPERADO:
+
+Entregame un único mensaje breve, claro y listo para copiar en WhatsApp.
+
+Si falta algún dato, indicámelo por separado.
+
+No envíes el mensaje. Yo lo revisaré y enviaré manualmente.</textarea>
           <p class="claude-feedback" role="status" data-copy-feedback="consultas"></p>
         </div>
       </section>
@@ -177,33 +183,41 @@ Yo lo revisaré y enviaré manualmente.</textarea>
             <label for="prompt-presupuestos">Prompt 02 · Preparar presupuestos</label>
             <button type="button" class="pp-button" data-copy-prompt="presupuestos" data-copy-target="prompt-presupuestos" aria-controls="prompt-presupuestos" aria-label="Copiar prompt de preparar presupuestos" hidden>Copiar prompt</button>
           </div>
-          <textarea id="prompt-presupuestos" readonly rows="10">Necesito convertir los siguientes datos en un presupuesto claro para enviar manualmente por WhatsApp.
+          <textarea id="prompt-presupuestos" readonly rows="16">Necesito que organices la siguiente información y prepares un presupuesto comercial para enviar por WhatsApp.
 
 DATOS:
+
 Negocio: [nombre]
 Cliente: [nombre, si se conoce]
-Producto o servicio: [detalle]
+Producto o servicio: [descripción]
 Cantidad: [cantidad]
-Precio unitario confirmado: [importe y moneda]
-Precio total confirmado: [importe, si corresponde]
-Disponibilidad: [stock o plazo]
+Precio unitario: [importe y moneda]
+Precio total: [importe, si está calculado]
+Disponibilidad: [stock o plazo confirmado]
 Entrega o retiro: [condiciones]
-Medios de pago: [opciones confirmadas]
+Medios de pago: [opciones disponibles]
 Validez del presupuesto: [plazo confirmado o no informado]
 Observaciones: [información adicional]
 
 INSTRUCCIONES:
-1. Organizá los datos para que el cliente entienda qué incluye, cuánto cuesta y cómo avanzar.
-2. Si falta información indispensable, preguntámela.
-3. Si calculás un total simple, mostralo para verificar.
-4. No inventes impuestos, descuentos, envíos ni cargos.
-5. No agregues condiciones comerciales inexistentes.
-6. Usá español argentino, profesional y cercano.
-7. Cerrá con un siguiente paso concreto, sin presionar.
 
-ENTREGA:
-Un presupuesto claro, listo para copiar y enviar por WhatsApp.
-Separá cualquier dato pendiente de confirmación.</textarea>
+1. Organizá la información para que el presupuesto sea fácil de entender.
+2. Mostrá claramente producto, cantidad, precio y condiciones.
+3. Si falta información indispensable, preguntámela.
+4. Si corresponde calcular un total, mostralo para verificar.
+5. No inventes descuentos, impuestos, costos de envío ni condiciones.
+6. No agregues fechas de vencimiento que no estén confirmadas.
+7. Utilizá español argentino, profesional pero cercano.
+8. Terminá con un siguiente paso concreto para avanzar con la compra.
+9. Evitá textos demasiado extensos o lenguaje corporativo.
+
+RESULTADO ESPERADO:
+
+Un único mensaje de presupuesto, ordenado y listo para copiar en WhatsApp.
+
+Separá cualquier dato pendiente de confirmación.
+
+Yo revisaré los importes y condiciones antes de enviarlo manualmente.</textarea>
           <p class="claude-feedback" role="status" data-copy-feedback="presupuestos"></p>
         </div>
       </section>
@@ -219,35 +233,41 @@ Separá cualquier dato pendiente de confirmación.</textarea>
             <label for="prompt-seguimiento">Prompt 03 · Seguimiento comercial</label>
             <button type="button" class="pp-button" data-copy-prompt="seguimiento" data-copy-target="prompt-seguimiento" aria-controls="prompt-seguimiento" aria-label="Copiar prompt de seguimiento comercial" hidden>Copiar prompt</button>
           </div>
-          <textarea id="prompt-seguimiento" readonly rows="10">Ayudame a preparar un mensaje de seguimiento para un cliente que consultó por WhatsApp y todavía no respondió.
+          <textarea id="prompt-seguimiento" readonly rows="16">Ayudame a preparar un mensaje de seguimiento para un cliente que consultó por WhatsApp y todavía no respondió.
 
 DATOS:
+
 Negocio: [nombre]
-Consulta original: [texto]
-Respuesta enviada: [texto o resumen]
+Consulta original: [mensaje recibido]
+Respuesta enviada: [mensaje o resumen]
 Tiempo transcurrido: [horas o días]
-Estado: [sin respuesta/pidió pensarlo/recibió presupuesto]
+Situación: [sin respuesta / pidió pensarlo / recibió presupuesto]
 Información nueva relevante: [si existe]
-Último seguimiento: [fecha y contenido, o ninguno]
+Último seguimiento realizado: [fecha y contenido, o ninguno]
 
 INSTRUCCIONES:
-1. Evaluá si corresponde escribir ahora, esperar o no contactar.
-2. Si faltan datos esenciales, preguntámelos.
-3. Si corresponde contactar, redactá un mensaje corto y respetuoso.
-4. Retomá el tema concreto de la conversación.
-5. No generes urgencia artificial.
-6. No inventes descuentos, promociones ni vencimientos.
-7. No sugieras insistir repetidamente.
-8. No contactes a quien pidió no recibir mensajes.
-9. Usá español argentino natural.
 
-ENTREGA:
-Primero indicá:
+1. Evaluá si corresponde escribir ahora, esperar o no contactar.
+2. Si falta información para decidirlo, preguntámela.
+3. Si corresponde escribir, prepará un mensaje corto y respetuoso.
+4. Retomá el motivo original de la consulta.
+5. Ofrecé ayuda sin presionar al cliente.
+6. No inventes promociones, descuentos, disponibilidad ni vencimientos.
+7. No generes urgencia artificial.
+8. No recomiendes enviar mensajes repetitivos.
+9. Si el cliente pidió no recibir mensajes, indicá que no corresponde contactarlo.
+10. Utilizá español argentino y un tono humano.
+
+RESULTADO ESPERADO:
+
+Primero indicá una recomendación:
+
 ENVIAR / ESPERAR / NO CONTACTAR.
 
-Explicá brevemente por qué.
+Explicá brevemente el motivo.
 
-Si corresponde enviar, redactá un único mensaje listo para WhatsApp.
+Si recomendás enviar, redactá un único mensaje listo para copiar en WhatsApp.
+
 El envío será manual.</textarea>
           <p class="claude-feedback" role="status" data-copy-feedback="seguimiento"></p>
         </div>
@@ -264,32 +284,45 @@ El envío será manual.</textarea>
             <label for="prompt-objeciones">Prompt 04 · Responder objeciones</label>
             <button type="button" class="pp-button" data-copy-prompt="objeciones" data-copy-target="prompt-objeciones" aria-controls="prompt-objeciones" aria-label="Copiar prompt de responder objeciones" hidden>Copiar prompt</button>
           </div>
-          <textarea id="prompt-objeciones" readonly rows="10">Ayudame a responder una objeción real de un cliente por WhatsApp sin presionarlo ni inventar argumentos.
+          <textarea id="prompt-objeciones" readonly rows="16">Ayudame a responder una duda u objeción comercial de un cliente por WhatsApp.
+
+Quiero resolver su inquietud con información real, sin presionarlo ni inventar argumentos.
 
 DATOS:
+
 Negocio: [nombre]
 Producto o servicio: [detalle]
-Mensaje textual del cliente: [objeción]
-Información confirmada: [características, precio, entrega, calidad, garantía]
+Mensaje del cliente: [pegar objeción]
+Características confirmadas: [información real]
+Precio y condiciones: [datos confirmados]
+Garantía: [si corresponde]
+Entrega: [condiciones reales]
 Alternativas disponibles: [si existen]
 Restricciones: [qué no podemos ofrecer]
-Tono: [cercano/profesional]
+Tono: [cercano / profesional]
 
 INSTRUCCIONES:
-1. Identificá si la objeción trata de precio, entrega, calidad, garantía o comparación.
-2. Diferenciá datos confirmados de información faltante.
-3. Preguntame cualquier dato indispensable antes de responder.
-4. Reconocé la preocupación del cliente.
-5. Explicá solamente beneficios y condiciones verificables.
-6. No inventes testimonios, certificaciones, descuentos ni garantías.
-7. No desacredites a competidores.
-8. Redactá una respuesta breve y humana en español argentino.
-9. Cerrá con una pregunta útil si corresponde.
 
-ENTREGA:
-Un único mensaje listo para WhatsApp.
-Separá cualquier información que debamos verificar.
-Yo revisaré y enviaré el mensaje manualmente.</textarea>
+1. Identificá cuál es la preocupación principal del cliente.
+2. Determiná si se relaciona con precio, entrega, calidad, garantía, comparación u otro motivo.
+3. Si falta información indispensable, preguntámela antes de responder.
+4. Reconocé la preocupación sin discutir con el cliente.
+5. Respondé utilizando únicamente datos confirmados.
+6. No inventes beneficios, certificaciones, testimonios, descuentos ni garantías.
+7. No desacredites a competidores.
+8. Si existe una alternativa real que pueda ayudar, mencionála.
+9. No fuerces el cierre de la venta.
+10. Utilizá español argentino, claro y natural.
+
+RESULTADO ESPERADO:
+
+Un único mensaje breve y convincente por su claridad, no por presión comercial.
+
+Debe estar listo para copiar en WhatsApp.
+
+Indicá por separado cualquier información que necesite verificarse.
+
+Yo revisaré y enviaré manualmente.</textarea>
           <p class="claude-feedback" role="status" data-copy-feedback="objeciones"></p>
         </div>
       </section>
@@ -305,31 +338,42 @@ Yo revisaré y enviaré el mensaje manualmente.</textarea>
             <label for="prompt-posventa">Prompt 05 · Mensajes de posventa</label>
             <button type="button" class="pp-button" data-copy-prompt="posventa" data-copy-target="prompt-posventa" aria-controls="prompt-posventa" aria-label="Copiar prompt de mensajes de posventa" hidden>Copiar prompt</button>
           </div>
-          <textarea id="prompt-posventa" readonly rows="10">Ayudame a redactar un mensaje de posventa para enviar manualmente por WhatsApp.
+          <textarea id="prompt-posventa" readonly rows="16">Ayudame a preparar un mensaje de atención posventa para enviar manualmente por WhatsApp.
+
+Quiero mantener una comunicación útil y profesional después de la compra.
 
 DATOS:
+
 Negocio: [nombre]
 Producto o servicio adquirido: [detalle]
-Situación: [agradecimiento/instrucciones/consulta/soporte/reclamo]
-Estado confirmado del pedido: [entregado/despachado/pendiente/no aplica]
-Información útil: [instrucciones, cuidados, garantía o contacto]
-Mensaje previo del cliente: [si corresponde]
+Cliente: [nombre, si corresponde]
+Situación: [agradecimiento / instrucciones / consulta posterior / soporte / reclamo]
+Estado confirmado del pedido: [entregado / despachado / pendiente / no aplica]
+Información útil: [instrucciones, cuidados, garantía, contacto o condiciones reales]
+Mensaje previo del cliente: [si existe]
 Acción que necesitamos comunicar: [detalle]
-Tono: [cercano/profesional]
+Tono: [cercano / profesional]
 
 INSTRUCCIONES:
-1. Adaptá el mensaje a la situación real.
-2. Si faltan datos indispensables, preguntámelos.
-3. No afirmes que un pedido fue enviado o entregado sin confirmación.
-4. No inventes instrucciones, garantías, plazos ni políticas de devolución.
-5. Si existe un reclamo, reconocé el problema y comunicá únicamente pasos confirmados.
-6. Evitá promociones no solicitadas y mensajes invasivos.
-7. Escribí en español argentino, claro y natural.
 
-ENTREGA:
-Un único mensaje breve listo para WhatsApp.
-Indicá por separado cualquier dato pendiente.
-Yo lo revisaré y enviaré manualmente.</textarea>
+1. Adaptá el mensaje a la situación real del cliente.
+2. Si faltan datos indispensables, preguntámelos.
+3. No afirmes que un pedido fue enviado, entregado o resuelto sin confirmación.
+4. No inventes instrucciones técnicas, garantías ni políticas de devolución.
+5. Si existe un reclamo, reconocé el problema y explicá únicamente los próximos pasos confirmados.
+6. Si corresponde agradecer, hacelo de forma natural y breve.
+7. Si corresponde compartir instrucciones, organizalas claramente.
+8. Ofrecé ayuda sin generar mensajes innecesarios.
+9. No agregues promociones engañosas ni publicidad no solicitada.
+10. Utilizá español argentino, cercano y profesional.
+
+RESULTADO ESPERADO:
+
+Un único mensaje útil, breve y listo para copiar en WhatsApp.
+
+Si falta información, indicámela por separado.
+
+Yo revisaré y enviaré el mensaje manualmente.</textarea>
           <p class="claude-feedback" role="status" data-copy-feedback="posventa"></p>
         </div>
       </section>
