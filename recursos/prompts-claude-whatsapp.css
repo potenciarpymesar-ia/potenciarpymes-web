@@ -1,0 +1,33 @@
+.whatsapp-guide .claude-hero { padding-block: clamp(52px, 8vw, 108px) clamp(28px, 4vw, 52px); }
+.whatsapp-guide .claude-hero h1 { font-size: clamp(2.6rem, 5.8vw, 5.15rem); }
+.wa-index { padding: clamp(18px, 3vw, 32px); border: 1px solid var(--pp-border); background: var(--pp-surface-raised); }
+.wa-index ol { margin: 12px 0 0; padding: 0; list-style: none; }
+.wa-index a { display: flex; gap: 16px; align-items: center; min-height: 46px; padding: 4px 0; border-top: 1px solid var(--pp-border); text-decoration: none; }
+.wa-index a:hover { color: var(--pp-brand-lime); }
+.wa-index span { color: var(--pp-brand-lime); font-variant-numeric: tabular-nums; font-weight: 700; }
+.wa-tools { display: flex; flex-wrap: wrap; gap: 12px 36px; padding-block: 16px 30px; border-top: 1px solid var(--pp-border); }
+.wa-tools > div { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 12px; }
+.wa-tools img { display: block; width: 92px; height: auto; }
+.wa-tools span { color: var(--pp-text-muted); font-size: .79rem; }
+.wa-how { margin-bottom: clamp(42px, 7vw, 80px); }
+.wa-how ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 24px; padding: 0; list-style: none; counter-reset: guide-step; }
+.wa-how li { border-top: 1px solid var(--pp-border); padding-block: 14px; counter-increment: guide-step; }
+.wa-how li::before { content: counter(guide-step, decimal-leading-zero); display: block; margin-bottom: 8px; font-weight: 700; }
+.wa-case { display: grid; grid-template-columns: minmax(0, .65fr) minmax(0, 1.35fr); gap: clamp(18px, 5vw, 56px); align-items: start; padding-block: clamp(24px, 5vw, 52px); border-top: 1px solid var(--pp-border); }
+.wa-number { display: inline-block; padding: 0 8px; margin-bottom: 12px; background: var(--pp-brand-lime); font-weight: 700; }
+.whatsapp-guide .wa-case h3 { font-size: clamp(1.45rem, 2.6vw, 2.15rem); }
+.wa-case-intro p { max-width: 36ch; }
+.whatsapp-guide .claude-editor textarea { min-height: 13rem; }
+.wa-demo { padding-block: clamp(52px, 9vw, 104px); }
+.wa-demo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 26px; }
+.wa-demo-grid > div { border: 1px solid var(--pp-border); padding: clamp(18px, 4vw, 32px); }
+.wa-demo-grid ul { padding-inline-start: 1.3em; }
+.wa-demo-grid blockquote { margin: 0; }
+.wa-demo-grid .wa-reply { background: var(--pp-surface-raised); }
+.wa-reply h3 { color: var(--pp-brand-lime); }
+@media (max-width: 700px) {
+  .wa-case, .wa-how ol, .wa-demo-grid { grid-template-columns: minmax(0, 1fr); }
+  .wa-how ol { gap: 0; }
+  .wa-how li::before { display: inline-block; margin: 0 8px 0 0; }
+  .whatsapp-guide .claude-editor textarea { font-size: 1rem; }
+}
