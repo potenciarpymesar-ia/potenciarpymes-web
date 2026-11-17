@@ -85,7 +85,7 @@ test('eliminacion-de-datos.html existe y está enlazada desde sitemap, llms y Tu
   assert.ok(fs.existsSync(path.join(root, 'eliminacion-de-datos.html')));
   assert.ok(identityPages.includes('eliminacion-de-datos.html'));
   assert.ok(publicFiles().includes('eliminacion-de-datos.html'), 'la página nueva debe quedar cubierta por el control de domicilio fiscal');
-  assert.match(read('sitemap.xml'), /<loc>https:\/\/potenciarpymes\.ar\/eliminacion-de-datos<\/loc>\s*<lastmod>2026-11-16<\/lastmod>\s*<changefreq>monthly<\/changefreq>\s*<priority>0\.6<\/priority>/);
+  assert.match(read('sitemap.xml'), /<loc>https:\/\/potenciarpymes\.ar\/eliminacion-de-datos<\/loc>\s*<lastmod>2026-11-17<\/lastmod>\s*<changefreq>monthly<\/changefreq>\s*<priority>0\.6<\/priority>/);
   assert.match(read('llms.txt'), /https:\/\/potenciarpymes\.ar\/eliminacion-de-datos/);
   const rights = read('privacidad.html').match(/<h2>Tus derechos<\/h2>([\s\S]*?)<\/div>/)?.[1];
   assert.match(rights || '', /href="\/eliminacion-de-datos"/);
@@ -93,12 +93,12 @@ test('eliminacion-de-datos.html existe y está enlazada desde sitemap, llms y Tu
 
 test('la página de eliminación explica el pedido, el alcance y el plazo sin pedir datos sensibles', () => {
   const html = read('eliminacion-de-datos.html');
-  assert.match(html, /<main id="main">\s*<!-- BORRADOR para revisión legal/);
+  assert.ok(!/borrador/i.test(html), 'no debe quedar una marca de borrador');
   assert.match(html, /<body data-service="eliminacion-de-datos">/);
   const headings = [...html.matchAll(/<h2>([^<]+)<\/h2>/g)].map(([, heading]) => heading);
-  assert.deepEqual(headings, ['Qué podés pedir', 'Cómo pedirlo', 'Cuánto tardamos', 'Qué eliminamos', 'Qué podemos conservar', 'Datos en plataformas de terceros', 'Reclamos', 'Contacto']);
+  assert.deepEqual(headings, ['Qué podés pedir', 'Qué datos tenemos', 'Cómo pedirlo', 'Qué pasa después', 'Qué eliminamos', 'Qué podemos conservar', 'Datos en plataformas de terceros', 'Otros pedidos y reclamos', 'Contacto']);
   const text = visibleText(html);
-  for (const phrase of ['test gratis de 4 preguntas', 'chequeo web gratis', 'eliminar mis datos', '5 días hábiles', 'ley 25.326', 'planilla privada', 'copias de respaldo', 'aaip', 'no nos envíes documentos ni datos sensibles']) {
+  for (const phrase of ['test gratis de 4 preguntas', 'chequeo web gratis', 'eliminar mis datos', 'cinco días hábiles', 'ley 25.326', 'planilla privada', 'copias de respaldo', 'aaip', 'no nos envíes documentos ni datos sensibles']) {
     assert.ok(text.includes(phrase), `falta: ${phrase}`);
   }
   const blocks = [...html.matchAll(/<script[^>]+application\/ld\+json[^>]*>([\s\S]*?)<\/script>/gi)].map(([, body]) => JSON.parse(body));
