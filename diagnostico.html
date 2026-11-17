@@ -782,8 +782,9 @@ async function showResult() {
   }
   diagnosticStored = true;
   var leadEvent = { form_name:'diagnostico', flow:'diagnostico_inicial' };
-  if (new URLSearchParams(window.location.search).get('source') === 'guia-auditoria-claude') {
-    leadEvent.source = 'guia-auditoria-claude';
+  var leadSource = new URLSearchParams(window.location.search).get('source');
+  if (['guia-auditoria-claude', 'guia-prompts-claude-whatsapp'].includes(leadSource)) {
+    leadEvent.source = leadSource;
   }
   ppTrack('generate_lead', leadEvent);
   ppTrack(receipt.stored === true ? 'diagnostico_contact_saved' : 'diagnostico_contact_sent', { flow:'diagnostico_inicial' });

@@ -75,7 +75,7 @@ const rootGuides = [
 ].map((slug) => `${slug}.html`);
 const breadcrumbPages = new Set([
   ...rootGuides, 'blog.html', ...pages.filter((page) => page.startsWith('blog/')),
-  'herramientas/product-lock.html', 'recursos/auditoria-tienda-claude.html', 'diagnostico.html', 'privacidad.html',
+  'herramientas/product-lock.html', 'recursos/auditoria-tienda-claude.html', 'recursos/prompts-claude-whatsapp.html', 'diagnostico.html', 'privacidad.html',
 ]);
 
 for (const [page, html] of htmlByPage) {

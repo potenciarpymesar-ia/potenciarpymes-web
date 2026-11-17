@@ -129,9 +129,11 @@ test('envío pendiente impide volver a editar; el error libera la navegación si
   assert.equal(h.context.answers.q5,'sin_tiempo');
 });
 
-test('registra el origen de la guía solo en la conversión confirmada', async () => {
-  const h = harness(() => ({ok:true,json:async()=>({ok:true,stored:true,leadId:'test-source'})}), '?source=guia-auditoria-claude');
-  await h.context.showResult();
-  assert.equal(h.events.find(e => e.event === 'generate_lead').source, 'guia-auditoria-claude');
-  assert.equal(Object.hasOwn(h.requests[0], 'source'), false);
-});
+for (const source of ['guia-auditoria-claude', 'guia-prompts-claude-whatsapp']) {
+  test('registra ' + source + ' solo en la conversión confirmada', async () => {
+    const h = harness(() => ({ok:true,json:async()=>({ok:true,stored:true,leadId:'test-source'})}), '?source=' + source);
+    await h.context.showResult();
+    assert.equal(h.events.find(e => e.event === 'generate_lead').source, source);
+    assert.equal(Object.hasOwn(h.requests[0], 'source'), false);
+  });
+}
