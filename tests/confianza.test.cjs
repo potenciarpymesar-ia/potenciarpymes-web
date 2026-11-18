@@ -77,7 +77,9 @@ test('all three cases tell what was worked on and the result, without figures, a
   assert.match(cases[2], /Uno de mis primeros clientes/);
   assert.doesNotMatch(home, /Nutrex/, 'the brand is Nutrax');
   assert.match(home, /data-brand="Nutrax"/);
-  assert.match(cases[1], /Proyecto finalizado: la tienda ya no está online/);
+  assert.match(cases[1], /Hoy el proyecto sigue sin mí: me separé del emprendimiento/);
+  assert.match(cases[1], /eventos sociales con la comunidad de la marca/);
+  assert.doesNotMatch(cases[1], /ya no está online/, 'Wheels still exists, only Jonathan left');
   assert.match(cases[2], /Una tienda lista para vender, entregada llave en mano\./);
 });
 
