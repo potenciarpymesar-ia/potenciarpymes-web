@@ -69,9 +69,14 @@ test('all three cases tell what was worked on and the result, without figures, a
   assert.equal(cases.length, 3);
   for (const card of cases) assert.match(card, /<strong>Resultado<\/strong>/);
   for (const card of cases) assert.doesNotMatch(card, /\$|\bSKU\b|\d{2,}\s*(bicicletas|productos)|facturaci/i, 'cases carry no figures');
-  assert.match(cases[0], /Mi propio negocio/);
-  assert.match(cases[0], /Un negocio armado desde cero/);
-  assert.match(cases[1], /Una marca creada desde cero/);
+  assert.match(cases[0], /Uno de los cuatro socios/);
+  assert.match(cases[0], /parte del equipo a mi cargo/);
+  assert.doesNotMatch(cases[0], /propio negocio|negocio propio/, 'Conectia was not his own company');
+  assert.match(cases[1], /Emprendimiento propio con un socio/);
+  assert.match(cases[1], /Una marca creada desde cero junto a un socio/);
+  assert.match(cases[2], /Uno de mis primeros clientes/);
+  assert.doesNotMatch(home, /Nutrex/, 'the brand is Nutrax');
+  assert.match(home, /data-brand="Nutrax"/);
   assert.match(cases[1], /Proyecto finalizado: la tienda ya no está online/);
   assert.match(cases[2], /Una tienda lista para vender, entregada llave en mano\./);
 });
