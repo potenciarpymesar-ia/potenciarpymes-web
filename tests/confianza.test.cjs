@@ -50,13 +50,15 @@ test('Jonathan portrait exists within the 300 KB budget', () => {
   assert.ok(fs.statSync(path.join(root, 'assets/sobre-mi/jonathan-retrato.webp')).size < 300000);
 });
 
-test('all three cases show their confirmed result and Wheels explains its closed store', () => {
+test('all three cases tell what was worked on, without figures, and Wheels explains its closed store', () => {
   const section = home.match(/<section\b[^>]*\bid="casos"[^>]*>[\s\S]*?<\/section>/)[0];
   const cases = [...section.matchAll(/<article class="proof-case">([\s\S]*?)<\/article>/g)].map(([, card]) => card);
   assert.equal(cases.length, 3);
-  for (const card of cases) assert.match(card, /<strong>Resultado<\/strong>/);
-  assert.match(cases[0], /De cero a más de 500 productos \(SKU\) y más de \$300M de facturación en su mejor mes\./);
-  assert.match(cases[1], /De cero a 40 bicicletas vendidas por mes\./);
+  for (const card of cases) assert.match(card, /<strong>Qué quedó funcionando<\/strong>/);
+  for (const card of cases) assert.doesNotMatch(card, /\$|\bSKU\b|\d{2,}\s*(bicicletas|productos)|facturaci/i, 'cases carry no figures');
+  assert.match(cases[0], /Mi propio negocio/);
+  assert.match(cases[0], /Un negocio armado desde cero/);
+  assert.match(cases[1], /Una marca creada desde cero/);
   assert.match(cases[1], /Proyecto finalizado: la tienda ya no está online/);
   assert.match(cases[2], /Una tienda lista para vender, entregada llave en mano\./);
 });

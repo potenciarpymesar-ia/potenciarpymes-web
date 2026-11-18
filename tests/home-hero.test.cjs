@@ -93,7 +93,9 @@ test('the hero is the studio composition: approved headline, real photo, five ch
   for(const attr of ['src="/assets/sobre-mi/jonathan-estudio-hero.webp"','width="1086"','height="1448"','fetchpriority="high"','decoding="async"'])assert.ok(img.includes(attr),attr);
   assert.match(img,/alt="Jonathan, fundador de Potenciar Pymes[^"]+"/);
   const names=[...hero.matchAll(/<li class="hero-channel"><b><i aria-hidden="true"><\/i>([^<]+)<\/b><p>([^<]+)<\/p><\/li>/g)];
-  assert.deepEqual(names.map(m=>m[1]),['Anuncios','Web','Tienda','WhatsApp','Medición']);
+  assert.deepEqual(names.map(m=>m[1]),['Tiendanube','Mercado Libre','Redes','SEO y GEO','Procesos']);
+  assert.match(hero,/<b>Mercado Libre Partner · Tiendanube Partner<\/b>Sin promesas de ventas/);
+  assert.ok(!/anuncios|garant|resultados|ventas aseguradas/i.test(names.map(m=>m[2]).join(' ')),'channel captions must not promise outcomes');
   for(const m of names)assert.ok(m[2].length>20,m[1]+' needs a real description');
   assert.equal([...hero.matchAll(/class="button[^"]*track-diagnosis[^"]*"[^>]*href="\/diagnostico"/g)].length,1);
   assert.match(hero,/data-hero-motion/);
