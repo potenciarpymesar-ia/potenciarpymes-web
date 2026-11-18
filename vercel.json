@@ -14,6 +14,11 @@
   ],
   "redirects": [
     {
+      "source": "/power-bi",
+      "destination": "/ga4",
+      "permanent": true
+    },
+    {
       "source": "/sistema-de-lanzamiento",
       "destination": "/web-profesional",
       "permanent": true

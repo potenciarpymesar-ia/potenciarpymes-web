@@ -30,7 +30,6 @@ Sitio oficial: https://potenciarpymes.ar
 - WhatsApp Business (atención y ventas)
 - Automatizaciones (n8n)
 - GA4 + dashboard de negocio
-- Power BI (dashboards conectados a Tiendanube/Mercado Libre/GA4)
 - Análisis mensual
 - INPI — registro de marca (búsqueda de antecedentes, presentación, seguimiento del trámite)
 

@@ -25,7 +25,7 @@ function pages(dir = '') {
 }
 const articles = pages().filter(file => schemas(read(file)).some(node => ['Article', 'BlogPosting'].includes(node['@type'])));
 
-test('home introduces Jonathan between cases and the starting options with an accessible portrait and links', () => {
+test('home explains how Jonathan works between cases and the starting options, without repeating his photo', () => {
   const section = home.match(/<section\b[^>]*\bid="quien"[^>]*>[\s\S]*?<\/section>/)?.[0];
   assert.ok(section, 'Missing #quien');
   assert.ok(home.indexOf('id="casos"') < home.indexOf('id="quien"'));
@@ -33,10 +33,11 @@ test('home introduces Jonathan between cases and the starting options with an ac
   const heading = section.match(/aria-labelledby="([^"]+)"/)?.[1];
   assert.ok(heading);
   assert.ok(section.includes(`<h2 id="${heading}"`));
-  assert.match(section, /Detrás de Potenciar Pymes\./);
-  assert.match(section, /Quién está detrás/);
-  const portrait = section.match(/<img\b[^>]*>/)?.[0] || '';
-  for (const attribute of ['src="/assets/sobre-mi/jonathan-retrato.webp"', 'alt="Jonathan, fundador de Potenciar Pymes"', 'width="1086"', 'height="1448"', 'loading="lazy"', 'decoding="async"']) assert.ok(portrait.includes(attribute), attribute);
+  assert.match(section, /Me ocupo yo, para que no dependa todo de vos\./);
+  assert.match(section, /Cómo trabajo conmigo/);
+  assert.doesNotMatch(section, /<img\b/, 'the photo is already in the hero');
+  for (const point of ['Ordeno lo que ya tenés\.', 'Me hago cargo del trabajo\.', 'Sin promesas de ventas\.']) assert.match(section, new RegExp(point));
+  assert.match(section, /matrícula N\.° 3209/);
   const whatsapp = [...section.matchAll(/<a\b[^>]*>/g)].map(([tag]) => tag).find(tag => tag.includes('wa.me'));
   assert.ok(whatsapp);
   assert.match(whatsapp, /class="[^"]*\btrack-whatsapp\b/);
@@ -44,6 +45,18 @@ test('home introduces Jonathan between cases and the starting options with an ac
   assert.match(whatsapp, /rel="noopener noreferrer"/);
   assert.equal(new URL(whatsapp.match(/href="([^"]+)"/)[1]).searchParams.get('text'), 'Hola Jonathan, quiero conversar sobre mi negocio.');
   assert.match(section, /href="\/diagnostico">Empezar con el test gratis de 4 preguntas<\/a>/);
+});
+
+test('the home tells one story: one photo of Jonathan, the diagnostic and what it delivers together, no Power BI', () => {
+  const photos = [...home.matchAll(/<img\b[^>]*src="[^"]*jonathan[^"]*"/g)];
+  assert.equal(photos.length, 1, 'Jonathan appears once, in the hero');
+  assert.ok(home.indexOf('class="diagnostic"') < home.indexOf('class="statement"'));
+  assert.ok(home.indexOf('class="statement"') < home.indexOf('class="professional-launch"'));
+  assert.ok(home.indexOf('class="professional-launch"') < home.indexOf('id="contacto"'));
+  for (const file of ['index.html', 'sitemap.xml', 'llms.txt', 'soluciones.html', 'ga4.html', 'analisis-mensual.html', 'meta-ads.html']) assert.doesNotMatch(read(file), /power[- ]?bi/i, file);
+  assert.ok(!fs.existsSync(path.join(root, 'power-bi.html')));
+  assert.match(read('vercel.json'), /"source": "\/power-bi",\s*"destination": "\/ga4"/);
+  assert.doesNotMatch(home, /que confían en el proceso/);
 });
 
 test('Jonathan portrait exists within the 300 KB budget', () => {
@@ -90,8 +103,6 @@ test('founder, credentials and case evidence can shrink inside a 375 px viewport
   assert.match(css, /@media\(max-width:780px\)\{\.founder\{padding-inline:20px\}\.founder \.wrap\{grid-template-columns:minmax\(0,1fr\)/);
   assert.match(css, /@media\(max-width:900px\)\{\.ecommerce-partners\{grid-template-columns:1fr;grid-auto-rows:1fr/);
   assert.match(css, /@media\(max-width:780px\)\{[\s\S]*?\.proof-head,\.proof-case,[^{]+\{grid-template-columns:1fr/);
-  assert.match(rule('.founder-portrait'), /width:100%;max-width:420px;height:auto;aspect-ratio:3\/4;object-fit:contain/);
-  assert.match(rule('.founder-portrait'), /max-width:100%/);
   for (const selector of ['.founder-copy', '.ecommerce-partner', '.ecommerce-partner-copy', '.proof-case>div,.proof-evidence']) assert.match(rule(selector), /min-width:0/, selector);
   assert.match(rule('.proof-evidence p'), /overflow-wrap:anywhere/);
   assert.match(rule('.founder-actions .button'), /max-width:100%/);

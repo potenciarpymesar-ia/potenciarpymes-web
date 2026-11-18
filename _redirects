@@ -40,8 +40,8 @@ http://potenciarpymes.ar/* https://potenciarpymes.ar/:splat 301!
 /inpi /inpi.html 200
 /inpi.html /inpi 301
 
-/power-bi /power-bi.html 200
-/power-bi.html /power-bi 301
+/power-bi /ga4 301
+/power-bi.html /ga4 301
 
 /privacidad /privacidad.html 200
 /privacidad.html /privacidad 301
