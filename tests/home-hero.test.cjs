@@ -89,7 +89,7 @@ test('the hero is the studio composition: approved headline, real photo, five ch
   const hero=html.match(/<section class="hero hero--cinematic hero--studio"[\s\S]*?<\/section>/)[0];
   assert.match(hero,/<span class="hero-title-line">TU NEGOCIO<\/span> <span class="hero-title-line">TE NECESITA\.<\/span> <em><span class="hero-title-line">PERO NO<\/span> <span class="hero-title-line">PARA TODO\.<\/span><\/em>/);
   assert.match(hero,/aria-label="Tu negocio te necesita\. Pero no para todo\."/);
-  const img=hero.match(/<img class="hero-photo-img"[^>]*>/)[0];
+  const img=hero.match(/<img class="studio-photo-img"[^>]*>/)[0];
   for(const attr of ['src="/assets/sobre-mi/jonathan-estudio-hero.webp"','width="1086"','height="1448"','fetchpriority="high"','decoding="async"'])assert.ok(img.includes(attr),attr);
   assert.match(img,/alt="Jonathan, fundador de Potenciar Pymes[^"]+"/);
   const names=[...hero.matchAll(/<li class="hero-channel"><b><i aria-hidden="true"><\/i>([^<]+)<\/b><p>([^<]+)<\/p><\/li>/g)];
