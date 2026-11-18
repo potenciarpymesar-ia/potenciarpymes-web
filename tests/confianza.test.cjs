@@ -33,10 +33,10 @@ test('home explains how Jonathan works between cases and the starting options, w
   const heading = section.match(/aria-labelledby="([^"]+)"/)?.[1];
   assert.ok(heading);
   assert.ok(section.includes(`<h2 id="${heading}"`));
-  assert.match(section, /Me ocupo yo, para que no dependa todo de vos\./);
+  assert.match(section, /Vos te dedicás a tu negocio\. Yo me ocupo del resto\./);
   assert.match(section, /Cómo trabajo conmigo/);
   assert.doesNotMatch(section, /<img\b/, 'the photo is already in the hero');
-  for (const point of ['Ordeno lo que ya tenés\.', 'Me hago cargo del trabajo\.', 'Sin promesas de ventas\.']) assert.match(section, new RegExp(point));
+  for (const point of ['Primero entiendo tu negocio\.', 'Después me ocupo del trabajo\.', 'Sin promesas de ventas\.']) assert.match(section, new RegExp(point));
   assert.match(section, /matrícula N\.° 3209/);
   const whatsapp = [...section.matchAll(/<a\b[^>]*>/g)].map(([tag]) => tag).find(tag => tag.includes('wa.me'));
   assert.ok(whatsapp);
@@ -66,7 +66,7 @@ test('Jonathan portrait exists within the 300 KB budget', () => {
 test('all three cases tell what was worked on and the result, without figures, and Wheels explains its closed store', () => {
   const section = home.match(/<section\b[^>]*\bid="casos"[^>]*>[\s\S]*?<\/section>/)[0];
   const cases = [...section.matchAll(/<article class="proof-case">([\s\S]*?)<\/article>/g)].map(([, card]) => card);
-  assert.equal(cases.length, 3);
+  assert.equal(cases.length, 4);
   for (const card of cases) assert.match(card, /<strong>Resultado<\/strong>/);
   for (const card of cases) assert.doesNotMatch(card, /\$|\bSKU\b|\d{2,}\s*(bicicletas|productos)|facturaci/i, 'cases carry no figures');
   assert.match(cases[0], /Uno de los cuatro socios/);
@@ -75,9 +75,16 @@ test('all three cases tell what was worked on and the result, without figures, a
   assert.match(cases[1], /Emprendimiento propio con un socio/);
   assert.match(cases[1], /Una marca creada desde cero junto a un socio/);
   assert.match(cases[2], /Uno de mis primeros clientes/);
+  assert.match(cases[3], /Hardtech<br>Store/);
+  assert.match(cases[3], /Cliente actual/);
+  assert.match(cases[3], /Proyecto en curso/);
+  assert.match(cases[3], /nuevo template y estética/);
+  assert.doesNotMatch(cases[3], /resultados? (logrados|obtenidos)|aument|\+\d/i, 'ongoing project: no results are claimed');
   assert.doesNotMatch(home, /Nutrex/, 'the brand is Nutrax');
   assert.match(home, /data-brand="Nutrax"/);
-  assert.match(cases[1], /Proyecto finalizado: la tienda ya no está online/);
+  assert.match(cases[1], /Hoy el proyecto sigue sin mí: me separé del emprendimiento/);
+  assert.match(cases[1], /eventos sociales con la comunidad de la marca/);
+  assert.doesNotMatch(cases[1], /ya no está online/, 'Wheels still exists, only Jonathan left');
   assert.match(cases[2], /Una tienda lista para vender, entregada llave en mano\./);
 });
 
