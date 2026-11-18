@@ -36,7 +36,7 @@ Conservar el nombre, el logo oficial y las tipografías vigentes. Identidad edit
 
 ## Evidence on Hand
 
-Logo en logo.png; identidad y tokens en design-tokens.json; componentes en design-system.css y design-system.js. Casos existentes de Conectia BA (Jonathan fue uno de los cuatro socios), Wheels BA (emprendimiento propio con un socio, del que luego se separó) y NutrePHARMA (uno de sus primeros clientes); credenciales ecommerce presentes en el sitio. No inventar métricas de resultados, testimonios ni garantías.
+Logo en logo.png; identidad y tokens en design-tokens.json; componentes en design-system.css y design-system.js. Casos existentes de Conectia BA (Jonathan fue uno de los cuatro socios), Wheels BA (emprendimiento propio con un socio, del que luego se separó) y NutrePHARMA (uno de sus primeros clientes) y Hardtech Store (cliente actual, proyecto en curso); credenciales ecommerce presentes en el sitio. No inventar métricas de resultados, testimonios ni garantías.
 
 Foto del hero en assets/sobre-mi/ (copia retocada jonathan-estudio-hero.webp). Control de animación en home-hero.js; pruebas en tests/home-hero.test.cjs.
 
