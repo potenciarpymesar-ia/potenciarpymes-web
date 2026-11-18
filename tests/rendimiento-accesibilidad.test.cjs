@@ -43,15 +43,19 @@ function webpDimensions(buffer) {
   throw new Error('Missing WebP dimensions');
 }
 
-test('optimized WebP images preserve the original dimensions and stay below 150 KB', () => {
-  for (const stem of [
-    ...['arquitectura-interiorismo', 'consultoria-profesional', 'estudio-contable', 'estudio-juridico', 'marcas-muro']
-      .map(name => 'assets/web-profesional/' + name),
-    'marcas-muro-logo',
-  ]) {
-    const original = fs.readFileSync(path.join(root, stem + '.png'));
+test('optimized WebP images keep their original dimensions and stay below 150 KB', () => {
+  // Tamaños de los originales PNG, que ya no se guardan en el repositorio (quedan en el historial de git).
+  const originalDimensions = {
+    'assets/web-profesional/arquitectura-interiorismo': [1122, 1402],
+    'assets/web-profesional/consultoria-profesional': [1122, 1402],
+    'assets/web-profesional/estudio-contable': [1122, 1402],
+    'assets/web-profesional/estudio-juridico': [1122, 1402],
+    'assets/web-profesional/marcas-muro': [1122, 1402],
+    'marcas-muro-logo': [1000, 1000],
+  };
+  for (const [stem, dimensions] of Object.entries(originalDimensions)) {
     const optimized = fs.readFileSync(path.join(root, stem + '.webp'));
-    assert.deepEqual(webpDimensions(optimized), pngDimensions(original), stem);
+    assert.deepEqual(webpDimensions(optimized), dimensions, stem);
     assert.ok(optimized.length < 150000, `${stem}: exceeds 150 KB`);
   }
 });
