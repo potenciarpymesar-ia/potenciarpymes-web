@@ -63,11 +63,11 @@ test('Jonathan portrait exists within the 300 KB budget', () => {
   assert.ok(fs.statSync(path.join(root, 'assets/sobre-mi/jonathan-retrato.webp')).size < 300000);
 });
 
-test('all three cases tell what was worked on, without figures, and Wheels explains its closed store', () => {
+test('all three cases tell what was worked on and the result, without figures, and Wheels explains its closed store', () => {
   const section = home.match(/<section\b[^>]*\bid="casos"[^>]*>[\s\S]*?<\/section>/)[0];
   const cases = [...section.matchAll(/<article class="proof-case">([\s\S]*?)<\/article>/g)].map(([, card]) => card);
   assert.equal(cases.length, 3);
-  for (const card of cases) assert.match(card, /<strong>Qué quedó funcionando<\/strong>/);
+  for (const card of cases) assert.match(card, /<strong>Resultado<\/strong>/);
   for (const card of cases) assert.doesNotMatch(card, /\$|\bSKU\b|\d{2,}\s*(bicicletas|productos)|facturaci/i, 'cases carry no figures');
   assert.match(cases[0], /Mi propio negocio/);
   assert.match(cases[0], /Un negocio armado desde cero/);
