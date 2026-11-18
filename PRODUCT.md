@@ -28,7 +28,7 @@ Recorridos: home → diagnóstico inicial gratuito; chequeo web gratuito como al
 
 Servicios sobre Tiendanube, Mercado Libre, presencia web, captación, medición y automatización de procesos. El diagnóstico inicial orienta a partir de cinco respuestas; el chequeo web revisa señales públicas. No prometer acceso autónomo a cuentas privadas ni equivalencia entre chequeo público y diagnóstico profundo.
 
-Los dispositivos del hero y sus notificaciones son una escena ilustrativa. No reciben mensajes reales ni demuestran una integración operativa con las redes. El hardware es generado con acabado fotorrealista y las pantallas están animadas en HTML.
+La foto del hero es el retrato real del fundador. La franja de canales (Anuncios, Web, Tienda, WhatsApp, Medición) describe lo que se conecta en un negocio; no representa un producto propio ni una integración operativa con las redes.
 
 ## Brand Commitments
 
@@ -38,7 +38,7 @@ Conservar el nombre, el logo oficial y las tipografías vigentes. Identidad edit
 
 Logo en logo.png; identidad y tokens en design-tokens.json; componentes en design-system.css y design-system.js. Casos existentes de Conectia BA, Wheels BA y NutrePHARMA; credenciales ecommerce presentes en el sitio. No inventar métricas de resultados, testimonios ni garantías.
 
-Hardware del hero en assets/home/ con procedencia documentada en su README.md. Control de animación en home-hero.js; pruebas en tests/home-hero.test.cjs; historial de QA en docs/home-hero-qa.md.
+Foto del hero en assets/sobre-mi/ (copia retocada jonathan-estudio-hero.webp). Control de animación en home-hero.js; pruebas en tests/home-hero.test.cjs.
 
 ## Product Principles
 
@@ -58,4 +58,4 @@ Conservar Google Tag Manager GTM-WW77R29R y los eventos existentes. La presencia
 
 ## Status
 
-El hero con hardware fotorrealista se publicó mediante PR #9. El fondo editorial y las letras reactivas están en PR #10, todavía como vista previa a la fecha de esta actualización (30/10/2026). Consultar el estado del repositorio antes de asumir una publicación posterior. La documentación no autoriza publicar cambios visuales nuevos.
+El hero «El estudio» (foto del fundador y franja de canales) reemplaza a la escena de notebook y celular y al fondo de hilos. A la fecha de esta actualización (18/11/2026) está en una rama de prueba, sin publicar. Consultar el estado del repositorio antes de asumir una publicación posterior. La documentación no autoriza publicar cambios visuales nuevos.

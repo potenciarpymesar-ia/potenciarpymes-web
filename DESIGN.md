@@ -37,9 +37,9 @@ components:
 
 **Creative North Star: "Editorial de marca"**
 
-Identidad editorial contemporánea: titulares con carácter, contraste fuerte, aire y un acento lima reconocible. El contenido de negocio y los dispositivos ilustrativos sostienen la comunicación; los efectos acompañan su lectura.
+Identidad editorial contemporánea: titulares con carácter, contraste fuerte, aire y un acento lima reconocible. El contenido de negocio, la foto del fundador y los canales que se conectan sostienen la comunicación; los efectos acompañan su lectura.
 
-Este documento registra la identidad vigente del código y las decisiones confirmadas por el usuario. No propone un rediseño. Los valores compartidos se mantienen en design-tokens.json; este registro no reemplaza su proceso de generación. Los ajustes específicos del hero se describen en docs/hero-visual-current.md.
+Este documento registra la identidad vigente del código y las decisiones confirmadas por el usuario. No propone un rediseño. Los valores compartidos se mantienen en design-tokens.json; este registro no reemplaza su proceso de generación. Los ajustes específicos del hero están en home-hero.css y home-hero.js.
 
 **Key Characteristics:**
 
@@ -58,7 +58,7 @@ LIME dirige la atención a acciones y palabras clave. Su variante hover pertenec
 
 INK sostiene los fondos oscuros; PAPER aporta contraste en texto y superficies claras. INK SOFT separa superficies sin introducir otra identidad cromática.
 
-Los verdes oscuros del fondo del hero son tonos de apoyo locales, no nuevos colores principales. Los colores de WhatsApp, Instagram y Facebook identifican redes dentro de una demostración, no sustituyen la paleta institucional.
+El gris cálido #1B1C1C del fondo del hero acompaña el tono de la foto del fundador; es un tono de apoyo local, no un color principal. Los colores de WhatsApp, Instagram y Facebook, cuando aparecen, identifican redes y no sustituyen la paleta institucional.
 
 ## Typography
 
@@ -72,17 +72,17 @@ El hero usa peso 650, variación de ancho 85 y líneas fijadas en cuatro grupos.
 
 ## Layout
 
-El sitio usa contenedores y secciones de ancho completo. El máximo compartido es 1440px; el contenido del hero actual tiene máximo 1320px. El hero de escritorio distribuye texto a la izquierda y dispositivos a la derecha.
+El sitio usa contenedores y secciones de ancho completo. El máximo compartido es 1440px; el contenido del hero actual tiene máximo 1320px. El hero de escritorio pone el texto a la izquierda y la foto del fundador a la derecha, con una franja inferior que nombra los cinco canales conectados (Anuncios, Web, Tienda, WhatsApp, Medición).
 
-En el preview refinado, el orden móvil es titular, bajada/CTA y escena. El orden DOM coincide con la secuencia visual. El breakpoint específico de la escena es 767px; otros componentes conservan sus breakpoints existentes. No unificar breakpoints sin revisar cada superficie.
+En móvil, el orden es titular, bajada/CTA, foto y canales. El orden DOM coincide con la secuencia visual. El breakpoint específico del hero es 767px; otros componentes conservan sus breakpoints existentes. No unificar breakpoints sin revisar cada superficie.
 
 ## Elevation & Depth
 
-La página se organiza principalmente por contraste y capas tonales. Las sombras de los dispositivos aportan volumen al hardware; no son un patrón para agregar sombras a todas las secciones. Los reflejos y materiales del hardware se conservan en los recursos originales.
+La página se organiza principalmente por contraste y capas tonales. La foto del hero se funde con el fondo mediante una máscara sobre la propia imagen; no se agregan sombras ni brillos decorativos.
 
 ## Shapes
 
-Controles principales rectos, bordes finos y composiciones amplias. Las esquinas redondeadas de notificaciones y pantallas representan sus objetos reales y no definen las tarjetas de todo el sitio. El corte diagonal del fondo es un recurso específico del hero.
+Controles principales rectos, bordes finos y composiciones amplias. La foto del hero es rectangular y a sangre; la franja de canales es plana, sin tarjetas.
 
 ## Components
 
@@ -96,7 +96,7 @@ Logo oficial, enlaces claros y acceso al diagnóstico. En móvil se conserva el 
 
 ### Hero
 
-Titular aprobado, bajada de consultoría y escena de notebook/celular. Letras reactivas al cursor, notificaciones y fondo comparten el control de pausa. La escena es ilustrativa y no representa un CRM comercializado por la marca. Detalles y estado de publicación en docs/hero-visual-current.md.
+Titular aprobado, bajada en primera persona, foto del fundador (copia retocada jonathan-estudio-hero.webp, sin el logo de la lámpara) y franja de cinco canales. El titular se revela como una cortina, las letras reaccionan al cursor y los canales se resaltan de a uno; todo comparte el control de pausa y respeta «reducir movimiento». El texto de los canales está siempre en HTML. No hay fondo animado ni React en esta sección.
 
 ### Fields
 

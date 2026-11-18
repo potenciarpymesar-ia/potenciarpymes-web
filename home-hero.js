@@ -1,6 +1,10 @@
 (function () {
   'use strict';
 
+  var STEP = 2.6; // segundos que se resalta cada canal
+
+  // Controla el estado de movimiento del hero (running | paused | still), el revelado del
+  // titular, las letras reactivas y el resaltado de los canales. El texto siempre está en HTML.
   window.ppInitHomeHero = function (root, environment) {
     if (!root) return null;
     var env = environment || window;
@@ -8,14 +12,9 @@
     var doc = env.document || document;
     var media = env.media || window.matchMedia('(prefers-reduced-motion: reduce)');
     var button = root.querySelector('[data-hero-motion]');
-    var photo = root.querySelector('.hero-camera');
     var lines = root.querySelectorAll('.hero-title-line');
-    var routes = root.querySelectorAll('.hero-route');
-    var steps = root.querySelectorAll('.hero-scene-step');
-    var notifications = root.querySelectorAll('.phone-notification');
-    var messages = root.querySelectorAll('.desk-message');
-    var followup = root.querySelector('.desk-followup');
-    var signal = root.querySelector('.connection-signal');
+    var inners = [];
+    var channels = root.querySelectorAll('.hero-channel');
     var animations = [], userPaused = false, inView = true, observer;
     var title = root.querySelector('#hero-title'), glyphs = [], centers = [], titleBox;
     var pointerMedia = env.pointerMedia || window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)');
@@ -24,11 +23,16 @@
         var text = line.textContent;
         line.textContent = '';
         line.setAttribute('aria-hidden','true');
+        var inner = doc.createElement('span');
+        inner.className = 'hero-line-inner';
+        inner.style.display = 'inline-block';
         Array.from(text).forEach(function(character) {
           var glyph = doc.createElement('span');
           glyph.className = 'hero-glyph'; glyph.textContent = character;
-          line.appendChild(glyph); glyphs.push(glyph);
+          inner.appendChild(glyph); glyphs.push(glyph);
         });
+        line.appendChild(inner);
+        inners.push(inner);
       });
     }
     function resetType() {
@@ -62,6 +66,12 @@
       env.addEventListener('scroll',leaveType,{passive:true});
     }
 
+    function setLit(index) {
+      Array.from(channels).forEach(function (channel, i) {
+        if (channel.classList) channel.classList.toggle('is-lit', i === index);
+      });
+    }
+
     function sync() {
       var still = !gsap || media.matches;
       var running = !still && !userPaused && !doc.hidden && inView;
@@ -77,7 +87,8 @@
       animations.forEach(function (animation) { animation.kill(); });
       animations = [];
       root.classList.remove('has-hero-motion');
-      if (gsap) gsap.set([photo].concat(Array.from(lines), Array.from(routes), Array.from(steps), Array.from(notifications), Array.from(messages), [followup,signal]), { clearProps:'transform,opacity,visibility,strokeDashoffset,filter,backgroundColor' });
+      setLit(-1);
+      if (gsap) gsap.set(Array.from(lines).concat(inners), { clearProps:'transform,overflow' });
     }
 
     function build() {
@@ -85,36 +96,16 @@
       if (gsap && !media.matches) {
         root.classList.add('has-hero-motion');
         var entrance = gsap.timeline({ paused:true, defaults:{ ease:'power3.out' } });
-        // Never fade out the title or CTA: both remain readable throughout entry.
-        entrance.from(lines, { y:20, duration:0.85, stagger:0.09, clearProps:'transform' });
-        var camera = gsap.timeline({ paused:true, repeat:-1, yoyo:true, defaults:{ ease:'sine.inOut' } });
-        camera.fromTo(photo, { y:0 }, { y:-3, duration:8 });
-        var story = gsap.timeline({ paused:true, repeat:-1, repeatDelay:0.3, defaults:{ ease:'power2.inOut' } });
-        story.addLabel('arrival',0)
-          .set(routes,{ strokeDashoffset:1,opacity:0.8 },0)
-          .set(notifications,{ opacity:0,x:28,y:-8,scale:0.97,filter:'blur(3px)' },0)
-          .set(messages,{ opacity:0,y:0 },0).set(messages[0],{ opacity:1 },0)
-          .set(followup,{ opacity:0.3 },0)
-          .set(signal,{ opacity:0 },0)
-          .set(steps,{ opacity:0 },0).set(steps[0],{ opacity:1 },0);
-        Array.from(notifications).forEach(function(notification,index){
-          var at=0.35+index*2.5;
-          story.to(notification,{ opacity:1,x:0,y:0,scale:1,filter:'blur(0px)',duration:0.65,ease:'power3.out' },at)
-            .to(messages,{ opacity:0,duration:0.25 },at+0.35)
-            .to(messages[index],{ opacity:1,y:0,duration:0.5 },at+0.6)
-            .fromTo(signal,{ opacity:0,scale:0.5 },{ opacity:1,scale:1,duration:0.6 },at+0.4);
-        });
-        story.addLabel('connection',4)
-          .to(steps[0],{ opacity:0,duration:0.3 },'connection')
-          .to(steps[1],{ opacity:1,duration:0.3 },'connection+=0.3')
-          .to(routes,{ strokeDashoffset:0,duration:3 },'connection')
-          .addLabel('clarity',9)
-          .to(steps[1],{ opacity:0,duration:0.3 },'clarity')
-          .to(steps[2],{ opacity:1,duration:0.3 },'clarity+=0.3')
-          .to(followup,{ opacity:1,duration:0.8 },'clarity')
-          .to(notifications,{ opacity:0,x:-12,duration:0.5,stagger:0.12 },13)
-          .to([routes,steps[2],signal],{ opacity:0,duration:0.7 },13.5);
-        animations = [entrance,camera,story];
+        // Revelado tipo cortina: cada línea sube desde su máscara. El texto nunca se desvanece
+        // y, si el script falla, queda visible en su lugar.
+        entrance.set(lines, { overflow:'hidden' }, 0)
+          .from(inners, { yPercent:105, duration:0.95, stagger:0.11, clearProps:'transform' }, 0)
+          .set(lines, { clearProps:'overflow' }, '>');
+        // Los cinco canales se resaltan de a uno, en bucle, mientras el hero está visible.
+        var story = gsap.timeline({ paused:true, repeat:-1 });
+        Array.from(channels).forEach(function (channel, i) { story.call(setLit, [i], i * STEP); });
+        story.to({}, { duration: Math.max(1, channels.length) * STEP });
+        animations = [entrance, story];
       }
       sync();
     }

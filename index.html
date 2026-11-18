@@ -134,7 +134,7 @@
     }
   </style>
   <link rel="stylesheet" href="/home-hero.css">
-  <link rel="stylesheet" href="/assets/home/hero-threads.css">
+  <link rel="preload" as="image" href="/assets/sobre-mi/jonathan-estudio-hero.webp" type="image/webp" media="(min-width:768px)" fetchpriority="high">
 <style>
 /* Identidad y enlaces legales: ajuste al ancho disponible y foco visible. */
 footer, footer .footer-links { flex-wrap: wrap; }
@@ -155,71 +155,30 @@ footer a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
     </div>
   </header>
   <main id="main">
-    <section class="hero hero--cinematic" aria-labelledby="hero-title" data-cinematic-hero>
-      <div class="hero-threads" data-hero-threads aria-hidden="true">
-        <svg class="hero-threads-fallback" viewBox="0 0 1600 900" preserveAspectRatio="none" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1">
-          <path d="M-100 680 C320 610 450 150 900 390 S1390 650 1740 170"/><path d="M-100 690 C320 620 450 170 900 405 S1390 660 1740 190"/><path d="M-100 700 C320 630 450 190 900 420 S1390 670 1740 210"/><path d="M-100 710 C320 640 450 210 900 435 S1390 680 1740 230"/><path d="M-100 720 C320 650 450 230 900 450 S1390 690 1740 250"/>
-        </g></svg>
-        <div class="hero-threads-mount" id="hero-threads-root"></div>
-      </div>
+    <section class="hero hero--cinematic hero--studio" aria-labelledby="hero-title" data-cinematic-hero>
+      <figure class="hero-photo">
+        <img class="hero-photo-img" src="/assets/sobre-mi/jonathan-estudio-hero.webp" alt="Jonathan, fundador de Potenciar Pymes, sentado bajo una luz de estudio" width="1086" height="1448" fetchpriority="high" decoding="async">
+      </figure>
       <div class="hero-inner">
         <div class="hero-copy">
-          <p class="hero-kicker">Sistemas digitales para negocios reales</p>
           <h1 id="hero-title" tabindex="0" aria-label="Tu negocio te necesita. Pero no para todo."><span class="hero-title-line">TU NEGOCIO</span> <span class="hero-title-line">TE NECESITA.</span> <em><span class="hero-title-line">PERO NO</span> <span class="hero-title-line">PARA TODO.</span></em></h1>
         </div>
-          <div class="hero-bottom">
-            <p><span class="hero-description-desktop">Te ayudamos a mejorar tu web, tus canales de venta y tus procesos. Primero detectamos qué necesita tu negocio; después conectamos las herramientas que tengan sentido para vos.</span><span class="hero-description-mobile">Consultoría para mejorar tu web, tus canales de venta y tus procesos.</span></p>
-            <div class="hero-actions"><a class="button track-diagnosis track-initial" href="/diagnostico">Empezá gratis: test de 4 preguntas <span aria-hidden="true">↗</span></a></div>
-            <p class="hero-reassurance">Primero entendemos. Después decidimos qué mejorar.</p>
-          </div>
-      <div class="hero-scene hero-scene--devices">
-        <div class="hero-camera devices-stage" aria-hidden="true">
-          <div class="device-orbit"><span></span><span></span><span></span></div>
-          <div class="device-laptop">
-            <img class="device-hardware" src="/assets/home/laptop-photoreal.svg" alt="" width="1536" height="1024" decoding="async" fetchpriority="high">
-            <div class="laptop-lid"><div class="laptop-camera"></div><div class="laptop-screen">
-              <div class="site-browser"><span class="browser-dots"><i></i><i></i><i></i></span><span class="browser-address">tu negocio · web / tienda / contacto</span></div>
-              <div class="site-scenes">
-                <div class="desk-message site-scene site-scene--web">
-                  <div class="example-nav"><b>TU NEGOCIO</b><span>Servicios &nbsp; Nosotros &nbsp; Contacto</span></div>
-                  <div class="example-web"><div><small>UNA PRESENCIA PROPIA</small><h3>Lo que hacés,<br>bien presentado.</h3><p>Tu propuesta, tu experiencia y una forma clara de contactarte.</p><span class="example-action">Conocer servicios ↗</span></div><div class="example-web-art"><span></span><span></span><b>Tu<br>identidad.</b></div></div>
-                  <div class="example-web-footer">Tu propuesta. &nbsp; Tu experiencia. &nbsp; Tu contacto.</div>
-                </div>
-                <div class="desk-message site-scene site-scene--shop">
-                  <div class="example-nav"><b>TU TIENDA</b><span>Catálogo &nbsp; Envíos &nbsp; Contacto</span></div>
-                  <div class="example-shop-heading"><small>TUS PRODUCTOS, ONLINE</small><h3>Un catálogo para elegir.</h3></div>
-                  <div class="example-products"><div><span class="example-product product-a"></span><b>Colección esencial</b><small>Ver producto ↗</small></div><div><span class="example-product product-b"></span><b>Nuevas formas</b><small>Ver producto ↗</small></div><div><span class="example-product product-c"></span><b>Objetos cotidianos</b><small>Ver producto ↗</small></div></div>
-                </div>
-                <div class="desk-message site-scene site-scene--contact">
-                  <div class="example-nav"><b>TU NEGOCIO</b><span>Hablemos</span></div>
-                  <div class="example-contact"><div><small>DEL INTERÉS A LA CONVERSACIÓN</small><h3>Una consulta.<br>Un próximo paso.</h3><p>Una forma simple de preguntar y seguir conversando.</p></div><div class="example-chat"><span>Hola, quiero saber más.</span><span>¡Hola! Contanos qué necesitás.</span><small>La conversación puede continuar.</small></div></div>
-                </div>
-              </div>
-              <div class="desk-followup"><span>Te encuentran</span><b>→</b><span>Te consultan</span><b>→</b><span>Podés dar seguimiento</span></div>
-            </div></div><div class="laptop-base"><span></span></div>
-          </div>
-          <div class="device-phone">
-            <img class="device-hardware" src="/assets/home/phone-photoreal.svg" alt="" width="887" height="1774" decoding="async">
-            <div class="phone-side"></div><div class="phone-screen"><div class="phone-island"></div>
-              <div class="phone-status"><span>9:41</span><svg viewBox="0 0 40 12" width="29" height="9"><path d="M1 10V7M5 10V5M9 10V2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 4Q21 0 26 4M18 7Q21 4 24 7" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="30" y="2" width="8" height="8" rx="1" fill="none" stroke="currentColor"/></svg></div>
-              <div class="phone-clock"><span>Miércoles</span><strong>9:41</strong><small>Tu negocio sigue en movimiento.</small></div>
-              <div class="phone-notifications">
-                <div class="phone-notification"><div class="notification-top"><span class="network-mark network-mark--wa"><svg viewBox="0 0 24 24"><path d="M5 19l-2 2 1-5a9 9 0 1 1 3 4z"/><path d="M8 7c0 5 4 9 8 9l1-3-3-1-1 1c-2-1-3-2-3-3l1-1-1-2z"/></svg></span><strong>WhatsApp</strong><small>ahora</small></div><b>Una consulta nueva</b><p>Hola, ¿tenés disponibilidad?</p></div>
-                <div class="phone-notification"><div class="notification-top"><span class="network-mark network-mark--ig"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg></span><strong>Instagram</strong><small>ahora</small></div><b>Te enviaron un mensaje</b><p>Quiero saber más de lo que hacés.</p></div>
-                <div class="phone-notification"><div class="notification-top"><span class="network-mark network-mark--fb">f</span><strong>Facebook</strong><small>ahora</small></div><b>Una oportunidad para seguir</b><p>¿Me pasás un presupuesto?</p></div>
-              </div><div class="phone-home-bar"></div>
-            </div>
-          </div>
-          <div class="device-connection"><svg viewBox="0 0 300 170"><path class="hero-route" pathLength="1" d="M10 150 C65 150 50 25 120 25 S215 100 285 25"/></svg><span class="connection-signal"></span></div>
-        </div>
-        <div class="hero-scene-caption">
-          <div class="hero-scene-steps" aria-hidden="true"><span class="hero-scene-step">Te encuentran.</span><span class="hero-scene-step">Te consultan.</span><span class="hero-scene-step">Podés dar seguimiento.</span></div>
-          <span class="hero-scene-legend">Escena ilustrativa</span>
-          <button class="hero-motion-toggle" data-hero-motion type="button" aria-pressed="false" hidden>Pausar animación</button>
+        <div class="hero-bottom">
+          <p><span class="hero-description-desktop">Armo y conecto tu marca, tu tienda, tus anuncios y tu WhatsApp. Antes de proponerte algo, miro cómo vende tu negocio hoy.</span><span class="hero-description-mobile">Armo y conecto tu marca, tu tienda, tus anuncios y tu WhatsApp.</span></p>
+          <div class="hero-actions"><a class="button track-diagnosis track-initial" href="/diagnostico">Empezá gratis: test de 4 preguntas <span aria-hidden="true">↗</span></a></div>
         </div>
       </div>
-
+      <div class="hero-photo-meta">
+        <p class="hero-who"><b>Jonathan</b>Fundador de Potenciar Pymes</p>
+        <button class="hero-motion-toggle" data-hero-motion type="button" aria-pressed="false" hidden>Pausar animación</button>
       </div>
+      <ul class="hero-channels" aria-label="Lo que conectamos en tu negocio">
+        <li class="hero-channel"><b><i aria-hidden="true"></i>Anuncios</b><p>Llegás a personas con interés real en lo que ofrecés.</p></li>
+        <li class="hero-channel"><b><i aria-hidden="true"></i>Web</b><p>Lo que hacés, bien presentado y fácil de encontrar.</p></li>
+        <li class="hero-channel"><b><i aria-hidden="true"></i>Tienda</b><p>Un catálogo para elegir y comprar sin vueltas.</p></li>
+        <li class="hero-channel"><b><i aria-hidden="true"></i>WhatsApp</b><p>Las consultas llegan a un solo lugar y se les da seguimiento.</p></li>
+        <li class="hero-channel"><b><i aria-hidden="true"></i>Medición</b><p>Ves de dónde vienen las consultas y las ventas.</p></li>
+      </ul>
     </section>
     <section class="ecommerce-trust wrap" aria-labelledby="ecommerce-trust-title">
       <p class="eyebrow">Ecommerce dentro de tu sistema digital</p>
@@ -277,7 +236,6 @@ footer a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
 <script src="/design-system.js" defer></script>
 <script src="/vendor/gsap-3.13.0.min.js" defer></script>
 <script src="/home-hero.js" defer></script>
-<script src="/assets/home/hero-threads.js" defer></script>
 <div class="consumer-notice" style="box-sizing:border-box;width:100%;padding:20px 24px;background:#11110F;color:#aaa;font-size:12px;line-height:1.6;text-align:center;letter-spacing:normal;"><p style="margin:0;color:inherit;font:inherit;">Dirección General de Defensa y Protección al Consumidor<br>Para consultas y/o denuncias <a href="https://buenosaires.gob.ar/defensaconsumidor/como-denunciar" style="color:inherit;text-decoration:underline;font:inherit;">Ingrese aquí</a></p></div>
 </body>
 </html>
