@@ -33,10 +33,10 @@ test('home explains how Jonathan works between cases and the starting options, w
   const heading = section.match(/aria-labelledby="([^"]+)"/)?.[1];
   assert.ok(heading);
   assert.ok(section.includes(`<h2 id="${heading}"`));
-  assert.match(section, /Me ocupo yo, para que no dependa todo de vos\./);
+  assert.match(section, /Vos te dedicás a tu negocio\. Yo me ocupo del resto\./);
   assert.match(section, /Cómo trabajo conmigo/);
   assert.doesNotMatch(section, /<img\b/, 'the photo is already in the hero');
-  for (const point of ['Ordeno lo que ya tenés\.', 'Me hago cargo del trabajo\.', 'Sin promesas de ventas\.']) assert.match(section, new RegExp(point));
+  for (const point of ['Primero entiendo tu negocio\.', 'Después me ocupo del trabajo\.', 'Sin promesas de ventas\.']) assert.match(section, new RegExp(point));
   assert.match(section, /matrícula N\.° 3209/);
   const whatsapp = [...section.matchAll(/<a\b[^>]*>/g)].map(([tag]) => tag).find(tag => tag.includes('wa.me'));
   assert.ok(whatsapp);
