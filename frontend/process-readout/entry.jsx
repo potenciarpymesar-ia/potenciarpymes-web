@@ -13,7 +13,7 @@ const DETAILS = [
 const STEP_MS = 2800;
 
 const CSS = `
-.pr-row{width:100%;background:none;border:0;border-bottom:1px solid var(--line);color:inherit;font:inherit;letter-spacing:inherit;text-transform:inherit;text-align:left;cursor:pointer;position:relative;opacity:.62;transition:opacity .35s ease}
+.pr-row{width:100%;background:none;border:0;border-bottom:1px solid var(--line);color:inherit;font-family:inherit;text-align:left;cursor:pointer;position:relative;opacity:.62;transition:opacity .35s ease}
 .pr-row[aria-current="step"]{opacity:1}
 .pr-row::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--lime);transform:scaleX(0);transform-origin:left}
 .pr-row[aria-current="step"]::after{transform:scaleX(1)}
