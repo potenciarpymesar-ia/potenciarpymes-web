@@ -99,7 +99,7 @@
         // Revelado tipo cortina: cada línea sube desde su máscara. El texto nunca se desvanece
         // y, si el script falla, queda visible en su lugar.
         entrance.set(lines, { overflow:'hidden' }, 0)
-          .from(inners, { yPercent:105, duration:0.95, stagger:0.11, clearProps:'transform' }, 0)
+          .from(inners, { yPercent:105, duration:0.8, stagger:0.09, clearProps:'transform' }, 0)
           .set(lines, { clearProps:'overflow' }, '>');
         // Los cinco canales se resaltan de a uno, en bucle, mientras el hero está visible.
         var story = gsap.timeline({ paused:true, repeat:-1 });
