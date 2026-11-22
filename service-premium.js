@@ -13,6 +13,6 @@
     if(reducedMotion.addEventListener)reducedMotion.addEventListener('change',resetHeroMotion);
   }
   window.addEventListener('scroll',function(){if(nav)nav.classList.toggle('scrolled',window.scrollY>30)},{passive:true});
-  var footerLinks=document.querySelectorAll('.footer-links');if(footerLinks[0])footerLinks[0].innerHTML='<a href="/soluciones">Soluciones</a><a href="/recursos">Recursos</a><a href="/#diagnostico">Por dónde empezar</a><a href="/#contacto">Contacto</a>';
+  var footerLinks=document.querySelectorAll('.footer-links');if(footerLinks[0])footerLinks[0].innerHTML='<a href="/soluciones">Soluciones</a><a href="/recursos">Recursos</a><a href="/#diagnostico">Por dónde empezar</a><a href="/#contacto">Contacto</a><a href="/privacidad">Privacidad</a><a href="/terminos">Términos</a><a href="/eliminacion-de-datos">Eliminación de datos</a>';
   var copy=document.querySelector('.footer-copy');if(copy)copy.textContent='© 2026 Potenciar Pymes · Buenos Aires';
 })();
