@@ -471,7 +471,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="diag-intro" aria-labelledby="diag-intro-title">
     <p class="eyebrow">Test gratis de 4 preguntas</p>
     <h2 id="diag-intro-title">Una primera orientación para tu <em>negocio.</em></h2>
-    <p>Respondé cuatro preguntas sobre cómo vendés, atraés clientes y medís resultados.</p><p class="diag-disclosure">Gratis. La orientación se basa en tus respuestas; no incluye una revisión de tus canales. Sirve con o sin web.</p><p class="diag-disclosure">Al terminar las preguntas te pediremos nombre y WhatsApp para identificar tus respuestas y poder contactarte. La orientación se muestra en esta página.</p>
+    <p>Respondé cuatro preguntas sobre cómo vendés, atraés clientes y medís resultados.</p><p class="diag-disclosure">Gratis. La orientación se basa en tus respuestas; no incluye una revisión de tus canales. Sirve con o sin web.</p><p class="diag-disclosure">Al terminar las preguntas te pido nombre y WhatsApp para identificar tus respuestas y poder contactarte. La orientación se muestra en esta página.</p>
   </section>
   <p class="diag-kicker">4 preguntas · gratis · orientación al final</p>
 
@@ -559,7 +559,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="step" id="step5" style="display:none">
       <p class="step-label">Último paso</p>
       <h2 class="question-h">Tus datos para ver la orientación.</h2>
-      <p class="question-sub">Nombre y WhatsApp son obligatorios. Los usamos para identificar tus respuestas y poder conversar sobre ellas; el resultado se muestra acá.</p>
+      <p class="question-sub">Nombre y WhatsApp son obligatorios. Los uso para identificar tus respuestas y poder conversar sobre ellas; el resultado se muestra acá.</p>
       <div class="contact-form">
         <div class="field">
           <label for="inp-nombre">Nombre</label>
@@ -574,15 +574,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button class="btn-back" onclick="goTo(4)">← Anterior</button>
         <button class="btn-next" id="next5" onclick="showResult()" disabled>Ver mi orientación →</button>
       </div>
-      <p class="result-note">Al enviar, aceptás que usemos tus datos para contactarte, según nuestra <a href="/privacidad">política de privacidad</a>.</p>
+      <p class="result-note">Al enviar, aceptás que use tus datos para contactarte, según mi <a href="/privacidad">política de privacidad</a>.</p>
       <p class="result-note" id="diagnosticContactStatus" role="status" aria-live="polite" aria-atomic="true"></p>
-      <p class="result-note"><a id="diagnosticFailureWhatsApp" target="_blank" rel="noopener" hidden>Escribinos por WhatsApp</a></p>
+      <p class="result-note"><a id="diagnosticFailureWhatsApp" target="_blank" rel="noopener" hidden>Escribime por WhatsApp</a></p>
     </div>
 
     <!-- RESULT -->
     <div class="result" id="resultStep">
       <div class="result-header">
-        <p class="result-name" id="res-nombre" data-clarity-mask="true"></p><p class="result-note">Orientación inicial basada en tus respuestas declaradas. No inspeccionamos ni verificamos tus canales.</p>
+        <p class="result-name" id="res-nombre" data-clarity-mask="true"></p><p class="result-note">Orientación inicial basada en tus respuestas declaradas. No inspecciono ni verifico tus canales.</p>
         <h2 class="result-h" id="res-titulo"></h2>
         <div class="score-wrap">
           <div>
@@ -729,7 +729,7 @@ function updateProgress(step) {
 function getGaps() {
   var priorities = {
     sin_clientes:{ id:'sin_clientes', icon:'📣', title:'Conseguir más clientes', desc:'Señalaste que necesitás más clientes. Conviene entender quién consulta hoy y qué vías de llegada tienen sentido para tu negocio antes de sumar canales.' },
-    ads_sin_retorno:{ id:'ads_sin_retorno', icon:'📊', title:'Entender el retorno de la publicidad', desc:'Contaste que invertís en publicidad sin ver un retorno claro. El primer tema es acordar qué resultado esperás y qué información permitiría evaluar esa inversión; no verificamos tus campañas.' },
+    ads_sin_retorno:{ id:'ads_sin_retorno', icon:'📊', title:'Entender el retorno de la publicidad', desc:'Contaste que invertís en publicidad sin ver un retorno claro. El primer tema es acordar qué resultado esperás y qué información permitiría evaluar esa inversión; no verifico tus campañas.' },
     desconectado:{ id:'desconectado', icon:'🔗', title:'Coordinar los canales que ya usás', desc:'Percibís tus canales como desconectados. Conviene revisar el recorrido entre esos canales y las tareas que se repiten, sin asumir que necesitás otras plataformas.' },
     sin_tiempo:{ id:'sin_tiempo', icon:'⏱', title:'Recuperar tiempo en la operación', desc:'Tu problema principal es la falta de tiempo. Conviene identificar tareas repetidas y acordar cuáles simplificar o delegar antes de elegir herramientas.' },
     sin_datos:{ id:'sin_datos', icon:'📊', title:'Entender qué está funcionando', desc:'Contaste que no sabés qué funciona. Conviene definir las decisiones que querés tomar y qué datos útiles necesitás; esto no confirma errores de analítica.' }
@@ -746,7 +746,7 @@ function getGaps() {
 }
 
 function getNivel() {
-  return { label:'Orientación basada en respuestas', sub:'El problema que declaraste guía el primer tema. No asignamos un nivel de madurez ni verificamos configuraciones técnicas.' };
+  return { label:'Orientación basada en respuestas', sub:'El problema que declaraste guía el primer tema. No asigno un nivel de madurez ni verifico configuraciones técnicas.' };
 }
 
 
@@ -785,7 +785,7 @@ async function showResult() {
     var receipt = await saveDiagnosticLead(nombre, whatsapp, gaps, nivel);
   } catch (error) {
     var invalidWhatsapp = error.code === 'invalid_whatsapp';
-    status.textContent = invalidWhatsapp ? 'Revisá el número de WhatsApp: incluí el código de área (por ejemplo, 11 2345 6789).' : 'No pudimos confirmar el envío. Tus respuestas siguen acá: podés reintentar o escribirnos por WhatsApp.';
+    status.textContent = invalidWhatsapp ? 'Revisá el número de WhatsApp: incluí el código de área (por ejemplo, 11 2345 6789).' : 'No pude confirmar el envío. Tus respuestas siguen acá: podés reintentar o escribirme por WhatsApp.';
     fallback.href = 'https://wa.me/5491150161326?text=' + encodeURIComponent('Hola, quise completar el test pero el envío falló. Mi nombre es ' + nombre + '.');
     fallback.hidden = invalidWhatsapp;
     ppTrack('diagnostico_error', { flow:'diagnostico_inicial', stage:'contact_delivery' });
@@ -806,8 +806,8 @@ async function showResult() {
   ppTrack(receipt.stored === true ? 'diagnostico_contact_saved' : 'diagnostico_contact_sent', { flow:'diagnostico_inicial' });
   ppTrack('diagnostico_completado', { flow:'diagnostico_inicial' });
   ppTrack('diagnosis_completed', { flow:'diagnostico_inicial' });
-  status.textContent = 'Listo, recibimos tus datos.';
-  document.getElementById('diagnosticSavedStatus').textContent = 'Te vamos a escribir por WhatsApp para conversar sobre tu orientación.';
+  status.textContent = 'Listo, recibí tus datos.';
+  document.getElementById('diagnosticSavedStatus').textContent = 'Te voy a escribir por WhatsApp para conversar sobre tu orientación.';
 
   var message = 'Hola, soy ' + nombre + '. Hice el test y mi primer tema es: ' + gaps[0].title + '. Quiero conversar sobre por dónde empezar.';
   document.getElementById('res-result-whatsapp').href = 'https://wa.me/5491150161326?text=' + encodeURIComponent(message);

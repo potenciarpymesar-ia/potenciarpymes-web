@@ -53,7 +53,7 @@ test('guardado confirmado muestra orientación coherente y emite conversiones de
   assert.match(h.element('res-titulo').textContent,/tiempo/i);
   assert.equal(h.requests[0].score,null);
   assert.equal(h.requests[0].problema_declarado,'sin_tiempo');
-  assert.equal(h.element('diagnosticContactStatus').textContent, 'Listo, recibimos tus datos.');
+  assert.equal(h.element('diagnosticContactStatus').textContent, 'Listo, recibí tus datos.');
   assert.equal(h.events.filter(e=>e.event==='diagnostico_contact_saved').length,1);
   assert.equal(h.events.some(e=>JSON.stringify(e).includes('TEST POTENCIAR')),false);
 });
@@ -106,8 +106,8 @@ test('envío aceptado por Resend muestra resultado y registra una conversión si
   const h=harness(()=>({ok:true,json:async()=>({ok:true,stored:false,delivery:{status:'accepted',provider:'resend'}})}));
   await h.context.showResult();
   assert.equal(h.element('resultStep').style.display,'block');
-  assert.equal(h.element('diagnosticContactStatus').textContent, 'Listo, recibimos tus datos.');
-  assert.equal(h.element('diagnosticSavedStatus').textContent, 'Te vamos a escribir por WhatsApp para conversar sobre tu orientación.');
+  assert.equal(h.element('diagnosticContactStatus').textContent, 'Listo, recibí tus datos.');
+  assert.equal(h.element('diagnosticSavedStatus').textContent, 'Te voy a escribir por WhatsApp para conversar sobre tu orientación.');
   for (const event of ['generate_lead', 'diagnostico_completado', 'diagnosis_completed']) {
     assert.equal(h.events.filter(e=>e.event===event).length,1);
   }

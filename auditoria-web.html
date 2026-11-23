@@ -1381,9 +1381,9 @@ footer > p:has(> a[href^="/recursos/"]) > a {
             </div>
           </div>
           <button class="audit-submit" id="auditStartBtn" type="button">REVISAR MI WEB</button>
-          <p class="audit-error" id="auditStartError" role="alert" aria-atomic="true">No pudimos revisar esa URL. Confirmá que esté bien escrita e intentá de nuevo.</p>
+          <p class="audit-error" id="auditStartError" role="alert" aria-atomic="true">No pude revisar esa URL. Confirmá que esté bien escrita e intentá de nuevo.</p>
           <a id="auditStartWhatsApp" href="https://wa.me/5491150161326?text=Hola%2C%20quiero%20que%20revisen%20mi%20web%20y%20el%20chequeo%20autom%C3%A1tico%20no%20pudo%20leerla." hidden>Escribinos por WhatsApp</a>
-          <p class="audit-note" id="auditContactNotice">Para ver el resultado te pediremos nombre y WhatsApp. Los usamos para identificar tu chequeo y poder conversar sobre él. El resultado se muestra acá, en esta página.</p><p class="audit-note"><a href="/diagnostico">¿Preferís empezar por tu negocio? Respondé cuatro preguntas.</a></p>
+          <p class="audit-note" id="auditContactNotice">Para ver el resultado te voy a pedir nombre y WhatsApp. Los uso para identificar tu chequeo y poder conversar sobre él. El resultado se muestra acá, en esta página.</p><p class="audit-note"><a href="/diagnostico">¿Preferís empezar por tu negocio? Respondé cuatro preguntas.</a></p>
         </div>
 
         <div class="audit-step" id="auditStepLoading">
@@ -1410,7 +1410,7 @@ footer > p:has(> a[href^="/recursos/"]) > a {
             <input class="audit-input" type="text" id="auditProblema" placeholder="ej. no me encuentran en Google" data-clarity-mask="true">
           </div>
           <button class="audit-submit" id="auditRevealBtn" type="button">Ver mi resultado</button>
-          <p class="audit-note">Al enviar, aceptás que usemos tus datos para contactarte, según nuestra <a href="/privacidad">política de privacidad</a>.</p>
+          <p class="audit-note">Al enviar, aceptás que use tus datos para contactarte, según mi <a href="/privacidad">política de privacidad</a>.</p>
           <p class="audit-note" id="auditContactStatus" role="status" aria-live="polite" aria-atomic="true"></p>
           <p class="audit-error" id="auditRevealError" role="alert" aria-atomic="true">Completá nombre y WhatsApp para ver el resultado.</p>
           <a id="auditFailureWhatsApp" target="_blank" rel="noopener" hidden>Escribinos por WhatsApp</a>
@@ -1464,16 +1464,16 @@ footer > p:has(> a[href^="/recursos/"]) > a {
         </div>
         <div class="faq-item" role="listitem">
           <button class="faq-q" aria-expanded="false">
-            &iquest;Necesito darles acceso a algo?
+            &iquest;Necesito darte acceso a algo?
             <span class="faq-arrow" aria-hidden="true">+</span>
           </button>
           <div class="faq-a" aria-hidden="true">
-            <div class="faq-a-inner">No. Solo miramos lo que cualquiera puede ver visitando tu web públicamente — nada de logins ni contraseñas.</div>
+            <div class="faq-a-inner">No. Solo reviso lo que cualquiera puede ver visitando tu web públicamente — nada de logins ni contraseñas.</div>
           </div>
         </div>
         <div class="faq-item" role="listitem">
           <button class="faq-q" aria-expanded="false">
-            &iquest;Por qué piden nombre y WhatsApp antes de mostrar el resultado?
+            &iquest;Por qué pedís nombre y WhatsApp antes de mostrar el resultado?
             <span class="faq-arrow" aria-hidden="true">+</span>
           </button>
           <div class="faq-a" aria-hidden="true">
@@ -1523,7 +1523,7 @@ footer > p:has(> a[href^="/recursos/"]) > a {
 </footer>
 
 <div class="sticky-bar" id="stickyBar" role="complementary" aria-label="Llamada a la accion">
-  <p class="sticky-bar-text"><strong>&iquest;Prefer&iacute;s conversar?</strong> Escribinos y lo vemos juntos.</p>
+  <p class="sticky-bar-text"><strong>&iquest;Prefer&iacute;s conversar?</strong> Escribime y lo reviso con vos.</p>
   <div class="sticky-bar-actions">
     <a href="https://wa.me/5491150161326?text=Hola%2C%20quiero%20consultar%20por%20el%20chequeo%20web%20de%20mi%20sitio." class="sticky-bar-cta" target="_blank" rel="noopener">Hablar por WhatsApp</a>
     <button class="sticky-close" id="stickyClose" aria-label="Cerrar">&#10005;</button>
@@ -1678,8 +1678,8 @@ footer > p:has(> a[href^="/recursos/"]) > a {
       showStep(stepUrl);
       var unreachable = error.message === 'site_unreachable';
       startError.textContent = unreachable
-        ? 'No pudimos leer tu web. Puede estar caída, bloquear revisiones automáticas o tener un error en la dirección. Revisala o escribinos por WhatsApp.'
-        : 'No pudimos revisar esa URL. Confirmá que esté bien escrita e intentá de nuevo.';
+        ? 'No pude leer tu web. Puede estar caída, bloquear revisiones automáticas o tener un error en la dirección. Revisala o escribime por WhatsApp.'
+        : 'No pude revisar esa URL. Confirmá que esté bien escrita e intentá de nuevo.';
       startWhatsApp.hidden = !unreachable;
       startError.classList.add('visible');
       urlInput.setAttribute('aria-invalid', 'true');
@@ -1726,7 +1726,7 @@ footer > p:has(> a[href^="/recursos/"]) > a {
       contactStatus.textContent = '';
       window.ppTrack('audit_error', { flow: 'chequeo_web', stage: 'contact' });
       var invalidWhatsapp = error.code === 'invalid_whatsapp';
-      revealError.textContent = invalidWhatsapp ? 'Revisá el número de WhatsApp: incluí el código de área (por ejemplo, 11 2345 6789).' : 'No pudimos confirmar el envío. Tus datos y la web ingresada siguen acá: podés reintentar.';
+      revealError.textContent = invalidWhatsapp ? 'Revisá el número de WhatsApp: incluí el código de área (por ejemplo, 11 2345 6789).' : 'No pude confirmar el envío. Tus datos y la web ingresada siguen acá: podés reintentar.';
       fallback.href = 'https://wa.me/5491150161326?text=' + encodeURIComponent('Hola, quise ver el chequeo de mi web pero el envío falló. Mi nombre es ' + nombre + '.');
       fallback.hidden = invalidWhatsapp;
       revealError.classList.add('visible');
@@ -1806,12 +1806,12 @@ footer > p:has(> a[href^="/recursos/"]) > a {
         },
         {
           "@type": "Question",
-          "name": "&iquest;Necesito darles acceso a algo?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. Solo miramos lo que cualquiera puede ver visitando tu web públicamente — nada de logins ni contraseñas." }
+          "name": "&iquest;Necesito darte acceso a algo?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Solo reviso lo que cualquiera puede ver visitando tu web públicamente — nada de logins ni contraseñas." }
         },
         {
           "@type": "Question",
-          "name": "&iquest;Por qué piden nombre y WhatsApp antes de mostrar el resultado?",
+          "name": "&iquest;Por qué pedís nombre y WhatsApp antes de mostrar el resultado?",
           "acceptedAnswer": { "@type": "Answer", "text": "Para identificar tu chequeo y poder conversar sobre el resultado. Nombre y WhatsApp son obligatorios en el flujo actual; el resultado se muestra en esta página." }
         }
       ]
