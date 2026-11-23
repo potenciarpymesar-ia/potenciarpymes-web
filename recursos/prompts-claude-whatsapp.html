@@ -88,6 +88,22 @@ footer .footer-legal, footer .footer-copy { min-width: 0; max-width: 100%; overf
 footer .footer-legal a, footer .footer-copy a { color: inherit; }
 footer a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
 </style>
+<style>
+/* Pie: listas de enlaces y recurso destacado; las frases conservan su flujo. */
+footer .footer-links a,
+footer :is(p, span):has(> a[href="/privacidad"]) > a,
+footer > p:has(> a[href^="/recursos/"]) > a {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 24px;
+  min-width: 24px;
+  max-width: 100%;
+  padding-block: max(0px, calc((24px - 1lh) / 2));
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+</style>
 </head>
 <body class="catalog-guide claude-guide whatsapp-guide" data-resource-id="prompts-claude-whatsapp">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WW77R29R" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
