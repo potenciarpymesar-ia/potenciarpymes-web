@@ -57,10 +57,10 @@ for (const page of pages) {
 }
 
 test('todas las páginas públicas con pie quedan cubiertas por el mismo CSS', () => {
-  assert.equal(pages.length, 40);
+  assert.equal(pages.length, 41);
   assert.deepEqual(Object.fromEntries(['', 'blog/', 'recursos/', 'herramientas/'].map((dir) => [
     dir || 'raíz', pages.filter((page) => dir ? page.startsWith(dir) : !page.includes('/')).length,
-  ])), { raíz: 31, 'blog/': 5, 'recursos/': 3, 'herramientas/': 1 });
+  ])), { raíz: 31, 'blog/': 6, 'recursos/': 3, 'herramientas/': 1 });
   const reference = touchRule(pages[0]);
   for (const page of pages) assert.deepEqual(touchRule(page), reference, page);
 });

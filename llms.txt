@@ -56,6 +56,8 @@ Los resultados gratuitos aparecen en las páginas de cada herramienta; /diagnost
 
 Guías prácticas (SEO local, métricas, automatizaciones, WhatsApp Business, conexión de canales, uso de IA): https://potenciarpymes.ar/recursos
 
+Fichas de producto en Tiendanube: títulos, descripción en HTML, SEO, GEO e imágenes (borrador para revisión): https://potenciarpymes.ar/blog/fichas-de-producto-tiendanube
+
 ## Blog
 
 Guías verificadas contra fuentes oficiales (centro de ayuda de Tiendanube, INPI, NIC Argentina, OMPI/WIPO, Ley de Marcas): https://potenciarpymes.ar/blog
