@@ -148,7 +148,23 @@ test('credential text meets 4.5:1 contrast and its links inherit visible keyboar
 test('home identifies one founder Person and links him to the organization', () => {
   const people = schemas(home).filter(node => node['@type'] === 'Person');
   assert.equal(people.length, 1);
-  assert.deepEqual(people[0], { ...person, jobTitle: 'Fundador de Potenciar Pymes', image: 'https://potenciarpymes.ar/assets/sobre-mi/jonathan-retrato.webp', worksFor: { '@id': 'https://potenciarpymes.ar/#organization' } });
+  assert.deepEqual(people[0], {
+    ...person,
+    jobTitle: 'Fundador y consultor de Potenciar Pymes',
+    description: 'Ordena y mejora tiendas Tiendanube, publicaciones de Mercado Libre y redes sociales de pymes argentinas. Trabaja en SEO y GEO, procesos y sistemas a medida.',
+    image: {
+      '@type': 'ImageObject',
+      url: 'https://potenciarpymes.ar/assets/sobre-mi/jonathan-estudio-hero.webp',
+      width: 1086,
+      height: 1448,
+    },
+    knowsAbout: ['Tiendanube', 'Mercado Libre', 'SEO', 'GEO', 'Redes sociales', 'Automatización de procesos'],
+    hasCredential: [
+      { '@type': 'EducationalOccupationalCredential', name: 'Mercado Libre Partner', recognizedBy: { '@type': 'Organization', name: 'Mercado Libre' } },
+      { '@type': 'EducationalOccupationalCredential', name: 'Tiendanube Partner', recognizedBy: { '@type': 'Organization', name: 'Tiendanube' } },
+    ],
+    worksFor: { '@id': 'https://potenciarpymes.ar/#organization' },
+  });
 });
 
 test('every Article and BlogPosting uses exactly the Jonathan Person as author', () => {
